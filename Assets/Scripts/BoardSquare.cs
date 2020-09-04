@@ -7,11 +7,11 @@ public class BoardSquare : MonoBehaviour
     public Unit Unit;
     public Vector2Int Pos;
 
-    private void Start()
-    {
-        if(Unit != null)
-        {
-            Unit.Square = this;
-        }
-    }
+    //private void Start()
+    //{
+    //    if(Unit != null)
+    //    {
+    //        Unit.Square = this;
+    //    }
+    //}
 }
