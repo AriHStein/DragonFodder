@@ -1,25 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayMode { UnitPlacement, Battle }
 public class Board : MonoBehaviour
 {
     public static Board Current;
+    public PlayMode PlayMode { get; protected set; }
     public UnitManager UnitManager { get; protected set; }
+
+    [SerializeField] GameObject m_unitPlacementModePanel = default;
 
     [SerializeField] GameObject m_whiteSquare = default;
     [SerializeField] GameObject m_blackSquare = default;
     [SerializeField] int m_width = 8;
     [SerializeField] int m_height = 8;
 
-    [SerializeField] List<UnitData> m_units = default;
+    [SerializeField] List<UnitData> m_preplacedUnits = default;
 
     [SerializeField] float m_timeBetweenTurns = 2f;
     float m_timeUntilNextTurn;
 
-    //public int width;
-    //public int height;
-    //public List<BoardSquare> Squares;
     public BoardSquare[,] Squares { get; protected set; }
     public BoardSquare GetSquareAt(int x, int y)
     {
@@ -36,9 +36,9 @@ public class Board : MonoBehaviour
     {
         UnitManager = new UnitManager();
         Current = this;
+        PlayMode = PlayMode.UnitPlacement;
 
         m_timeUntilNextTurn = m_timeBetweenTurns;
-        TimeManager.Pause();
 
         SetupSquares();
         SetupUnits();
@@ -46,11 +46,6 @@ public class Board : MonoBehaviour
         Vector3 cameraPos = Camera.main.transform.position;
         cameraPos.x = m_width / 2f;
         Camera.main.transform.position = cameraPos;
-    }
-
-    private void Start()
-    {
-
     }
 
     void SetupSquares()
@@ -70,7 +65,7 @@ public class Board : MonoBehaviour
                 {
                     newSquare = Instantiate(m_blackSquare, new Vector3(x, 0, y), Quaternion.identity, transform).GetComponent<BoardSquare>();
                 }
-                newSquare.Pos = new Vector2Int(x, y);
+                newSquare.Position = new Vector2Int(x, y);
                 Squares[x, y] = newSquare;
             }
         }
@@ -78,37 +73,92 @@ public class Board : MonoBehaviour
 
     void SetupUnits()
     {
-        foreach(UnitData data in m_units)
+        foreach(UnitData data in m_preplacedUnits)
         {
-            Unit unit = Instantiate(data.Prefab,  new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
-            Squares[data.Position.x, data.Position.y].Unit = unit;
-            unit.Square = Squares[data.Position.x, data.Position.y];
-            unit.Faction = data.Faction;
+            //Unit unit = Instantiate(data.Prefab,  new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
+            //unit.Initialize(Squares[data.Position.x, data.Position.y], data);
+            TryPlaceNewUnit(data);
         }
     }
 
     private void Update()
     {
-        if(TimeManager.Paused)
+        switch(PlayMode)
+        {
+            case PlayMode.Battle:
+                PlayModeUpdate();
+                break;
+
+            case PlayMode.UnitPlacement:
+                UnitPlacementUpdate();
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    void PlayModeUpdate()
+    {
+        if (TimeManager.Paused)
         {
             return;
         }
 
-        if(m_timeUntilNextTurn <= 0)
+
+        if (m_timeUntilNextTurn <= 0)
         {
             UnitManager.DoUnitTurns();
             m_timeUntilNextTurn = m_timeBetweenTurns;
-        } else
+        }
+        else
         {
             m_timeUntilNextTurn -= Time.deltaTime;
         }
     }
 
+    void UnitPlacementUpdate()
+    {
+
+    }
+
     private void LateUpdate()
+    {
+        switch (PlayMode)
+        {
+            case PlayMode.Battle:
+                PlayModeLateUpdate();
+                break;
+
+            case PlayMode.UnitPlacement:
+                UnitPlacementLateUpdate();
+                break;
+
+            default:
+                return;
+        }
+    }
+
+    void PlayModeLateUpdate()
     {
         UnitManager.CleanupDeadUnits();
     }
 
+    void UnitPlacementLateUpdate()
+    {
+
+    }
+
+    public void EnterBattleMode()
+    {
+        PlayMode = PlayMode.Battle;
+    }
+
+    public void EnterUnitPlacementMode()
+    {
+        PlayMode = PlayMode.UnitPlacement;
+        m_unitPlacementModePanel.SetActive(true);
+    }
 
     public bool TryMoveUnitTo(Unit unit, BoardSquare target)
     {
@@ -127,6 +177,21 @@ public class Board : MonoBehaviour
         unit.transform.position = target.transform.position;
         target.Unit = unit;
 
+        return true;
+    }
+
+    public bool TryPlaceNewUnit(UnitData data)
+    {
+        if(data.Position.x < 0 || data.Position.x > Squares.GetLength(0) ||
+            data.Position.y < 0 || data.Position.y > Squares.GetLength(1) ||
+            Squares[data.Position.x, data.Position.y].Unit != null ||
+            data.Prefab == null || data.Prefab.GetComponent<Unit>() == null)
+        {
+            return false;
+        }
+        
+        Unit unit = Instantiate(data.Prefab, new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
+        unit.Initialize(Squares[data.Position.x, data.Position.y], data);
         return true;
     }
 }

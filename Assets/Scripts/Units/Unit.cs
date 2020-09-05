@@ -11,8 +11,8 @@ public  abstract class Unit : MonoBehaviour
 
     protected Animator m_animator;
 
-    [SerializeField] int m_maxHealth = 5;
-    protected int m_currentHealth;
+    public int MaxHealth;
+    public int CurrentHealth { get; protected set; }
 
     public event System.Action<Unit> DeathEvent;
 
@@ -21,14 +21,25 @@ public  abstract class Unit : MonoBehaviour
         m_animator = GetComponent<Animator>();
         
         Board.Current.UnitManager.RegisterUnit(this);
-        m_currentHealth = m_maxHealth;
+        CurrentHealth = MaxHealth;
+    }
+
+    public void Initialize(BoardSquare square, UnitData data)
+    {
+        Square = square;
+        Square.Unit = this;
+
+        MaxHealth = data.MaxHealth;
+        CurrentHealth = data.CurrentHealth;
+
+        Faction = data.Faction;
     }
 
     public abstract void DoTurn();
 
     protected void FaceToward(BoardSquare square)
     {
-        transform.rotation.SetLookRotation((Vector3Int)(square.Pos - Square.Pos));
+        transform.rotation.SetLookRotation((Vector3Int)(square.Position - Square.Position));
     }
 
     protected virtual void Attack(Unit target)
@@ -38,23 +49,23 @@ public  abstract class Unit : MonoBehaviour
 
     protected virtual void MoveToward(BoardSquare dest)
     {
-        Vector2Int offset = dest.Pos - Square.Pos;
+        Vector2Int offset = dest.Position - Square.Position;
         if (Mathf.Abs(offset.x) > Mathf.Abs(offset.y))
         {
-            FaceToward(Board.Current.GetSquareAt(Square.Pos.x + (int)Mathf.Sign(offset.x), Square.Pos.y));
-            Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Pos.x + (int)Mathf.Sign(offset.x), Square.Pos.y));
+            FaceToward(Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
+            Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
         }
         else
         {
-            FaceToward(Board.Current.GetSquareAt(Square.Pos.x, Square.Pos.y + (int)Mathf.Sign(offset.y)));
-            Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Pos.x, Square.Pos.y + (int)Mathf.Sign(offset.y)));
+            FaceToward(Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
+            Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
         }
     }
 
     public virtual void TakeDamage(int amount)
     {
-        m_currentHealth -= amount;
-        if(m_currentHealth <= 0)
+        CurrentHealth -= amount;
+        if(CurrentHealth <= 0)
         {
             Die();
         }
@@ -62,8 +73,8 @@ public  abstract class Unit : MonoBehaviour
 
     public virtual void Heal(int amount)
     {
-        m_currentHealth += amount;
-        m_currentHealth = Mathf.Clamp(m_currentHealth, 0, m_maxHealth);
+        CurrentHealth += amount;
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
     }
 
     protected virtual void Die()

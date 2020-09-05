@@ -19,7 +19,7 @@ public class Wizard : Unit
             return;
         }
 
-        if(Vector2Int.Distance(target.Square.Pos, Square.Pos) < m_range)
+        if(Vector2Int.Distance(target.Square.Position, Square.Position) < m_range)
         {
             FaceToward(target.Square);
             Attack(target);

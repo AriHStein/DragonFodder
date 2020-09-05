@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    Board m_board;
-    Unit m_selectedUnit;
+
     [SerializeField] LayerMask m_boardLayer;
     [SerializeField] GameObject m_mouseIndicator = default;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        m_board = FindObjectOfType<Board>();
-    }
+
+    Unit m_grabbedUnit;
+    UnitData m_newUnitToPlace;
+
+    GameObject m_unitPreview;
 
     // Update is called once per frame
     void Update()
@@ -24,7 +22,7 @@ public class InputManager : MonoBehaviour
             TimeManager.TogglePause();
         }
 
-        if (!TimeManager.Paused)
+        if (Board.Current.PlayMode != PlayMode.UnitPlacement)
         {
             return;
         }
@@ -43,14 +41,23 @@ public class InputManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(1))
         {
-            m_selectedUnit = null;
+            ReturnGrabbedUnitToOriginalPosition();
+            //m_grabbedUnit = null;
+            m_newUnitToPlace = null;
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (m_selectedUnit != null)
+            if (m_grabbedUnit != null)
             {
-                if (TryMoveSelectedToSquare(squareUnderMouse))
+                if (TryMoveUnitSelectedToSquare(squareUnderMouse))
+                {
+                    return;
+                }
+            }
+            else if(m_newUnitToPlace != null)
+            {
+                if(TryPlaceNewUnit(squareUnderMouse))
                 {
                     return;
                 }
@@ -59,7 +66,7 @@ public class InputManager : MonoBehaviour
             {
                 if (squareUnderMouse.Unit != null)
                 {
-                    m_selectedUnit = squareUnderMouse.Unit;
+                    m_grabbedUnit = squareUnderMouse.Unit;
                     return;
                 }
             }
@@ -70,7 +77,6 @@ public class InputManager : MonoBehaviour
             m_mouseIndicator.SetActive(true);
         }
     }
-
 
     BoardSquare GetSquareUnderMouse()
     {
@@ -83,19 +89,48 @@ public class InputManager : MonoBehaviour
         return null;
     }
 
-    bool TryMoveSelectedToSquare(BoardSquare square)
+    public void SelectUnitToPlace(UnitData data)
     {
-        if(square == null || m_selectedUnit == null || m_selectedUnit.Square == square)
+        m_newUnitToPlace = data;
+        ReturnGrabbedUnitToOriginalPosition();
+    }
+
+    void ReturnGrabbedUnitToOriginalPosition()
+    {
+        if(m_grabbedUnit == null)
+        {
+            return;
+        }
+        
+        m_grabbedUnit = null;
+    }
+
+    bool TryMoveUnitSelectedToSquare(BoardSquare square)
+    {
+        if(square == null || m_grabbedUnit == null || m_grabbedUnit.Square == square)
         {
             return false;
         }
 
-        if(m_board.TryMoveUnitTo(m_selectedUnit, square))
+        if(Board.Current.TryMoveUnitTo(m_grabbedUnit, square))
         {
-            m_selectedUnit = null;
+            m_grabbedUnit = null;
             return true;
         }
 
         return false;
+    }
+
+    bool TryPlaceNewUnit(BoardSquare square)
+    {
+        if(square == null || m_newUnitToPlace == null || square.Unit != null)
+        {
+            return false;
+        }
+
+        m_newUnitToPlace.Position = square.Position;
+        Board.Current.TryPlaceNewUnit(m_newUnitToPlace);
+        m_newUnitToPlace = null;
+        return true;
     }
 }

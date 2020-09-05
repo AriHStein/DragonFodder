@@ -13,11 +13,11 @@ public class Warrior : Unit
 
         if (target == null)
         {
-            Debug.LogError("No Target found");
+            Debug.LogWarning("No Target found");
             return;
         }
 
-        if (Mathf.Abs(target.Square.Pos.x - Square.Pos.x) <= 1 && Mathf.Abs(target.Square.Pos.y - Square.Pos.y) <= 1)
+        if (Mathf.Abs(target.Square.Position.x - Square.Position.x) <= 1 && Mathf.Abs(target.Square.Position.y - Square.Position.y) <= 1)
         {
             FaceToward(target.Square);
             Attack(target);

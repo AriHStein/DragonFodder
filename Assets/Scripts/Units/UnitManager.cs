@@ -5,12 +5,15 @@ using UnityEngine;
 public class UnitManager
 {
     List<Unit> m_units;
-    List<Unit> m_diedThisTurn;
+    HashSet<Unit> m_diedThisTurn;
+
+    Dictionary<Faction, int> m_factionCount;
     
     public UnitManager()
     {
         m_units = new List<Unit>();
-        m_diedThisTurn = new List<Unit>();
+        m_diedThisTurn = new HashSet<Unit>();
+        m_factionCount = new Dictionary<Faction, int>();
     }
 
     public void RegisterUnit(Unit unit)
@@ -18,6 +21,14 @@ public class UnitManager
         //Debug.Log($"{unit.name} registered");
         m_units.Add(unit);
         unit.DeathEvent += OnUnitDeath;
+
+        if(!m_factionCount.ContainsKey(unit.Faction))
+        {
+            m_factionCount[unit.Faction] = 1;
+        } else
+        {
+            m_factionCount[unit.Faction]++;
+        }
     }
 
 
@@ -44,6 +55,11 @@ public class UnitManager
             m_units.Remove(unit);
             unit.Square.Unit = null;
             unit.Square = null;
+            m_factionCount[unit.Faction]--;
+            if(m_factionCount[unit.Faction] == 0)
+            {
+                Board.Current.EnterUnitPlacementMode();
+            }
             GameObject.Destroy(unit.gameObject);
         }
 
@@ -67,7 +83,7 @@ public class UnitManager
                 continue;
             }
 
-            float distance = Vector2Int.Distance(origin.Pos, unit.Square.Pos);
+            float distance = Vector2Int.Distance(origin.Position, unit.Square.Position);
             if(distance < nearestDistance)
             {
                 nearestDistance = distance;

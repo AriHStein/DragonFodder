@@ -15,3 +15,5 @@ MonoBehaviour:
   Position: {x: 4, y: 0}
   Prefab: {fileID: 4797737259296947676, guid: 02c20aa1799d4fa45b6c9f99eba8e901, type: 3}
   Faction: 0
+  MaxHealth: 5
+  CurrentHealth: 5
