@@ -12,7 +12,7 @@ public class PlaceUnitButton : MonoBehaviour
         m_inputManager = FindObjectOfType<InputManager>();
     }
 
-    [SerializeField] UnitData m_unit = default;
+    [SerializeField] UnitPrototype m_unit = default;
     public void SetUnit()
     {
         m_inputManager.SelectUnitToPlace(m_unit);

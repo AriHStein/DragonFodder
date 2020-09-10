@@ -1,0 +1,48 @@
+{
+    "Units": [
+        {
+            "Type": "Warrior",
+            "Position": {
+                "x": 3,
+                "y": 0
+            },
+            "Faction": 0,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Wizard",
+            "Position": {
+                "x": 10,
+                "y": 2
+            },
+            "Faction": 0,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "EnemyWarrior",
+            "Position": {
+                "x": 6,
+                "y": 1
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "EnemyWizard",
+            "Position": {
+                "x": 1,
+                "y": 2
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        }
+    ],
+    "SquadOrigin": {
+        "x": 0,
+        "y": 0
+    }
+}

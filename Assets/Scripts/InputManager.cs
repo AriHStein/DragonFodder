@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] GameObject m_mouseIndicator = default;
 
     Unit m_grabbedUnit;
-    UnitData m_newUnitToPlace;
+    UnitPrototype m_newUnitToPlace;
 
     GameObject m_unitPreview;
 
@@ -89,7 +89,7 @@ public class InputManager : MonoBehaviour
         return null;
     }
 
-    public void SelectUnitToPlace(UnitData data)
+    public void SelectUnitToPlace(UnitPrototype data)
     {
         m_newUnitToPlace = data;
         ReturnGrabbedUnitToOriginalPosition();
@@ -128,8 +128,7 @@ public class InputManager : MonoBehaviour
             return false;
         }
 
-        m_newUnitToPlace.Position = square.Position;
-        Board.Current.TryPlaceNewUnit(m_newUnitToPlace);
+        Board.Current.TryPlaceNewUnit(new UnitData(m_newUnitToPlace, square.Position));
         m_newUnitToPlace = null;
         return true;
     }
