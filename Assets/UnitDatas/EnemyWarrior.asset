@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294fe6fcee924ba41bf006e7299835cf, type: 3}
   m_Name: EnemyWarrior
   m_EditorClassIdentifier: 
-  Position: {x: 4, y: 7}
-  Prefab: {fileID: 6880634169537804499, guid: 6a87d31235f63384785e00d4362047bd, type: 3}
+  Position: {x: 8, y: 1}
+  Type: EnemyWarrior
   Faction: 1
   MaxHealth: 5
   CurrentHealth: 5

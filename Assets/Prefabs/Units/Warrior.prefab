@@ -174,9 +174,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e0853af93c6104fa44688fe06250d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: Warrior
   Square: {fileID: 0}
   Faction: 0
-  m_maxHealth: 5
+  MaxHealth: 0
   m_damage: 1
 --- !u!95 &8042296627023653173
 Animator:

@@ -1,21 +1,27 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayMode { UnitPlacement, Battle }
+public enum PlayMode { UnitPlacement, SquadEditor, Battle }
 public class Board : MonoBehaviour
 {
     public static Board Current;
     public PlayMode PlayMode { get; protected set; }
     public UnitManager UnitManager { get; protected set; }
 
+
+    [SerializeField] List<GameObject> m_unitPrefabs = default;
+
     [SerializeField] GameObject m_unitPlacementModePanel = default;
+    [SerializeField] GameObject m_squadEditorModePanel = default;
 
     [SerializeField] GameObject m_whiteSquare = default;
     [SerializeField] GameObject m_blackSquare = default;
     [SerializeField] int m_width = 8;
     [SerializeField] int m_height = 8;
+    [SerializeField] int m_rowsAllowedForUnitPlacement = 3;
 
     [SerializeField] List<UnitData> m_preplacedUnits = default;
+    [SerializeField] List<SquadData> m_preplacedSquads = default;
 
     [SerializeField] float m_timeBetweenTurns = 2f;
     float m_timeUntilNextTurn;
@@ -34,9 +40,9 @@ public class Board : MonoBehaviour
 
     public void Awake()
     {
-        UnitManager = new UnitManager();
+        UnitManager = new UnitManager(m_unitPrefabs);
         Current = this;
-        PlayMode = PlayMode.UnitPlacement;
+        //PlayMode = PlayMode.UnitPlacement;
 
         m_timeUntilNextTurn = m_timeBetweenTurns;
 
@@ -46,6 +52,11 @@ public class Board : MonoBehaviour
         Vector3 cameraPos = Camera.main.transform.position;
         cameraPos.x = m_width / 2f;
         Camera.main.transform.position = cameraPos;
+    }
+
+    private void Start()
+    {
+        EnterUnitPlacementMode();
     }
 
     void SetupSquares()
@@ -73,11 +84,16 @@ public class Board : MonoBehaviour
 
     void SetupUnits()
     {
-        foreach(UnitData data in m_preplacedUnits)
+        foreach(UnitData unit in m_preplacedUnits)
         {
             //Unit unit = Instantiate(data.Prefab,  new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
             //unit.Initialize(Squares[data.Position.x, data.Position.y], data);
-            TryPlaceNewUnit(data);
+            TryPlaceNewUnit(unit);
+        }
+
+        foreach(SquadData squad in m_preplacedSquads)
+        {
+            TryPlaceSquad(squad);
         }
     }
 
@@ -91,6 +107,10 @@ public class Board : MonoBehaviour
 
             case PlayMode.UnitPlacement:
                 UnitPlacementUpdate();
+                break;
+
+            case PlayMode.SquadEditor:
+                SquadEditorUpdate();
                 break;
 
             default:
@@ -122,6 +142,11 @@ public class Board : MonoBehaviour
 
     }
 
+    void SquadEditorUpdate()
+    {
+
+    }
+
     private void LateUpdate()
     {
         switch (PlayMode)
@@ -132,6 +157,10 @@ public class Board : MonoBehaviour
 
             case PlayMode.UnitPlacement:
                 UnitPlacementLateUpdate();
+                break;
+
+            case PlayMode.SquadEditor:
+                SquadEditorLateUpdate();
                 break;
 
             default:
@@ -149,15 +178,77 @@ public class Board : MonoBehaviour
 
     }
 
+    void SquadEditorLateUpdate()
+    {
+
+    }
+
     public void EnterBattleMode()
     {
         PlayMode = PlayMode.Battle;
+        m_unitPlacementModePanel.SetActive(false);
+        m_squadEditorModePanel.SetActive(false);
+
+        ActivateSquares(Squares.GetLength(1));
     }
 
     public void EnterUnitPlacementMode()
     {
         PlayMode = PlayMode.UnitPlacement;
         m_unitPlacementModePanel.SetActive(true);
+        m_squadEditorModePanel.SetActive(false);
+
+        ActivateSquares(m_rowsAllowedForUnitPlacement);
+    }
+
+    public void EnterSquadEditorMode()
+    {
+        PlayMode = PlayMode.SquadEditor;
+        m_unitPlacementModePanel.SetActive(false);
+        m_squadEditorModePanel.SetActive(true);
+
+        ActivateSquares(m_rowsAllowedForUnitPlacement);
+    }
+
+    public void SaveBoardAsSquad(bool mirrorBoard = true)
+    {
+        SquadData squad = GetBoardAsSquad(mirrorBoard);
+    }
+
+    public SquadData GetBoardAsSquad(bool mirrorBoard = true)
+    {
+        SquadData newSquad = SquadData.CreateInstance<SquadData>();
+        newSquad.SquadOrigin = mirrorBoard ? new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) : Vector2Int.zero;
+
+        foreach (Unit unit in UnitManager.Units)
+        {
+            UnitData newUnit = UnitData.GetData(unit);
+            if (mirrorBoard)
+            {
+                newUnit.Position = new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) - newUnit.Position;
+            }
+            newSquad.Units.Add(newUnit);
+        }
+
+        return newSquad;
+    }
+
+    void ActivateSquares(int rows)
+    {
+        for (int x = 0; x < Squares.GetLength(0); x++)
+        {
+            for (int y = 0; y < Squares.GetLength(1); y++)
+            {
+                if (y < rows)
+                {
+                    Squares[x, y].Activate();
+                }
+                else
+                {
+                    Squares[x, y].Deactivate();
+                }
+            }
+        }
     }
 
     public bool TryMoveUnitTo(Unit unit, BoardSquare target)
@@ -182,16 +273,41 @@ public class Board : MonoBehaviour
 
     public bool TryPlaceNewUnit(UnitData data)
     {
-        if(data.Position.x < 0 || data.Position.x > Squares.GetLength(0) ||
+        if(data == null || data.Position.x < 0 || data.Position.x > Squares.GetLength(0) ||
             data.Position.y < 0 || data.Position.y > Squares.GetLength(1) ||
-            Squares[data.Position.x, data.Position.y].Unit != null ||
-            data.Prefab == null || data.Prefab.GetComponent<Unit>() == null)
+            Squares[data.Position.x, data.Position.y].Unit != null)
+        {
+            return false;
+        }
+
+        GameObject prefab = UnitManager.GetPrefabOfType(data.Type);
+        if(prefab == null)
         {
             return false;
         }
         
-        Unit unit = Instantiate(data.Prefab, new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
+        Unit unit = Instantiate(prefab, new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
         unit.Initialize(Squares[data.Position.x, data.Position.y], data);
         return true;
+    }
+
+    public bool TryPlaceSquad(SquadData data)
+    {
+        if(data == null || data.SquadOrigin.x < 0 || data.SquadOrigin.y < 0 ||
+            data.SquadOrigin.x + data.Size.x > Squares.GetLength(0) || data.SquadOrigin.y + data.Size.y > Squares.GetLength(1) ||
+            data.Units == null || data.Units.Count == 0)
+        {
+            return false;
+        }
+
+        bool allUnitsPlaced = true;
+        foreach(UnitData unit in data.Units)
+        {
+            UnitData clone = unit.Clone();
+            clone.Position += data.SquadOrigin;
+            allUnitsPlaced = TryPlaceNewUnit(clone) && allUnitsPlaced;
+        }
+
+        return allUnitsPlaced;
     }
 }

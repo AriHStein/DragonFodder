@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294fe6fcee924ba41bf006e7299835cf, type: 3}
   m_Name: Wizard
   m_EditorClassIdentifier: 
-  Position: {x: 7, y: 0}
-  Prefab: {fileID: 346092736135298289, guid: 1360c0ba5869cc449b5fa02e4d4852f2, type: 3}
+  Position: {x: 7, y: 1}
+  Type: Wizard
   Faction: 0
   MaxHealth: 5
   CurrentHealth: 5

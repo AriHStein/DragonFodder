@@ -6,6 +6,7 @@ public enum Faction { Player, Enemy }
 [RequireComponent(typeof(Animator))]
 public  abstract class Unit : MonoBehaviour
 {
+    public string Type;
     public BoardSquare Square;
     public Faction Faction;
 

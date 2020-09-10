@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 346092736135298289, guid: 1360c0ba5869cc449b5fa02e4d4852f2,
         type: 3}
       propertyPath: m_Name
-      value: EnemyWizard
+      value: EnemyWizard Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1118653223777838667, guid: 1360c0ba5869cc449b5fa02e4d4852f2,
         type: 3}
@@ -91,6 +91,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Faction
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4974338732412149213, guid: 1360c0ba5869cc449b5fa02e4d4852f2,
+        type: 3}
+      propertyPath: Type
+      value: EnemyWizard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1360c0ba5869cc449b5fa02e4d4852f2, type: 3}

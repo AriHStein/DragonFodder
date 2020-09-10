@@ -14,4 +14,33 @@ public class BoardSquare : MonoBehaviour
     //        Unit.Square = this;
     //    }
     //}
+
+    public void Activate()
+    {
+        if(Unit != null)
+        {
+            Unit.gameObject.SetActive(true);
+        }
+
+        gameObject.SetActive(true);
+    }
+
+    public void Deactivate()
+    {
+        if (Unit != null)
+        {
+            Unit.gameObject.SetActive(false);
+        }
+
+        gameObject.SetActive(false);
+    }
+
+    public void Clear()
+    {
+        if(Unit != null)
+        {
+            Destroy(Unit.gameObject);
+            Unit = null;
+        }
+    }
 }

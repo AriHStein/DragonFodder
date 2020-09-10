@@ -126,13 +126,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d066196859c1914fb0ef00fb612b1d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: Wizard
   Square: {fileID: 0}
   Faction: 0
-  m_maxHealth: 5
+  MaxHealth: 0
   m_attackPrefab: {fileID: 7927880289350634152, guid: f16395947e4b18448ab6073e764ec274,
     type: 3}
   m_range: 4
-  m_damage: 1
 --- !u!95 &2333764750260751977
 Animator:
   serializedVersion: 3

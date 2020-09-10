@@ -22,7 +22,7 @@ public class InputManager : MonoBehaviour
             TimeManager.TogglePause();
         }
 
-        if (Board.Current.PlayMode != PlayMode.UnitPlacement)
+        if (Board.Current.PlayMode == PlayMode.Battle)
         {
             return;
         }

@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 4797737259296947676, guid: 02c20aa1799d4fa45b6c9f99eba8e901,
         type: 3}
       propertyPath: m_Name
-      value: EnemyWarrior
+      value: EnemyWarrior Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5323021880800356198, guid: 02c20aa1799d4fa45b6c9f99eba8e901,
         type: 3}
@@ -81,6 +81,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Faction
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6833298719008545590, guid: 02c20aa1799d4fa45b6c9f99eba8e901,
+        type: 3}
+      propertyPath: Type
+      value: EnemyWarrior
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02c20aa1799d4fa45b6c9f99eba8e901, type: 3}

@@ -6,18 +6,33 @@ using UnityEngine;
 public class UnitData : ScriptableObject
 {
     public Vector2Int Position;
-    public GameObject Prefab;
+    public string Type;
     public Faction Faction;
     public int MaxHealth;
     public int CurrentHealth;
 
-    public UnitData(Unit unit)
+    public static UnitData GetData(Unit unit)
     {
-        Position = unit.Square.Position;
-        Prefab = unit.gameObject;
-        Faction = unit.Faction;
+        UnitData data = ScriptableObject.CreateInstance<UnitData>();
+        data.Position = unit.Square.Position;
+        data.Type = unit.Type;
+        data.Faction = unit.Faction;
 
-        MaxHealth = unit.MaxHealth;
-        CurrentHealth = unit.CurrentHealth;
+        data.MaxHealth = unit.MaxHealth;
+        data.CurrentHealth = unit.CurrentHealth;
+
+        return data;
+    }
+
+    public UnitData Clone()
+    {
+        UnitData newUnit = UnitData.CreateInstance<UnitData>();
+        newUnit.Position = Position;
+        newUnit.Type = Type;
+        newUnit.Faction = Faction;
+        newUnit.MaxHealth = MaxHealth;
+        newUnit.CurrentHealth = CurrentHealth;
+
+        return newUnit;
     }
 }
