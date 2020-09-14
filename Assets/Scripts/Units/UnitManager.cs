@@ -56,6 +56,15 @@ public class UnitManager
         }
     }
 
+    public void RemoveUnit(Unit unit)
+    {
+        Units.Remove(unit);
+        unit.Square.Unit = null;
+        unit.Square = null;
+        m_factionCount[unit.Faction]--;
+        GameObject.Destroy(unit.gameObject);
+    }
+
 
     public void DoUnitTurns()
     {
@@ -77,15 +86,12 @@ public class UnitManager
         foreach(Unit unit in m_diedThisTurn)
         {
             //Debug.Log($"{unit.name} died");
-            Units.Remove(unit);
-            unit.Square.Unit = null;
-            unit.Square = null;
-            m_factionCount[unit.Faction]--;
-            if(m_factionCount[unit.Faction] == 0)
+            RemoveUnit(unit);
+            if (m_factionCount[unit.Faction] == 0)
             {
                 Board.Current.EnterUnitPlacementMode();
             }
-            GameObject.Destroy(unit.gameObject);
+
         }
 
         m_diedThisTurn.Clear();

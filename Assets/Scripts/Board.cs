@@ -37,7 +37,6 @@ public class Board : MonoBehaviour
         return Squares[x, y];
     }
 
-
     public void Awake()
     {
         UnitManager = new UnitManager(m_unitPrefabs);
@@ -94,6 +93,17 @@ public class Board : MonoBehaviour
         foreach(SquadData squad in m_preplacedSquads)
         {
             TryPlaceSquad(squad);
+        }
+    }
+
+    void ClearBoard()
+    {
+        for(int x = 0; x < Squares.GetLength(0); x++)
+        {
+            for(int y = 0; y < Squares.GetLength(1); y++)
+            {
+                Squares[x, y].Clear();
+            }
         }
     }
 
@@ -188,8 +198,10 @@ public class Board : MonoBehaviour
         PlayMode = PlayMode.Battle;
         m_unitPlacementModePanel.SetActive(false);
         m_squadEditorModePanel.SetActive(false);
-
+        ClearBoard();
         ActivateSquares(Squares.GetLength(1));
+        LoadPlayerSquad();
+        LoadEnemySquad(true);
     }
 
     public void EnterUnitPlacementMode()
@@ -197,8 +209,10 @@ public class Board : MonoBehaviour
         PlayMode = PlayMode.UnitPlacement;
         m_unitPlacementModePanel.SetActive(true);
         m_squadEditorModePanel.SetActive(false);
-
+        ClearBoard();
         ActivateSquares(m_rowsAllowedForUnitPlacement);
+
+        LoadPlayerSquad();
     }
 
     public void EnterSquadEditorMode()
@@ -206,31 +220,45 @@ public class Board : MonoBehaviour
         PlayMode = PlayMode.SquadEditor;
         m_unitPlacementModePanel.SetActive(false);
         m_squadEditorModePanel.SetActive(true);
-
+        ClearBoard();
         ActivateSquares(m_rowsAllowedForUnitPlacement);
+
+        LoadEnemySquad(false);
     }
 
-    public void SaveBoardAsSquad(bool mirrorBoard = true)
+    void LoadPlayerSquad()
+    {
+        SquadData playerSquad = UnitSaveLoadUtility.LoadSquad("Player");
+        TryPlaceSquad(playerSquad);
+    }
+
+    void LoadEnemySquad(bool mirror = false)
+    {
+        SquadData enemySquad = UnitSaveLoadUtility.LoadSquad("Enemy");
+        TryPlaceSquad(enemySquad, mirror);
+    }
+
+    public void SaveBoardAsSquad(string name, bool mirrorBoard = true)
     {
         SquadData squad = GetBoardAsSquad(mirrorBoard);
-        UnitSaveLoadUtility.SaveSquad(squad, "squad");
+        UnitSaveLoadUtility.SaveSquad(squad, name);
     }
 
     public SquadData GetBoardAsSquad(bool mirrorBoard = false)
     {
-        Vector2Int origin = mirrorBoard ? new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) : Vector2Int.zero;
+        Vector2Int origin = mirrorBoard ? MirrorPosition(Vector2Int.zero) : Vector2Int.zero;
         List<UnitData> units = new List<UnitData>();
         foreach (Unit unit in UnitManager.Units)
         {
-            UnitData newUnit = new UnitData(unit);
-            if (mirrorBoard)
-            {
-                newUnit.Position = new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) - newUnit.Position;
-            }
+            UnitData newUnit = new UnitData(unit, origin);
+            //if (mirrorBoard)
+            //{
+            //    newUnit.Position = new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) - newUnit.Position;
+            //}
             units.Add(newUnit);
         }
 
-        return SquadData.GetNewSquad(units, origin);
+        return new SquadData(units, origin);
     }
 
     void ActivateSquares(int rows)
@@ -291,21 +319,24 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    public bool TryPlaceSquad(SquadData data)
+    public bool TryPlaceSquad(SquadData data, bool mirror = false)
     {
-        if(data == null || 
-            data.Units == null || 
+        if(data.Units == null || 
             data.Units.Count == 0)
         {
             return false;
         }
 
         data.UpdateSize();
-        if(data.SquadOrigin.x < 0 || 
-            data.SquadOrigin.y < 0 || 
-            data.SquadOrigin.x + data.Size.x > Squares.GetLength(0) || 
-            data.SquadOrigin.y + data.Size.y > Squares.GetLength(1))
+        Vector2Int origin = mirror ? MirrorPosition(data.SquadOrigin) : data.SquadOrigin;
+        Vector2Int size = mirror ? MirrorPosition(data.SquadOrigin) + data.Size : data.SquadOrigin + data.Size;
+
+        if (origin.x < 0 ||
+            origin.y < 0 ||
+            size.x > Squares.GetLength(0) ||
+            size.y > Squares.GetLength(1))
         {
+            Debug.LogError($"Squad position out of bounds. Origin: {origin}, Size: {size}");
             return false;
         }
 
@@ -313,10 +344,34 @@ public class Board : MonoBehaviour
         foreach(UnitData unit in data.Units)
         {
             UnitData clone = unit.Clone();
+            if (clone.Faction == Faction.Enemy)
+            {
+                Debug.Log(clone.Position);
+            }
             clone.Position += data.SquadOrigin;
+            if (clone.Faction == Faction.Enemy)
+            {
+                Debug.Log(clone.Position);
+            }
+            if (mirror)
+            {
+                clone.Position = MirrorPosition(clone.Position);
+            }
+
+
+            if (clone.Faction == Faction.Enemy)
+            {
+                Debug.Log(clone.Position);
+            }
+
             allUnitsPlaced = TryPlaceNewUnit(clone) && allUnitsPlaced;
         }
 
         return allUnitsPlaced;
+    }
+
+    Vector2Int MirrorPosition(Vector2Int pos)
+    {
+        return new Vector2Int(Squares.GetLength(0) - 1, Squares.GetLength(1) - 1) - pos;
     }
 }

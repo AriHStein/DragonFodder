@@ -2,31 +2,49 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new Squad", menuName = "Units/SquadData", order = 101)]
+//[CreateAssetMenu(fileName = "new Squad", menuName = "Units/SquadData", order = 101)]
 [System.Serializable]
-public class SquadData : ScriptableObject
+public struct SquadData
 {
-    public static SquadData GetNewSquad(List<UnitData> units, Vector2Int origin)
-    {
-        SquadData newSquad = ScriptableObject.CreateInstance<SquadData>();
-        if(units != null)
-        {
-            newSquad.Units = units;
-        } else
-        {
-            newSquad.Units = new List<UnitData>();
-        }
+    //public static SquadData GetNewSquad(List<UnitData> units, Vector2Int origin)
+    //{
+    //    SquadData newSquad = ScriptableObject.CreateInstance<SquadData>();
+    //    if(units != null)
+    //    {
+    //        newSquad.Units = units;
+    //    } else
+    //    {
+    //        newSquad.Units = new List<UnitData>();
+    //    }
 
-        newSquad.SquadOrigin = origin;
-        newSquad.UpdateSize();
-        return newSquad;
-    }
+    //    newSquad.SquadOrigin = origin;
+    //    newSquad.UpdateSize();
+    //    return newSquad;
+    //}
 
     public List<UnitData> Units;
     public Vector2Int SquadOrigin;
+    public Faction Faction;
 
     [System.NonSerialized]
     public Vector2Int Size;
+
+    public SquadData(List<UnitData> units, Vector2Int origin, Faction faction = Faction.Player)
+    {
+        if (units != null)
+        {
+            Units = units;
+        }
+        else
+        {
+            Units = new List<UnitData>();
+        }
+
+        SquadOrigin = origin;
+        Faction = faction;
+        Size = Vector2Int.zero;
+        UpdateSize();
+    }
 
     public void UpdateSize()
     {
@@ -50,6 +68,6 @@ public class SquadData : ScriptableObject
             }
         }
 
-        Size = max;
+        Size = max - SquadOrigin;
     }
 }

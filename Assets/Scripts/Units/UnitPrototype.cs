@@ -8,7 +8,7 @@ public class UnitPrototype : ScriptableObject
 {
     //public Vector2Int Position;
     public string Type;
-    public Faction Faction;
+    //public Faction Faction;
     public int MaxHealth;
 
     //public static UnitData GetData(Unit unit)
@@ -46,7 +46,7 @@ public struct UnitData
     public int MaxHealth;
     public int CurrentHealth;
 
-    public UnitData(string type, Vector2Int position, Faction faction, int maxHealth, int currentHealth)
+    public UnitData(string type, Vector2Int position,Faction faction, int maxHealth, int currentHealth)
     {
         Type = type;
         Position = position;
@@ -55,20 +55,20 @@ public struct UnitData
         CurrentHealth = currentHealth;
     }
 
-    public UnitData(Unit unit)
+    public UnitData(Unit unit, Vector2Int origin)
     {
         Type = unit.Type;
-        Position = unit.Square.Position;
+        Position = unit.Square.Position - origin;
         Faction = unit.Faction;
         MaxHealth = unit.MaxHealth;
         CurrentHealth = unit.CurrentHealth;
     }
 
-    public UnitData(UnitPrototype proto, Vector2Int position)
+    public UnitData(UnitPrototype proto, Vector2Int position, Faction faction)
     {
         Type = proto.Type;
         Position = position;
-        Faction = proto.Faction;
+        Faction = faction;
         MaxHealth = proto.MaxHealth;
         CurrentHealth = proto.MaxHealth;
     }

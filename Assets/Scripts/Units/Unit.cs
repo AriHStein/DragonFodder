@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum Faction { Player, Enemy }
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(MaterialSwapper))]
 public  abstract class Unit : MonoBehaviour
 {
     public string Type;
@@ -11,16 +12,21 @@ public  abstract class Unit : MonoBehaviour
     public Faction Faction;
 
     protected Animator m_animator;
+    protected MaterialSwapper m_materialSwapper;
 
     public int MaxHealth;
     public int CurrentHealth { get; protected set; }
 
     public event System.Action<Unit> DeathEvent;
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         m_animator = GetComponent<Animator>();
-        
+        m_materialSwapper = GetComponent<MaterialSwapper>();
+    }
+
+    protected virtual void Start()
+    {
         Board.Current.UnitManager.RegisterUnit(this);
         CurrentHealth = MaxHealth;
     }
@@ -34,6 +40,7 @@ public  abstract class Unit : MonoBehaviour
         CurrentHealth = data.CurrentHealth;
 
         Faction = data.Faction;
+        m_materialSwapper.SwapMaterial(Faction);
     }
 
     public abstract void DoTurn();

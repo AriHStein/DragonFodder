@@ -16,7 +16,7 @@ public class UnitSaveLoadUtility
             Directory.CreateDirectory(SquadDirectory());
         }
 
-        string filePath = EnemySquadPath(fileName);
+        string filePath = GetFilePath(fileName);
         File.WriteAllText(filePath, json);
         //if(!File.Exists(filePath))
         //{
@@ -24,7 +24,7 @@ public class UnitSaveLoadUtility
         //}
         
         //File.AppendAllText(filePath, json);
-        Debug.Log(filePath);
+        //Debug.Log(filePath);
     }
 
     public static List<SquadData> LoadAllSquads()
@@ -39,18 +39,23 @@ public class UnitSaveLoadUtility
 
         foreach(string file in files)
         {
-            squads.Add(LoadSquad(file));
+            squads.Add(LoadSquadAtPath(file));
         }
 
         return squads;
     } 
 
-    private static SquadData LoadSquad(string path)
+    public static SquadData LoadSquad(string fileName)
+    {
+        return LoadSquadAtPath(GetFilePath(fileName));
+    }
+
+    private static SquadData LoadSquadAtPath(string path)
     {
         if (!File.Exists(path))
         {
             Debug.LogError($"No SquadData file exists at {path}.");
-            return null;
+            return new SquadData();
         }
 
         string json = File.ReadAllText(path);
@@ -62,7 +67,7 @@ public class UnitSaveLoadUtility
         return Path.Combine(Application.dataPath, m_squadSaveFolder);
     }
 
-    private static string EnemySquadPath(string fileName)
+    private static string GetFilePath(string fileName)
     {
         return Path.Combine(SquadDirectory(), fileName + m_squadFileExtension);
     }

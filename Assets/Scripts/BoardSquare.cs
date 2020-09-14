@@ -39,8 +39,9 @@ public class BoardSquare : MonoBehaviour
     {
         if(Unit != null)
         {
-            Destroy(Unit.gameObject);
-            Unit = null;
+            Board.Current.UnitManager.RemoveUnit(Unit);
+            //Destroy(Unit.gameObject);
+            //Unit = null;
         }
     }
 }

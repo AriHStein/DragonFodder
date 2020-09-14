@@ -11,6 +11,8 @@ public class InputManager : MonoBehaviour
     Unit m_grabbedUnit;
     UnitPrototype m_newUnitToPlace;
 
+    Faction m_currentFaction;
+
     GameObject m_unitPreview;
 
     // Update is called once per frame
@@ -89,9 +91,10 @@ public class InputManager : MonoBehaviour
         return null;
     }
 
-    public void SelectUnitToPlace(UnitPrototype data)
+    public void SelectUnitToPlace(UnitPrototype data, Faction faction)
     {
         m_newUnitToPlace = data;
+        m_currentFaction = faction;
         ReturnGrabbedUnitToOriginalPosition();
     }
 
@@ -128,7 +131,7 @@ public class InputManager : MonoBehaviour
             return false;
         }
 
-        Board.Current.TryPlaceNewUnit(new UnitData(m_newUnitToPlace, square.Position));
+        Board.Current.TryPlaceNewUnit(new UnitData(m_newUnitToPlace, square.Position, m_currentFaction));
         m_newUnitToPlace = null;
         return true;
     }

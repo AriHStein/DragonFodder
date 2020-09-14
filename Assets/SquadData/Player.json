@@ -1,0 +1,79 @@
+{
+    "Units": [
+        {
+            "Type": "Warrior",
+            "Position": {
+                "x": 5,
+                "y": 3
+            },
+            "Faction": 0,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Warrior",
+            "Position": {
+                "x": 8,
+                "y": 3
+            },
+            "Faction": 0,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Wizard",
+            "Position": {
+                "x": 6,
+                "y": 0
+            },
+            "Faction": 0,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Wizard",
+            "Position": {
+                "x": 9,
+                "y": 0
+            },
+            "Faction": 0,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Wizard",
+            "Position": {
+                "x": 2,
+                "y": 0
+            },
+            "Faction": 0,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Warrior",
+            "Position": {
+                "x": 6,
+                "y": 4
+            },
+            "Faction": 0,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Warrior",
+            "Position": {
+                "x": 10,
+                "y": 2
+            },
+            "Faction": 0,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        }
+    ],
+    "SquadOrigin": {
+        "x": 0,
+        "y": 0
+    },
+    "Faction": 0
+}
