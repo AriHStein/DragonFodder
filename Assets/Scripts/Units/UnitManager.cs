@@ -87,14 +87,19 @@ public class UnitManager
         {
             //Debug.Log($"{unit.name} died");
             RemoveUnit(unit);
-            if (m_factionCount[unit.Faction] == 0)
-            {
-                Board.Current.EnterUnitPlacementMode();
-            }
 
         }
 
         m_diedThisTurn.Clear();
+        foreach(Faction faction in m_factionCount.Keys)
+        {
+            if (m_factionCount[faction] == 0)
+            {
+                Board.Current.ExitBattleMode(faction == Faction.Enemy);
+                return;
+            }
+        }
+
     }
 
     public Unit GetNearestUnitOfFaction(Faction faction, BoardSquare origin)

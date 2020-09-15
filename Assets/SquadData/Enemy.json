@@ -2,48 +2,50 @@
     "Units": [
         {
             "Type": "Warrior",
-            "Position": {
-                "x": -8,
-                "y": -9
+            "ID": {
+                "Value": "e351edbf-0f7d-465f-bc35-a514c202e10e"
             },
-            "Faction": 1,
-            "MaxHealth": 5,
-            "CurrentHealth": 5
-        },
-        {
-            "Type": "Warrior",
-            "Position": {
-                "x": -6,
-                "y": -9
-            },
-            "Faction": 1,
-            "MaxHealth": 5,
-            "CurrentHealth": 5
-        },
-        {
-            "Type": "Warrior",
-            "Position": {
-                "x": -4,
-                "y": -9
-            },
-            "Faction": 1,
-            "MaxHealth": 5,
-            "CurrentHealth": 5
-        },
-        {
-            "Type": "Wizard",
             "Position": {
                 "x": -9,
-                "y": -12
+                "y": -11
             },
             "Faction": 1,
             "MaxHealth": 5,
             "CurrentHealth": 5
         },
         {
-            "Type": "Wizard",
+            "Type": "Warrior",
+            "ID": {
+                "Value": "f7516a25-16ec-4ef2-bc5d-6107630af3cb"
+            },
             "Position": {
                 "x": -7,
+                "y": -11
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "fdbee907-7721-4fef-adaf-b9af710422ab"
+            },
+            "Position": {
+                "x": -5,
+                "y": -11
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "a4bc68c3-d01e-4b4a-a075-19fca02038b9"
+            },
+            "Position": {
+                "x": -8,
                 "y": -12
             },
             "Faction": 1,
@@ -52,9 +54,25 @@
         },
         {
             "Type": "Wizard",
+            "ID": {
+                "Value": "292868db-7780-4ae8-9304-866bad1cdfd0"
+            },
             "Position": {
-                "x": -4,
+                "x": -6,
                 "y": -12
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "c66ef392-55a8-4c4c-9324-93e2fc0e54b7"
+            },
+            "Position": {
+                "x": -7,
+                "y": -13
             },
             "Faction": 1,
             "MaxHealth": 5,

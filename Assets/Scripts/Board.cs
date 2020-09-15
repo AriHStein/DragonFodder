@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public enum PlayMode { UnitPlacement, SquadEditor, Battle }
+public enum PlayMode { UnitPlacement, SquadEditor, Battle, Paused }
 public class Board : MonoBehaviour
 {
     public static Board Current;
@@ -13,6 +13,7 @@ public class Board : MonoBehaviour
 
     [SerializeField] GameObject m_unitPlacementModePanel = default;
     [SerializeField] GameObject m_squadEditorModePanel = default;
+    [SerializeField] GameObject m_gameOverPanel = default;
 
     [SerializeField] GameObject m_whiteSquare = default;
     [SerializeField] GameObject m_blackSquare = default;
@@ -20,11 +21,14 @@ public class Board : MonoBehaviour
     [SerializeField] int m_height = 8;
     [SerializeField] int m_rowsAllowedForUnitPlacement = 3;
 
-    [SerializeField] List<UnitData> m_preplacedUnits = default;
-    [SerializeField] List<SquadData> m_preplacedSquads = default;
+    //[SerializeField] List<UnitData> m_preplacedUnits = default;
+    //[SerializeField] List<SquadData> m_preplacedSquads = default;
 
     [SerializeField] float m_timeBetweenTurns = 2f;
     float m_timeUntilNextTurn;
+
+    SquadData m_playerSquadStartPosition;
+    SquadData m_enemySquadStartPosition;
 
     public BoardSquare[,] Squares { get; protected set; }
     public BoardSquare GetSquareAt(int x, int y)
@@ -46,7 +50,7 @@ public class Board : MonoBehaviour
         m_timeUntilNextTurn = m_timeBetweenTurns;
 
         SetupSquares();
-        SetupUnits();
+        //SetupUnits();
 
         Vector3 cameraPos = Camera.main.transform.position;
         cameraPos.x = m_width / 2f;
@@ -55,7 +59,8 @@ public class Board : MonoBehaviour
 
     private void Start()
     {
-        EnterUnitPlacementMode();
+        //EnterPlayMode(PlayMode.UnitPlacement);
+        StartGame();
     }
 
     void SetupSquares()
@@ -81,20 +86,33 @@ public class Board : MonoBehaviour
         }
     }
 
-    void SetupUnits()
+    public void StartGame()
     {
-        //foreach(UnitData unit in m_preplacedUnits)
-        //{
-        //    //Unit unit = Instantiate(data.Prefab,  new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
-        //    //unit.Initialize(Squares[data.Position.x, data.Position.y], data);
-        //    TryPlaceNewUnit(unit);
-        //}
+        m_unitPlacementModePanel.SetActive(false);
+        m_squadEditorModePanel.SetActive(false);
+        m_gameOverPanel.SetActive(false);
+        ClearBoard();
+        PlayMode = PlayMode.UnitPlacement;
 
-        foreach(SquadData squad in m_preplacedSquads)
-        {
-            TryPlaceSquad(squad);
-        }
+        m_unitPlacementModePanel.SetActive(true);
+        ActivateSquares(m_rowsAllowedForUnitPlacement);
+        LoadPlayerSquad();
     }
+
+    //void SetupUnits()
+    //{
+    //    //foreach(UnitData unit in m_preplacedUnits)
+    //    //{
+    //    //    //Unit unit = Instantiate(data.Prefab,  new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
+    //    //    //unit.Initialize(Squares[data.Position.x, data.Position.y], data);
+    //    //    TryPlaceNewUnit(unit);
+    //    //}
+
+    //    //foreach(SquadData squad in m_preplacedSquads)
+    //    //{
+    //    //    TryPlaceSquad(squad);
+    //    //}
+    //}
 
     void ClearBoard()
     {
@@ -112,7 +130,7 @@ public class Board : MonoBehaviour
         switch(PlayMode)
         {
             case PlayMode.Battle:
-                PlayModeUpdate();
+                BattleUpdate();
                 break;
 
             case PlayMode.UnitPlacement:
@@ -123,12 +141,16 @@ public class Board : MonoBehaviour
                 SquadEditorUpdate();
                 break;
 
+            case PlayMode.Paused:
+                PausedUpdate();
+                break;
+
             default:
                 return;
         }
     }
 
-    void PlayModeUpdate()
+    void BattleUpdate()
     {
         if (TimeManager.Paused)
         {
@@ -157,12 +179,17 @@ public class Board : MonoBehaviour
 
     }
 
+    void PausedUpdate()
+    {
+
+    }
+
     private void LateUpdate()
     {
         switch (PlayMode)
         {
             case PlayMode.Battle:
-                PlayModeLateUpdate();
+                BattleLateUpdate();
                 break;
 
             case PlayMode.UnitPlacement:
@@ -173,12 +200,16 @@ public class Board : MonoBehaviour
                 SquadEditorLateUpdate();
                 break;
 
+            case PlayMode.Paused:
+                PausedLateUpdate();
+                break;
+
             default:
                 return;
         }
     }
 
-    void PlayModeLateUpdate()
+    void BattleLateUpdate()
     {
         UnitManager.CleanupDeadUnits();
     }
@@ -193,49 +224,137 @@ public class Board : MonoBehaviour
 
     }
 
-    public void EnterBattleMode()
+    void PausedLateUpdate()
     {
-        PlayMode = PlayMode.Battle;
-        m_unitPlacementModePanel.SetActive(false);
-        m_squadEditorModePanel.SetActive(false);
-        ClearBoard();
-        ActivateSquares(Squares.GetLength(1));
-        LoadPlayerSquad();
-        LoadEnemySquad(true);
+
     }
 
-    public void EnterUnitPlacementMode()
+    public void EnterPlayMode(PlayMode mode)
     {
-        PlayMode = PlayMode.UnitPlacement;
-        m_unitPlacementModePanel.SetActive(true);
-        m_squadEditorModePanel.SetActive(false);
-        ClearBoard();
-        ActivateSquares(m_rowsAllowedForUnitPlacement);
+        if(PlayMode == mode)
+        {
+            return;
+        }
 
-        LoadPlayerSquad();
+        PlayMode = mode;
+
+        switch(PlayMode)
+        {
+            case PlayMode.Battle:
+                m_unitPlacementModePanel.SetActive(false);
+                m_squadEditorModePanel.SetActive(false);
+                m_gameOverPanel.SetActive(false);
+                ClearBoard();
+                ActivateSquares(Squares.GetLength(1));
+                m_playerSquadStartPosition = LoadPlayerSquad();
+                m_enemySquadStartPosition = LoadEnemySquad(true);
+                break;
+
+            case PlayMode.UnitPlacement:
+                m_unitPlacementModePanel.SetActive(true);
+                m_squadEditorModePanel.SetActive(false);
+                m_gameOverPanel.SetActive(false);
+                ClearBoard();
+
+                ActivateSquares(m_rowsAllowedForUnitPlacement);
+                LoadPlayerSquad();
+                break;
+
+            case PlayMode.SquadEditor:
+                m_unitPlacementModePanel.SetActive(false);
+                m_squadEditorModePanel.SetActive(true);
+                m_gameOverPanel.SetActive(false);
+                ClearBoard();
+                ActivateSquares(m_rowsAllowedForUnitPlacement);
+                LoadEnemySquad(false);
+                break;
+
+            case PlayMode.Paused:
+                break;
+
+            default:
+                Debug.LogError($"Enter PlayMode {mode} not implemented.");
+                break;
+        }
     }
 
-    public void EnterSquadEditorMode()
-    {
-        PlayMode = PlayMode.SquadEditor;
-        m_unitPlacementModePanel.SetActive(false);
-        m_squadEditorModePanel.SetActive(true);
-        ClearBoard();
-        ActivateSquares(m_rowsAllowedForUnitPlacement);
+    //void EnterBattleMode()
+    //{
+    //    PlayMode = PlayMode.Battle;
+    //    m_unitPlacementModePanel.SetActive(false);
+    //    m_squadEditorModePanel.SetActive(false);
+    //    ClearBoard();
+    //    ActivateSquares(Squares.GetLength(1));
+    //    m_playerSquadStartPosition = LoadPlayerSquad();
+    //    m_enemySquadStartPosition = LoadEnemySquad(true);
+    //}
 
-        LoadEnemySquad(false);
+    public void ExitBattleMode(bool playerWon)
+    {
+        if(PlayMode != PlayMode.Battle)
+        {
+            Debug.Log("Exit Battle Mode called while not in BattleMode. Most likely, the battle ended with all units dead.");
+            return;
+        }
+
+        if(playerWon)
+        {
+            BattleWon();
+        } else
+        {
+            BattleLost();
+        }
     }
 
-    void LoadPlayerSquad()
+    void BattleWon()
+    {
+        SquadData survivingUnits = m_playerSquadStartPosition.UpdateUnitStatuses(UnitManager.Units);
+        UnitSaveLoadUtility.SaveSquad(survivingUnits, "Player");
+        EnterPlayMode(PlayMode.UnitPlacement);
+    }
+
+    void BattleLost()
+    {
+        EnterPlayMode(PlayMode.Paused);
+        m_gameOverPanel.SetActive(true);
+    }
+
+    //public void EnterUnitPlacementMode()
+    //{
+    //    PlayMode = PlayMode.UnitPlacement;
+    //    m_unitPlacementModePanel.SetActive(true);
+    //    m_squadEditorModePanel.SetActive(false);
+    //    ClearBoard();
+    //    ActivateSquares(m_rowsAllowedForUnitPlacement);
+
+    //    LoadPlayerSquad();
+    //}
+
+    //public void EnterSquadEditorMode()
+    //{
+    //    PlayMode = PlayMode.SquadEditor;
+    //    m_unitPlacementModePanel.SetActive(false);
+    //    m_squadEditorModePanel.SetActive(true);
+    //    ClearBoard();
+    //    ActivateSquares(m_rowsAllowedForUnitPlacement);
+
+    //    LoadEnemySquad(false);
+    //}
+
+    SquadData LoadPlayerSquad()
     {
         SquadData playerSquad = UnitSaveLoadUtility.LoadSquad("Player");
         TryPlaceSquad(playerSquad);
+
+        return playerSquad;
     }
 
-    void LoadEnemySquad(bool mirror = false)
+    SquadData LoadEnemySquad(bool mirror = false)
     {
         SquadData enemySquad = UnitSaveLoadUtility.LoadSquad("Enemy");
         TryPlaceSquad(enemySquad, mirror);
+
+        return enemySquad;
     }
 
     public void SaveBoardAsSquad(string name, bool mirrorBoard = true)
@@ -344,26 +463,13 @@ public class Board : MonoBehaviour
         foreach(UnitData unit in data.Units)
         {
             UnitData clone = unit.Clone();
-            if (clone.Faction == Faction.Enemy)
-            {
-                Debug.Log(clone.Position);
-            }
             clone.Position += data.SquadOrigin;
-            if (clone.Faction == Faction.Enemy)
-            {
-                Debug.Log(clone.Position);
-            }
             if (mirror)
             {
                 clone.Position = MirrorPosition(clone.Position);
             }
 
-
-            if (clone.Faction == Faction.Enemy)
-            {
-                Debug.Log(clone.Position);
-            }
-
+            Debug.Log(clone.CurrentHealth);
             allUnitsPlaced = TryPlaceNewUnit(clone) && allUnitsPlaced;
         }
 

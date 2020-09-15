@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum Faction { Player, Enemy }
 [RequireComponent(typeof(Animator))]
@@ -10,6 +11,7 @@ public  abstract class Unit : MonoBehaviour
     public string Type;
     public BoardSquare Square;
     public Faction Faction;
+    public Guid ID { get; protected set; }
 
     protected Animator m_animator;
     protected MaterialSwapper m_materialSwapper;
@@ -17,7 +19,7 @@ public  abstract class Unit : MonoBehaviour
     public int MaxHealth;
     public int CurrentHealth { get; protected set; }
 
-    public event System.Action<Unit> DeathEvent;
+    public event Action<Unit> DeathEvent;
 
     protected virtual void Awake()
     {
@@ -28,11 +30,13 @@ public  abstract class Unit : MonoBehaviour
     protected virtual void Start()
     {
         Board.Current.UnitManager.RegisterUnit(this);
-        CurrentHealth = MaxHealth;
+        //CurrentHealth = MaxHealth;
     }
 
     public void Initialize(BoardSquare square, UnitData data)
     {
+        ID = data.ID;
+
         Square = square;
         Square.Unit = this;
 

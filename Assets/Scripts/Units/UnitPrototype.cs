@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 [CreateAssetMenu(fileName = "new UnitData", menuName = "Units/UnitData", order = 100)]
 [System.Serializable]
@@ -37,18 +38,20 @@ public class UnitPrototype : ScriptableObject
     //}
 }
 
-[System.Serializable]
+[Serializable]
 public struct UnitData
 {
     public string Type;
+    public SerializableGuid ID;
     public Vector2Int Position;
     public Faction Faction;
     public int MaxHealth;
     public int CurrentHealth;
 
-    public UnitData(string type, Vector2Int position,Faction faction, int maxHealth, int currentHealth)
+    private UnitData(string type, Guid id, Vector2Int position, Faction faction, int maxHealth, int currentHealth)
     {
         Type = type;
+        ID = id;
         Position = position;
         Faction = faction;
         MaxHealth = maxHealth;
@@ -58,6 +61,7 @@ public struct UnitData
     public UnitData(Unit unit, Vector2Int origin)
     {
         Type = unit.Type;
+        ID = unit.ID;
         Position = unit.Square.Position - origin;
         Faction = unit.Faction;
         MaxHealth = unit.MaxHealth;
@@ -67,6 +71,7 @@ public struct UnitData
     public UnitData(UnitPrototype proto, Vector2Int position, Faction faction)
     {
         Type = proto.Type;
+        ID = Guid.NewGuid();
         Position = position;
         Faction = faction;
         MaxHealth = proto.MaxHealth;
@@ -75,6 +80,20 @@ public struct UnitData
 
     public UnitData Clone()
     {
-        return new UnitData(Type, Position, Faction, MaxHealth, CurrentHealth);
+        return new UnitData(Type, ID, Position, Faction, MaxHealth, CurrentHealth);
+    }
+
+    public UnitData UpdateUnitStatus(Unit unit)
+    {
+        if(unit.ID != ID)
+        {
+            Debug.LogWarning($"UpdateUnitStatus :: Unit IDs do not match. Old ID: {ID}, new ID: {unit.ID}.");
+        }
+        
+        //CurrentHealth = unit.CurrentHealth;
+
+        UnitData newUnit = Clone();
+        newUnit.CurrentHealth = unit.CurrentHealth;
+        return newUnit;
     }
 }
