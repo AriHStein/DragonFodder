@@ -29,7 +29,7 @@ public  abstract class Unit : MonoBehaviour
 
     protected virtual void Start()
     {
-        Board.Current.UnitManager.RegisterUnit(this);
+
         //CurrentHealth = MaxHealth;
     }
 
@@ -45,6 +45,7 @@ public  abstract class Unit : MonoBehaviour
 
         Faction = data.Faction;
         m_materialSwapper.SwapMaterial(Faction);
+        Board.Current.UnitManager.RegisterUnit(this);
     }
 
     public abstract void DoTurn();

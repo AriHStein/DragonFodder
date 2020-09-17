@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public enum PlayMode { UnitPlacement, SquadEditor, Battle, Paused }
 public class Board : MonoBehaviour
@@ -8,6 +9,7 @@ public class Board : MonoBehaviour
     public PlayMode PlayMode { get; protected set; }
     public UnitManager UnitManager { get; protected set; }
 
+    public Action<PlayMode> PlayModeChangedEvent; 
 
     [SerializeField] List<GameObject> m_unitPrefabs = default;
 
@@ -17,9 +19,10 @@ public class Board : MonoBehaviour
 
     [SerializeField] GameObject m_whiteSquare = default;
     [SerializeField] GameObject m_blackSquare = default;
-    [SerializeField] int m_width = 8;
-    [SerializeField] int m_height = 8;
+    [SerializeField] int m_defaultWidth = 8;
+    [SerializeField] int m_defaultHeight = 8;
     [SerializeField] int m_rowsAllowedForUnitPlacement = 3;
+    [SerializeField] Vector2Int m_enemySquadSize = Vector2Int.one;
 
     //[SerializeField] List<UnitData> m_preplacedUnits = default;
     //[SerializeField] List<SquadData> m_preplacedSquads = default;
@@ -49,12 +52,9 @@ public class Board : MonoBehaviour
 
         m_timeUntilNextTurn = m_timeBetweenTurns;
 
-        SetupSquares();
+        SetupSquares(m_defaultWidth, m_defaultHeight);
         //SetupUnits();
-
-        Vector3 cameraPos = Camera.main.transform.position;
-        cameraPos.x = m_width / 2f;
-        Camera.main.transform.position = cameraPos;
+        PositionCamera();
     }
 
     private void Start()
@@ -63,13 +63,27 @@ public class Board : MonoBehaviour
         StartGame();
     }
 
-    void SetupSquares()
+    void PositionCamera()
     {
-        Squares = new BoardSquare[m_width, m_height];
-        
-        for (int x = 0; x < m_width; x++)
+        Vector3 cameraPos = Camera.main.transform.position;
+        cameraPos.x = Squares.GetLength(0) / 2f;
+        Camera.main.transform.position = cameraPos;
+    }
+
+    public void SetupSquares(int width, int height, bool keepUnits = false)
+    {
+        SquadData units = new SquadData();
+        if(keepUnits && Squares != null) 
         {
-            for (int y = 0; y < m_height; y++)
+            units = GetBoardAsSquad();
+        }
+        
+        ClearBoard();
+        Squares = new BoardSquare[width, height];
+        
+        for (int x = 0; x < width; x++)
+        {
+            for (int y = 0; y < height; y++)
             {
                 BoardSquare newSquare;
                 if ((x + y) % 2 == 0)
@@ -84,6 +98,61 @@ public class Board : MonoBehaviour
                 Squares[x, y] = newSquare;
             }
         }
+
+        if(keepUnits)
+        {
+            TryPlaceSquad(units);
+        }
+
+        PositionCamera();
+    }
+
+    //public void ActivateSquares(int columns, int rows, bool clearBoard = false)
+    //{
+    //    if (columns > Squares.GetLength(0) || rows > Squares.GetLength(1))
+    //    {
+    //        SetupSquares(columns, rows, clearBoard);
+    //    }
+
+    //    for (int x = 0; x < Squares.GetLength(0); x++)
+    //    {
+    //        for (int y = 0; y < Squares.GetLength(1); y++)
+    //        {
+    //            if (y < rows && x < columns)
+    //            {
+    //                Squares[x, y].Activate();
+    //            }
+    //            else
+    //            {
+    //                Squares[x, y].Deactivate();
+    //            }
+    //        }
+    //    }
+
+    //    PositionCamera();
+    //}
+
+    void ClearBoard()
+    {
+        if(Squares == null)
+        {
+            return;
+        }
+        
+        for (int x = 0; x < Squares.GetLength(0); x++)
+        {
+            for (int y = 0; y < Squares.GetLength(1); y++)
+            {
+                if(Squares[x,y] == null)
+                {
+                    continue;
+                }
+
+                Squares[x, y].Clear();
+                Destroy(Squares[x, y].gameObject);
+                Squares[x, y] = null;
+            }
+        }
     }
 
     public void StartGame()
@@ -95,7 +164,7 @@ public class Board : MonoBehaviour
         PlayMode = PlayMode.UnitPlacement;
 
         m_unitPlacementModePanel.SetActive(true);
-        ActivateSquares(m_rowsAllowedForUnitPlacement);
+        SetupSquares(Squares.GetLength(0), m_rowsAllowedForUnitPlacement);
         LoadPlayerSquad();
     }
 
@@ -114,16 +183,7 @@ public class Board : MonoBehaviour
     //    //}
     //}
 
-    void ClearBoard()
-    {
-        for(int x = 0; x < Squares.GetLength(0); x++)
-        {
-            for(int y = 0; y < Squares.GetLength(1); y++)
-            {
-                Squares[x, y].Clear();
-            }
-        }
-    }
+
 
     private void Update()
     {
@@ -245,7 +305,7 @@ public class Board : MonoBehaviour
                 m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 ClearBoard();
-                ActivateSquares(Squares.GetLength(1));
+                SetupSquares(Squares.GetLength(0), Squares.GetLength(1));
                 m_playerSquadStartPosition = LoadPlayerSquad();
                 m_enemySquadStartPosition = LoadEnemySquad(true);
                 break;
@@ -256,7 +316,7 @@ public class Board : MonoBehaviour
                 m_gameOverPanel.SetActive(false);
                 ClearBoard();
 
-                ActivateSquares(m_rowsAllowedForUnitPlacement);
+                SetupSquares(Squares.GetLength(0), m_rowsAllowedForUnitPlacement);
                 LoadPlayerSquad();
                 break;
 
@@ -265,7 +325,7 @@ public class Board : MonoBehaviour
                 m_squadEditorModePanel.SetActive(true);
                 m_gameOverPanel.SetActive(false);
                 ClearBoard();
-                ActivateSquares(m_rowsAllowedForUnitPlacement);
+                SetupSquares(m_enemySquadSize.x, m_enemySquadSize.y);
                 LoadEnemySquad(false);
                 break;
 
@@ -276,6 +336,8 @@ public class Board : MonoBehaviour
                 Debug.LogError($"Enter PlayMode {mode} not implemented.");
                 break;
         }
+
+        PlayModeChangedEvent?.Invoke(PlayMode);
     }
 
     //void EnterBattleMode()
@@ -380,23 +442,6 @@ public class Board : MonoBehaviour
         return new SquadData(units, origin);
     }
 
-    void ActivateSquares(int rows)
-    {
-        for (int x = 0; x < Squares.GetLength(0); x++)
-        {
-            for (int y = 0; y < Squares.GetLength(1); y++)
-            {
-                if (y < rows)
-                {
-                    Squares[x, y].Activate();
-                }
-                else
-                {
-                    Squares[x, y].Deactivate();
-                }
-            }
-        }
-    }
 
     public bool TryMoveUnitTo(Unit unit, BoardSquare target)
     {
@@ -420,8 +465,9 @@ public class Board : MonoBehaviour
 
     public bool TryPlaceNewUnit(UnitData data)
     {
-        if(data.Position.x < 0 || data.Position.x > Squares.GetLength(0) ||
-            data.Position.y < 0 || data.Position.y > Squares.GetLength(1) ||
+        if(data.Position.x < 0 || data.Position.x >= Squares.GetLength(0) ||
+            data.Position.y < 0 || data.Position.y >= Squares.GetLength(1) ||
+            Squares[data.Position.x, data.Position.y].gameObject.activeInHierarchy == false || 
             Squares[data.Position.x, data.Position.y].Unit != null)
         {
             return false;
@@ -468,8 +514,6 @@ public class Board : MonoBehaviour
             {
                 clone.Position = MirrorPosition(clone.Position);
             }
-
-            Debug.Log(clone.CurrentHealth);
             allUnitsPlaced = TryPlaceNewUnit(clone) && allUnitsPlaced;
         }
 

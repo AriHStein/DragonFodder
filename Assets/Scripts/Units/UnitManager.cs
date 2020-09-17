@@ -61,7 +61,15 @@ public class UnitManager
         Units.Remove(unit);
         unit.Square.Unit = null;
         unit.Square = null;
-        m_factionCount[unit.Faction]--;
+        //Debug.Log(unit.Faction);
+        if(m_factionCount.ContainsKey(unit.Faction) && m_factionCount[unit.Faction] > 0)
+        {
+            m_factionCount[unit.Faction]--;
+        } else
+        {
+            Debug.LogWarning($"Removing unit of faction {unit.Faction}, but no units of this faction have been registered!");
+        }
+
         GameObject.Destroy(unit.gameObject);
     }
 
