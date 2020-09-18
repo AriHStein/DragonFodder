@@ -3,11 +3,11 @@
         {
             "Type": "Warrior",
             "ID": {
-                "Value": "e351edbf-0f7d-465f-bc35-a514c202e10e"
+                "Value": "ccf7992d-2196-43ab-b4a3-52dff69356bf"
             },
             "Position": {
-                "x": -11,
-                "y": -8
+                "x": 4,
+                "y": 2
             },
             "Faction": 1,
             "MaxHealth": 5,
@@ -16,11 +16,11 @@
         {
             "Type": "Warrior",
             "ID": {
-                "Value": "f7516a25-16ec-4ef2-bc5d-6107630af3cb"
+                "Value": "cdb862cb-3a00-4c2d-a31d-ad82d72e4de2"
             },
             "Position": {
-                "x": -9,
-                "y": -8
+                "x": 1,
+                "y": 2
             },
             "Faction": 1,
             "MaxHealth": 5,
@@ -29,11 +29,11 @@
         {
             "Type": "Wizard",
             "ID": {
-                "Value": "a4bc68c3-d01e-4b4a-a075-19fca02038b9"
+                "Value": "16e67207-ff49-4464-a90b-13951d083388"
             },
             "Position": {
-                "x": -10,
-                "y": -10
+                "x": 0,
+                "y": 1
             },
             "Faction": 1,
             "MaxHealth": 5,
@@ -42,11 +42,11 @@
         {
             "Type": "Wizard",
             "ID": {
-                "Value": "292868db-7780-4ae8-9304-866bad1cdfd0"
+                "Value": "816c67d7-3ac6-44ec-8213-d2d4d2cf32e4"
             },
             "Position": {
-                "x": -8,
-                "y": -10
+                "x": 1,
+                "y": 0
             },
             "Faction": 1,
             "MaxHealth": 5,
@@ -55,11 +55,11 @@
         {
             "Type": "Wizard",
             "ID": {
-                "Value": "c66ef392-55a8-4c4c-9324-93e2fc0e54b7"
+                "Value": "f67cd0d0-790d-45b8-9368-5d739497c703"
             },
             "Position": {
-                "x": -9,
-                "y": -11
+                "x": 5,
+                "y": 0
             },
             "Faction": 1,
             "MaxHealth": 5,
@@ -68,11 +68,24 @@
         {
             "Type": "Warrior",
             "ID": {
-                "Value": "1ea12851-f2f7-4683-90d3-44fefc870e41"
+                "Value": "00ba3b63-f8fe-4245-93a0-5c734f5aa2ee"
             },
             "Position": {
-                "x": -4,
-                "y": -9
+                "x": 4,
+                "y": 1
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "9f965751-541a-4d33-a743-daf62d6eae53"
+            },
+            "Position": {
+                "x": 2,
+                "y": 2
             },
             "Faction": 1,
             "MaxHealth": 5,
@@ -80,8 +93,8 @@
         }
     ],
     "SquadOrigin": {
-        "x": 11,
-        "y": 11
+        "x": 0,
+        "y": 0
     },
     "Faction": 0
 }

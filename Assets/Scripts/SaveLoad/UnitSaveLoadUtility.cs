@@ -8,7 +8,7 @@ public class UnitSaveLoadUtility
     const string m_squadSaveFolder = "SquadData";
     const string m_squadFileExtension = ".json";
 
-    public static void SaveSquad(SquadData squad, string fileName)
+    public static void SaveSquad(SquadData squad, string fileName, string dir)
     {
         string json = JsonUtility.ToJson(squad, true);
         if(!Directory.Exists(SquadDirectory()))
@@ -16,7 +16,7 @@ public class UnitSaveLoadUtility
             Directory.CreateDirectory(SquadDirectory());
         }
 
-        string filePath = GetFilePath(fileName);
+        string filePath = GetFilePath(fileName, dir);
         File.WriteAllText(filePath, json);
         //if(!File.Exists(filePath))
         //{
@@ -27,10 +27,10 @@ public class UnitSaveLoadUtility
         //Debug.Log(filePath);
     }
 
-    public static List<SquadData> LoadAllSquads()
+    public static List<SquadData> LoadAllSquadsInDir(string dirName)
     {
         List<SquadData> squads = new List<SquadData>();
-        string[] files = GetSquadFiles();
+        string[] files = GetSquadFilesInDir(dirName);
         if(files == null || files.Length == 0)
         {
             Debug.LogError($"SquadData files not found.");
@@ -45,9 +45,9 @@ public class UnitSaveLoadUtility
         return squads;
     } 
 
-    public static SquadData LoadSquad(string fileName)
+    public static SquadData LoadSquad(string fileName, string directory)
     {
-        return LoadSquadAtPath(GetFilePath(fileName));
+        return LoadSquadAtPath(GetFilePath(fileName, directory));
     }
 
     private static SquadData LoadSquadAtPath(string path)
@@ -59,7 +59,9 @@ public class UnitSaveLoadUtility
         }
 
         string json = File.ReadAllText(path);
-        return JsonUtility.FromJson<SquadData>(json);
+        SquadData squad = JsonUtility.FromJson<SquadData>(json);
+        squad.UpdateSize();
+        return squad;
     }
 
     private static string SquadDirectory()
@@ -67,13 +69,13 @@ public class UnitSaveLoadUtility
         return Path.Combine(Application.dataPath, m_squadSaveFolder);
     }
 
-    private static string GetFilePath(string fileName)
+    private static string GetFilePath(string fileName, string directory)
     {
-        return Path.Combine(SquadDirectory(), fileName + m_squadFileExtension);
+        return Path.Combine(Path.Combine(SquadDirectory(), directory), fileName + m_squadFileExtension);
     }
 
-    private static string[] GetSquadFiles()
+    private static string[] GetSquadFilesInDir(string dir)
     {
-        return Directory.GetFiles(SquadDirectory(), "*" + m_squadFileExtension);
+        return Directory.GetFiles(Path.Combine(SquadDirectory(), dir), "*" + m_squadFileExtension);
     }
 }

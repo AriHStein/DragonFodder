@@ -13,6 +13,16 @@ public struct SquadData
     [System.NonSerialized]
     public Vector2Int Size;
 
+    private SquadData(SquadData original)
+    {
+        Units = new List<UnitData>(original.Units);
+        SquadOrigin = original.SquadOrigin;
+        Faction = original.Faction;
+
+        Size = Vector2Int.zero;
+        UpdateSize();
+    }
+
     public SquadData(List<UnitData> units, Vector2Int origin, Faction faction = Faction.Player)
     {
         if (units != null)
@@ -30,29 +40,75 @@ public struct SquadData
         UpdateSize();
     }
 
+    public SquadData Clone()
+    {
+        return new SquadData(this);
+    }
+
+    public static SquadData CombineSquads(List<SquadData> squads)
+    {
+        SquadData combinedSquad = new SquadData();
+        combinedSquad.Faction = squads[0].Faction;
+        Vector2Int origin = squads[0].SquadOrigin;
+        foreach(SquadData squad in squads)
+        {
+            if(squad.Faction != combinedSquad.Faction)
+            {
+                Debug.LogError("Squad factions do not match.");
+                return new SquadData();
+            }
+
+            if(squad.SquadOrigin.x < origin.x)
+            {
+                origin.x = squad.SquadOrigin.x;
+            }
+
+            if (squad.SquadOrigin.y < origin.y)
+            {
+                origin.y = squad.SquadOrigin.y;
+            }
+        }
+        combinedSquad.SquadOrigin = origin;
+
+        combinedSquad.Units = new List<UnitData>();
+        foreach(SquadData squad in squads)
+        {
+            Vector2Int offset = squad.SquadOrigin - combinedSquad.SquadOrigin;
+            foreach(UnitData unit in squad.Units)
+            {
+                UnitData clone = unit.Clone();
+                clone.Position += offset;
+                combinedSquad.Units.Add(clone);
+            }
+        }
+
+        combinedSquad.UpdateSize();
+        return combinedSquad;
+    }
+
     public void UpdateSize()
     {
-        if(Units == null || Units.Count == 0)
+        if (Units == null || Units.Count == 0)
         {
             Size = Vector2Int.zero;
             return;
         }
 
         Vector2Int max = Vector2Int.zero;
-        foreach(UnitData unit in Units)
+        foreach (UnitData unit in Units)
         {
-            if(unit.Position.x > max.x)
+            if (unit.Position.x - SquadOrigin.x > max.x)
             {
-                max.x = unit.Position.x;
+                max.x = unit.Position.x - SquadOrigin.x;
             }
 
-            if(unit.Position.y > max.y)
+            if (unit.Position.y - SquadOrigin.y > max.y)
             {
-                max.y = unit.Position.y;
+                max.y = unit.Position.y - SquadOrigin.y;
             }
         }
 
-        Size = max - SquadOrigin;
+        Size = max;
     }
 
     public SquadData UpdateUnitStatuses(List<Unit> updatedUnits)

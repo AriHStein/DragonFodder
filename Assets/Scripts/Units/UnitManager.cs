@@ -73,7 +73,6 @@ public class UnitManager
         GameObject.Destroy(unit.gameObject);
     }
 
-
     public void DoUnitTurns()
     {
         m_diedThisTurn.Clear();

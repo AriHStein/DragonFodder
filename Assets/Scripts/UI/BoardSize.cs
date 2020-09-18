@@ -21,19 +21,22 @@ public class BoardSize : MonoBehaviour
                 };
     }
 
-    bool m_ignoreValueChanges = false;
+    bool m_ignoreSliderValueChanges = false;
     void OnSquadModeEntered()
     {
-        m_ignoreValueChanges = true;
-        m_sliderX.value = Board.Current.Squares.GetLength(0);
-        m_sliderY.value = Board.Current.Squares.GetLength(1);
-        m_ignoreValueChanges = false;
+        m_ignoreSliderValueChanges = true;
+        m_boardSize = new Vector2Int(Board.Current.Squares.GetLength(0), Board.Current.Squares.GetLength(1));
+        m_sliderX.value = m_boardSize.x;
+        m_sliderY.value = m_boardSize.y;
+        m_xSizeText.text = m_boardSize.x.ToString();
+        m_ySizeText.text = m_boardSize.y.ToString();
+        m_ignoreSliderValueChanges = false;
         UpdateValues(false);
     }
 
     public void UpdateValues(bool changeBoard = true)
     {
-        if(m_ignoreValueChanges)
+        if (m_ignoreSliderValueChanges)
         {
             return;
         }
