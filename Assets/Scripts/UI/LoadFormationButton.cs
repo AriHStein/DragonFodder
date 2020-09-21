@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LoadFormationButton : MonoBehaviour
 {
-    [SerializeField] FormationSizeSlider m_formationSizeSlider;
+    [SerializeField] FormationSizeSlider m_formationSizeSlider = default;
 
     public void LoadFormation()
     {

@@ -1,0 +1,48 @@
+{
+    "Units": [
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "313481ba-a331-458e-9ce5-405b55c757a2"
+            },
+            "Position": {
+                "x": 2,
+                "y": 2
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "4ab97860-08a8-47af-a4d3-e578c8511a1f"
+            },
+            "Position": {
+                "x": 1,
+                "y": 2
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "180d29b5-2ac9-456d-9b06-122057703f4b"
+            },
+            "Position": {
+                "x": 0,
+                "y": 1
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
+        }
+    ],
+    "SquadOrigin": {
+        "x": 0,
+        "y": 0
+    },
+    "Faction": 0
+}

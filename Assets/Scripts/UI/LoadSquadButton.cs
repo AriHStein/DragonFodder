@@ -31,7 +31,6 @@ public class LoadSquadButton : MonoBehaviour
             return;
         }
 
-        //squad.UpdateSize();
         Vector2Int boardSize = squad.Size + squad.SquadOrigin + Vector2Int.one;
         Board.Current.SetupSquares(boardSize.x, boardSize.y);
         Board.Current.ClearUnits();

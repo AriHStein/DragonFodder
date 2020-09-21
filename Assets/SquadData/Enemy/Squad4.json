@@ -3,41 +3,41 @@
         {
             "Type": "Wizard",
             "ID": {
-                "Value": "c752c5da-a81a-4642-97c9-039d72129662"
+                "Value": "8f71893c-a928-40c6-b8a1-0255118c1653"
             },
             "Position": {
-                "x": 3,
-                "y": 1
-            },
-            "Faction": 0,
-            "MaxHealth": 5,
-            "CurrentHealth": 3
-        },
-        {
-            "Type": "Wizard",
-            "ID": {
-                "Value": "bd35f9d8-1ead-4b1c-bb4a-b4ea112e626b"
-            },
-            "Position": {
-                "x": 4,
+                "x": 0,
                 "y": 0
             },
-            "Faction": 0,
+            "Faction": 1,
             "MaxHealth": 5,
             "CurrentHealth": 5
         },
         {
             "Type": "Wizard",
             "ID": {
-                "Value": "b37e5faa-0f96-474b-9e46-30c8d46cd3b9"
+                "Value": "d3ee8773-2df9-42e3-9078-d7ccb1993e0b"
             },
             "Position": {
-                "x": 5,
-                "y": 2
+                "x": 2,
+                "y": 0
             },
-            "Faction": 0,
+            "Faction": 1,
             "MaxHealth": 5,
-            "CurrentHealth": 1
+            "CurrentHealth": 5
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "5f2dde21-79c8-4960-9c08-8741e6ad65e8"
+            },
+            "Position": {
+                "x": 1,
+                "y": 1
+            },
+            "Faction": 1,
+            "MaxHealth": 5,
+            "CurrentHealth": 5
         }
     ],
     "SquadOrigin": {

@@ -47,6 +47,16 @@ public struct SquadData
 
     public static SquadData CombineSquads(List<SquadData> squads)
     {
+        if(squads == null || squads.Count == 0)
+        {
+            return new SquadData();
+        }
+
+        if(squads.Count == 1)
+        {
+            return squads[0];
+        }
+        
         SquadData combinedSquad = new SquadData();
         combinedSquad.Faction = squads[0].Faction;
         Vector2Int origin = squads[0].SquadOrigin;

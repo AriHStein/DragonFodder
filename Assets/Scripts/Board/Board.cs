@@ -19,13 +19,10 @@ public class Board : MonoBehaviour
 
     [SerializeField] GameObject m_whiteSquare = default;
     [SerializeField] GameObject m_blackSquare = default;
-    [SerializeField] int m_defaultWidth = 8;
-    [SerializeField] int m_defaultHeight = 8;
+    [SerializeField] Vector2Int m_defaultBoardSize = Vector2Int.one;
+    [SerializeField] Vector2Int m_defaultSquadSize = Vector2Int.one;
     [SerializeField] int m_rowsAllowedForUnitPlacement = 3;
-    [SerializeField] Vector2Int m_enemySquadSize = Vector2Int.one;
-
-    //[SerializeField] List<UnitData> m_preplacedUnits = default;
-    //[SerializeField] List<SquadData> m_preplacedSquads = default;
+    [SerializeField] int m_battleModeEnemyFormationSize = 3;
 
     [SerializeField] float m_timeBetweenTurns = 2f;
     float m_timeUntilNextTurn;
@@ -52,7 +49,7 @@ public class Board : MonoBehaviour
 
         m_timeUntilNextTurn = m_timeBetweenTurns;
 
-        SetupSquares(m_defaultWidth, m_defaultHeight);
+        SetupSquares(m_defaultBoardSize.x, m_defaultBoardSize.y);
         //SetupUnits();
         PositionCamera();
     }
@@ -114,31 +111,6 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    //public void ActivateSquares(int columns, int rows, bool clearBoard = false)
-    //{
-    //    if (columns > Squares.GetLength(0) || rows > Squares.GetLength(1))
-    //    {
-    //        SetupSquares(columns, rows, clearBoard);
-    //    }
-
-    //    for (int x = 0; x < Squares.GetLength(0); x++)
-    //    {
-    //        for (int y = 0; y < Squares.GetLength(1); y++)
-    //        {
-    //            if (y < rows && x < columns)
-    //            {
-    //                Squares[x, y].Activate();
-    //            }
-    //            else
-    //            {
-    //                Squares[x, y].Deactivate();
-    //            }
-    //        }
-    //    }
-
-    //    PositionCamera();
-    //}
-
     void ClearBoard()
     {
         if(Squares == null)
@@ -181,6 +153,18 @@ public class Board : MonoBehaviour
                 Squares[x, y].Clear();
             }
         }
+    }
+
+    public void SetupEncounter(Encounter encounter)
+    {
+        if(encounter == null)
+        {
+            Debug.LogError("Encounter is null.");
+            return;
+        }
+
+        SetupSquares(encounter.BoardSize.x, encounter.BoardSize.y, false);
+        TryPlaceSquad(encounter.Enemies, Vector2Int.zero, true);
     }
 
     public void StartGame()
@@ -316,9 +300,10 @@ public class Board : MonoBehaviour
                 m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 ClearBoard();
-                SetupSquares(m_defaultWidth, m_defaultHeight);
+                SetupSquares(m_defaultBoardSize.x, m_defaultBoardSize.y);
+
+                m_enemySquadStartPosition = LoadAndPlaceEnemyFormation(m_battleModeEnemyFormationSize, true);
                 m_playerSquadStartPosition = LoadPlayerSquad();
-                m_enemySquadStartPosition = LoadEnemySquad(false, true);
                 break;
 
             case PlayMode.UnitPlacement:
@@ -327,7 +312,7 @@ public class Board : MonoBehaviour
                 m_gameOverPanel.SetActive(false);
                 ClearBoard();
 
-                SetupSquares(m_defaultWidth, m_rowsAllowedForUnitPlacement);
+                SetupSquares(m_defaultBoardSize.x, m_rowsAllowedForUnitPlacement);
                 LoadPlayerSquad();
                 break;
 
@@ -336,8 +321,8 @@ public class Board : MonoBehaviour
                 m_squadEditorModePanel.SetActive(true);
                 m_gameOverPanel.SetActive(false);
                 ClearBoard();
-                //SetupSquares(m_enemySquadSize.x, m_enemySquadSize.y);
-                LoadEnemySquad(true, false);
+                SetupSquares(m_defaultSquadSize.x, m_defaultSquadSize.y);
+                //LoadEnemySquad(true, false);
                 break;
 
             case PlayMode.Paused:
@@ -386,32 +371,39 @@ public class Board : MonoBehaviour
         return LoadSquadToBoard("Player", "Player", Vector2Int.zero);
     }
 
-    SquadData LoadEnemySquad(bool resizeBoard, bool mirror)
-    {
-        return LoadSquadToBoard("Enemy", "Enemy", Vector2Int.zero, resizeBoard, mirror);
-    }
+    //SquadData LoadEnemySquad(bool resizeBoard, bool mirror)
+    //{
+    //    return LoadSquadToBoard("Enemy", "Enemy", Vector2Int.zero, resizeBoard, mirror);
+    //}
 
-    public void LoadAndPlaceEnemyFormation(int size, bool mirror = false)
+    public SquadData LoadAndPlaceEnemyFormation(int size, bool mirror = false)
     {
-        SquadData formation = GenerateFormation(UnitSaveLoadUtility.LoadAllSquadsInDir("Enemy"), size);
-        SetupSquares(formation.Size.x + 1, formation.Size.y + 1);
+        SquadData formation = SquadBuilder.GenerateFormationFromEnemySquads(size);
+
+        Vector2Int boardSize = new Vector2Int(
+            Mathf.Max(formation.Size.x + 1, m_defaultBoardSize.x),
+            Mathf.Max(formation.Size.y + 1, m_defaultBoardSize.y));
+
+        SetupSquares(boardSize.x, boardSize.y);
         TryPlaceSquad(formation, Vector2Int.zero, mirror);
+
+        return formation;
     }
 
-    SquadData GenerateFormation(List<SquadData> squadProtos, int numberSquads)
-    {
-        List<SquadData> squadsToCombine = new List<SquadData>();
-        Vector2Int offset = Vector2Int.zero;
-        for(int i = 0; i < numberSquads; i++)
-        {
-            SquadData newSquad = squadProtos[UnityEngine.Random.Range(0, squadProtos.Count)].Clone();
-            newSquad.SquadOrigin = newSquad.SquadOrigin + offset;
-            squadsToCombine.Add(newSquad);
-            offset.x += newSquad.Size.x;
-        }
+    //SquadData GenerateFormation(List<SquadData> squadProtos, int numberSquads)
+    //{
+    //    List<SquadData> squadsToCombine = new List<SquadData>();
+    //    Vector2Int offset = Vector2Int.zero;
+    //    for(int i = 0; i < numberSquads; i++)
+    //    {
+    //        SquadData newSquad = squadProtos[UnityEngine.Random.Range(0, squadProtos.Count)].Clone();
+    //        newSquad.SquadOrigin = newSquad.SquadOrigin + offset;
+    //        squadsToCombine.Add(newSquad);
+    //        offset.x += newSquad.Size.x + 1;
+    //    }
 
-        return SquadData.CombineSquads(squadsToCombine);
-    }
+    //    return SquadData.CombineSquads(squadsToCombine);
+    //}
 
     public SquadData LoadSquadToBoard(string name, string directory, Vector2Int offset, bool resizeBoard = false, bool mirror = false)
     {
