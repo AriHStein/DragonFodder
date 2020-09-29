@@ -41,46 +41,64 @@ public class UnitPrototype : ScriptableObject
 [Serializable]
 public struct UnitData
 {
+    //public UnitPrototype Proto;
     public string Type;
     public SerializableGuid ID;
     public Vector2Int Position;
     public Faction Faction;
-    public int MaxHealth;
+    //public int MaxHealth;
     public int CurrentHealth;
 
-    private UnitData(string type, Guid id, Vector2Int position, Faction faction, int maxHealth, int currentHealth)
+    private UnitData(
+        string type, 
+        //UnitPrototype proto,
+        Guid id, 
+        Vector2Int position, 
+        Faction faction, 
+        //int maxHealth, 
+        int currentHealth)
     {
         Type = type;
+        //Proto = proto;
         ID = id;
         Position = position;
         Faction = faction;
-        MaxHealth = maxHealth;
+        //MaxHealth = maxHealth;
         CurrentHealth = currentHealth;
     }
 
     public UnitData(Unit unit, Vector2Int origin)
     {
-        Type = unit.Type;
+        Type = unit.Proto.Type;
+        //Proto = unit.Proto;
         ID = unit.ID;
         Position = unit.Square.Position - origin;
         Faction = unit.Faction;
-        MaxHealth = unit.MaxHealth;
+        //MaxHealth = unit.MaxHealth;
         CurrentHealth = unit.CurrentHealth;
     }
 
     public UnitData(UnitPrototype proto, Vector2Int position, Faction faction)
     {
         Type = proto.Type;
+        //Proto = proto;
         ID = Guid.NewGuid();
         Position = position;
         Faction = faction;
-        MaxHealth = proto.MaxHealth;
+        //MaxHealth = proto.MaxHealth;
         CurrentHealth = proto.MaxHealth;
     }
 
     public UnitData Clone()
     {
-        return new UnitData(Type, ID, Position, Faction, MaxHealth, CurrentHealth);
+        return new UnitData(
+            Type, 
+            //Proto,
+            ID, 
+            Position, 
+            Faction, 
+            //MaxHealth, 
+            CurrentHealth);
     }
 
     public UnitData UpdateUnitStatus(Unit unit)

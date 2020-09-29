@@ -17,6 +17,11 @@ public struct SerializableGuid : IComparable, IComparable<SerializableGuid>, IEq
 
     public static implicit operator Guid(SerializableGuid serializableGuid)
     {
+        if(serializableGuid.Value == null)
+        {
+            return Guid.Empty;
+        }
+        
         return new Guid(serializableGuid.Value);
     }
 

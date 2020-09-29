@@ -7,6 +7,7 @@ public class UnitManager
     public List<Unit> Units { get; protected set; }
     HashSet<Unit> m_diedThisTurn;
 
+    Dictionary<string, UnitPrototype> m_unitPrototypeMap;
     Dictionary<string, GameObject> m_unitPrefabMap;
     Dictionary<Faction, int> m_factionCount;
 
@@ -17,6 +18,7 @@ public class UnitManager
         m_factionCount = new Dictionary<Faction, int>();
 
         m_unitPrefabMap = new Dictionary<string, GameObject>();
+        m_unitPrototypeMap = new Dictionary<string, UnitPrototype>();
         foreach(GameObject go in unitPrefabs)
         {
             Unit unit = go.GetComponent<Unit>();
@@ -26,13 +28,31 @@ public class UnitManager
                 continue;
             }
 
-            m_unitPrefabMap[unit.Type] = go;
+            if (unit.Proto == null)
+            {
+                Debug.LogError($"Unit {go.name}'s Prototype is null.");
+                //continue;
+            }
+
+            m_unitPrefabMap[unit.Proto.Type] = go;
+            m_unitPrototypeMap[unit.Proto.Type] = unit.Proto;
         }
+    }
+
+    public UnitPrototype GetUnitPrototypeOfType(string type)
+    {
+        if (type == null || !m_unitPrototypeMap.ContainsKey(type))
+        {
+            Debug.LogWarning($"Prototype for unit of type {type} not found.");
+            return null;
+        }
+
+        return m_unitPrototypeMap[type];
     }
 
     public GameObject GetPrefabOfType(string type)
     {
-        if(!m_unitPrefabMap.ContainsKey(type))
+        if(type == null || !m_unitPrefabMap.ContainsKey(type))
         {
             Debug.LogWarning($"Prefab for unit of type {type} not found.");
             return null;

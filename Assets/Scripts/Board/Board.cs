@@ -2,7 +2,7 @@
 using UnityEngine;
 using System;
 
-public enum PlayMode { UnitPlacement, SquadEditor, Battle, Paused }
+public enum PlayMode { UnitPlacement, SquadEditor, Battle, Paused, Dungeon }
 public class Board : MonoBehaviour
 {
     public static Board Current;
@@ -13,9 +13,14 @@ public class Board : MonoBehaviour
 
     [SerializeField] List<GameObject> m_unitPrefabs = default;
 
-    [SerializeField] GameObject m_unitPlacementModePanel = default;
+    [SerializeField] UnitPlacementMenu m_unitPlacementModePanel = default;
     [SerializeField] GameObject m_squadEditorModePanel = default;
     [SerializeField] GameObject m_gameOverPanel = default;
+    [SerializeField] DungeonMap m_dungeonMap = default;
+    [SerializeField] TMPro.TextMeshProUGUI m_currentGoldText = default;
+    Encounter m_currentEncounter;
+
+    int m_currentGold;
 
     [SerializeField] GameObject m_whiteSquare = default;
     [SerializeField] GameObject m_blackSquare = default;
@@ -27,8 +32,8 @@ public class Board : MonoBehaviour
     [SerializeField] float m_timeBetweenTurns = 2f;
     float m_timeUntilNextTurn;
 
-    SquadData m_playerSquadStartPosition;
-    SquadData m_enemySquadStartPosition;
+    Squad m_currentPlayerSquad;
+    //SquadData m_enemySquadStartPosition;
 
     public BoardSquare[,] Squares { get; protected set; }
     public BoardSquare GetSquareAt(int x, int y)
@@ -163,23 +168,56 @@ public class Board : MonoBehaviour
             return;
         }
 
+        m_currentEncounter = encounter;
+
         SetupSquares(encounter.BoardSize.x, encounter.BoardSize.y, false);
         TryPlaceSquad(encounter.Enemies, Vector2Int.zero, true);
+
+        EnterPlayMode(PlayMode.UnitPlacement);
     }
 
     public void StartGame()
     {
-        m_unitPlacementModePanel.SetActive(false);
+        m_unitPlacementModePanel.Deactivate();
         m_squadEditorModePanel.SetActive(false);
         m_gameOverPanel.SetActive(false);
         ClearBoard();
-        PlayMode = PlayMode.UnitPlacement;
 
-        m_unitPlacementModePanel.SetActive(true);
-        SetupSquares(Squares.GetLength(0), m_rowsAllowedForUnitPlacement);
-        LoadPlayerSquad();
+        m_currentPlayerSquad = new Squad(GetDefaultPlayerSquad());
+        ChangeGold(-m_currentGold);
+        //m_currentGold = 0;
+        //UpdateGoldText();
+
+        m_dungeonMap.SetupMap();
+        EnterPlayMode(PlayMode.Dungeon);
+        //PlayMode = PlayMode.Dungeon;
+
+        m_currentPlayerSquad = new Squad(GetDefaultPlayerSquad());
+
+        //m_unitPlacementModePanel.Activate(m_currentPlayerSquad.Data.Units);
+        //SetupSquares(Squares.GetLength(0), m_rowsAllowedForUnitPlacement);
+        //LoadPlayerSquad();
     }
 
+    public bool ChangeGold(int amount)
+    {
+        int newAmount = m_currentGold + amount;
+        if(newAmount < 0)
+        {
+            return false;
+        }
+
+        m_currentGold = newAmount;
+        UpdateGoldText();
+        return true;
+    }
+
+    void UpdateGoldText()
+    {
+        m_currentGoldText.text = "Gold: " + m_currentGold.ToString();
+    }
+
+    #region Updates
     private void Update()
     {
         switch(PlayMode)
@@ -283,7 +321,9 @@ public class Board : MonoBehaviour
     {
 
     }
+    #endregion
 
+    #region PlayMode Changes
     public void EnterPlayMode(PlayMode mode)
     {
         if(PlayMode == mode)
@@ -296,36 +336,51 @@ public class Board : MonoBehaviour
         switch(PlayMode)
         {
             case PlayMode.Battle:
-                m_unitPlacementModePanel.SetActive(false);
+                m_unitPlacementModePanel.Deactivate();
                 m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
-                ClearBoard();
-                SetupSquares(m_defaultBoardSize.x, m_defaultBoardSize.y);
+                m_dungeonMap.Deactivate();
+                //ClearBoard();
+                //SetupSquares(m_defaultBoardSize.x, m_defaultBoardSize.y);
 
-                m_enemySquadStartPosition = LoadAndPlaceEnemyFormation(m_battleModeEnemyFormationSize, true);
-                m_playerSquadStartPosition = LoadPlayerSquad();
+                //m_enemySquadStartPosition = LoadAndPlaceEnemyFormation(m_battleModeEnemyFormationSize, true);
+                //m_playerSquadStartPosition = LoadPlayerSquad();
                 break;
 
             case PlayMode.UnitPlacement:
-                m_unitPlacementModePanel.SetActive(true);
+                if(m_currentPlayerSquad == null)
+                {
+                    m_currentPlayerSquad = new Squad(GetCurrentPlayerSquad());
+                }
+                
+                m_unitPlacementModePanel.Activate(m_currentPlayerSquad.Data.Units);
                 m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
-                ClearBoard();
+                m_dungeonMap.Deactivate();
+                //ClearBoard();
 
-                SetupSquares(m_defaultBoardSize.x, m_rowsAllowedForUnitPlacement);
-                LoadPlayerSquad();
+                //SetupSquares(m_defaultBoardSize.x, m_rowsAllowedForUnitPlacement);
+                //LoadPlayerSquad();
                 break;
 
             case PlayMode.SquadEditor:
-                m_unitPlacementModePanel.SetActive(false);
+                m_unitPlacementModePanel.Deactivate();
                 m_squadEditorModePanel.SetActive(true);
                 m_gameOverPanel.SetActive(false);
+                m_dungeonMap.Deactivate();
                 ClearBoard();
                 SetupSquares(m_defaultSquadSize.x, m_defaultSquadSize.y);
                 //LoadEnemySquad(true, false);
                 break;
 
             case PlayMode.Paused:
+                break;
+
+            case PlayMode.Dungeon:
+                m_unitPlacementModePanel.Deactivate();
+                m_squadEditorModePanel.SetActive(true);
+                m_gameOverPanel.SetActive(false);
+                m_dungeonMap.Activate();
                 break;
 
             default:
@@ -355,26 +410,35 @@ public class Board : MonoBehaviour
 
     void BattleWon()
     {
-        SquadData survivingUnits = m_playerSquadStartPosition.UpdateUnitStatuses(UnitManager.Units);
-        UnitSaveLoadUtility.SaveSquad(survivingUnits, "Player", "Player");
-        EnterPlayMode(PlayMode.UnitPlacement);
+        m_currentPlayerSquad.UpdateStatuses(UnitManager.Units);
+        UnitSaveLoadUtility.SaveSquad(m_currentPlayerSquad.Data, "Player", "Player");
+
+        ChangeGold(m_currentEncounter.Reward);
+        //m_currentGold += m_currentEncounter.Reward;
+
+        m_dungeonMap.ExitEncounter(m_currentEncounter, true);
+        EnterPlayMode(PlayMode.Dungeon);
     }
 
     void BattleLost()
     {
+        m_dungeonMap.ExitEncounter(m_currentEncounter, false);
+        
         EnterPlayMode(PlayMode.Paused);
         m_gameOverPanel.SetActive(true);
     }
+    #endregion
 
-    SquadData LoadPlayerSquad()
+    #region Save/Load
+    SquadData GetCurrentPlayerSquad()
     {
-        return LoadSquadToBoard("Player", "Player", Vector2Int.zero);
+        return UnitSaveLoadUtility.LoadSquad("Player", "Player");
     }
 
-    //SquadData LoadEnemySquad(bool resizeBoard, bool mirror)
-    //{
-    //    return LoadSquadToBoard("Enemy", "Enemy", Vector2Int.zero, resizeBoard, mirror);
-    //}
+    SquadData GetDefaultPlayerSquad()
+    {
+        return UnitSaveLoadUtility.LoadSquad("PlayerDefault", "Player");
+    }
 
     public SquadData LoadAndPlaceEnemyFormation(int size, bool mirror = false)
     {
@@ -389,21 +453,6 @@ public class Board : MonoBehaviour
 
         return formation;
     }
-
-    //SquadData GenerateFormation(List<SquadData> squadProtos, int numberSquads)
-    //{
-    //    List<SquadData> squadsToCombine = new List<SquadData>();
-    //    Vector2Int offset = Vector2Int.zero;
-    //    for(int i = 0; i < numberSquads; i++)
-    //    {
-    //        SquadData newSquad = squadProtos[UnityEngine.Random.Range(0, squadProtos.Count)].Clone();
-    //        newSquad.SquadOrigin = newSquad.SquadOrigin + offset;
-    //        squadsToCombine.Add(newSquad);
-    //        offset.x += newSquad.Size.x + 1;
-    //    }
-
-    //    return SquadData.CombineSquads(squadsToCombine);
-    //}
 
     public SquadData LoadSquadToBoard(string name, string directory, Vector2Int offset, bool resizeBoard = false, bool mirror = false)
     {
@@ -423,7 +472,9 @@ public class Board : MonoBehaviour
         SquadData squad = GetBoardAsSquad(mirrorBoard);
         UnitSaveLoadUtility.SaveSquad(squad, name, dir);
     }
+    #endregion
 
+    #region Unit Movement and Placing
     public SquadData GetBoardAsSquad(bool mirrorBoard = false)
     {
         Vector2Int origin = mirrorBoard ? MirrorPosition(Vector2Int.zero) : Vector2Int.zero;
@@ -440,7 +491,6 @@ public class Board : MonoBehaviour
 
         return new SquadData(units, origin);
     }
-
 
     public bool TryMoveUnitTo(Unit unit, BoardSquare target)
     {
@@ -462,7 +512,7 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    public bool TryPlaceNewUnit(UnitData data)
+    public bool TryPlaceUnit(UnitData data)
     {
         if(data.Position.x < 0 || data.Position.x >= Squares.GetLength(0) ||
             data.Position.y < 0 || data.Position.y >= Squares.GetLength(1) ||
@@ -513,7 +563,7 @@ public class Board : MonoBehaviour
             {
                 clone.Position = MirrorPosition(clone.Position);
             }
-            allUnitsPlaced = TryPlaceNewUnit(clone) && allUnitsPlaced;
+            allUnitsPlaced = TryPlaceUnit(clone) && allUnitsPlaced;
         }
 
         return allUnitsPlaced;
@@ -523,4 +573,5 @@ public class Board : MonoBehaviour
     {
         return new Vector2Int(Squares.GetLength(0) - 1, Squares.GetLength(1) - 1) - pos;
     }
+    #endregion
 }

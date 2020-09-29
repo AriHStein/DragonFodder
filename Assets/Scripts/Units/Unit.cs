@@ -9,6 +9,7 @@ public enum Faction { Player, Enemy }
 public  abstract class Unit : MonoBehaviour
 {
     public string Type;
+    public UnitPrototype Proto;
     public BoardSquare Square;
     public Faction Faction;
     public Guid ID { get; protected set; }
@@ -36,11 +37,14 @@ public  abstract class Unit : MonoBehaviour
     public void Initialize(BoardSquare square, UnitData data)
     {
         ID = data.ID;
+        Type = data.Type;
+        //Proto = data.Proto;
 
         Square = square;
         Square.Unit = this;
 
-        MaxHealth = data.MaxHealth;
+        //MaxHealth = data.Proto.MaxHealth;
+        MaxHealth = Board.Current.UnitManager.GetUnitPrototypeOfType(data.Type).MaxHealth;
         CurrentHealth = data.CurrentHealth;
 
         Faction = data.Faction;

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class InputManager : MonoBehaviour
 {
@@ -9,7 +10,10 @@ public class InputManager : MonoBehaviour
     [SerializeField] GameObject m_mouseIndicator = default;
 
     Unit m_grabbedUnit;
-    UnitPrototype m_newUnitToPlace;
+    UnitData m_newUnitToPlace;
+
+    public event Action UnitPlacedEvent;
+    public event Action CancelPlacementEvent;
 
     Faction m_currentFaction;
 
@@ -44,8 +48,9 @@ public class InputManager : MonoBehaviour
         if (Input.GetMouseButtonDown(1))
         {
             ReturnGrabbedUnitToOriginalPosition();
+            CancelPlacementEvent?.Invoke();
             //m_grabbedUnit = null;
-            m_newUnitToPlace = null;
+            m_newUnitToPlace = new UnitData();
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -57,7 +62,7 @@ public class InputManager : MonoBehaviour
                     return;
                 }
             }
-            else if(m_newUnitToPlace != null)
+            else if(m_newUnitToPlace.ID != Guid.Empty)
             {
                 if(TryPlaceNewUnit(squareUnderMouse))
                 {
@@ -91,7 +96,7 @@ public class InputManager : MonoBehaviour
         return null;
     }
 
-    public void SelectUnitToPlace(UnitPrototype data, Faction faction)
+    public void SelectUnitToPlace(UnitData data, Faction faction)
     {
         m_newUnitToPlace = data;
         m_currentFaction = faction;
@@ -126,13 +131,22 @@ public class InputManager : MonoBehaviour
 
     bool TryPlaceNewUnit(BoardSquare square)
     {
-        if(square == null || m_newUnitToPlace == null || square.Unit != null)
+        if(square == null || m_newUnitToPlace.ID == Guid.Empty || square.Unit != null)
         {
             return false;
         }
 
-        Board.Current.TryPlaceNewUnit(new UnitData(m_newUnitToPlace, square.Position, m_currentFaction));
-        m_newUnitToPlace = null;
-        return true;
+        m_newUnitToPlace.Position = square.Position;
+        m_newUnitToPlace.Faction = m_currentFaction;
+        //Board.Current.TryPlaceUnit(new UnitData(m_newUnitToPlace, square.Position, m_currentFaction));
+        if(Board.Current.TryPlaceUnit(m_newUnitToPlace))
+        {
+            UnitPlacedEvent?.Invoke();
+            m_newUnitToPlace = new UnitData();
+            return true;
+        } else
+        {
+            return false;
+        }
     }
 }

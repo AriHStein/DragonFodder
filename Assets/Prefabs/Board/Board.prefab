@@ -43,11 +43,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9c0494d799f4844b9c3338f313d726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_unitPrefabs:
+  - {fileID: 4797737259296947676, guid: 02c20aa1799d4fa45b6c9f99eba8e901, type: 3}
+  - {fileID: 346092736135298289, guid: 1360c0ba5869cc449b5fa02e4d4852f2, type: 3}
+  m_unitPlacementModePanel: {fileID: 0}
+  m_squadEditorModePanel: {fileID: 0}
+  m_gameOverPanel: {fileID: 0}
+  m_dungeonMap: {fileID: 0}
+  m_currentGoldText: {fileID: 0}
   m_whiteSquare: {fileID: 2441968418752771898, guid: a3ae2ba92c2716d4e9bf960f178e49dc,
     type: 3}
   m_blackSquare: {fileID: 5275084990626925644, guid: a6d8ca73ec4efec46b17eaba8653e745,
     type: 3}
-  m_width: 8
-  m_height: 8
-  m_units: []
-  m_timeBetweenTurns: 2
+  m_defaultBoardSize: {x: 12, y: 12}
+  m_defaultSquadSize: {x: 3, y: 3}
+  m_rowsAllowedForUnitPlacement: 5
+  m_battleModeEnemyFormationSize: 4
+  m_timeBetweenTurns: 1

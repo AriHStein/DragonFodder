@@ -1,43 +1,40 @@
 {
     "Units": [
         {
-            "Type": "Warrior",
+            "Type": "Wizard",
             "ID": {
-                "Value": "313481ba-a331-458e-9ce5-405b55c757a2"
-            },
-            "Position": {
-                "x": 2,
-                "y": 2
-            },
-            "Faction": 1,
-            "MaxHealth": 5,
-            "CurrentHealth": 5
-        },
-        {
-            "Type": "Warrior",
-            "ID": {
-                "Value": "4ab97860-08a8-47af-a4d3-e578c8511a1f"
-            },
-            "Position": {
-                "x": 1,
-                "y": 2
-            },
-            "Faction": 1,
-            "MaxHealth": 5,
-            "CurrentHealth": 5
-        },
-        {
-            "Type": "Warrior",
-            "ID": {
-                "Value": "180d29b5-2ac9-456d-9b06-122057703f4b"
+                "Value": "bb72e27b-8e10-4918-aecc-34bda82f01fd"
             },
             "Position": {
                 "x": 0,
                 "y": 1
             },
             "Faction": 1,
-            "MaxHealth": 5,
-            "CurrentHealth": 5
+            "CurrentHealth": 3
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "f18b4dce-1456-4f16-88a4-7d1417e4585a"
+            },
+            "Position": {
+                "x": 2,
+                "y": 1
+            },
+            "Faction": 1,
+            "CurrentHealth": 3
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "76a66535-c32d-4ffb-bd08-1e8643fd3e1e"
+            },
+            "Position": {
+                "x": 1,
+                "y": 0
+            },
+            "Faction": 1,
+            "CurrentHealth": 3
         }
     ],
     "SquadOrigin": {

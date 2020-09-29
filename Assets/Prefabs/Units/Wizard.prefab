@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: Wizard
+  Proto: {fileID: 11400000, guid: bc61eea5575c34d4ebe3684d14337c5e, type: 2}
   Square: {fileID: 0}
   Faction: 0
   MaxHealth: 0

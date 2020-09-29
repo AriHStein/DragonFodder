@@ -352,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Type: Warrior
+  Proto: {fileID: 11400000, guid: ab58ed11f0f0c7a479ca33576b859bf5, type: 2}
   Square: {fileID: 0}
   Faction: 0
   MaxHealth: 0

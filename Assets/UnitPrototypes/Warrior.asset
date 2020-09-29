@@ -12,8 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294fe6fcee924ba41bf006e7299835cf, type: 3}
   m_Name: Warrior
   m_EditorClassIdentifier: 
-  Position: {x: 4, y: 1}
   Type: Warrior
-  Faction: 0
-  MaxHealth: 5
-  CurrentHealth: 5
+  MaxHealth: 10

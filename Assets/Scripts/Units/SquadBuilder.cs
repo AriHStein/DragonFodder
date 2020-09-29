@@ -23,6 +23,11 @@ public static class SquadBuilder
 
     public static SquadData GenerateFormation(List<SquadData> squadProtos, int numberSquads)
     {
+        if(squadProtos == null || squadProtos.Count == 0)
+        {
+            return new SquadData();
+        }
+        
         List<SquadData> squadsToCombine = new List<SquadData>();
         Vector2Int offset = Vector2Int.zero;
         for (int i = 0; i < numberSquads; i++)

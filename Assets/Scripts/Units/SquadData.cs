@@ -1,6 +1,52 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
+
+public class Squad
+{
+    public SquadData Data { get; protected set; }
+
+    public Squad(SquadData data)
+    {
+        Data = data;
+    }
+    public void UpdateStatuses(List<Unit> updatedUnits)
+    {
+        // iterate through all units in this squads unit list.
+        // if the unit exists in the updated unit list, update that unit.
+        // otherwise, assume the unit died during the battle and remove it from the squad.
+
+        // TODO: Do we need to account for units that exist in the new units list, but not in the original squad?
+        // Theese might be summons or other temporary units. Assuming they die after the battle seems reasonable for now.
+
+        if (Data.Units == null || updatedUnits == null)
+        {
+            Data = new SquadData();
+            return;
+        }
+
+        for (int i = Data.Units.Count - 1; i >= 0; i--)
+        {
+            bool unitFound = false;
+            foreach (Unit unit in updatedUnits)
+            {
+                if (unit.ID != Guid.Empty && unit.ID == Data.Units[i].ID)
+                {
+                    unitFound = true;
+                    Data.Units[i] = Data.Units[i].UpdateUnitStatus(unit);
+                }
+            }
+
+            if (!unitFound)
+            {
+                Data.Units.RemoveAt(i);
+            }
+        }
+
+        Data = new SquadData(Data.Units, Data.SquadOrigin, Data.Faction);
+    }
+}
 
 //[CreateAssetMenu(fileName = "new Squad", menuName = "Units/SquadData", order = 101)]
 [System.Serializable]
@@ -121,33 +167,38 @@ public struct SquadData
         Size = max;
     }
 
-    public SquadData UpdateUnitStatuses(List<Unit> updatedUnits)
-    {
-        // iterate through all units in this squads unit list.
-        // if the unit exists in the updated unit list, update that unit.
-        // otherwise, assume the unit died during the battle and remove it from the squad.
+    //public SquadData UpdateUnitStatuses(List<Unit> updatedUnits)
+    //{
+    //    // iterate through all units in this squads unit list.
+    //    // if the unit exists in the updated unit list, update that unit.
+    //    // otherwise, assume the unit died during the battle and remove it from the squad.
 
-        // TODO: Do we need to account for units that exist in the new units list, but not in the original squad?
-        // Theese might be summons or other temporary units. Assuming they die after the battle seems reasonable for now.
+    //    // TODO: Do we need to account for units that exist in the new units list, but not in the original squad?
+    //    // Theese might be summons or other temporary units. Assuming they die after the battle seems reasonable for now.
         
-        for(int i = Units.Count - 1; i >= 0; i--)
-        {
-            bool unitFound = false;
-            foreach(Unit unit in updatedUnits)
-            {
-                if(unit.ID == Units[i].ID)
-                {
-                    unitFound = true;
-                    Units[i] = Units[i].UpdateUnitStatus(unit);
-                }
-            }
+    //    if(Units == null || updatedUnits == null)
+    //    {
+    //        return new SquadData();
+    //    }
 
-            if(!unitFound)
-            {
-                Units.RemoveAt(i);
-            }
-        }
+    //    for(int i = Units.Count - 1; i >= 0; i--)
+    //    {
+    //        bool unitFound = false;
+    //        foreach(Unit unit in updatedUnits)
+    //        {
+    //            if(unit.ID != Guid.Empty && unit.ID == Units[i].ID)
+    //            {
+    //                unitFound = true;
+    //                Units[i] = Units[i].UpdateUnitStatus(unit);
+    //            }
+    //        }
 
-        return new SquadData(Units, SquadOrigin, Faction);
-    }
+    //        if(!unitFound)
+    //        {
+    //            Units.RemoveAt(i);
+    //        }
+    //    }
+
+    //    return new SquadData(Units, SquadOrigin, Faction);
+    //}
 }
