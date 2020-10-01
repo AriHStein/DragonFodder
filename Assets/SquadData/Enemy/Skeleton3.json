@@ -1,0 +1,45 @@
+{
+    "Units": [
+        {
+            "Type": "Skeleton",
+            "ID": {
+                "Value": "58b79622-94da-4c00-84c4-ccb0b540912f"
+            },
+            "Position": {
+                "x": 0,
+                "y": 2
+            },
+            "Faction": 1,
+            "CurrentHealth": 3
+        },
+        {
+            "Type": "Skeleton",
+            "ID": {
+                "Value": "57450b58-0092-425c-837a-c500c8d86a14"
+            },
+            "Position": {
+                "x": 1,
+                "y": 2
+            },
+            "Faction": 1,
+            "CurrentHealth": 3
+        },
+        {
+            "Type": "Skeleton",
+            "ID": {
+                "Value": "4f5fa848-de28-4227-965a-c30a68a07faf"
+            },
+            "Position": {
+                "x": 2,
+                "y": 2
+            },
+            "Faction": 1,
+            "CurrentHealth": 3
+        }
+    ],
+    "SquadOrigin": {
+        "x": 0,
+        "y": 0
+    },
+    "Faction": 0
+}

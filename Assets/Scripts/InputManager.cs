@@ -139,7 +139,7 @@ public class InputManager : MonoBehaviour
         m_newUnitToPlace.Position = square.Position;
         m_newUnitToPlace.Faction = m_currentFaction;
         //Board.Current.TryPlaceUnit(new UnitData(m_newUnitToPlace, square.Position, m_currentFaction));
-        if(Board.Current.TryPlaceUnit(m_newUnitToPlace))
+        if(Board.Current.TryPlaceUnit(m_newUnitToPlace) != null)
         {
             UnitPlacedEvent?.Invoke();
             m_newUnitToPlace = new UnitData();

@@ -5,19 +5,21 @@ using System;
 
 public enum Faction { Player, Enemy }
 [RequireComponent(typeof(Animator))]
-[RequireComponent(typeof(MaterialSwapper))]
+//[RequireComponent(typeof(MaterialSwapper))]
 public  abstract class Unit : MonoBehaviour
 {
-    public string Type;
-    public UnitPrototype Proto;
+    public string Type { get; protected set; }
+    [SerializeField] UnitPrototype m_prototype = default;
+    public UnitPrototype Proto { get { return m_prototype; } }
+    [HideInInspector]
     public BoardSquare Square;
-    public Faction Faction;
+    public Faction Faction { get; protected set; }
     public Guid ID { get; protected set; }
 
     protected Animator m_animator;
     protected MaterialSwapper m_materialSwapper;
 
-    public int MaxHealth;
+    public int MaxHealth { get; protected set; }
     public int CurrentHealth { get; protected set; }
 
     public event Action<Unit> DeathEvent;
@@ -48,13 +50,17 @@ public  abstract class Unit : MonoBehaviour
         CurrentHealth = data.CurrentHealth;
 
         Faction = data.Faction;
-        m_materialSwapper.SwapMaterial(Faction);
+        if(m_materialSwapper != null)
+        {
+            m_materialSwapper.SwapMaterial(Faction);
+        }
+
         Board.Current.UnitManager.RegisterUnit(this);
     }
 
     public abstract void DoTurn();
 
-    protected void FaceToward(BoardSquare square)
+    public void FaceToward(BoardSquare square)
     {
         transform.LookAt(square.transform);
     }

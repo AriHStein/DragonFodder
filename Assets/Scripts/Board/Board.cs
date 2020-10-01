@@ -512,25 +512,25 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    public bool TryPlaceUnit(UnitData data)
+    public Unit TryPlaceUnit(UnitData data)
     {
         if(data.Position.x < 0 || data.Position.x >= Squares.GetLength(0) ||
             data.Position.y < 0 || data.Position.y >= Squares.GetLength(1) ||
             Squares[data.Position.x, data.Position.y].gameObject.activeInHierarchy == false || 
             Squares[data.Position.x, data.Position.y].Unit != null)
         {
-            return false;
+            return null;
         }
 
         GameObject prefab = UnitManager.GetPrefabOfType(data.Type);
         if(prefab == null)
         {
-            return false;
+            return null;
         }
         
         Unit unit = Instantiate(prefab, new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
         unit.Initialize(Squares[data.Position.x, data.Position.y], data);
-        return true;
+        return unit;
     }
 
     public bool TryPlaceSquad(SquadData data, Vector2Int offset, bool mirror = false)
@@ -563,7 +563,10 @@ public class Board : MonoBehaviour
             {
                 clone.Position = MirrorPosition(clone.Position);
             }
-            allUnitsPlaced = TryPlaceUnit(clone) && allUnitsPlaced;
+            Unit placedUnit = TryPlaceUnit(clone);
+            int faceDir = mirror ? -1 : 1;
+            placedUnit.FaceToward(GetSquareAt(placedUnit.Square.Position.x, placedUnit.Square.Position.y + faceDir));
+            allUnitsPlaced = placedUnit != null && allUnitsPlaced;
         }
 
         return allUnitsPlaced;

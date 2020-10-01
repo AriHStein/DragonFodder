@@ -46,6 +46,11 @@ MonoBehaviour:
   m_unitPrefabs:
   - {fileID: 4797737259296947676, guid: 02c20aa1799d4fa45b6c9f99eba8e901, type: 3}
   - {fileID: 346092736135298289, guid: 1360c0ba5869cc449b5fa02e4d4852f2, type: 3}
+  - {fileID: 7489344393727188616, guid: 8d5d9bcec73b2ee4ca1f127ec2fb6a8c, type: 3}
+  - {fileID: 561739373294329650, guid: cc117742812f8c048b54f0e8a1061a99, type: 3}
+  - {fileID: 2982510631717913, guid: 0b6a97eb0450e28489045ed980440697, type: 3}
+  - {fileID: 8465787162254137158, guid: f886fdce6e139514d81e04844568197b, type: 3}
+  - {fileID: 5978867885794928821, guid: 5d2009f5d10a9334caad3d006e2874ad, type: 3}
   m_unitPlacementModePanel: {fileID: 0}
   m_squadEditorModePanel: {fileID: 0}
   m_gameOverPanel: {fileID: 0}

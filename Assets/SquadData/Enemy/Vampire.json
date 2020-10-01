@@ -1,0 +1,21 @@
+{
+    "Units": [
+        {
+            "Type": "Vampire",
+            "ID": {
+                "Value": "06e9d3b2-4542-4ac3-85a2-1930eaeab293"
+            },
+            "Position": {
+                "x": 1,
+                "y": 0
+            },
+            "Faction": 1,
+            "CurrentHealth": 8
+        }
+    ],
+    "SquadOrigin": {
+        "x": 0,
+        "y": 0
+    },
+    "Faction": 0
+}
