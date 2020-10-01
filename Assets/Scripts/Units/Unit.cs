@@ -56,7 +56,7 @@ public  abstract class Unit : MonoBehaviour
 
     protected void FaceToward(BoardSquare square)
     {
-        transform.rotation.SetLookRotation((Vector3Int)(square.Position - Square.Position));
+        transform.LookAt(square.transform);
     }
 
     protected virtual void Attack(Unit target)

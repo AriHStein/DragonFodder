@@ -50,6 +50,11 @@ public class PlaceUnitPanel : MonoBehaviour
 
     public void AddUnit(UnitData unit)
     {
+        if(m_availableUnits == null || m_availableUnits.Count == 0)
+        {
+            m_availableUnits = new List<UnitData>();
+        } 
+        else 
         if(unit.Type != m_availableUnits[0].Type)
         {
             Debug.LogError($"Inconsistent unit types. Base type: {unit.Type}, type at index {0}: {m_availableUnits[0].Type}");

@@ -24,6 +24,7 @@ public class Warrior : Unit
         }
         else
         {
+            FaceToward(target.Square);
             MoveToward(target.Square);
         }
     }

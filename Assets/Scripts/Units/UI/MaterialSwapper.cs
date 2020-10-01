@@ -11,7 +11,8 @@ public class MaterialSwapper : MonoBehaviour
 
     private void Awake()
     {
-        if(m_targets == null || m_targets.Count == 0)
+        m_materialsMap = new Dictionary<Faction, Material>();
+        if (m_targets == null || m_targets.Count == 0)
         {
             Debug.LogWarning("No targets set.");
             return;
@@ -28,7 +29,7 @@ public class MaterialSwapper : MonoBehaviour
             Debug.LogWarning("Default material not set.");
         }
         
-        m_materialsMap = new Dictionary<Faction, Material>();
+
         foreach(FactionMaterial pair in m_factionMaterials)
         {
             if(m_materialsMap.ContainsKey(pair.Faction))

@@ -9,7 +9,7 @@ public class UnitPlacementMenu : MonoBehaviour
     Dictionary<string, PlaceUnitPanel> m_unitPanels;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         m_unitPanels = new Dictionary<string, PlaceUnitPanel>();
     }
@@ -17,10 +17,15 @@ public class UnitPlacementMenu : MonoBehaviour
     public void Activate(List<UnitData> availableUnits)
     {
         gameObject.SetActive(true);
-        foreach(PlaceUnitPanel panel in m_unitPanels.Values)
+        foreach (PlaceUnitPanel panel in m_unitPanels.Values)
         {
             panel.Deactivate();
         }
+        //if (m_unitPanels.Count > 0)
+        //{
+
+        //}
+
 
         if(availableUnits == null || availableUnits.Count == 0)
         {
@@ -43,10 +48,17 @@ public class UnitPlacementMenu : MonoBehaviour
 
     public void Deactivate()
     {
+        if(!gameObject.activeSelf)
+        {
+            return;
+        }
+        
         foreach(PlaceUnitPanel panel in m_unitPanels.Values)
         {
             panel.Deactivate();
         }
+
+        gameObject.SetActive(false);
     }
 
     void SetupPanels(Dictionary<string, List<UnitData>> sortedUnits)
