@@ -11,6 +11,7 @@ public class UnitPrototype : ScriptableObject
     public string Type;
     //public Faction Faction;
     public int MaxHealth;
+    public int AttackDamage;
 
     //public static UnitData GetData(Unit unit)
     //{

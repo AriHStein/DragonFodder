@@ -68,6 +68,7 @@ public  abstract class Unit : MonoBehaviour
     protected virtual void Attack(Unit target)
     {
         m_animator.SetTrigger("Attack");
+        target.TakeDamage(m_prototype.AttackDamage);
     }
 
     protected virtual void MoveToward(BoardSquare dest)

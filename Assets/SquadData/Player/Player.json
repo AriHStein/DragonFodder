@@ -10,7 +10,7 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 7
+            "CurrentHealth": 6
         },
         {
             "Type": "Warrior",
@@ -34,7 +34,7 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 8
+            "CurrentHealth": 10
         },
         {
             "Type": "Warrior",
@@ -46,7 +46,7 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 8
+            "CurrentHealth": 3
         },
         {
             "Type": "Wizard",

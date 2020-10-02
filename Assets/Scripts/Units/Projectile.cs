@@ -41,10 +41,10 @@ public class Projectile : MonoBehaviour
 
     void HitTarget()
     {
-        if(m_target != null)
-        {
-            m_target.TakeDamage(m_damage);
-        }
+        //if(m_target != null)
+        //{
+        //    m_target.TakeDamage(m_damage);
+        //}
 
         Destroy(gameObject);
     }

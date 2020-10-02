@@ -350,8 +350,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8465787162254490158}
   - component: {fileID: 8465787162261665436}
-  - component: {fileID: 662405500696965615}
   - component: {fileID: 5536830976834476750}
+  - component: {fileID: 3914324342881776809}
   m_Layer: 0
   m_Name: Vampire
   m_TagString: Untagged
@@ -395,21 +395,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &662405500696965615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8465787162254137158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e0853af93c6104fa44688fe06250d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_prototype: {fileID: 11400000, guid: a3e1d432acfd54d45838b1712338545d, type: 2}
-  Square: {fileID: 0}
-  m_damage: 1
 --- !u!114 &5536830976834476750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -423,6 +408,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_healthImage: {fileID: 9183056365074427885}
+--- !u!114 &3914324342881776809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8465787162254137158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6eb467bcd22dc47b86d63be2d99625, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_prototype: {fileID: 11400000, guid: a3e1d432acfd54d45838b1712338545d, type: 2}
+  Square: {fileID: 0}
+  m_range: 1
+  m_moveSpeed: 5
 --- !u!1 &8465787162254139752
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wizard : Unit
+public class RangedBase : Unit
 {
     [SerializeField] GameObject m_attackPrefab = default;
     [SerializeField] float m_range = 4f;
@@ -25,6 +25,7 @@ public class Wizard : Unit
             Attack(target);
         } else
         {
+            FaceToward(target.Square);
             MoveToward(target.Square);
         }
     }

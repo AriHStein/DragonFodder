@@ -156,4 +156,32 @@ public class UnitManager
 
         return nearest;
     }
+
+    public Unit GetFarthestUnitOfFaction(Faction faction, BoardSquare origin)
+    {
+        if (origin == null)
+        {
+            Debug.LogError("Origin is null.");
+            return null;
+        }
+
+        Unit farthest = null;
+        float farthestDistance = 0f;
+        foreach (Unit unit in Units)
+        {
+            if (unit.Faction != faction)
+            {
+                continue;
+            }
+
+            float distance = Vector2Int.Distance(origin.Position, unit.Square.Position);
+            if (distance > farthestDistance)
+            {
+                farthestDistance = distance;
+                farthest = unit;
+            }
+        }
+
+        return farthest;
+    }
 }

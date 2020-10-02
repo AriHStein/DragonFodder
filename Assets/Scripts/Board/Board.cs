@@ -45,6 +45,10 @@ public class Board : MonoBehaviour
 
         return Squares[x, y];
     }
+    public BoardSquare GetSquareAt(Vector2Int pos)
+    {
+        return GetSquareAt(pos.x, pos.y);
+    }
 
     public void Awake()
     {

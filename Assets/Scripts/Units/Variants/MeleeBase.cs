@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Warrior : Unit
+public class MeleeBase : Unit
 {
     [SerializeField] int m_damage = 1;
     
@@ -29,9 +29,9 @@ public class Warrior : Unit
         }
     }
 
-    protected override void Attack(Unit target)
-    {
-        base.Attack(target);
-        target.TakeDamage(m_damage);
-    }
+    //protected override void Attack(Unit target)
+    //{
+    //    base.Attack(target);
+    //    target.TakeDamage(m_damage);
+    //}
 }
