@@ -129,6 +129,25 @@ public class UnitManager
 
     }
 
+    public List<Unit> GetUnitsOfFaction(Faction faction)
+    {
+        if(!m_factionCount.ContainsKey(faction) || m_factionCount[faction] == 0)
+        {
+            return null;
+        }
+
+        List<Unit> units = new List<Unit>();
+        foreach(Unit unit in Units)
+        {
+            if(unit.Faction == faction)
+            {
+                units.Add(unit);
+            }
+        }
+
+        return units;
+    }
+
     public Unit GetNearestUnitOfFaction(Faction faction, BoardSquare origin)
     {
         if(origin == null)

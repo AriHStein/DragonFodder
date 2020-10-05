@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MeleeBase : Unit
 {
-    [SerializeField] int m_damage = 1;
+    //[SerializeField] int m_damage = 1;
     
     public override void DoTurn()
     {

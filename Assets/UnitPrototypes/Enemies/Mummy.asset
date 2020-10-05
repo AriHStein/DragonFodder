@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Mummy
   m_EditorClassIdentifier: 
   Type: Mummy
-  MaxHealth: 12
+  MaxHealth: 15
+  AttackDamage: 3

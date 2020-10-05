@@ -36,7 +36,7 @@ public  abstract class Unit : MonoBehaviour
         //CurrentHealth = MaxHealth;
     }
 
-    public void Initialize(BoardSquare square, UnitData data)
+    public virtual void Initialize(BoardSquare square, UnitData data)
     {
         ID = data.ID;
         Type = data.Type;
@@ -68,7 +68,7 @@ public  abstract class Unit : MonoBehaviour
     protected virtual void Attack(Unit target)
     {
         m_animator.SetTrigger("Attack");
-        target.TakeDamage(m_prototype.AttackDamage);
+        target.ChangeHealth(-m_prototype.AttackDamage);
     }
 
     protected virtual void MoveToward(BoardSquare dest)
@@ -86,20 +86,21 @@ public  abstract class Unit : MonoBehaviour
         }
     }
 
-    public virtual void TakeDamage(int amount)
+    public virtual void ChangeHealth(int amount)
     {
-        CurrentHealth -= amount;
+        CurrentHealth += amount;
+        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
         if(CurrentHealth <= 0)
         {
             Die();
         }
     }
 
-    public virtual void Heal(int amount)
-    {
-        CurrentHealth += amount;
-        CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
-    }
+    //public virtual void Heal(int amount)
+    //{
+    //    CurrentHealth += amount;
+    //    CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
+    //}
 
     protected virtual void Die()
     {

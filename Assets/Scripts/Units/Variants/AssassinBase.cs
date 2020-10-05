@@ -128,6 +128,6 @@ public class AssassinBase : Unit
 
     bool CanMoveTo(BoardSquare dest)
     {
-        return dest.Unit == null || dest.Unit == this;
+        return dest != null && (dest.Unit == null || dest.Unit == this);
     }
 }
