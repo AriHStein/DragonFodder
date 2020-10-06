@@ -1,7 +1,7 @@
 {
     "Units": [
         {
-            "Type": "Mummy",
+            "Type": "Zombie",
             "ID": {
                 "Value": "37d06eea-7405-4120-8516-586d8db67469"
             },
@@ -10,7 +10,8 @@
                 "y": 2
             },
             "Faction": 1,
-            "CurrentHealth": 12
+            "CurrentHealth": -1,
+            "Difficulty": 2
         }
     ],
     "SquadOrigin": {

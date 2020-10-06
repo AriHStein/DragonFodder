@@ -10,7 +10,8 @@
                 "y": 2
             },
             "Faction": 1,
-            "CurrentHealth": 10
+            "CurrentHealth": -1,
+            "Difficulty": 2
         },
         {
             "Type": "Zombie",
@@ -22,7 +23,8 @@
                 "y": 2
             },
             "Faction": 1,
-            "CurrentHealth": 10
+            "CurrentHealth": -1,
+            "Difficulty": 2
         }
     ],
     "SquadOrigin": {

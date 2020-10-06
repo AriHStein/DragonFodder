@@ -15,3 +15,5 @@ MonoBehaviour:
   Type: Vampire
   MaxHealth: 8
   AttackDamage: 2
+  TimeBetweenActions: 0.5
+  Difficulty: 3

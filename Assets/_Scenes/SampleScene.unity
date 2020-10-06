@@ -572,7 +572,7 @@ RectTransform:
   m_Children:
   - {fileID: 715540173}
   m_Father: {fileID: 1773047890}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -4658,7 +4658,7 @@ PrefabInstance:
     - target: {fileID: 7164145704066296261, guid: 54710c405d4e3b34ea985e4a54547cd1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7164145704066296261, guid: 54710c405d4e3b34ea985e4a54547cd1,
         type: 3}
@@ -7817,7 +7817,7 @@ PrefabInstance:
     - target: {fileID: 7164145704066296261, guid: 54710c405d4e3b34ea985e4a54547cd1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7164145704066296261, guid: 54710c405d4e3b34ea985e4a54547cd1,
         type: 3}
@@ -9061,7 +9061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f4d3fb54cc6154da90bc5da3670512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_encounterCount: 5
+  m_encounterDifficulties: 03000000050000000800000008000000050000000c0000000f00000014000000
   m_dugeonModePanel: {fileID: 1622820466}
   m_encounterButtonPrefab: {fileID: 2940703570335484169, guid: 9996a7a31d3704240be13f6002dde786,
     type: 3}
@@ -9208,10 +9208,10 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 92540046}
   - {fileID: 1490388753}
   - {fileID: 5579978871049032257}
   - {fileID: 924821024}
+  - {fileID: 92540046}
   - {fileID: 1953051935}
   m_Father: {fileID: 647451093}
   m_RootOrder: 0
@@ -11031,7 +11031,7 @@ PrefabInstance:
     - target: {fileID: 7164145704066296261, guid: 54710c405d4e3b34ea985e4a54547cd1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7164145704066296261, guid: 54710c405d4e3b34ea985e4a54547cd1,
         type: 3}
@@ -11280,5 +11280,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4456006244870393134, guid: 3ee33f18ab299cd408a885a279ebb9c4,
         type: 3}
+    - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
+        type: 3}
+      propertyPath: m_timeBetweenTurns
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28f443691efbfd34ea391b1133433421, type: 3}

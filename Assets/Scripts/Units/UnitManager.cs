@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class UnitManager
 {
     public List<Unit> Units { get; protected set; }
     HashSet<Unit> m_diedThisTurn;
+
+    //List<Unit> m_turnOrder;
 
     Dictionary<string, UnitPrototype> m_unitPrototypeMap;
     Dictionary<string, GameObject> m_unitPrefabMap;
@@ -14,6 +17,7 @@ public class UnitManager
     public UnitManager(List<GameObject> unitPrefabs)
     {
         Units = new List<Unit>();
+        //m_turnOrder = new List<Unit>();
         m_diedThisTurn = new HashSet<Unit>();
         m_factionCount = new Dictionary<Faction, int>();
 
@@ -79,6 +83,7 @@ public class UnitManager
     public void RemoveUnit(Unit unit)
     {
         Units.Remove(unit);
+        //m_turnOrder.Remove(unit);
         unit.Square.Unit = null;
         unit.Square = null;
         //Debug.Log(unit.Faction);
@@ -93,12 +98,27 @@ public class UnitManager
         GameObject.Destroy(unit.gameObject);
     }
 
-    public void DoUnitTurns()
+    //public void SetTurnOrder()
+    //{
+    //    Debug.Log($"SetTurnOrder. {Units.Count} units");
+    //    m_turnOrder = Units.OrderByDescending(u => u.Proto.TimeBetweenActions).ToList();
+    //}
+
+    public void DoUnitTurns(float deltaTime)
     {
         m_diedThisTurn.Clear();
-        foreach(Unit unit in Units)
+        //if(m_turnOrder.Count == 0)
+        //{
+        //    SetTurnOrder();
+        //}
+        //m_turnOrder[m_turnOrder.Count - 1].DoTurn();
+        //m_turnOrder.RemoveAt(m_turnOrder.Count - 1);
+        foreach (Unit unit in Units)
         {
-            unit.DoTurn();
+            if(unit.ReadyForTurn(deltaTime))
+            {
+                unit.DoTurn();
+            }
         }
     }
 

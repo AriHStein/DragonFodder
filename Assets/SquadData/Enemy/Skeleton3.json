@@ -10,7 +10,8 @@
                 "y": 2
             },
             "Faction": 1,
-            "CurrentHealth": 3
+            "CurrentHealth": -1,
+            "Difficulty": 1
         },
         {
             "Type": "Skeleton",
@@ -22,7 +23,8 @@
                 "y": 2
             },
             "Faction": 1,
-            "CurrentHealth": 3
+            "CurrentHealth": -1,
+            "Difficulty": 1
         },
         {
             "Type": "Skeleton",
@@ -34,7 +36,8 @@
                 "y": 2
             },
             "Faction": 1,
-            "CurrentHealth": 3
+            "CurrentHealth": -1,
+            "Difficulty": 1
         }
     ],
     "SquadOrigin": {

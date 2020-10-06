@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Wizard
   m_EditorClassIdentifier: 
   Type: Wizard
-  MaxHealth: 3
-  AttackDamage: 2
+  MaxHealth: 4
+  AttackDamage: 5
+  TimeBetweenActions: 3
+  Difficulty: 1

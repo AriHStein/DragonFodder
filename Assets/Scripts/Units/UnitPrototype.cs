@@ -12,6 +12,9 @@ public class UnitPrototype : ScriptableObject
     //public Faction Faction;
     public int MaxHealth;
     public int AttackDamage;
+    public float TimeBetweenActions;
+
+    public int Difficulty = 1;
 
     //public static UnitData GetData(Unit unit)
     //{
@@ -49,11 +52,13 @@ public struct UnitData
     public Faction Faction;
     //public int MaxHealth;
     public int CurrentHealth;
+    public int Difficulty;
 
     private UnitData(
         string type, 
         //UnitPrototype proto,
         Guid id, 
+        int difficulty,
         Vector2Int position, 
         Faction faction, 
         //int maxHealth, 
@@ -62,6 +67,7 @@ public struct UnitData
         Type = type;
         //Proto = proto;
         ID = id;
+        Difficulty = difficulty;
         Position = position;
         Faction = faction;
         //MaxHealth = maxHealth;
@@ -73,6 +79,7 @@ public struct UnitData
         Type = unit.Proto.Type;
         //Proto = unit.Proto;
         ID = unit.ID;
+        Difficulty = unit.Proto.Difficulty;
         Position = unit.Square.Position - origin;
         Faction = unit.Faction;
         //MaxHealth = unit.MaxHealth;
@@ -84,6 +91,7 @@ public struct UnitData
         Type = proto.Type;
         //Proto = proto;
         ID = Guid.NewGuid();
+        Difficulty = proto.Difficulty;
         Position = position;
         Faction = faction;
         //MaxHealth = proto.MaxHealth;
@@ -96,6 +104,7 @@ public struct UnitData
             Type, 
             //Proto,
             ID, 
+            Difficulty,
             Position, 
             Faction, 
             //MaxHealth, 

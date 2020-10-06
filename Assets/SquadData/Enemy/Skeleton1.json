@@ -1,17 +1,17 @@
 {
     "Units": [
         {
-            "Type": "Vampire",
+            "Type": "Skeleton",
             "ID": {
-                "Value": "06e9d3b2-4542-4ac3-85a2-1930eaeab293"
+                "Value": "58b79622-94da-4c00-84c4-ccb0b540912f"
             },
             "Position": {
-                "x": 1,
-                "y": 0
+                "x": 0,
+                "y": 2
             },
             "Faction": 1,
             "CurrentHealth": -1,
-            "Difficulty": 3
+            "Difficulty": 1
         }
     ],
     "SquadOrigin": {

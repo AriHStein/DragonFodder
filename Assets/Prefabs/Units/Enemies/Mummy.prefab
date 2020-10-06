@@ -1259,7 +1259,7 @@ GameObject:
   - component: {fileID: 561739373294045666}
   - component: {fileID: 475160536178034606}
   - component: {fileID: 3075172601335359205}
-  - component: {fileID: 1000702899943521082}
+  - component: {fileID: -7976650061701566975}
   m_Layer: 0
   m_Name: Mummy
   m_TagString: Untagged
@@ -1316,7 +1316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_healthImage: {fileID: 2211181566648203787}
---- !u!114 &1000702899943521082
+--- !u!114 &-7976650061701566975
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1325,13 +1325,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 561739373294329650}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1d1e14f33f3235448bdf94b892d3beb, type: 3}
+  m_Script: {fileID: 11500000, guid: f7e0853af93c6104fa44688fe06250d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_prototype: {fileID: 11400000, guid: 01a61e311ac32c343b3d4fb1a821cf11, type: 2}
   Square: {fileID: 0}
-  m_damage: 1
-  m_numberOfTurnsToSkip: 1
 --- !u!1 &561739373294331640
 GameObject:
   m_ObjectHideFlags: 0

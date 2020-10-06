@@ -47,7 +47,15 @@ public  abstract class Unit : MonoBehaviour
 
         //MaxHealth = data.Proto.MaxHealth;
         MaxHealth = Board.Current.UnitManager.GetUnitPrototypeOfType(data.Type).MaxHealth;
-        CurrentHealth = data.CurrentHealth;
+        if (data.CurrentHealth == -1)
+        {
+            CurrentHealth = MaxHealth;
+        }
+        else
+        {
+            CurrentHealth = data.CurrentHealth;
+        }
+
 
         Faction = data.Faction;
         if(m_materialSwapper != null)
@@ -55,9 +63,23 @@ public  abstract class Unit : MonoBehaviour
             m_materialSwapper.SwapMaterial(Faction);
         }
 
+        m_timeUntilNextTurn = Proto.TimeBetweenActions;
+
         Board.Current.UnitManager.RegisterUnit(this);
     }
 
+    float m_timeUntilNextTurn;
+    public virtual bool ReadyForTurn(float deltaTime)
+    {
+        m_timeUntilNextTurn -= deltaTime;
+        if(m_timeUntilNextTurn <= 0)
+        {
+            m_timeUntilNextTurn = Proto.TimeBetweenActions + UnityEngine.Random.Range(-2f, 2)*deltaTime;
+            return true;
+        }
+
+        return false;
+    }
     public abstract void DoTurn();
 
     public void FaceToward(BoardSquare square)

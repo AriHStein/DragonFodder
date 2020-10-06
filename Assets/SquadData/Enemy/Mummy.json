@@ -10,7 +10,8 @@
                 "y": 2
             },
             "Faction": 1,
-            "CurrentHealth": 12
+            "CurrentHealth": -1,
+            "Difficulty": 2
         }
     ],
     "SquadOrigin": {

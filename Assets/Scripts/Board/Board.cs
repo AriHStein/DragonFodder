@@ -257,7 +257,7 @@ public class Board : MonoBehaviour
 
         if (m_timeUntilNextTurn <= 0)
         {
-            UnitManager.DoUnitTurns();
+            UnitManager.DoUnitTurns(m_timeBetweenTurns);
             m_timeUntilNextTurn = m_timeBetweenTurns;
         }
         else
@@ -523,12 +523,14 @@ public class Board : MonoBehaviour
             Squares[data.Position.x, data.Position.y].gameObject.activeInHierarchy == false || 
             Squares[data.Position.x, data.Position.y].Unit != null)
         {
+            Debug.LogWarning("Failed to place unit");
             return null;
         }
 
         GameObject prefab = UnitManager.GetPrefabOfType(data.Type);
         if(prefab == null)
         {
+            Debug.LogWarning("Failed to place unit");
             return null;
         }
         
@@ -545,7 +547,7 @@ public class Board : MonoBehaviour
             return false;
         }
 
-        data.UpdateSize();
+        data.RecalculateParameters();
         Vector2Int origin = mirror ? MirrorPosition(data.SquadOrigin + offset) : data.SquadOrigin + offset;
         Vector2Int size = mirror ? MirrorPosition(data.SquadOrigin + offset + data.Size) : data.SquadOrigin + offset + data.Size;
 
@@ -558,7 +560,7 @@ public class Board : MonoBehaviour
             return false;
         }
 
-        bool allUnitsPlaced = true;
+        int failedUnitCount = 0;
         foreach(UnitData unit in data.Units)
         {
             UnitData clone = unit.Clone();
@@ -568,12 +570,19 @@ public class Board : MonoBehaviour
                 clone.Position = MirrorPosition(clone.Position);
             }
             Unit placedUnit = TryPlaceUnit(clone);
+            if(placedUnit == null)
+            {
+                Debug.LogWarning($"Failed to place unit {clone.Type}");
+                failedUnitCount++;
+                continue;
+            }
+
             int faceDir = mirror ? -1 : 1;
             placedUnit.FaceToward(GetSquareAt(placedUnit.Square.Position.x, placedUnit.Square.Position.y + faceDir));
-            allUnitsPlaced = placedUnit != null && allUnitsPlaced;
         }
 
-        return allUnitsPlaced;
+        Debug.LogWarning($"Failed to place {failedUnitCount} units");
+        return failedUnitCount == 0;
     }
 
     public Vector2Int MirrorPosition(Vector2Int pos)

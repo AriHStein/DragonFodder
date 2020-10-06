@@ -60,7 +60,7 @@ public class UnitSaveLoadUtility
 
         string json = File.ReadAllText(path);
         SquadData squad = JsonUtility.FromJson<SquadData>(json);
-        squad.UpdateSize();
+        squad.RecalculateParameters();
         return squad;
     }
 

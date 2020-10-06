@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(RectTransform))]
 public class DungeonMap : MonoBehaviour
 {
-    [SerializeField] int m_encounterCount = 4;
+    //[SerializeField] int m_encounterCount = 4;
+    [SerializeField] List<int> m_encounterDifficulties = default;
     [SerializeField] GameObject m_dugeonModePanel = default;
     [SerializeField] GameObject m_encounterButtonPrefab = default;
 
@@ -36,9 +37,9 @@ public class DungeonMap : MonoBehaviour
     void GenerateEncounters()
     {
         m_encounters = new List<Encounter>();
-        for(int i = 0; i < m_encounterCount; i++)
+        for(int i = 0; i < m_encounterDifficulties.Count; i++)
         {
-            Encounter e = EncounterBuilder.GenerateEncounter(i + 1);
+            Encounter e = EncounterBuilder.GenerateEncounter(m_encounterDifficulties[i]);
             m_encounters.Add(e);
         }
     }
