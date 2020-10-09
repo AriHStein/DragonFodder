@@ -121,7 +121,7 @@ public class AssassinBase : Unit
             }
 
             // No squares adjacent to target were open. Do not move.
-            return false;
+            //return false;
         }
 
         return Board.Current.TryMoveUnitTo(this, moveTo);

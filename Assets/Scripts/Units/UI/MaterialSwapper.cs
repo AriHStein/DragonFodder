@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Unit))]
 public class MaterialSwapper : MonoBehaviour
 {
     [SerializeField] List<MeshRenderer> m_targets = default;
@@ -46,6 +47,24 @@ public class MaterialSwapper : MonoBehaviour
 
             m_materialsMap[pair.Faction] = pair.Material;
         }
+    }
+
+    private void OnEnable()
+    {
+        Unit unit = GetComponent<Unit>();
+        unit.InitializedEvent += OnUnitInitialized;
+        OnUnitInitialized(unit);
+        //SwapMaterial(unit.Faction);
+    }
+
+    private void OnDisable()
+    {
+        GetComponent<Unit>().InitializedEvent -= OnUnitInitialized;
+    }
+
+    void OnUnitInitialized(Unit unit)
+    {
+        SwapMaterial(unit.Faction);
     }
 
     public void SwapMaterial(Faction faction)

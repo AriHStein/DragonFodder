@@ -149,6 +149,14 @@ public class UnitManager
 
     }
 
+    public void TriggerVictoryAnimations()
+    {
+        foreach(Unit unit in Units)
+        {
+            unit.VictoryDance();
+        }
+    }
+
     public List<Unit> GetUnitsOfFaction(Faction faction)
     {
         if(!m_factionCount.ContainsKey(faction) || m_factionCount[faction] == 0)

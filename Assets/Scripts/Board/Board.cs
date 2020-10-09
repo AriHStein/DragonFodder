@@ -30,6 +30,8 @@ public class Board : MonoBehaviour
     [SerializeField] GameObject m_blackSquare = default;
     [SerializeField] Vector2Int m_defaultBoardSize = Vector2Int.one;
     [SerializeField] Vector2Int m_defaultSquadSize = Vector2Int.one;
+
+    [SerializeField] float m_endOfBattleDelayLength = 5f;
     //[SerializeField] int m_rowsAllowedForUnitPlacement = 3;
     //[SerializeField] int m_battleModeEnemyFormationSize = 3;
 
@@ -74,20 +76,20 @@ public class Board : MonoBehaviour
         StartGame();
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        if(moveGraph != null && moveGraph.Walking != null)
-        {
-            foreach(BoardSquare square in moveGraph.Walking.Graph.Keys)
-            {
-                foreach(Path_Edge<BoardSquare> edge in moveGraph.Walking.Graph[square].edges)
-                {
-                    Gizmos.DrawLine(square.transform.position, edge.node.data.transform.position);
-                }
-            }
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    if(moveGraph != null && moveGraph.Walking != null)
+    //    {
+    //        foreach(BoardSquare square in moveGraph.Walking.Graph.Keys)
+    //        {
+    //            foreach(Path_Edge<BoardSquare> edge in moveGraph.Walking.Graph[square].edges)
+    //            {
+    //                Gizmos.DrawLine(square.transform.position, edge.node.data.transform.position);
+    //            }
+    //        }
+    //    }
+    //}
 
     void PositionCamera()
     {
@@ -458,14 +460,36 @@ public class Board : MonoBehaviour
             return;
         }
 
+        UnitManager.TriggerVictoryAnimations();
+        EnterPlayMode(PlayMode.Paused);
         if(playerWon)
         {
-            BattleWon();
+            Invoke("BattleWon", m_endOfBattleDelayLength);
         } else
         {
-            BattleLost();
+            Invoke("BattleLost", m_endOfBattleDelayLength);
         }
     }
+
+    //IEnumerator<bool> EndOfBattleDelay(bool battleWon)
+    //{
+    //    //yield return new WaitForSeconds(m_endOfBattleDelayLength);
+    //    float elapsedTime = 0f;
+    //    while (elapsedTime < m_endOfBattleDelayLength)
+    //    {
+    //        elapsedTime += Time.deltaTime;
+    //        yield return false;
+    //    }
+
+    //    if (battleWon)
+    //    {
+    //        BattleWon();
+    //    }
+    //    else
+    //    {
+    //        BattleLost();
+    //    }
+    //}
 
     void BattleWon()
     {

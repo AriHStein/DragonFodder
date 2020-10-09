@@ -6,12 +6,12 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Ghoul
+  m_Name: WizardOverride
   m_Controller: {fileID: 9100000, guid: 8a4411d6f1696d7418d678722613631b, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: d2e63195e89a6ee40a450ff3c17627d6, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: af84d9698cdb86449a1d16ea9e082ddf, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: e186df74f0ea8a94592a2e6276025b40, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 215d749fb77109d44a85bcc30d3b6444, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: d370a8b163bf70246a304719e9c0b81d, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 7eea76fb9ca65c1438f665d3fc2d9a4d, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: d1938595c3277be46bbbfdb793bac89e, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: c9b4d175e82478443966b1e0e0a37ebe, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 0c74f6dfbfdc06b42ac0b825cbcca08f, type: 2}

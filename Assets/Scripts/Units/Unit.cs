@@ -6,7 +6,6 @@ using Pathfinding;
 
 public enum Faction { Player, Enemy }
 [RequireComponent(typeof(Animator))]
-//[RequireComponent(typeof(MaterialSwapper))]
 public  abstract class Unit : MonoBehaviour
 {
 
@@ -24,9 +23,9 @@ public  abstract class Unit : MonoBehaviour
     public int CurrentHealth { get; protected set; }
 
     public event Action<Unit> DeathEvent;
+    public event Action<Unit> InitializedEvent;
 
     protected Animator m_animator;
-    protected MaterialSwapper m_materialSwapper;
 
     protected Path_AStar<BoardSquare> path;
 
@@ -35,7 +34,6 @@ public  abstract class Unit : MonoBehaviour
     protected virtual void Awake()
     {
         m_animator = GetComponent<Animator>();
-        m_materialSwapper = GetComponent<MaterialSwapper>();
     }
 
     protected virtual void Start()
@@ -66,14 +64,12 @@ public  abstract class Unit : MonoBehaviour
 
 
         Faction = data.Faction;
-        if(m_materialSwapper != null)
-        {
-            m_materialSwapper.SwapMaterial(Faction);
-        }
 
         m_timeUntilNextTurn = Proto.TimeBetweenActions;
 
         Board.Current.UnitManager.RegisterUnit(this);
+
+        InitializedEvent?.Invoke(this);
     }
 
     float m_timeUntilNextTurn;
@@ -144,16 +140,15 @@ public  abstract class Unit : MonoBehaviour
         }
     }
 
-    //public virtual void Heal(int amount)
-    //{
-    //    CurrentHealth += amount;
-    //    CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
-    //}
-
     protected virtual void Die()
     {
         DeathEvent?.Invoke(this);
         //Square.Unit = null;
         //Destroy(gameObject);
+    }
+
+    public void VictoryDance()
+    {
+        m_animator.SetTrigger("Victory");
     }
 }
