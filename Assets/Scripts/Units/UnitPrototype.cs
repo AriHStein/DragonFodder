@@ -15,6 +15,7 @@ public class UnitPrototype : ScriptableObject
     public float TimeBetweenActions;
 
     public int Difficulty = 1;
+    public bool Flying = false;
 
     //public static UnitData GetData(Unit unit)
     //{

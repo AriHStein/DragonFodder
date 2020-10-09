@@ -22,7 +22,8 @@ public class InputManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        m_mouseIndicator.SetActive(false);
+        CleanupPreviews();
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             TimeManager.TogglePause();
@@ -36,14 +37,18 @@ public class InputManager : MonoBehaviour
         HandleSelectionInput();
     }
 
+    void CleanupPreviews()
+    {
+        m_mouseIndicator.SetActive(false);
+
+        if (m_unitPreview != null)
+        {
+            m_unitPreview.SetActive(false);
+        }
+    }
+
     void HandleSelectionInput()
     {
-
-        BoardSquare squareUnderMouse = GetSquareUnderMouse();
-        if (squareUnderMouse == null)
-        {
-            return;
-        }
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -51,6 +56,12 @@ public class InputManager : MonoBehaviour
             CancelPlacementEvent?.Invoke();
             //m_grabbedUnit = null;
             m_newUnitToPlace = new UnitData();
+        }
+
+        BoardSquare squareUnderMouse = GetSquareUnderMouse();
+        if (squareUnderMouse == null || !squareUnderMouse.Interactable)
+        {
+            return;
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -71,17 +82,15 @@ public class InputManager : MonoBehaviour
             }
             else
             {
-                if (squareUnderMouse.Unit != null)
+                if(GrabUnitAt(squareUnderMouse))
                 {
-                    m_grabbedUnit = squareUnderMouse.Unit;
                     return;
                 }
             }
         }
         else
         {
-            m_mouseIndicator.transform.position = squareUnderMouse.transform.position + Vector3.up;
-            m_mouseIndicator.SetActive(true);
+            ShowPreviewAt(squareUnderMouse);
         }
     }
 
@@ -96,33 +105,18 @@ public class InputManager : MonoBehaviour
         return null;
     }
 
-    public void SelectUnitToPlace(UnitData data, Faction faction)
-    {
-        m_newUnitToPlace = data;
-        m_currentFaction = faction;
-        ReturnGrabbedUnitToOriginalPosition();
-    }
-
-    void ReturnGrabbedUnitToOriginalPosition()
-    {
-        if(m_grabbedUnit == null)
-        {
-            return;
-        }
-        
-        m_grabbedUnit = null;
-    }
-
     bool TryMoveUnitSelectedToSquare(BoardSquare square)
     {
-        if(square == null || m_grabbedUnit == null || m_grabbedUnit.Square == square)
+        if (square == null || m_grabbedUnit == null || m_grabbedUnit.Square == square)
         {
             return false;
         }
 
-        if(Board.Current.TryMoveUnitTo(m_grabbedUnit, square))
+        if (Board.Current.TryMoveUnitTo(m_grabbedUnit, square))
         {
+            m_grabbedUnit.gameObject.SetActive(true);
             m_grabbedUnit = null;
+            ClearPreviewUnit();
             return true;
         }
 
@@ -131,7 +125,7 @@ public class InputManager : MonoBehaviour
 
     bool TryPlaceNewUnit(BoardSquare square)
     {
-        if(square == null || m_newUnitToPlace.ID == Guid.Empty || square.Unit != null)
+        if (square == null || m_newUnitToPlace.ID == Guid.Empty || square.Unit != null)
         {
             return false;
         }
@@ -139,14 +133,77 @@ public class InputManager : MonoBehaviour
         m_newUnitToPlace.Position = square.Position;
         m_newUnitToPlace.Faction = m_currentFaction;
         //Board.Current.TryPlaceUnit(new UnitData(m_newUnitToPlace, square.Position, m_currentFaction));
-        if(Board.Current.TryPlaceUnit(m_newUnitToPlace) != null)
+        if (Board.Current.TryPlaceUnit(m_newUnitToPlace) != null)
         {
             UnitPlacedEvent?.Invoke();
             m_newUnitToPlace = new UnitData();
+            ClearPreviewUnit();
             return true;
-        } else
+        }
+        else
         {
             return false;
         }
+    }
+
+    bool GrabUnitAt(BoardSquare square)
+    {
+        if (square.Unit != null)
+        {
+            m_grabbedUnit = square.Unit;
+            m_grabbedUnit.gameObject.SetActive(false);
+            m_unitPreview = Instantiate(m_grabbedUnit.gameObject, transform);
+            return true;
+        }
+
+        return false;
+    }
+
+    void ReturnGrabbedUnitToOriginalPosition()
+    {
+        if (m_grabbedUnit == null)
+        {
+            return;
+        }
+
+        m_grabbedUnit.gameObject.SetActive(true);
+        m_grabbedUnit = null;
+    }
+
+    void ShowPreviewAt(BoardSquare square)
+    {
+        if (m_unitPreview != null)
+        {
+            m_unitPreview.transform.position = square.transform.position;
+            m_unitPreview.gameObject.SetActive(true);
+        }
+        else
+        {
+            m_mouseIndicator.transform.position = square.transform.position + Vector3.up;
+            m_mouseIndicator.SetActive(true);
+        }
+    }
+
+    void ClearPreviewUnit()
+    {
+        if (m_unitPreview == null)
+        {
+            return;
+        }
+
+        Destroy(m_unitPreview);
+        m_unitPreview = null;
+    }
+
+
+    public void SelectUnitToPlace(UnitData data, Faction faction)
+    {
+        ReturnGrabbedUnitToOriginalPosition();
+        CancelPlacementEvent?.Invoke();
+
+        m_newUnitToPlace = data;
+        m_currentFaction = faction;
+        m_unitPreview = Instantiate(Board.Current.UnitManager.GetPrefabOfType(data.Type), transform);
+
     }
 }

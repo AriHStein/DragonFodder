@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Pathfinding;
 
 public enum PlayMode { UnitPlacement, SquadEditor, Battle, Paused, Dungeon }
 public class Board : MonoBehaviour
@@ -8,6 +9,9 @@ public class Board : MonoBehaviour
     public static Board Current;
     public PlayMode PlayMode { get; protected set; }
     public UnitManager UnitManager { get; protected set; }
+    PathManager_AStar<BoardSquare> pathManager;
+    BoardGraph moveGraph;
+    //MoveGraph flyingGraph;
 
     public Action<PlayMode> PlayModeChangedEvent; 
 
@@ -26,11 +30,11 @@ public class Board : MonoBehaviour
     [SerializeField] GameObject m_blackSquare = default;
     [SerializeField] Vector2Int m_defaultBoardSize = Vector2Int.one;
     [SerializeField] Vector2Int m_defaultSquadSize = Vector2Int.one;
-    [SerializeField] int m_rowsAllowedForUnitPlacement = 3;
-    [SerializeField] int m_battleModeEnemyFormationSize = 3;
+    //[SerializeField] int m_rowsAllowedForUnitPlacement = 3;
+    //[SerializeField] int m_battleModeEnemyFormationSize = 3;
 
-    [SerializeField] float m_timeBetweenTurns = 2f;
-    float m_timeUntilNextTurn;
+    //[SerializeField] float m_timeBetweenTurns = 2f;
+    //float m_timeUntilNextTurn;
 
     Squad m_currentPlayerSquad;
     //SquadData m_enemySquadStartPosition;
@@ -53,10 +57,11 @@ public class Board : MonoBehaviour
     public void Awake()
     {
         UnitManager = new UnitManager(m_unitPrefabs);
+        pathManager = new PathManager_AStar<BoardSquare>();
         Current = this;
         //PlayMode = PlayMode.UnitPlacement;
 
-        m_timeUntilNextTurn = m_timeBetweenTurns;
+        //m_timeUntilNextTurn = m_timeBetweenTurns;
 
         SetupSquares(m_defaultBoardSize.x, m_defaultBoardSize.y);
         //SetupUnits();
@@ -67,6 +72,21 @@ public class Board : MonoBehaviour
     {
         //EnterPlayMode(PlayMode.UnitPlacement);
         StartGame();
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        if(moveGraph != null && moveGraph.Walking != null)
+        {
+            foreach(BoardSquare square in moveGraph.Walking.Graph.Keys)
+            {
+                foreach(Path_Edge<BoardSquare> edge in moveGraph.Walking.Graph[square].edges)
+                {
+                    Gizmos.DrawLine(square.transform.position, edge.node.data.transform.position);
+                }
+            }
+        }
     }
 
     void PositionCamera()
@@ -117,7 +137,37 @@ public class Board : MonoBehaviour
         }
 
         PositionCamera();
+        RefreshMoveGraph();
         return true;
+    }
+
+    public void SetSquaresInteractable(int columns, int rows)
+    {
+        for(int x = 0; x < Squares.GetLength(0); x++)
+        {
+            for(int y = 0; y < Squares.GetLength(1); y++)
+            {
+                Squares[x, y].Interactable = x < columns && y < rows;
+            }
+        }
+    }
+
+    void RefreshMoveGraph()
+    {
+        //Debug.Log("Refresh Graph");
+        moveGraph = new BoardGraph(Squares);
+        //flyingGraph = new MoveGraph(Squares, false);
+    }
+
+    public Path_AStar<BoardSquare> GetPath(BoardSquare start, bool flying, Func<BoardSquare, bool> endCondition, Func<BoardSquare, float> heuristic)
+    {
+        if(flying)
+        {
+            return (Path_AStar<BoardSquare>)pathManager.GetPath(moveGraph.Flying, start, endCondition, heuristic);
+        }
+
+        //Debug.Log("Get walking path.");
+        return (Path_AStar<BoardSquare>)pathManager.GetPath(moveGraph.Walking, start, endCondition, heuristic);
     }
 
     void ClearBoard()
@@ -176,6 +226,7 @@ public class Board : MonoBehaviour
 
         SetupSquares(encounter.BoardSize.x, encounter.BoardSize.y, false);
         TryPlaceSquad(encounter.Enemies, Vector2Int.zero, true);
+        SetSquaresInteractable(Squares.GetLength(0), encounter.RowsAllowedForPlayerUnits);
 
         EnterPlayMode(PlayMode.UnitPlacement);
     }
@@ -254,16 +305,17 @@ public class Board : MonoBehaviour
             return;
         }
 
-
-        if (m_timeUntilNextTurn <= 0)
-        {
-            UnitManager.DoUnitTurns(m_timeBetweenTurns);
-            m_timeUntilNextTurn = m_timeBetweenTurns;
-        }
-        else
-        {
-            m_timeUntilNextTurn -= Time.deltaTime;
-        }
+        UnitManager.DoUnitTurns(Time.deltaTime);
+        //if (m_timeUntilNextTurn <= 0)
+        //{
+        //    UnitManager.DoUnitTurns(m_timeBetweenTurns);
+        //    m_timeUntilNextTurn = m_timeBetweenTurns;
+        //}
+        //else
+        //{
+        //    m_timeUntilNextTurn -= Time.deltaTime;
+        //}
+        //RefreshMoveGraph();
     }
 
     void UnitPlacementUpdate()
@@ -361,6 +413,8 @@ public class Board : MonoBehaviour
                 m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 m_dungeonMap.Deactivate();
+
+                //SetSquaresInteractable(Squares.GetLength(0), m_rowsAllowedForUnitPlacement);
                 //ClearBoard();
 
                 //SetupSquares(m_defaultBoardSize.x, m_rowsAllowedForUnitPlacement);
@@ -374,6 +428,7 @@ public class Board : MonoBehaviour
                 m_dungeonMap.Deactivate();
                 ClearBoard();
                 SetupSquares(m_defaultSquadSize.x, m_defaultSquadSize.y);
+                SetSquaresInteractable(Squares.GetLength(0), Squares.GetLength(1));
                 //LoadEnemySquad(true, false);
                 break;
 
@@ -512,7 +567,7 @@ public class Board : MonoBehaviour
         unit.Square = target;
         unit.transform.position = target.transform.position;
         target.Unit = unit;
-
+        RefreshMoveGraph();
         return true;
     }
 
@@ -581,7 +636,7 @@ public class Board : MonoBehaviour
             placedUnit.FaceToward(GetSquareAt(placedUnit.Square.Position.x, placedUnit.Square.Position.y + faceDir));
         }
 
-        Debug.LogWarning($"Failed to place {failedUnitCount} units");
+        //Debug.LogWarning($"Failed to place {failedUnitCount} units");
         return failedUnitCount == 0;
     }
 

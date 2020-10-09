@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Pathfinding;
 
 public enum Faction { Player, Enemy }
 [RequireComponent(typeof(Animator))]
 //[RequireComponent(typeof(MaterialSwapper))]
 public  abstract class Unit : MonoBehaviour
 {
-    public string Type { get; protected set; }
+
     [SerializeField] UnitPrototype m_prototype = default;
-    public UnitPrototype Proto { get { return m_prototype; } }
+    public UnitPrototype Proto { 
+        get { return m_prototype; } 
+    }
     [HideInInspector]
     public BoardSquare Square;
+
+    public string Type { get; protected set; }
     public Faction Faction { get; protected set; }
     public Guid ID { get; protected set; }
+    public int MaxHealth { get { return m_prototype.MaxHealth; } }
+    public int CurrentHealth { get; protected set; }
+
+    public event Action<Unit> DeathEvent;
 
     protected Animator m_animator;
     protected MaterialSwapper m_materialSwapper;
 
-    public int MaxHealth { get; protected set; }
-    public int CurrentHealth { get; protected set; }
+    protected Path_AStar<BoardSquare> path;
 
-    public event Action<Unit> DeathEvent;
+
 
     protected virtual void Awake()
     {
@@ -40,13 +48,13 @@ public  abstract class Unit : MonoBehaviour
     {
         ID = data.ID;
         Type = data.Type;
-        //Proto = data.Proto;
+        //Proto = Board.Current.UnitManager.GetUnitPrototypeOfType(data.Type);
 
         Square = square;
         Square.Unit = this;
 
         //MaxHealth = data.Proto.MaxHealth;
-        MaxHealth = Board.Current.UnitManager.GetUnitPrototypeOfType(data.Type).MaxHealth;
+        //MaxHealth = Board.Current.UnitManager.GetUnitPrototypeOfType(data.Type).MaxHealth;
         if (data.CurrentHealth == -1)
         {
             CurrentHealth = MaxHealth;
@@ -90,22 +98,40 @@ public  abstract class Unit : MonoBehaviour
     protected virtual void Attack(Unit target)
     {
         m_animator.SetTrigger("Attack");
-        target.ChangeHealth(-m_prototype.AttackDamage);
+        target.ChangeHealth(-Proto.AttackDamage);
     }
 
-    protected virtual void MoveToward(BoardSquare dest)
+    protected virtual bool MoveToward(BoardSquare dest)
     {
         Vector2Int offset = dest.Position - Square.Position;
         if (Mathf.Abs(offset.x) > Mathf.Abs(offset.y))
         {
             FaceToward(Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
-            Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
+            return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
         }
         else
         {
             FaceToward(Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
-            Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
+            return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
         }
+    }
+
+    protected virtual bool GetPathTo(BoardSquare dest)
+    {
+        path = Board.Current.GetPath(
+                Square,
+                Proto.Flying,
+                (square) => { return Vector2Int.Distance(square.Position, dest.Position) <= 1; },
+                (square) => { return Vector2Int.Distance(square.Position, dest.Position); }
+            );
+
+        if(path == null || path.Length() == 0)
+        {
+            return false;
+        }
+
+        path.Dequeue();
+        return true;
     }
 
     public virtual void ChangeHealth(int amount)

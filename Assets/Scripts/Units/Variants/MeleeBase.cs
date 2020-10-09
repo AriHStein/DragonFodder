@@ -25,7 +25,15 @@ public class MeleeBase : Unit
         else
         {
             FaceToward(target.Square);
-            MoveToward(target.Square);
+            if(!MoveToward(target.Square))
+            {
+                //Debug.Log("Look for a path.");
+                if(GetPathTo(target.Square))
+                {
+                    //Debug.Log("Found a path");
+                    MoveToward(path.Dequeue());
+                }
+            }
         }
     }
 

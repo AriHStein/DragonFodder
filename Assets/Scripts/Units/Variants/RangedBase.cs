@@ -26,7 +26,13 @@ public class RangedBase : Unit
         } else
         {
             FaceToward(target.Square);
-            MoveToward(target.Square);
+            if (!MoveToward(target.Square))
+            {
+                if (GetPathTo(target.Square))
+                {
+                    MoveToward(path.Dequeue());
+                }
+            }
         }
     }
 

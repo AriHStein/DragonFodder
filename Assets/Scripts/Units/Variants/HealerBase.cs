@@ -27,7 +27,13 @@ public class HealerBase : Unit
         else
         {
             FaceToward(m_target.Square);
-            MoveToward(m_target.Square);
+            if (!MoveToward(m_target.Square))
+            {
+                if (GetPathTo(m_target.Square))
+                {
+                    MoveToward(path.Dequeue());
+                }
+            }
         }
     }
 

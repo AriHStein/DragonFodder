@@ -17,3 +17,4 @@ MonoBehaviour:
   AttackDamage: 2
   TimeBetweenActions: 0.5
   Difficulty: 3
+  Flying: 1

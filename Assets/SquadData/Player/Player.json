@@ -1,19 +1,6 @@
 {
     "Units": [
         {
-            "Type": "Warrior",
-            "ID": {
-                "Value": "f53b72e4-dbbc-4fa3-a502-84aefd52edb2"
-            },
-            "Position": {
-                "x": 2,
-                "y": 2
-            },
-            "Faction": 0,
-            "CurrentHealth": 2,
-            "Difficulty": 0
-        },
-        {
             "Type": "Wizard",
             "ID": {
                 "Value": "f27373cc-02e9-4afe-9c5e-c1f704b6b9d3"
@@ -23,7 +10,7 @@
                 "y": 0
             },
             "Faction": 0,
-            "CurrentHealth": 3,
+            "CurrentHealth": 2,
             "Difficulty": 0
         },
         {

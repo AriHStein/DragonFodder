@@ -6,6 +6,8 @@ public static class EncounterBuilder
 {
     static readonly Vector2Int MIN_BOARD_SIZE = new Vector2Int(6, 6);
     static readonly int MAX_BOARD_ROWS = 12;
+    static readonly int MIN_PLAYER_ROWS = 2;
+    static readonly int MAX_PLAYER_ROWS = 5;
     
     public static Encounter GenerateEncounter(int difficulty)
     {
@@ -19,6 +21,8 @@ public static class EncounterBuilder
         boardSize.x = Mathf.Max(boardSize.x, enemies.Size.x + 1);
         boardSize.y = Mathf.Min(MAX_BOARD_ROWS, boardSize.x);
 
-        return new Encounter(enemies, boardSize, difficulty);
+        int playerRows = Mathf.Clamp(boardSize.y / 3, MIN_PLAYER_ROWS, MAX_PLAYER_ROWS);
+
+        return new Encounter(enemies, boardSize, playerRows, difficulty);
     }
 }

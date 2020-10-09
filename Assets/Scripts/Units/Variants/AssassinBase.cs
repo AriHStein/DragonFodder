@@ -66,7 +66,7 @@ public class AssassinBase : Unit
         m_target = null;
     }
 
-    protected override void MoveToward(BoardSquare dest)
+    protected override bool MoveToward(BoardSquare dest)
     {
         Vector2Int move = dest.Position - Square.Position;
         Vector2Int destPos;
@@ -82,10 +82,10 @@ public class AssassinBase : Unit
             //MoveToNearestOpenAdjacent(Board.Current.GetSquareAt(destPos.x, destPos.y));
         }
 
-        MoveToOpenAdjacent(Board.Current.GetSquareAt(destPos.x, destPos.y), move);
+        return MoveToOpenAdjacent(Board.Current.GetSquareAt(destPos.x, destPos.y), move);
     }
 
-    void MoveToOpenAdjacent(BoardSquare dest, Vector2Int fromDir)
+    bool MoveToOpenAdjacent(BoardSquare dest, Vector2Int fromDir)
     {
         BoardSquare moveTo = null;
         if(CanMoveTo(dest))
@@ -121,9 +121,10 @@ public class AssassinBase : Unit
             }
 
             // No squares adjacent to target were open. Do not move.
+            return false;
         }
 
-        Board.Current.TryMoveUnitTo(this, moveTo);
+        return Board.Current.TryMoveUnitTo(this, moveTo);
     }
 
     bool CanMoveTo(BoardSquare dest)

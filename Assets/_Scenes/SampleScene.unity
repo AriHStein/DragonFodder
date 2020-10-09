@@ -11285,5 +11285,10 @@ PrefabInstance:
       propertyPath: m_timeBetweenTurns
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
+        type: 3}
+      propertyPath: m_rowsAllowedForUnitPlacement
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28f443691efbfd34ea391b1133433421, type: 3}
