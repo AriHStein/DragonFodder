@@ -22,6 +22,9 @@ public  abstract class Unit : MonoBehaviour
     public int MaxHealth { get { return m_prototype.MaxHealth; } }
     public int CurrentHealth { get; protected set; }
 
+    public int MaxMP { get; protected set; }
+    public int CurrentMP { get; protected set; }
+
     public event Action<Unit> DeathEvent;
     public event Action<Unit> InitializedEvent;
 
@@ -138,6 +141,17 @@ public  abstract class Unit : MonoBehaviour
         {
             Die();
         }
+
+        if(amount < 0)
+        {
+            AddMP(-amount);
+        }
+    }
+
+    protected virtual void AddMP(int amount)
+    {
+        CurrentMP += amount;
+        CurrentMP = Mathf.Clamp(CurrentMP, 0, MaxMP);
     }
 
     protected virtual void Die()

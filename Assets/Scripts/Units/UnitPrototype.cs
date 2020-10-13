@@ -11,6 +11,7 @@ public class UnitPrototype : ScriptableObject
     public string Type;
     //public Faction Faction;
     public int MaxHealth;
+    public int MaxMP;
     public int AttackDamage;
     public float TimeBetweenActions;
 
@@ -53,6 +54,7 @@ public struct UnitData
     public Faction Faction;
     //public int MaxHealth;
     public int CurrentHealth;
+    public int CurrentMP;
     public int Difficulty;
 
     private UnitData(
@@ -63,7 +65,8 @@ public struct UnitData
         Vector2Int position, 
         Faction faction, 
         //int maxHealth, 
-        int currentHealth)
+        int currentHealth, 
+        int currentMP)
     {
         Type = type;
         //Proto = proto;
@@ -73,6 +76,7 @@ public struct UnitData
         Faction = faction;
         //MaxHealth = maxHealth;
         CurrentHealth = currentHealth;
+        CurrentMP = currentMP;
     }
 
     public UnitData(Unit unit, Vector2Int origin)
@@ -85,6 +89,7 @@ public struct UnitData
         Faction = unit.Faction;
         //MaxHealth = unit.MaxHealth;
         CurrentHealth = unit.CurrentHealth;
+        CurrentMP = unit.CurrentMP;
     }
 
     public UnitData(UnitPrototype proto, Vector2Int position, Faction faction)
@@ -97,6 +102,7 @@ public struct UnitData
         Faction = faction;
         //MaxHealth = proto.MaxHealth;
         CurrentHealth = proto.MaxHealth;
+        CurrentMP = proto.MaxMP;
     }
 
     public UnitData Clone()
@@ -109,7 +115,8 @@ public struct UnitData
             Position, 
             Faction, 
             //MaxHealth, 
-            CurrentHealth);
+            CurrentHealth,
+            CurrentMP);
     }
 
     public UnitData UpdateUnitStatus(Unit unit)
@@ -123,6 +130,7 @@ public struct UnitData
 
         UnitData newUnit = Clone();
         newUnit.CurrentHealth = unit.CurrentHealth;
+        newUnit.CurrentMP = unit.CurrentMP;
         return newUnit;
     }
 }

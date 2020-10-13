@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: Warrior
   MaxHealth: 10
+  MaxMP: 5
   AttackDamage: 1
   TimeBetweenActions: 1
   Difficulty: 1
+  Flying: 0

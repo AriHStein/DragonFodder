@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: Wizard
   MaxHealth: 4
+  MaxMP: 10
   AttackDamage: 5
   TimeBetweenActions: 3
   Difficulty: 1
+  Flying: 0
