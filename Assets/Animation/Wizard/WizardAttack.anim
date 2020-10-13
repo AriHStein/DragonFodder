@@ -65,7 +65,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Staff
+    path: Wizard/Staff
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -109,7 +109,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    path: Staff
+    path: Wizard/Staff
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves: []
@@ -208,7 +208,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.x
-    path: Staff
+    path: Wizard/Staff
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -263,7 +263,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.y
-    path: Staff
+    path: Wizard/Staff
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -318,7 +318,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: localEulerAnglesRaw.z
-    path: Staff
+    path: Wizard/Staff
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -364,7 +364,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.x
-    path: Staff
+    path: Wizard/Staff
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -410,7 +410,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.y
-    path: Staff
+    path: Wizard/Staff
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -456,7 +456,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalPosition.z
-    path: Staff
+    path: Wizard/Staff
     classID: 4
     script: {fileID: 0}
   m_EulerEditorCurves:
@@ -467,7 +467,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: Staff
+    path: Wizard/Staff
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -477,7 +477,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Staff
+    path: Wizard/Staff
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -487,7 +487,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Staff
+    path: Wizard/Staff
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

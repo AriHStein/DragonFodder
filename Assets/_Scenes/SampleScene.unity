@@ -11278,7 +11278,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_unitPrefabs.Array.data[7]
       value: 
-      objectReference: {fileID: 4456006244870393134, guid: 3ee33f18ab299cd408a885a279ebb9c4,
+      objectReference: {fileID: 5877268364819007048, guid: b16a2e82341527046bc1c79e3a1d070e,
         type: 3}
     - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
         type: 3}
@@ -11295,5 +11295,47 @@ PrefabInstance:
       propertyPath: m_endOfBattleDelayLength
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
+        type: 3}
+      propertyPath: m_unitPrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 8110529335600759122, guid: 7cb3e3515a29f0444b8b951d852b9875,
+        type: 3}
+    - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
+        type: 3}
+      propertyPath: m_unitPrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 2165945957647821356, guid: 9b4f5f6662f51444f9dae16bc5a1a438,
+        type: 3}
+    - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
+        type: 3}
+      propertyPath: m_unitPrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 1565171725861602543, guid: 0e5aa2fd78a6ece40872cb392c6b26f7,
+        type: 3}
+    - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
+        type: 3}
+      propertyPath: m_unitPrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 4964093969976522321, guid: ce7a0c1831ab9174286e99a09f5d8ecd,
+        type: 3}
+    - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
+        type: 3}
+      propertyPath: m_unitPrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 144827251358223682, guid: 56e89aaf847d8214089a49291040a0ea,
+        type: 3}
+    - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
+        type: 3}
+      propertyPath: m_unitPrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 5075280388876063053, guid: 46d59cbd22034f1459f1160bc667e729,
+        type: 3}
+    - target: {fileID: 6250575226803519431, guid: 28f443691efbfd34ea391b1133433421,
+        type: 3}
+      propertyPath: m_unitPrefabs.Array.data[6]
+      value: 
+      objectReference: {fileID: 1247526081193130818, guid: 568e8ab107f53544588ffc9a90837553,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28f443691efbfd34ea391b1133433421, type: 3}
