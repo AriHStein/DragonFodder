@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: Skeleton
   MaxHealth: 3
-  MaxMP: 3
+  MaxMP: 30
+  SpellMP: 30
   AttackDamage: 1
   TimeBetweenActions: 1
   Difficulty: 1

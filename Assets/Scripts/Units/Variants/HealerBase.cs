@@ -19,6 +19,12 @@ public class HealerBase : Unit
             }
         }
 
+        if(CanCastSpell(m_target))
+        {
+            CastSpell();
+            return;
+        }
+        else 
         if(Vector2Int.Distance(m_target.Square.Position, Square.Position) <= m_range)
         {
             FaceToward(m_target.Square);
@@ -27,11 +33,11 @@ public class HealerBase : Unit
         else
         {
             FaceToward(m_target.Square);
-            if (!MoveToward(m_target.Square))
+            if (!TryMoveToward(m_target.Square))
             {
-                if (GetPathTo(m_target.Square))
+                if (TryGetPathTo(m_target.Square))
                 {
-                    MoveToward(path.Dequeue());
+                    TryMoveToward(path.Dequeue());
                 }
             }
         }
@@ -79,10 +85,26 @@ public class HealerBase : Unit
 
     void HealTarget()
     {
-        m_target.ChangeHealth(m_healAmount);
+        HealUnit(m_target);
+        //m_target.ChangeHealth(m_healAmount);
         if(m_target.CurrentHealth == m_target.MaxHealth)
         {
             m_target = null;
+        }
+    }
+
+    void HealUnit(Unit unit)
+    {
+        unit.ChangeHealth(m_healAmount);
+    }
+
+    protected override void CastSpell()
+    {
+        base.CastSpell();
+        List<Unit> allies = Board.Current.UnitManager.GetUnitsOfFaction(Faction);
+        foreach(Unit unit in allies)
+        {
+            HealUnit(unit);
         }
     }
 }

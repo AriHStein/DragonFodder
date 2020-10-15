@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: Vampire
   MaxHealth: 8
-  MaxMP: 7
+  MaxMP: 80
+  SpellMP: 50
   AttackDamage: 2
   TimeBetweenActions: 0.5
   Difficulty: 3

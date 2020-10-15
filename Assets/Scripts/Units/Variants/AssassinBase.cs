@@ -28,7 +28,11 @@ public class AssassinBase : Unit
                 return;
             }
         }
-
+        if(CanCastSpell(m_target))
+        {
+            CastSpell();
+        }
+        else
         if (Vector2Int.Distance(m_target.Square.Position, Square.Position) <= m_range)
         {
             FaceToward(m_target.Square);
@@ -36,9 +40,23 @@ public class AssassinBase : Unit
         }
         else
         {
-            MoveToward(m_target.Square);
+            TryMoveToward(m_target.Square);
             FaceToward(m_target.Square);
         }
+    }
+
+    protected override bool CanCastSpell(Unit target)
+    {
+        return base.CanCastSpell(target) &&
+            target != null &&
+            Vector2Int.Distance(target.Square.Position, Square.Position) <= m_range;
+    }
+
+    protected override void CastSpell()
+    {
+        base.CastSpell();
+        Attack(m_target);
+        Attack(m_target);
     }
 
     void ChooseTarget()
@@ -66,7 +84,7 @@ public class AssassinBase : Unit
         m_target = null;
     }
 
-    protected override bool MoveToward(BoardSquare dest)
+    protected override bool TryMoveToward(BoardSquare dest)
     {
         Vector2Int move = dest.Position - Square.Position;
         Vector2Int destPos;

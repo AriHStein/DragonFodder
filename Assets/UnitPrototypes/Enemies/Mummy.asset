@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: Mummy
   MaxHealth: 20
-  MaxMP: 8
+  MaxMP: 80
+  SpellMP: 40
   AttackDamage: 3
   TimeBetweenActions: 3
   Difficulty: 2

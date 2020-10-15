@@ -4815,7 +4815,12 @@ PrefabInstance:
     - target: {fileID: 1133409930237653267, guid: d9ecaf4c738738f4facd15747d36aaf0,
         type: 3}
       propertyPath: m_Name
-      value: ZombieBase
+      value: Zombie
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707062142966114244, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 5567242258951716049, guid: d9ecaf4c738738f4facd15747d36aaf0,
         type: 3}
@@ -4823,6 +4828,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 98e40a871e0b0294988913f510627d67,
         type: 2}
+    - target: {fileID: 5567242258951716049, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_stompParticleBurst
+      value: 
+      objectReference: {fileID: 4884935291413574504, guid: da54c58c7a7c8264198c1bdd2d8a664f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ecaf4c738738f4facd15747d36aaf0, type: 3}
 --- !u!4 &1247526081192789226 stripped

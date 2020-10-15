@@ -3,45 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "new UnitData", menuName = "Units/UnitData", order = 100)]
+[CreateAssetMenu(fileName = "new Unit Prototype", menuName = "Units/UnitData", order = 100)]
 [System.Serializable]
 public class UnitPrototype : ScriptableObject
 {
-    //public Vector2Int Position;
     public string Type;
-    //public Faction Faction;
     public int MaxHealth;
     public int MaxMP;
+    public int SpellMP;
     public int AttackDamage;
     public float TimeBetweenActions;
 
     public int Difficulty = 1;
     public bool Flying = false;
-
-    //public static UnitData GetData(Unit unit)
-    //{
-    //    //UnitData data = ScriptableObject.CreateInstance<UnitPrototype>();
-    //    //data.Position = unit.Square.Position;
-    //    //data.Type = unit.Type;
-    //    //data.Faction = unit.Faction;
-
-    //    //data.MaxHealth = unit.MaxHealth;
-    //    //data.CurrentHealth = unit.CurrentHealth;
-
-    //    return new UnitData(unit.Type, unit.Square.Position, unit.Faction, unit.MaxHealth, unit.CurrentHealth);
-    //}
-
-    //public UnitPrototype Clone()
-    //{
-    //    UnitPrototype newUnit = UnitPrototype.CreateInstance<UnitPrototype>();
-    //    //newUnit.Position = Position;
-    //    newUnit.Type = Type;
-    //    newUnit.Faction = Faction;
-    //    newUnit.MaxHealth = MaxHealth;
-    //    newUnit.CurrentHealth = CurrentHealth;
-
-    //    return newUnit;
-    //}
 }
 
 [Serializable]
@@ -102,7 +76,7 @@ public struct UnitData
         Faction = faction;
         //MaxHealth = proto.MaxHealth;
         CurrentHealth = proto.MaxHealth;
-        CurrentMP = proto.MaxMP;
+        CurrentMP = 0;
     }
 
     public UnitData Clone()

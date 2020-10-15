@@ -10,8 +10,50 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 1,
-            "CurrentMP": 5,
+            "CurrentHealth": 9,
+            "CurrentMP": 3,
+            "Difficulty": 0
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "f53b72e4-dbbc-4fa3-a502-84aefd52edb2"
+            },
+            "Position": {
+                "x": 2,
+                "y": 2
+            },
+            "Faction": 0,
+            "CurrentHealth": 9,
+            "CurrentMP": 3,
+            "Difficulty": 0
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "8a2012ec-cf65-4f45-864b-eb0d0ac5097f"
+            },
+            "Position": {
+                "x": 3,
+                "y": 2
+            },
+            "Faction": 0,
+            "CurrentHealth": 9,
+            "CurrentMP": 3,
+            "Difficulty": 0
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "c292e59a-b0dc-4019-84cc-51e3438d2f6a"
+            },
+            "Position": {
+                "x": 4,
+                "y": 2
+            },
+            "Faction": 0,
+            "CurrentHealth": 10,
+            "CurrentMP": 2,
             "Difficulty": 0
         },
         {
@@ -25,7 +67,35 @@
             },
             "Faction": 0,
             "CurrentHealth": 3,
-            "CurrentMP": 0,
+            "CurrentMP": 2,
+            "Difficulty": 0
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "4b8cfe3f-e121-42d0-be8d-c44186d3c88c"
+            },
+            "Position": {
+                "x": 2,
+                "y": 0
+            },
+            "Faction": 0,
+            "CurrentHealth": 3,
+            "CurrentMP": 2,
+            "Difficulty": 0
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "b811336a-5ebd-4570-a3d3-e13d67802c08"
+            },
+            "Position": {
+                "x": 3,
+                "y": 0
+            },
+            "Faction": 0,
+            "CurrentHealth": 3,
+            "CurrentMP": 2,
             "Difficulty": 0
         }
     ],

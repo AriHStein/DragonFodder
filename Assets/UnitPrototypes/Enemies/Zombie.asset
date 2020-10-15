@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: Zombie
   MaxHealth: 10
-  MaxMP: 2
+  MaxMP: 30
+  SpellMP: 30
   AttackDamage: 4
   TimeBetweenActions: 2
   Difficulty: 2

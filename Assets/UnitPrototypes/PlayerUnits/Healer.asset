@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: Healer
   MaxHealth: 8
-  MaxMP: 10
+  MaxMP: 100
+  SpellMP: 30
   AttackDamage: 0
   TimeBetweenActions: 2
   Difficulty: 1

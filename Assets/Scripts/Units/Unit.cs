@@ -24,11 +24,13 @@ public  abstract class Unit : MonoBehaviour
 
     public int MaxMP { get { return Proto.MaxMP; } }
     public int CurrentMP { get; protected set; }
+    protected int SpellMP { get { return Proto.SpellMP; } }
 
     public event Action<Unit> DeathEvent;
     public event Action<Unit> InitializedEvent;
 
     protected Animator m_animator;
+    [SerializeField] GameObject m_stunnedParticles = default;
 
     protected Path_AStar<BoardSquare> path;
 
@@ -37,6 +39,7 @@ public  abstract class Unit : MonoBehaviour
     protected virtual void Awake()
     {
         m_animator = GetComponent<Animator>();
+        m_stunnedParticles.SetActive(false);
     }
 
     protected virtual void Start()
@@ -67,7 +70,7 @@ public  abstract class Unit : MonoBehaviour
 
         if (data.CurrentMP == -1)
         {
-            CurrentMP = MaxMP;
+            CurrentMP = 0;
         }
         else
         {
@@ -77,26 +80,61 @@ public  abstract class Unit : MonoBehaviour
 
         Faction = data.Faction;
 
-        m_timeUntilNextTurn = Proto.TimeBetweenActions;
+        m_timeSinceLastAction = 0;
 
         Board.Current.UnitManager.RegisterUnit(this);
 
         InitializedEvent?.Invoke(this);
     }
 
-    float m_timeUntilNextTurn;
+    float m_timeSinceLastAction;
+    float m_timeSinceLastManaAdd;
     public virtual bool ReadyForTurn(float deltaTime)
     {
-        m_timeUntilNextTurn -= deltaTime;
-        if(m_timeUntilNextTurn <= 0)
+        if(m_stunnedTimeLeft > 0)
         {
-            m_timeUntilNextTurn = Proto.TimeBetweenActions + UnityEngine.Random.Range(-2f, 2)*deltaTime;
+            m_stunnedTimeLeft -= deltaTime;
+            return false;
+        }
+
+        //m_animator.SetBool("Stunned", false);
+        m_stunnedParticles.SetActive(false);
+
+        m_timeSinceLastManaAdd += deltaTime;
+        if(m_timeSinceLastManaAdd > 1)
+        {
+            ChangeMP(1);
+            m_timeSinceLastManaAdd = 0;
+        }
+
+
+        m_timeSinceLastAction += deltaTime;
+        if(m_timeSinceLastAction >= Proto.TimeBetweenActions)
+        {
+            m_timeSinceLastAction = 0;
             return true;
         }
 
         return false;
     }
+
     public abstract void DoTurn();
+
+    protected virtual bool CanCastSpell(Unit target)
+    {
+        return CurrentMP >= SpellMP;
+    }
+
+    protected virtual void CastSpell()
+    {
+        //if(!CanCastSpell())
+        //{
+        //    return false;
+        //}
+
+        ChangeMP(-SpellMP);
+        //return true;
+    }
 
     public void FaceToward(BoardSquare square)
     {
@@ -109,7 +147,7 @@ public  abstract class Unit : MonoBehaviour
         target.ChangeHealth(-Proto.AttackDamage);
     }
 
-    protected virtual bool MoveToward(BoardSquare dest)
+    protected virtual bool TryMoveToward(BoardSquare dest)
     {
         Vector2Int offset = dest.Position - Square.Position;
         if (Mathf.Abs(offset.x) > Mathf.Abs(offset.y))
@@ -124,7 +162,12 @@ public  abstract class Unit : MonoBehaviour
         }
     }
 
-    protected virtual bool GetPathTo(BoardSquare dest)
+    public virtual bool TryForceMove(Vector2Int moveVector)
+    {
+        return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position + moveVector));
+    }
+
+    protected virtual bool TryGetPathTo(BoardSquare dest)
     {
         path = Board.Current.GetPath(
                 Square,
@@ -140,6 +183,14 @@ public  abstract class Unit : MonoBehaviour
 
         path.Dequeue();
         return true;
+    }
+
+    float m_stunnedTimeLeft = 0f;
+    public void Stun(float time)
+    {
+        m_stunnedTimeLeft += time;
+        m_stunnedParticles.SetActive(true);
+        //m_animator.SetBool("Stunned", true);
     }
 
     public virtual void ChangeHealth(int amount)

@@ -225,6 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_prototype: {fileID: 11400000, guid: dffeecea208ad3344baf156064350952, type: 2}
   Square: {fileID: 0}
+  m_stunnedParticles: {fileID: 11714201394122174}
   m_range: 2
   m_healAmount: 1
 --- !u!1 &8724621954404616726
@@ -373,6 +374,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealerOverride
       objectReference: {fileID: 0}
+    - target: {fileID: 2707062142966114244, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5567242258951716049, guid: d9ecaf4c738738f4facd15747d36aaf0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d9ecaf4c738738f4facd15747d36aaf0, type: 3}
@@ -385,6 +391,12 @@ GameObject:
 --- !u!4 &5877268364818692576 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+    type: 3}
+  m_PrefabInstance: {fileID: 6785497626337523547}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &11714201394122174 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6774381559433018085, guid: d9ecaf4c738738f4facd15747d36aaf0,
     type: 3}
   m_PrefabInstance: {fileID: 6785497626337523547}
   m_PrefabAsset: {fileID: 0}

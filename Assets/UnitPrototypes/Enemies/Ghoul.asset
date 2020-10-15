@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Type: Ghoul
   MaxHealth: 8
-  MaxMP: 4
+  MaxMP: 80
+  SpellMP: 20
   AttackDamage: 2
   TimeBetweenActions: 1.5
   Difficulty: 2

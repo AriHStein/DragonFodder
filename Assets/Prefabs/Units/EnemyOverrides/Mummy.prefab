@@ -2506,12 +2506,17 @@ PrefabInstance:
     - target: {fileID: 1133409930237653267, guid: d9ecaf4c738738f4facd15747d36aaf0,
         type: 3}
       propertyPath: m_Name
-      value: MummyOverride
+      value: Mummy
       objectReference: {fileID: 0}
     - target: {fileID: 1334249982720309380, guid: d9ecaf4c738738f4facd15747d36aaf0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 2.135
+      objectReference: {fileID: 0}
+    - target: {fileID: 2707062142966114244, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5567242258951716049, guid: d9ecaf4c738738f4facd15747d36aaf0,
         type: 3}
@@ -2519,6 +2524,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 01a61e311ac32c343b3d4fb1a821cf11,
         type: 2}
+    - target: {fileID: 5567242258951716049, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_stompParticleBurst
+      value: 
+      objectReference: {fileID: 4884935291413574504, guid: da54c58c7a7c8264198c1bdd2d8a664f,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9ecaf4c738738f4facd15747d36aaf0, type: 3}
 --- !u!4 &4964093969976707577 stripped
