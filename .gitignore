@@ -58,3 +58,7 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Large backup file archive
+/[Aa]rchive/
+/[Aa]ssets/z_Archive
+/[Aa]ssets/z_Archive.meta
