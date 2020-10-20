@@ -11,7 +11,7 @@
             },
             "Faction": 0,
             "CurrentHealth": 9,
-            "CurrentMP": 3,
+            "CurrentMP": 4,
             "Difficulty": 0
         },
         {
@@ -24,8 +24,8 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 9,
-            "CurrentMP": 3,
+            "CurrentHealth": 8,
+            "CurrentMP": 5,
             "Difficulty": 0
         },
         {
@@ -38,8 +38,8 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 9,
-            "CurrentMP": 3,
+            "CurrentHealth": 8,
+            "CurrentMP": 5,
             "Difficulty": 0
         },
         {
@@ -52,8 +52,8 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 10,
-            "CurrentMP": 2,
+            "CurrentHealth": 8,
+            "CurrentMP": 5,
             "Difficulty": 0
         },
         {
@@ -67,7 +67,7 @@
             },
             "Faction": 0,
             "CurrentHealth": 3,
-            "CurrentMP": 2,
+            "CurrentMP": 3,
             "Difficulty": 0
         },
         {
@@ -81,7 +81,7 @@
             },
             "Faction": 0,
             "CurrentHealth": 3,
-            "CurrentMP": 2,
+            "CurrentMP": 3,
             "Difficulty": 0
         },
         {
@@ -95,7 +95,7 @@
             },
             "Faction": 0,
             "CurrentHealth": 3,
-            "CurrentMP": 2,
+            "CurrentMP": 3,
             "Difficulty": 0
         }
     ],
