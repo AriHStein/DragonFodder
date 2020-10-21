@@ -9,7 +9,7 @@ public static class EncounterBuilder
     static readonly int MIN_PLAYER_ROWS = 2;
     static readonly int MAX_PLAYER_ROWS = 5;
     
-    public static Encounter GenerateEncounter(int difficulty)
+    public static Encounter GenerateEncounter(Vector2Int mapPosition, int difficulty)
     {
         //Encounter e = new Encounter();
         SquadData enemies = SquadBuilder.GenerateFormationFromEnemySquads(difficulty);
@@ -23,6 +23,6 @@ public static class EncounterBuilder
 
         int playerRows = Mathf.Clamp(boardSize.y / 3, MIN_PLAYER_ROWS, MAX_PLAYER_ROWS);
 
-        return new Encounter(enemies, boardSize, playerRows, difficulty);
+        return new Encounter(mapPosition, enemies, boardSize, playerRows, difficulty);
     }
 }
