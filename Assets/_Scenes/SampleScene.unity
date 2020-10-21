@@ -9111,7 +9111,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1351227412845073262}
   m_Father: {fileID: 1622820467}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9136,7 +9137,12 @@ MonoBehaviour:
   m_dugeonModePanel: {fileID: 1622820466}
   m_encounterButtonPrefab: {fileID: 2940703570335484169, guid: 9996a7a31d3704240be13f6002dde786,
     type: 3}
-  m_topBottomBuffer: 50
+  m_connectionPrefab: {fileID: 7333531688060879757, guid: 001b311c8c0d92d48867ad663e6d9bbc,
+    type: 3}
+  m_connectionList: {fileID: 4451417465126687869}
+  m_encounterGridSize: {x: 10, y: 10}
+  m_encounterCount: 10
+  m_edgeBufferSize: {x: 100, y: 100}
 --- !u!114 &1685824160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11355,6 +11361,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31af6951f2dac7243a5d89e5f026517c, type: 3}
+--- !u!224 &1351227412845073262
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4451417465126687868}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1685824158}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1101, y: 564}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1001 &3322594085869665156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11540,6 +11565,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54710c405d4e3b34ea985e4a54547cd1, type: 3}
+--- !u!1 &4451417465126687868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1351227412845073262}
+  - component: {fileID: 8017528733893103926}
+  - component: {fileID: 4451417465126687869}
+  m_Layer: 5
+  m_Name: 'EncounterConnection '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &4451417465126687869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4451417465126687868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34861a5dcec3dbf438f8288be97dd133, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.4528302, g: 0.381655, b: 0.2242791, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_improveResolution: 0
+  m_Resolution: 0
+  m_useNativeSize: 0
+  m_points: []
+  lineThickness: 2
+  relativeSize: 0
+  lineList: 1
+  lineCaps: 1
+  bezierSegmentsPerCurve: 10
+  LineJoins: 0
+  BezierMode: 0
+  drivenExternally: 0
 --- !u!224 &5579978871049032257 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7164145704066296261, guid: 54710c405d4e3b34ea985e4a54547cd1,
@@ -11708,3 +11783,11 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28f443691efbfd34ea391b1133433421, type: 3}
+--- !u!222 &8017528733893103926
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4451417465126687868}
+  m_CullTransparentMesh: 0

@@ -10,7 +10,7 @@ public class EncounterButton : MonoBehaviour
     Button m_button;
     //GameObject m_dungeonMapPanel;
 
-    private void Start()
+    private void Awake()
     {
         m_button = GetComponent<Button>();
     }
@@ -29,11 +29,21 @@ public class EncounterButton : MonoBehaviour
 
     public void EnableButton()
     {
+        if(m_button == null)
+        {
+            m_button = GetComponent<Button>();
+        }
+        
         m_button.interactable = true;
     }
 
     public void DisableButton()
     {
+        if (m_button == null)
+        {
+            m_button = GetComponent<Button>();
+        }
+
         m_button.interactable = false;
     }
 }
