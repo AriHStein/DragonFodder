@@ -3,20 +3,6 @@
         {
             "Type": "Warrior",
             "ID": {
-                "Value": "67cab6a3-0138-4203-afb1-18cf64c6cc5e"
-            },
-            "Position": {
-                "x": 1,
-                "y": 2
-            },
-            "Faction": 0,
-            "CurrentHealth": 4,
-            "CurrentMP": 32,
-            "Difficulty": 0
-        },
-        {
-            "Type": "Warrior",
-            "ID": {
                 "Value": "f53b72e4-dbbc-4fa3-a502-84aefd52edb2"
             },
             "Position": {
@@ -24,8 +10,22 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 2,
-            "CurrentMP": 34,
+            "CurrentHealth": 6,
+            "CurrentMP": 21,
+            "Difficulty": 0
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "c292e59a-b0dc-4019-84cc-51e3438d2f6a"
+            },
+            "Position": {
+                "x": 4,
+                "y": 2
+            },
+            "Faction": 0,
+            "CurrentHealth": 10,
+            "CurrentMP": 17,
             "Difficulty": 0
         },
         {
@@ -39,7 +39,7 @@
             },
             "Faction": 0,
             "CurrentHealth": 3,
-            "CurrentMP": 26,
+            "CurrentMP": 17,
             "Difficulty": 0
         },
         {
@@ -53,7 +53,7 @@
             },
             "Faction": 0,
             "CurrentHealth": 3,
-            "CurrentMP": 26,
+            "CurrentMP": 17,
             "Difficulty": 0
         },
         {
@@ -67,7 +67,7 @@
             },
             "Faction": 0,
             "CurrentHealth": 3,
-            "CurrentMP": 26,
+            "CurrentMP": 17,
             "Difficulty": 0
         }
     ],

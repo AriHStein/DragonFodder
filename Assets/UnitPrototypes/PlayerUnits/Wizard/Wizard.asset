@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294fe6fcee924ba41bf006e7299835cf, type: 3}
+  m_Name: Wizard
+  m_EditorClassIdentifier: 
+  Type: Wizard
+  MaxHealth: 4
+  MaxMP: 100
+  TimeBetweenActions: 2
+  Difficulty: 1
+  Flying: 0
+  MoveSpeed: 1
+  Abilities:
+  - {fileID: 11400000, guid: 96f0f7a6b667d9644ba58eb646900ff8, type: 2}
+  - {fileID: 11400000, guid: 8996446fb8b83cc44ab2c54f860615a4, type: 2}
+  - {fileID: 11400000, guid: 8777e1bb09f5111418dca31ca48233bc, type: 2}

@@ -104,7 +104,7 @@ public class UnitManager
     //    m_turnOrder = Units.OrderByDescending(u => u.Proto.TimeBetweenActions).ToList();
     //}
 
-    public void DoUnitTurns(float deltaTime)
+    public void DoUnitTurns(float deltaTime, Board board)
     {
         m_diedThisTurn.Clear();
         //if(m_turnOrder.Count == 0)
@@ -117,7 +117,7 @@ public class UnitManager
         {
             if(unit.ReadyForTurn(deltaTime))
             {
-                unit.DoTurn();
+                unit.DoTurn(board);
             }
         }
     }

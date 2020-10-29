@@ -24,8 +24,9 @@ public static class SquadBuilder
 
     public static SquadData GenerateFormation(List<SquadData> squadProtos, int difficulty)
     {
-        if(squadProtos == null || squadProtos.Count == 0 || difficulty <= squadProtos[0].Difficulty)
+        if(squadProtos == null || squadProtos.Count == 0 || difficulty < squadProtos[0].Difficulty)
         {
+            Debug.Log($"No squad protos. Min difficulty: {squadProtos[0].Difficulty}. Attempted difficulty: {difficulty}");
             return new SquadData();
         }
         

@@ -6,7 +6,7 @@ using Pathfinding;
 
 public enum Faction { Player, Enemy }
 [RequireComponent(typeof(Animator))]
-public  abstract class Unit : MonoBehaviour
+public class Unit : MonoBehaviour
 {
 
     [SerializeField] UnitPrototype m_prototype = default;
@@ -24,22 +24,24 @@ public  abstract class Unit : MonoBehaviour
 
     public int MaxMP { get { return Proto.MaxMP; } }
     public int CurrentMP { get; protected set; }
-    protected int SpellMP { get { return Proto.SpellMP; } }
+    //protected int SpellMP { get { return Proto.SpellMP; } }
+
+    protected List<StatusInstance> m_statuses;
+    //[SerializeField] protected List<Ability> m_abilities;
 
     public event Action<Unit> DeathEvent;
     public event Action<Unit> InitializedEvent;
 
     protected Animator m_animator;
-    [SerializeField] GameObject m_stunnedParticles = default;
+    //[SerializeField] GameObject m_stunnedParticles = default;
 
-    protected Path_AStar<BoardSquare> path;
-
-
+    //protected Path_AStar<BoardSquare> path;
 
     protected virtual void Awake()
     {
         m_animator = GetComponent<Animator>();
-        m_stunnedParticles.SetActive(false);
+        //m_stunnedParticles.SetActive(false);
+        m_statuses = new List<StatusInstance>();
     }
 
     protected virtual void Start()
@@ -48,7 +50,7 @@ public  abstract class Unit : MonoBehaviour
         //CurrentHealth = MaxHealth;
     }
 
-    public virtual void Initialize(BoardSquare square, UnitData data)
+    public virtual void Initialize(Board board, BoardSquare square, UnitData data)
     {
         ID = data.ID;
         Type = data.Type;
@@ -82,7 +84,7 @@ public  abstract class Unit : MonoBehaviour
 
         m_timeSinceLastAction = 0;
 
-        Board.Current.UnitManager.RegisterUnit(this);
+        board.UnitManager.RegisterUnit(this);
 
         InitializedEvent?.Invoke(this);
     }
@@ -91,14 +93,28 @@ public  abstract class Unit : MonoBehaviour
     float m_timeSinceLastManaAdd;
     public virtual bool ReadyForTurn(float deltaTime)
     {
-        if(m_stunnedTimeLeft > 0)
+        bool ready = true;
+        foreach(StatusInstance status in new List<StatusInstance>(m_statuses))
         {
-            m_stunnedTimeLeft -= deltaTime;
-            return false;
+            if(!status.ReadyForTurn(deltaTime))
+            {
+                ready = false;
+            }
         }
 
+        if(!ready)
+        {
+            return false;
+        }
+        
+        //if(m_stunnedTimeLeft > 0)
+        //{
+        //    m_stunnedTimeLeft -= deltaTime;
+        //    return false;
+        //}
+
         //m_animator.SetBool("Stunned", false);
-        m_stunnedParticles.SetActive(false);
+        //m_stunnedParticles.SetActive(false);
 
         m_timeSinceLastManaAdd += deltaTime;
         if(m_timeSinceLastManaAdd > 1)
@@ -118,79 +134,171 @@ public  abstract class Unit : MonoBehaviour
         return false;
     }
 
-    public abstract void DoTurn();
-
-    protected virtual bool CanCastSpell(Unit target)
+    public virtual void DoTurn(Board board)
     {
-        return CurrentMP >= SpellMP;
+        Ability bestAbility = null;
+        IAbilityContext bestContext = null;
+        foreach(Ability ability in Proto.Abilities)
+        {
+            IAbilityContext context = ability.GetValue(this, board);
+            if(bestContext == null || context.Value > bestContext.Value)
+            {
+                bestAbility = ability;
+                bestContext = context;
+            }
+        }
+
+        bestAbility.Execute(bestContext);
+        if(bestAbility.AnimationTrigger != null)
+        {
+            m_animator.SetTrigger(bestAbility.AnimationTrigger);
+        }
     }
 
-    protected virtual void CastSpell()
-    {
-        //if(!CanCastSpell())
-        //{
-        //    return false;
-        //}
+    //protected virtual bool CanCastSpell(Unit target)
+    //{
+    //    return CurrentMP >= SpellMP;
+    //}
 
-        ChangeMP(-SpellMP);
-        //return true;
-    }
+    //protected virtual void CastSpell()
+    //{
+    //    //if(!CanCastSpell())
+    //    //{
+    //    //    return false;
+    //    //}
+
+    //    ChangeMP(-SpellMP);
+    //    //return true;
+    //}
 
     public void FaceToward(BoardSquare square)
     {
         transform.LookAt(square.transform);
     }
 
-    protected virtual void Attack(Unit target)
-    {
-        m_animator.SetTrigger("Attack");
-        target.ChangeHealth(-Proto.AttackDamage);
-    }
+    //protected virtual void Attack(Unit target)
+    //{
+    //    m_animator.SetTrigger("Attack");
+    //    target.ChangeHealth(-Proto.AttackDamage);
+    //}
 
-    protected virtual bool TryMoveToward(BoardSquare dest)
-    {
-        Vector2Int offset = dest.Position - Square.Position;
-        if (Mathf.Abs(offset.x) > Mathf.Abs(offset.y))
-        {
-            FaceToward(Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
-            return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
-        }
-        else
-        {
-            FaceToward(Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
-            return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
-        }
-    }
+    //protected virtual bool TryMoveToward(BoardSquare dest)
+    //{
+    //    Vector2Int offset = dest.Position - Square.Position;
+    //    if (Mathf.Abs(offset.x) > Mathf.Abs(offset.y))
+    //    {
+    //        FaceToward(Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
+    //        return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
+    //    }
+    //    else
+    //    {
+    //        FaceToward(Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
+    //        return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
+    //    }
+    //}
 
     public virtual bool TryForceMove(Vector2Int moveVector)
     {
         return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position + moveVector));
     }
 
-    protected virtual bool TryGetPathTo(BoardSquare dest)
-    {
-        path = Board.Current.GetPath(
-                Square,
-                Proto.Flying,
-                (square) => { return Vector2Int.Distance(square.Position, dest.Position) <= 1; },
-                (square) => { return Vector2Int.Distance(square.Position, dest.Position); }
-            );
+    //protected virtual bool TryGetPathTo(BoardSquare dest)
+    //{
+    //    path = Board.Current.GetPath(
+    //            Square,
+    //            Proto.Flying,
+    //            (square) => { return Vector2Int.Distance(square.Position, dest.Position) <= 1; },
+    //            (square) => { return Vector2Int.Distance(square.Position, dest.Position); }
+    //        );
 
-        if(path == null || path.Length() == 0)
+    //    if(path == null || path.Length() == 0)
+    //    {
+    //        return false;
+    //    }
+
+    //    path.Dequeue();
+    //    return true;
+    //}
+
+    //float m_stunnedTimeLeft = 0f;
+    //public void Stun(float time)
+    //{
+    //    ApplyStatus(new Stun(time));
+    //    //m_stunnedTimeLeft += time;
+    //    m_stunnedParticles.SetActive(true);
+    //    //m_animator.SetBool("Stunned", true);
+    //}
+
+    public void ApplyStatus(StatusInstance status)
+    {
+        foreach(StatusInstance s in m_statuses)
         {
-            return false;
+            if(s.Type == status.Type)
+            {
+                s.CombineWith(status);
+                return;
+            }
         }
 
-        path.Dequeue();
+        m_statuses.Add(status);
+        if(status.Proto.EffectPrefab != null)
+        {
+            status.Effect = Instantiate(status.Proto.EffectPrefab, transform);
+        }
+
+        status.StatusExpiredEvent += OnStatusExpired;
+    }
+
+    void OnStatusExpired(StatusInstance status)
+    {
+        status.StatusExpiredEvent -= OnStatusExpired;
+
+        if (!m_statuses.Contains(status))
+        {
+            Debug.LogWarning($"Status {status.Type} not contained in status list.");
+            return;
+        }
+
+        m_statuses.Remove(status);
+    }
+
+    public bool IsTargetable()
+    {
+        foreach(StatusInstance status in m_statuses)
+        {
+            if(!status.IsTargetable())
+            {
+                return false;
+            }
+        }
+
         return true;
     }
 
-    float m_stunnedTimeLeft = 0f;
-    public void Stun(float time)
+    public bool CanTargetUnit(Unit other)
     {
-        m_stunnedTimeLeft += time;
-        m_stunnedParticles.SetActive(true);
-        //m_animator.SetBool("Stunned", true);
+        foreach(Ability ability in Proto.Abilities)
+        {
+            if(ability.CanTargetUnit(this, other))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public bool CanTargetSquare(BoardSquare square)
+    {
+        foreach(Ability ability in Proto.Abilities)
+        {
+            if(ability.CanTargetSquare(this, square))
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public virtual void ChangeHealth(int amount)
@@ -217,7 +325,12 @@ public  abstract class Unit : MonoBehaviour
 
     protected virtual void Die()
     {
+        foreach (StatusInstance status in m_statuses)
+        {
+            status.StatusExpiredEvent -= OnStatusExpired;
+        }
         DeathEvent?.Invoke(this);
+
         //Square.Unit = null;
         //Destroy(gameObject);
     }

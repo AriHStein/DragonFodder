@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StunAll : MonoBehaviour
 {
-    [SerializeField] float m_stunTime = 1f;
+    //[SerializeField] float m_stunTime = 1f;
+    [SerializeField] Stun m_stun = default;
     public void StunAllUnits()
     {
         if(Board.Current == null || 
@@ -17,7 +18,8 @@ public class StunAll : MonoBehaviour
         
         foreach(Unit unit in Board.Current.UnitManager.Units)
         {
-            unit.Stun(m_stunTime);
+            //unit.Stun(m_stunTime);
+            unit.ApplyStatus(m_stun.GetInstance());
         }
     }
 }

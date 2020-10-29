@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 294fe6fcee924ba41bf006e7299835cf, type: 3}
-  m_Name: Warrior
+  m_Script: {fileID: 11500000, guid: f6837571b2c2ff14192b778a73eb9ad0, type: 3}
+  m_Name: Attack
   m_EditorClassIdentifier: 
-  Type: Warrior
-  MaxHealth: 10
-  MaxMP: 50
-  SpellMP: 50
-  AttackDamage: 1
-  TimeBetweenActions: 1
-  Difficulty: 1
-  Flying: 0
+  m_abilityPriority: 2
+  m_conditions: []
+  m_damage: 3
+  m_range: 1
+  m_projectilePrefab: {fileID: 0}
+  m_targetPriorityMode: 3

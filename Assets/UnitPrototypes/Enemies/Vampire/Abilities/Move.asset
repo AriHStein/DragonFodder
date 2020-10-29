@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 294fe6fcee924ba41bf006e7299835cf, type: 3}
-  m_Name: Wizard
+  m_Script: {fileID: 11500000, guid: 28ef534a07c241e49afc0789d8923435, type: 3}
+  m_Name: Move
   m_EditorClassIdentifier: 
-  Type: Wizard
-  MaxHealth: 4
-  MaxMP: 100
-  SpellMP: 50
-  AttackDamage: 5
-  TimeBetweenActions: 3
-  Difficulty: 1
-  Flying: 0
+  m_abilityPriority: 1
+  m_conditions: []
+  m_priorityMode: 5
+  m_targetFaction: 0
+  m_minDistance: 1
+  m_maxDistance: 1

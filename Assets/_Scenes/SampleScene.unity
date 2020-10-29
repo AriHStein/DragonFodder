@@ -9137,8 +9137,6 @@ MonoBehaviour:
   m_dugeonModePanel: {fileID: 1622820466}
   m_encounterButtonPrefab: {fileID: 2940703570335484169, guid: 9996a7a31d3704240be13f6002dde786,
     type: 3}
-  m_connectionPrefab: {fileID: 7333531688060879757, guid: 001b311c8c0d92d48867ad663e6d9bbc,
-    type: 3}
   m_connectionList: {fileID: 4451417465126687869}
   m_encounterGridSize: {x: 10, y: 10}
   m_encounterCount: 10
@@ -10334,7 +10332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46ad957d133808347b52f78b9dbc4a66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_stunTime: 1
+  m_stun: {fileID: 11400000, guid: 9c5531d8ceba93047944b1ce5e2aaf48, type: 2}
 --- !u!114 &1993516503
 MonoBehaviour:
   m_ObjectHideFlags: 0

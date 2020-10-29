@@ -161,7 +161,7 @@ public class Board : MonoBehaviour
         //flyingGraph = new MoveGraph(Squares, false);
     }
 
-    public Path_AStar<BoardSquare> GetPath(BoardSquare start, bool flying, Func<BoardSquare, bool> endCondition, Func<BoardSquare, float> heuristic)
+    public Path_AStar<BoardSquare> GetPath(BoardSquare start, bool flying, Func<BoardSquare, bool> endCondition, Func<BoardSquare, float> heuristic = null)
     {
         if(flying)
         {
@@ -307,7 +307,7 @@ public class Board : MonoBehaviour
             return;
         }
 
-        UnitManager.DoUnitTurns(Time.deltaTime);
+        UnitManager.DoUnitTurns(Time.deltaTime, this);
         //if (m_timeUntilNextTurn <= 0)
         //{
         //    UnitManager.DoUnitTurns(m_timeBetweenTurns);
@@ -614,7 +614,7 @@ public class Board : MonoBehaviour
         }
         
         Unit unit = Instantiate(prefab, new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
-        unit.Initialize(Squares[data.Position.x, data.Position.y], data);
+        unit.Initialize(this, Squares[data.Position.x, data.Position.y], data);
         return unit;
     }
 
@@ -623,6 +623,7 @@ public class Board : MonoBehaviour
         if(data.Units == null || 
             data.Units.Count == 0)
         {
+            Debug.Log("No units");
             return false;
         }
 
