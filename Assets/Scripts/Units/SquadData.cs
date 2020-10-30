@@ -19,6 +19,9 @@ public class Squad
 
         // TODO: Do we need to account for units that exist in the new units list, but not in the original squad?
         // Theese might be summons or other temporary units. Assuming they die after the battle seems reasonable for now.
+        Debug.Log($"Existing count: {Data.Units.Count}");
+        Debug.Log($"New unit count: {updatedUnits.Count}");
+
 
         if (Data.Units == null || updatedUnits == null)
         {
@@ -26,25 +29,63 @@ public class Squad
             return;
         }
 
-        for (int i = Data.Units.Count - 1; i >= 0; i--)
+        List<UnitData> newSquad = new List<UnitData>();
+        foreach(Unit unit in updatedUnits)
         {
-            bool unitFound = false;
-            foreach (Unit unit in updatedUnits)
+            bool newUnit = true;
+            foreach(UnitData existing in Data.Units)
             {
-                if (unit.ID != Guid.Empty && unit.ID == Data.Units[i].ID)
+                if(unit.ID == existing.ID)
                 {
-                    unitFound = true;
-                    Data.Units[i] = Data.Units[i].UpdateUnitStatus(unit);
+                    newUnit = false;
+                    newSquad.Add(existing.UpdateUnitStatus(unit));
                 }
             }
 
-            if (!unitFound)
+            if (newUnit)
             {
-                Data.Units.RemoveAt(i);
+                Data.Units.Add(new UnitData(unit, unit.Square.Position));
             }
         }
 
-        Data = new SquadData(Data.Units, Data.SquadOrigin, Data.Faction);
+        //for (int i = Data.Units.Count - 1; i >= 0; i--)
+        //{
+        //    bool unitFound = false;
+        //    foreach (Unit unit in updatedUnits)
+        //    {
+        //        if (unit.ID != Guid.Empty && unit.ID == Data.Units[i].ID)
+        //        {
+        //            unitFound = true;
+        //            Data.Units[i] = Data.Units[i].UpdateUnitStatus(unit);
+        //        }
+        //    }
+
+        //    if (!unitFound)
+        //    {
+        //        Data.Units.RemoveAt(i);
+        //    }
+        //}
+
+        //foreach(Unit unit in updatedUnits)
+        //{
+        //    bool newUnit = true;
+        //    foreach(UnitData data in Data.Units)
+        //    {
+        //        if(unit.ID == data.ID)
+        //        {
+        //            newUnit = false;
+        //            break;
+        //        }
+        //    }
+
+        //    if(newUnit)
+        //    {
+        //        Data.Units.Add(new UnitData(unit, unit.Square.Position));
+        //    }
+        //}
+
+        //Data = new SquadData(Data.Units, Data.SquadOrigin, Data.Faction);
+        Data = new SquadData(newSquad, Data.SquadOrigin, Data.Faction);
     }
 }
 

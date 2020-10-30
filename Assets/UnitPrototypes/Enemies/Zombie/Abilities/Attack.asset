@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityPriority: 2
   m_conditions: []
-  m_damage: 3
+  m_damage: 1
   m_range: 1
   m_projectilePrefab: {fileID: 0}
-  m_status: {fileID: 0}
-  m_targetPriorityMode: 3
+  m_status: {fileID: 11400000, guid: 9c5531d8ceba93047944b1ce5e2aaf48, type: 2}
+  m_targetPriorityMode: 2
   m_targetFaction: 0

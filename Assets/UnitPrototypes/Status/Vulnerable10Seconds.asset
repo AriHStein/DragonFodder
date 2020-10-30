@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a90624a07d3a3944ac7fe51e98d64fd, type: 3}
-  m_Name: Stun1Second
+  m_Script: {fileID: 11500000, guid: 38810764e769d0f41961d5bb2111b8f8, type: 3}
+  m_Name: Vulnerable10Seconds
   m_EditorClassIdentifier: 
-  m_duration: 1
-  m_effectPrefab: {fileID: 8404363614692055111, guid: 5531d6d52e9dd7049a21e50fa0c473bc,
+  m_duration: 10
+  m_effectPrefab: {fileID: 8404363614692055111, guid: 526cd8bb36d804d419015327e598c2c3,
     type: 3}
+  m_damageMultiplier: 1.5

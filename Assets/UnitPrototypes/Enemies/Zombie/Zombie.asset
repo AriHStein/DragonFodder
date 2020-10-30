@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294fe6fcee924ba41bf006e7299835cf, type: 3}
+  m_Name: Zombie
+  m_EditorClassIdentifier: 
+  Type: Zombie
+  MaxHealth: 10
+  MaxMP: 30
+  TimeBetweenActions: 2
+  Difficulty: 2
+  Flying: 0
+  MoveSpeed: 1
+  Abilities:
+  - {fileID: 11400000, guid: 594194bce32a25848a5db7f99e72e288, type: 2}
+  - {fileID: 11400000, guid: 30dc7d8260ce57041aa4c253cd1d25a6, type: 2}

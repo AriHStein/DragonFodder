@@ -17,5 +17,7 @@ MonoBehaviour:
   m_damage: 4
   m_range: 1
   m_projectilePrefab: {fileID: 0}
+  m_status: {fileID: 0}
   m_targetPriorityMode: 3
+  m_targetFaction: 0
   m_lifeStealPercent: 0.5

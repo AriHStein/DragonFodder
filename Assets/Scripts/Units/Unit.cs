@@ -141,11 +141,22 @@ public class Unit : MonoBehaviour
         foreach(Ability ability in Proto.Abilities)
         {
             IAbilityContext context = ability.GetValue(this, board);
+            if(context.Value <= 0)
+            {
+                continue;
+            }
+
             if(bestContext == null || context.Value > bestContext.Value)
             {
                 bestAbility = ability;
                 bestContext = context;
             }
+        }
+
+        // No valid actions found. skip turn
+        if(bestAbility == null)
+        {
+            return;
         }
 
         bestAbility.Execute(bestContext);

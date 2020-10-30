@@ -6,12 +6,12 @@ using System.Linq;
 using Pathfinding;
 
 
-[CreateAssetMenu(fileName = "new Move", menuName = "Units/Abilities/Move", order = 115)]
+[CreateAssetMenu(fileName = "Move", menuName = "Units/Abilities/Move", order = 115)]
 public class Move : Ability
 {
     public override string AnimationTrigger { get { return null; } }
     
-    public enum DestinationPriorityMode { Nearest, Farthest, Strongest, Weakest, MostHealth, LeastHealth }
+    public enum DestinationPriorityMode { Nearest, Farthest, Strongest, Weakest, MostHealth, LeastHealth, MostDamaged, LeastDamaged }
     [SerializeField] DestinationPriorityMode m_priorityMode = DestinationPriorityMode.Nearest;
     [SerializeField] Faction m_targetFaction = Faction.Enemy;
     [SerializeField] float m_minDistance = 1f;
@@ -58,6 +58,18 @@ public class Move : Ability
                 List<Unit> leastHealth = board.UnitManager.GetUnitsOfFaction(m_targetFaction);
                 leastHealth.OrderBy(u => u.CurrentHealth);
                 dest = leastHealth[0].Square;
+                break;
+
+            case DestinationPriorityMode.MostDamaged:
+                List<Unit> mostDamaged = board.UnitManager.GetUnitsOfFaction(m_targetFaction);
+                mostDamaged.OrderByDescending(u => u.MaxHealth - u.CurrentHealth);
+                dest = mostDamaged[0].Square;
+                break;
+
+            case DestinationPriorityMode.LeastDamaged:
+                List<Unit> leastDamaged = board.UnitManager.GetUnitsOfFaction(m_targetFaction);
+                leastDamaged.OrderBy(u => u.MaxHealth - u.CurrentHealth);
+                dest = leastDamaged[0].Square;
                 break;
         }
 

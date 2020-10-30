@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 
-[CreateAssetMenu(fileName = "new Attack", menuName = "Units/Abilities/Attack", order = 116)]
+[CreateAssetMenu(fileName = "Attack", menuName = "Units/Abilities/Attack", order = 116)]
 public class Attack : Ability
 {
     public override string AnimationTrigger { get { return "Attack"; } }
@@ -13,7 +13,9 @@ public class Attack : Ability
     [SerializeField] int m_damage = 1;
     [SerializeField] float m_range = 1f;
     [SerializeField] GameObject m_projectilePrefab = null;
+    [SerializeField] Status m_status = default;
     [SerializeField] TargetPriorityMode m_targetPriorityMode = TargetPriorityMode.FewestHitsToKill;
+    [SerializeField] Faction m_targetFaction = Faction.Enemy;
 
     public override IAbilityContext GetValue(Unit unit, Board board)
     {
@@ -110,6 +112,10 @@ public class Attack : Ability
             GameObject projectile = Instantiate(m_projectilePrefab, ctx.Actor.transform);
             projectile.GetComponent<Projectile>().Initialize(ctx.Target);
         }
+        if(m_status != null)
+        {
+            ctx.Target.ApplyStatus(m_status.GetInstance());
+        }
         base.Execute(context);
     }
 
@@ -149,7 +155,7 @@ public class Attack : Ability
                 }
                 
                 BoardSquare square = board.GetSquareAt(unitPos + new Vector2Int(x, y));
-                if (square != null && square.Unit != null && square.Unit.Faction != unit.Faction && square.Unit.IsTargetable())
+                if (square != null && square.Unit != null && square.Unit.Faction == m_targetFaction && square.Unit.IsTargetable())
                 {
                     possibleTargets.Add(square.Unit);
                 }
