@@ -137,14 +137,6 @@ public class Attack : Ability
         Vector2Int unitPos = unit.Square.Position;
         List<Unit> possibleTargets = new List<Unit>();
 
-        //Vector2Int[] directions = new Vector2Int[]
-        //{
-        //    Vector2Int.up,
-        //    Vector2Int.right,
-        //    Vector2Int.down,
-        //    Vector2Int.left
-        //};
-
         for(int x = Mathf.FloorToInt(-m_range); x <= Mathf.CeilToInt(m_range); x++)
         {
             for(int y = Mathf.FloorToInt(-m_range); y <= Mathf.CeilToInt(m_range); y++)
@@ -161,15 +153,6 @@ public class Attack : Ability
                 }
             }
         }
-
-        //foreach(Vector2Int direction in directions)
-        //{
-        //    BoardSquare square = board.GetSquareAt(unitPos + direction);
-        //    if(square != null && square.Unit != null && square.Unit.Faction != unit.Faction && square.Unit.IsTargetable())
-        //    {
-        //        possibleTargets.Add(square.Unit);
-        //    }
-        //}
 
         return possibleTargets;
     }

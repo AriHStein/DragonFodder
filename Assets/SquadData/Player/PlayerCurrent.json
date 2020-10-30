@@ -1,0 +1,65 @@
+{
+    "Units": [
+        {
+            "Type": "Healer",
+            "ID": {
+                "Value": "dd11c03d-5652-4104-a448-8fd6f6d5a67c"
+            },
+            "Position": {
+                "x": 0,
+                "y": 0
+            },
+            "Faction": 0,
+            "CurrentHealth": 8,
+            "CurrentMP": 11,
+            "Difficulty": 1
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "67cab6a3-0138-4203-afb1-18cf64c6cc5e"
+            },
+            "Position": {
+                "x": 1,
+                "y": 2
+            },
+            "Faction": 0,
+            "CurrentHealth": 8,
+            "CurrentMP": 15,
+            "Difficulty": 0
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "f53b72e4-dbbc-4fa3-a502-84aefd52edb2"
+            },
+            "Position": {
+                "x": 2,
+                "y": 2
+            },
+            "Faction": 0,
+            "CurrentHealth": 7,
+            "CurrentMP": 15,
+            "Difficulty": 0
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "f27373cc-02e9-4afe-9c5e-c1f704b6b9d3"
+            },
+            "Position": {
+                "x": 1,
+                "y": 0
+            },
+            "Faction": 0,
+            "CurrentHealth": 4,
+            "CurrentMP": 14,
+            "Difficulty": 0
+        }
+    ],
+    "SquadOrigin": {
+        "x": 0,
+        "y": 0
+    },
+    "Faction": 0
+}

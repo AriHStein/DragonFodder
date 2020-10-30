@@ -11,7 +11,6 @@ public class Board : MonoBehaviour
     public UnitManager UnitManager { get; protected set; }
     PathManager_AStar<BoardSquare> pathManager;
     BoardGraph moveGraph;
-    //MoveGraph flyingGraph;
 
     public Action<PlayMode> PlayModeChangedEvent; 
 
@@ -22,8 +21,8 @@ public class Board : MonoBehaviour
     [SerializeField] GameObject m_gameOverPanel = default;
     [SerializeField] DungeonMap m_dungeonMap = default;
     [SerializeField] TMPro.TextMeshProUGUI m_currentGoldText = default;
+    
     Encounter m_currentEncounter;
-
     int m_currentGold;
 
     [SerializeField] GameObject m_whiteSquare = default;
@@ -32,11 +31,10 @@ public class Board : MonoBehaviour
     [SerializeField] Vector2Int m_defaultSquadSize = Vector2Int.one;
 
     [SerializeField] float m_endOfBattleDelayLength = 5f;
-    //[SerializeField] int m_rowsAllowedForUnitPlacement = 3;
-    //[SerializeField] int m_battleModeEnemyFormationSize = 3;
+    const string m_playerSquadsDirectoryName = "Player";
+    const string m_defaultPlayerSquadFileName = "PlayerDefault";
+    const string m_currentPlayerSquadFileName = "PlayerCurrent";
 
-    //[SerializeField] float m_timeBetweenTurns = 2f;
-    //float m_timeUntilNextTurn;
 
     Squad m_currentPlayerSquad;
     //SquadData m_enemySquadStartPosition;
@@ -61,18 +59,13 @@ public class Board : MonoBehaviour
         UnitManager = new UnitManager(m_unitPrefabs);
         pathManager = new PathManager_AStar<BoardSquare>();
         Current = this;
-        //PlayMode = PlayMode.UnitPlacement;
-
-        //m_timeUntilNextTurn = m_timeBetweenTurns;
 
         SetupSquares(m_defaultBoardSize.x, m_defaultBoardSize.y);
-        //SetupUnits();
         PositionCamera();
     }
 
     private void Start()
     {
-        //EnterPlayMode(PlayMode.UnitPlacement);
         StartGame();
     }
 
@@ -156,9 +149,7 @@ public class Board : MonoBehaviour
 
     void RefreshMoveGraph()
     {
-        //Debug.Log("Refresh Graph");
         moveGraph = new BoardGraph(Squares);
-        //flyingGraph = new MoveGraph(Squares, false);
     }
 
     public Path_AStar<BoardSquare> GetPath(BoardSquare start, bool flying, Func<BoardSquare, bool> endCondition, Func<BoardSquare, float> heuristic = null)
@@ -168,7 +159,6 @@ public class Board : MonoBehaviour
             return (Path_AStar<BoardSquare>)pathManager.GetPath(moveGraph.Flying, start, endCondition, heuristic);
         }
 
-        //Debug.Log("Get walking path.");
         return (Path_AStar<BoardSquare>)pathManager.GetPath(moveGraph.Walking, start, endCondition, heuristic);
     }
 
@@ -242,18 +232,9 @@ public class Board : MonoBehaviour
 
         m_currentPlayerSquad = new Squad(GetDefaultPlayerSquad());
         ChangeGold(-m_currentGold);
-        //m_currentGold = 0;
-        //UpdateGoldText();
 
         m_dungeonMap.SetupMap();
         EnterPlayMode(PlayMode.Dungeon);
-        //PlayMode = PlayMode.Dungeon;
-
-        m_currentPlayerSquad = new Squad(GetDefaultPlayerSquad());
-
-        //m_unitPlacementModePanel.Activate(m_currentPlayerSquad.Data.Units);
-        //SetupSquares(Squares.GetLength(0), m_rowsAllowedForUnitPlacement);
-        //LoadPlayerSquad();
     }
 
     public bool ChangeGold(int amount)
@@ -386,6 +367,7 @@ public class Board : MonoBehaviour
     {
         if(PlayMode == mode)
         {
+            Debug.Log($"Already in {mode}.");
             return;
         }
 
@@ -410,7 +392,7 @@ public class Board : MonoBehaviour
                 {
                     m_currentPlayerSquad = new Squad(GetCurrentPlayerSquad());
                 }
-                
+
                 m_unitPlacementModePanel.Activate(m_currentPlayerSquad.Data.Units);
                 m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
@@ -439,7 +421,7 @@ public class Board : MonoBehaviour
 
             case PlayMode.Dungeon:
                 m_unitPlacementModePanel.Deactivate();
-                m_squadEditorModePanel.SetActive(true);
+                m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 m_dungeonMap.Activate();
                 break;
@@ -464,40 +446,20 @@ public class Board : MonoBehaviour
         EnterPlayMode(PlayMode.Paused);
         if(playerWon)
         {
-            Invoke("BattleWon", m_endOfBattleDelayLength);
+            Invoke(nameof(BattleWon), m_endOfBattleDelayLength);
         } else
         {
-            Invoke("BattleLost", m_endOfBattleDelayLength);
+            Invoke(nameof(BattleLost), m_endOfBattleDelayLength);
         }
     }
 
-    //IEnumerator<bool> EndOfBattleDelay(bool battleWon)
-    //{
-    //    //yield return new WaitForSeconds(m_endOfBattleDelayLength);
-    //    float elapsedTime = 0f;
-    //    while (elapsedTime < m_endOfBattleDelayLength)
-    //    {
-    //        elapsedTime += Time.deltaTime;
-    //        yield return false;
-    //    }
-
-    //    if (battleWon)
-    //    {
-    //        BattleWon();
-    //    }
-    //    else
-    //    {
-    //        BattleLost();
-    //    }
-    //}
-
     void BattleWon()
     {
-        m_currentPlayerSquad.UpdateStatuses(UnitManager.Units);
-        UnitSaveLoadUtility.SaveSquad(m_currentPlayerSquad.Data, "Player", "Player");
+        Debug.Log($"Battle won. Remaining unit count: {UnitManager.Units.Count}.");
+        m_currentPlayerSquad.UpdateUnits(UnitManager.Units);
+        UnitSaveLoadUtility.SaveSquad(m_currentPlayerSquad.Data, m_currentPlayerSquadFileName, m_playerSquadsDirectoryName);
 
         ChangeGold(m_currentEncounter.Reward);
-        //m_currentGold += m_currentEncounter.Reward;
 
         m_dungeonMap.ExitEncounter(m_currentEncounter, true);
         EnterPlayMode(PlayMode.Dungeon);
@@ -515,12 +477,12 @@ public class Board : MonoBehaviour
     #region Save/Load
     SquadData GetCurrentPlayerSquad()
     {
-        return UnitSaveLoadUtility.LoadSquad("Player", "Player");
+        return UnitSaveLoadUtility.LoadSquad(m_currentPlayerSquadFileName, m_playerSquadsDirectoryName);
     }
 
     SquadData GetDefaultPlayerSquad()
     {
-        return UnitSaveLoadUtility.LoadSquad("PlayerDefault", "Player");
+        return UnitSaveLoadUtility.LoadSquad(m_defaultPlayerSquadFileName, m_playerSquadsDirectoryName);
     }
 
     public SquadData LoadAndPlaceEnemyFormation(int size, bool mirror = false)
@@ -662,6 +624,7 @@ public class Board : MonoBehaviour
         }
 
         //Debug.LogWarning($"Failed to place {failedUnitCount} units");
+        //m_currentPlayerSquad.UpdateStatuses(UnitManager.Units);
         return failedUnitCount == 0;
     }
 

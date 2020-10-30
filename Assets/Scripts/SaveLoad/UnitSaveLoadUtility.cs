@@ -9,7 +9,7 @@ public class UnitSaveLoadUtility
     const string m_squadFileExtension = ".json";
 
     public static void SaveSquad(SquadData squad, string fileName, string dir)
-    {
+    {   
         string json = JsonUtility.ToJson(squad, true);
         if(!Directory.Exists(SquadDirectory()))
         {

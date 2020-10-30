@@ -84,39 +84,6 @@ public class Move : Ability
             );
 
         return MoveAlongPath(path, unit, board);
-        //if (path == null || path.Length() == 0)
-        //{
-        //    return new EmptyContext();
-        //}
-
-        //BoardSquare square = null;
-        //BoardSquare last = null;
-        //float dist = 0f;
-        //while(dist <= unit.Proto.MoveSpeed)
-        //{
-        //    last = square;
-        //    square = path.Dequeue();
-        //    dist += 1f;
-
-        //    if(path.Length() == 0)
-        //    {
-        //        return new SingleBoardSquareContext(AbilityPriority, unit, square, board);
-        //    }
-        //}
-
-        //// for flying units, an intermediate square on the path may be occupied. 
-        //// If so, go back one square on the path. If that fails, movement fails.
-        //if(square.Unit != null)
-        //{
-        //    if(last.Unit != null)
-        //    {
-        //        return new EmptyContext();
-        //    }
-
-        //    square = last;
-        //}
-
-        //return new SingleBoardSquareContext(AbilityPriority, unit, square, board);
     }
 
     IAbilityContext MoveAlongPath(Path_AStar<BoardSquare> path, Unit unit, Board board)

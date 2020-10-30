@@ -67,7 +67,6 @@ public class UnitManager
 
     public void RegisterUnit(Unit unit)
     {
-        //Debug.Log($"{unit.name} registered");
         Units.Add(unit);
         unit.DeathEvent += OnUnitDeath;
 

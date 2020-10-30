@@ -11,18 +11,11 @@ public class Squad
     {
         Data = data;
     }
-    public void UpdateStatuses(List<Unit> updatedUnits)
+    public void UpdateUnits(List<Unit> updatedUnits)
     {
         // iterate through all units in this squads unit list.
         // if the unit exists in the updated unit list, update that unit.
         // otherwise, assume the unit died during the battle and remove it from the squad.
-
-        // TODO: Do we need to account for units that exist in the new units list, but not in the original squad?
-        // Theese might be summons or other temporary units. Assuming they die after the battle seems reasonable for now.
-        Debug.Log($"Existing count: {Data.Units.Count}");
-        Debug.Log($"New unit count: {updatedUnits.Count}");
-
-
         if (Data.Units == null || updatedUnits == null)
         {
             Data = new SquadData();
@@ -39,57 +32,20 @@ public class Squad
                 {
                     newUnit = false;
                     newSquad.Add(existing.UpdateUnitStatus(unit));
+                    break;
                 }
             }
 
             if (newUnit)
             {
-                Data.Units.Add(new UnitData(unit, unit.Square.Position));
+                newSquad.Add(new UnitData(unit, unit.Square.Position));
             }
         }
 
-        //for (int i = Data.Units.Count - 1; i >= 0; i--)
-        //{
-        //    bool unitFound = false;
-        //    foreach (Unit unit in updatedUnits)
-        //    {
-        //        if (unit.ID != Guid.Empty && unit.ID == Data.Units[i].ID)
-        //        {
-        //            unitFound = true;
-        //            Data.Units[i] = Data.Units[i].UpdateUnitStatus(unit);
-        //        }
-        //    }
-
-        //    if (!unitFound)
-        //    {
-        //        Data.Units.RemoveAt(i);
-        //    }
-        //}
-
-        //foreach(Unit unit in updatedUnits)
-        //{
-        //    bool newUnit = true;
-        //    foreach(UnitData data in Data.Units)
-        //    {
-        //        if(unit.ID == data.ID)
-        //        {
-        //            newUnit = false;
-        //            break;
-        //        }
-        //    }
-
-        //    if(newUnit)
-        //    {
-        //        Data.Units.Add(new UnitData(unit, unit.Square.Position));
-        //    }
-        //}
-
-        //Data = new SquadData(Data.Units, Data.SquadOrigin, Data.Faction);
         Data = new SquadData(newSquad, Data.SquadOrigin, Data.Faction);
     }
 }
 
-//[CreateAssetMenu(fileName = "new Squad", menuName = "Units/SquadData", order = 101)]
 [System.Serializable]
 public struct SquadData
 {
