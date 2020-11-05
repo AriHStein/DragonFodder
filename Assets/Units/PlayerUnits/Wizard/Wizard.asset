@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wizard
   m_EditorClassIdentifier: 
   Type: Wizard
-  MaxHealth: 4
+  MaxHealth: 40
   MaxMP: 100
   TimeBetweenActions: 2
   Difficulty: 1

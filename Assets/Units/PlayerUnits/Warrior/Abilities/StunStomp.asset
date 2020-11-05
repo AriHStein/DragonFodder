@@ -12,16 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1059c581e7650434b9555a9d6b8f0572, type: 3}
   m_Name: StunStomp
   m_EditorClassIdentifier: 
-  m_abilityPriority: 1
+  m_abilityPriority: 10
   m_conditions: []
-  m_mpCost: 0
-  m_primaryDamage: 1
+  m_mpCost: 20
+  m_primaryDamage: 0
   m_aoeDamage: 1
-  m_range: 1
-  m_aoeRange: 1
+  m_range: 0
+  m_aoeRange: 2
   m_friendlyFire: 0
-  m_projectilePrefab: {fileID: 0}
+  m_projectilePrefab: {fileID: 5898368746953044224, guid: 95e9e28802a61214197e6531c20d8656,
+    type: 3}
   m_primaryStatus: {fileID: 0}
-  m_aoeStatus: {fileID: 0}
+  m_aoeStatus: {fileID: 11400000, guid: 5f9736141720ec9428cb5369b2e5f3fc, type: 2}
   m_targetPriorityMode: 0
   m_targetFaction: 1

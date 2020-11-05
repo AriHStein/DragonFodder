@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Zombie
   m_EditorClassIdentifier: 
   Type: Zombie
-  MaxHealth: 10
+  MaxHealth: 150
   MaxMP: 30
   TimeBetweenActions: 2
   Difficulty: 2

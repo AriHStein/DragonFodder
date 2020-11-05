@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityPriority: 2
   m_conditions: []
-  m_damage: -1
+  m_mpCost: 0
+  m_animationTriggerOverride: 
+  m_damage: -10
   m_range: 1
   m_projectilePrefab: {fileID: 0}
   m_status: {fileID: 0}

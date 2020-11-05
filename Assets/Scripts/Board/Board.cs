@@ -485,7 +485,6 @@ public class Board : MonoBehaviour
 
     void BattleWon()
     {
-        Debug.Log($"Battle won. Remaining unit count: {UnitManager.Units.Count}.");
         m_currentPlayerSquad.UpdateUnits(UnitManager.Units);
         UnitSaveLoadUtility.SaveSquad(m_currentPlayerSquad.Data, m_currentPlayerSquadFileName, m_playerSquadsDirectoryName);
 

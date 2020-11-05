@@ -50,25 +50,6 @@ public class AoEAttack : Ability
 
     List<BoardSquare> GetPossibleTargets(Unit unit, Board board)
     {
-        //List<BoardSquare> squares = new List<BoardSquare>();
-        //for(int x = -Mathf.CeilToInt(m_range); x <= Mathf.CeilToInt(m_range); x++)
-        //{
-        //    for(int y = -Mathf.CeilToInt(m_range); y <= Mathf.CeilToInt(m_range); y++)
-        //    {
-        //        if (x * x + y * y > m_range * m_range)
-        //        {
-        //            continue;
-        //        }
-
-        //        Vector2Int off = new Vector2Int(x, y);
-        //        BoardSquare square = board.GetSquareAt(unit.Square.Position + off);
-        //        if(CanTargetSquare(unit, square))
-        //        {
-        //            squares.Add(square);
-        //        }
-        //    }
-        //}
-
         List<BoardSquare> squares = board.GetSquaresInRange(unit.Square.Position, m_aoeRange);
         for(int i = squares.Count; i > 0; i--)
         {
@@ -85,10 +66,6 @@ public class AoEAttack : Ability
     {
         public BoardSquare Target;
         public int Comparer;
-        //public int Difficulty;
-        //public int TotalCurrentHealth;
-        //public int Damage;
-        //public int Kills;
 
         public TargetData(BoardSquare target, Board board, TargetPriorityMode mode, float aoeRange, int primaryDamage, int aoeDamage, Faction targetFaction, bool friendlyFire = false)
         {
@@ -136,19 +113,6 @@ public class AoEAttack : Ability
                         Debug.Log($"TargetPriorityMode {mode} not implemented.");
                         break;
                 }
-
-                //Difficulty += square.Unit.Proto.Difficulty;
-                //TotalCurrentHealth += square.Unit.CurrentHealth;
-                //int damage = target == square ? primaryDamage : aoeDamage;
-                //if(damage >= square.Unit.CurrentHealth)
-                //{
-                //    Damage += square.Unit.CurrentHealth;
-                //    Kills++;
-                //} 
-                //else
-                //{
-                //    Damage += damage;
-                //}
             }
         }
     }
@@ -185,7 +149,6 @@ public class AoEAttack : Ability
             return;
         }
 
-        //SingleTargetContext ctx = (SingleTargetContext)context;
         if (m_projectilePrefab != null)
         {
             GameObject projectile = Instantiate(m_projectilePrefab, ctx.Actor.transform);
@@ -221,10 +184,6 @@ public class AoEAttack : Ability
                 square.Unit.ChangeHealth(-m_aoeDamage);
             }
         }
-        //if (m_primaryStatus != null)
-        //{
-        //    ctx.Target.ApplyStatus(m_status.GetInstance());
-        //}
 
         base.Execute(context);
     }

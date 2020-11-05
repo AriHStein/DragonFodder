@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Skeleton
   m_EditorClassIdentifier: 
   Type: Skeleton
-  MaxHealth: 3
+  MaxHealth: 30
   MaxMP: 30
   TimeBetweenActions: 1
   Difficulty: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Vampire
   m_EditorClassIdentifier: 
   Type: Vampire
-  MaxHealth: 8
+  MaxHealth: 120
   MaxMP: 80
   TimeBetweenActions: 1
   Difficulty: 3

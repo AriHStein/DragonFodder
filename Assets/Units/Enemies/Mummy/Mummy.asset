@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mummy
   m_EditorClassIdentifier: 
   Type: Mummy
-  MaxHealth: 20
+  MaxHealth: 200
   MaxMP: 80
   TimeBetweenActions: 3
   Difficulty: 2

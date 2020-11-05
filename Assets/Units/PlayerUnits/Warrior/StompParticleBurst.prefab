@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8216021468171388998}
   - component: {fileID: 2103807467839060869}
   - component: {fileID: 4201889632425457577}
+  - component: {fileID: -3964023422429450778}
   m_Layer: 0
   m_Name: StompParticleBurst
   m_TagString: Untagged
@@ -40,7 +41,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4884935291413574504}
   serializedVersion: 6
-  lengthInSec: 0.5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 2
   cullingMode: 0
@@ -4812,3 +4813,21 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-3964023422429450778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4884935291413574504}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6c716d8872daad49b592977a7885a60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onAwake: 
+  m_onEnable: 
+  m_onDisable: 
+  m_onStart: StunParticlesStart
+  m_onUpdate: 
+  m_onDestroy: StunParticlesDestroy

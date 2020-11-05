@@ -43,5 +43,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1de656a7bffa8164594fd47067d05cb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_travelTime: 0
-  m_onHitVFX: {fileID: 5898368746953044224}
+  m_travelTime: 0.1
+  m_onHitVFX: {fileID: 4884935291413574504, guid: da54c58c7a7c8264198c1bdd2d8a664f,
+    type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   Type: Warrior
-  MaxHealth: 10
+  MaxHealth: 100
   MaxMP: 50
   TimeBetweenActions: 1
   Difficulty: 1
@@ -23,3 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3d06aebbc54c61469096526c8dc65d5, type: 2}
   - {fileID: 11400000, guid: d90b2a3b9f0609a4ba4bfae4381a34f6, type: 2}
   - {fileID: 11400000, guid: 7141e2bdd02524b4884f76c9f7744eeb, type: 2}
+  - {fileID: 11400000, guid: 0ec15d62edd23c5489d9006a7078fa73, type: 2}
