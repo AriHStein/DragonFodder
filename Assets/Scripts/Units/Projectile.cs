@@ -5,11 +5,10 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] float m_travelTime = 0.2f;
+    [SerializeField] GameObject m_onHitVFX = null;
     //[SerializeField] int m_damage = 1;
 
-    Unit m_target;
-
-    public void Initialize(Unit target)
+    public void Initialize(Transform target)
     {
         if(target == null)
         {
@@ -17,8 +16,7 @@ public class Projectile : MonoBehaviour
             return;
         }
         
-        m_target = target;
-        m_targetPosition = target.transform.position + Vector3.up;
+        m_targetPosition = target.position + Vector3.up;
         m_startPosition = transform.position;
         m_timeElapsed = 0;
     }
@@ -45,6 +43,10 @@ public class Projectile : MonoBehaviour
         //{
         //    m_target.TakeDamage(m_damage);
         //}
+        if(m_onHitVFX != null)
+        {
+            Instantiate(m_onHitVFX, transform.position, Quaternion.identity, transform.parent);
+        }
 
         Destroy(gameObject);
     }

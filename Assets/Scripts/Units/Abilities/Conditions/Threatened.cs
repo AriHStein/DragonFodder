@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "new Threatened Condition", menuName = "Units/Conditions/Threatened", order = 122)]
+[CreateAssetMenu(fileName = "new Threatened Condition", menuName = "Units/Conditions/Threatened", order = 121)]
 public class Threatened : Condition
 {
     public Faction Enemies;

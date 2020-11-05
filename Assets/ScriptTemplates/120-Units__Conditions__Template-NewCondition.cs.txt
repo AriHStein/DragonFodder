@@ -1,0 +1,12 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "#SCRIPTNAME#", menuName = "Units/Conditions/#SCRIPTNAME#", order = 121)]
+public class #SCRIPTNAME# : Condition
+{
+    public override bool IsMet(Unit unit, Board board) 
+    {
+        return false;
+    }
+}

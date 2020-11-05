@@ -9,11 +9,17 @@ public abstract class Ability : ScriptableObject
     
     [SerializeField] int m_abilityPriority = 1;
     [SerializeField] List<Condition> m_conditions = default;
+    [SerializeField] int m_mpCost = 0;
     protected int AbilityPriority { get { return m_abilityPriority; } }
 
     //public abstract void Reset();
     public virtual IAbilityContext GetValue(Unit unit, Board board)
     {
+        if(unit.CurrentMP < m_mpCost)
+        {
+            return new EmptyContext();
+        }
+        
         foreach(Condition condition in m_conditions)
         {
             if(!condition.IsMet(unit, board))
@@ -28,6 +34,7 @@ public abstract class Ability : ScriptableObject
     public event Action<Ability> AbilityExecutedEvent;
     public virtual void Execute(IAbilityContext context)
     {
+        context.Actor.ChangeMP(-m_mpCost);
         AbilityExecutedEvent?.Invoke(this);
     }
 

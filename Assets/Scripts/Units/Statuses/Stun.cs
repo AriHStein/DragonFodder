@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Stun Status", menuName ="Units/Statuses/Stun", order = 125)]
+[CreateAssetMenu(fileName ="Stun Status", menuName ="Units/Statuses/Stun", order = 126)]
 public class Stun : Status
 {
     public override string Type { get { return "Stun"; } }

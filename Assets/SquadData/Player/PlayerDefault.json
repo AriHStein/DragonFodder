@@ -10,7 +10,7 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 10
+            "CurrentHealth": -1
         },
         {
             "Type": "Warrior",
@@ -22,7 +22,7 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 10
+            "CurrentHealth": -1
         },
         {
             "Type": "Warrior",
@@ -34,7 +34,7 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 10
+            "CurrentHealth": -1
         },
         {
             "Type": "Warrior",
@@ -46,7 +46,7 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 10
+            "CurrentHealth": -1
         },
         {
             "Type": "Wizard",
@@ -58,7 +58,7 @@
                 "y": 0
             },
             "Faction": 0,
-            "CurrentHealth": 3
+            "CurrentHealth": -1
         },
         {
             "Type": "Wizard",
@@ -70,7 +70,7 @@
                 "y": 0
             },
             "Faction": 0,
-            "CurrentHealth": 3
+            "CurrentHealth": -1
         },
         {
             "Type": "Wizard",
@@ -82,7 +82,7 @@
                 "y": 0
             },
             "Faction": 0,
-            "CurrentHealth": 3
+            "CurrentHealth": -1
         }
     ],
     "SquadOrigin": {

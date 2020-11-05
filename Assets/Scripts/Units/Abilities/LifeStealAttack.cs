@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="LifeStealAttack", menuName ="Units/Abilities/LifeStealAttack", order =116)]
-public class LifeStealAttack : Attack
+public class LifeStealAttack : SingleTargetAttack
 {
     [SerializeField][Range(0,1)] float m_lifeStealPercent = 0.5f;
 

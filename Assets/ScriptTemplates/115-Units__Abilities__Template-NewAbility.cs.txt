@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "#SCRIPTNAME#", menuName = "Units/Abilities/#SCRIPTNAME#", order = 116)]
+public class #SCRIPTNAME# : Ability
+{
+    public override string AnimationTrigger { get { return null; } }
+    #NOTRIM#
+    public override IAbilityContext GetValue(Unit unit, Board board)
+    {
+        IAbilityContext result = base.GetValue(unit, board);
+        if (result != null)
+        {
+            return result;
+        }
+        #NOTRIM#
+        return null;
+    }
+    #NOTRIM#
+    public override void Execute(IAbilityContext context)
+    {
+        base.Execute(context);
+    }
+    #NOTRIM#
+    public override bool CanTargetUnit(Unit unit, Unit other)
+    {
+        return base.CanTargetUnit(unit, other);
+    }
+    #NOTRIM#
+    public override bool CanTargetSquare(Unit unit, BoardSquare target)
+    {
+        return base.CanTargetSquare(unit, target);
+    }
+}

@@ -327,7 +327,7 @@ public class Unit : MonoBehaviour
         }
     }
 
-    protected virtual void ChangeMP(int amount)
+    public virtual void ChangeMP(int amount)
     {
         //Debug.Log("ChangeMP");
         CurrentMP += amount;

@@ -1,0 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "#SCRIPTNAME#", menuName = "Units/Statuses/#SCRIPTNAME#", order = 126)]
+public class #SCRIPTNAME# : Status
+{
+	public override string Type { get { return "#SCRIPTNAME#"; } }
+}

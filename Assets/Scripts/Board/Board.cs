@@ -54,6 +54,36 @@ public class Board : MonoBehaviour
         return GetSquareAt(pos.x, pos.y);
     }
 
+    public List<BoardSquare> GetSquaresInRange(Vector2Int center, float range)
+    {
+        List<BoardSquare> squares = new List<BoardSquare>();
+        for (int x = -Mathf.CeilToInt(range); x <= Mathf.CeilToInt(range); x++)
+        {
+            for(int y = -Mathf.CeilToInt(range); y <= Mathf.CeilToInt(range); y++)
+            {
+                if (x * x + y * y > range * range)
+                {
+                    continue;
+                }
+
+                BoardSquare square = GetSquareAt(center + new Vector2Int(x, y));
+                if(square == null)
+                {
+                    continue;
+                }
+
+                squares.Add(square);
+            }
+        }
+
+        if(squares.Count == 0)
+        {
+            return null;
+        }
+
+        return squares;
+    }
+
     public void Awake()
     {
         UnitManager = new UnitManager(m_unitPrefabs);

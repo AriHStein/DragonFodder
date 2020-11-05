@@ -6,7 +6,7 @@ using System.Linq;
 using Pathfinding;
 
 
-[CreateAssetMenu(fileName = "Move", menuName = "Units/Abilities/Move", order = 115)]
+[CreateAssetMenu(fileName = "Move", menuName = "Units/Abilities/Move", order = 116)]
 public class Move : Ability
 {
     public override string AnimationTrigger { get { return null; } }
