@@ -10,24 +10,24 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 68,
-            "CurrentMP": 16,
+            "CurrentHealth": 84,
+            "CurrentMP": 18,
             "Difficulty": 0,
             "IsSummoned": false
         },
         {
-            "Type": "Healer",
+            "Type": "Wizard",
             "ID": {
-                "Value": "1e734577-b6e3-47e1-9dcf-822a4c0dd67b"
+                "Value": "f27373cc-02e9-4afe-9c5e-c1f704b6b9d3"
             },
             "Position": {
-                "x": 0,
+                "x": 1,
                 "y": 0
             },
             "Faction": 0,
-            "CurrentHealth": 80,
-            "CurrentMP": 12,
-            "Difficulty": 1,
+            "CurrentHealth": 25,
+            "CurrentMP": 7,
+            "Difficulty": 0,
             "IsSummoned": false
         }
     ],

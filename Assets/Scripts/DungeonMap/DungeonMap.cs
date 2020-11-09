@@ -7,23 +7,6 @@ using UnityEngine.UI.Extensions;
 [RequireComponent(typeof(RectTransform))]
 public class DungeonMap : MonoBehaviour
 {
-    //private class EncounterData
-    //{
-    //    public Encounter Encounter;
-    //    public EncounterButton Button;
-    //    //public List<EncounterData> Connections;
-
-    //    public EncounterData(Encounter encounter,
-    //        EncounterButton button
-    //        //List<EncounterData> connections
-    //        )
-    //    {
-    //        Encounter = encounter;
-    //        Button = button;
-    //        //Connections = connections;
-    //    }
-    //}
-
     [SerializeField] List<int> m_encounterDifficulties = default;
     [SerializeField] GameObject m_dugeonModePanel = default;
     [SerializeField] GameObject m_encounterButtonPrefab = default;
@@ -33,8 +16,11 @@ public class DungeonMap : MonoBehaviour
     [SerializeField] int m_encounterCount = 10;
 
     [SerializeField] Vector2 m_edgeBufferSize = 50 * Vector2.one;
+
+
+
+
     RectTransform m_rectTranform;
-    //Encounter[,] m_encounterDatas;
     Dictionary<Encounter, EncounterButton> m_encounterButtons;
     List<Encounter> m_encounters;
     List<Encounter> m_availableEncounters;
@@ -54,7 +40,6 @@ public class DungeonMap : MonoBehaviour
         GenerateEncounters();
         SetupEncounterButtons();
         RefreshPanel();
-        //SetupConnections();
     }
 
     void RefreshPanel()
@@ -113,8 +98,6 @@ public class DungeonMap : MonoBehaviour
 
         Encounter[,] encounterMap = new Encounter[m_encounterGridSize.x, m_encounterGridSize.y];
         m_encounters = new List<Encounter>();
-        //m_encounterDatas = new EncounterData[m_encounterGridSize.x, m_encounterGridSize.y];
-        //m_encounterButtons = new Dictionary<Encounter, EncounterButton>();
         m_availableEncounters = new List<Encounter>();
 
         int encounterDifficulty = 2;
@@ -125,7 +108,6 @@ public class DungeonMap : MonoBehaviour
 
             encounterMap[position.x, position.y] = e;
             m_encounters.Add(e);
-            //m_encounterButtons.Add(e, null);
         }
 
         foreach(Path path in encouterPaths)
@@ -138,7 +120,7 @@ public class DungeonMap : MonoBehaviour
 
     void SetupEncounterButtons()
     {
-        //ClearEncounterButtons();
+        ClearEncounterButtons();
         m_encounterButtons = new Dictionary<Encounter, EncounterButton>();
         float totalHeight = m_rectTranform.rect.yMax - m_rectTranform.rect.yMin - 2 * m_edgeBufferSize.y;
         float totalWidth = m_rectTranform.rect.xMax - m_rectTranform.rect.xMin - 2 * m_edgeBufferSize.x;
@@ -152,20 +134,6 @@ public class DungeonMap : MonoBehaviour
             upperRight.x = Mathf.Max(upperRight.x, encounter.MapPosition.x);
             upperRight.y = Mathf.Max(upperRight.y, encounter.MapPosition.y);
         }
-        //for(int x = 0; x < m_encounterDatas.GetLength(0); x++)
-        //{
-        //    for(int y = 0; y < m_encounterDatas.GetLength(1); y++)
-        //    {
-        //        EncounterData data = m_encounterDatas[x, y];
-        //        if(data != null)
-        //        {
-        //            lowerLeft.x = Mathf.Min(lowerLeft.x, x);
-        //            lowerLeft.y = Mathf.Min(lowerLeft.y, y);
-        //            upperRight.x = Mathf.Max(upperRight.x, x);
-        //            upperRight.y = Mathf.Max(upperRight.y, y);
-        //        }
-        //    }
-        //}
 
         int gridWidth = upperRight.x - lowerLeft.x;
         int gridHight = upperRight.y - lowerLeft.y;
@@ -181,22 +149,6 @@ public class DungeonMap : MonoBehaviour
             buttonPos += (Vector3)m_edgeBufferSize;
             SetupEncounterButton(encounter, buttonPos);
         }
-
-        //for (int x = 0; x < m_encounterDatas.GetLength(0); x++)
-        //{
-        //    for (int y = 0; y < m_encounterDatas.GetLength(1); y++)
-        //    {
-        //        EncounterData data = m_encounterDatas[x, y];
-        //        if (data != null)
-        //        {
-        //            data.Encounter.MapPosition -= lowerLeft;
-                    
-        //            Vector3 buttonPos = new Vector3(data.Encounter.MapPosition.x * gridSizeX, data.Encounter.MapPosition.y * gridSizeY, 0);
-        //            buttonPos += (Vector3)m_edgeBufferSize;
-        //            SetupEncounterButton(data, buttonPos);
-        //        }
-        //    }
-        //}
     }
 
     void SetupEncounterButton(Encounter encounter, Vector3 position)
@@ -209,21 +161,23 @@ public class DungeonMap : MonoBehaviour
         m_encounterButtons[encounter] = eb;
     }
 
-    //void ClearEncounterButtons()
-    //{
-    //    for (int x = 0; x < m_encounterDatas.GetLength(0); x++)
-    //    {
-    //        for (int y = 0; y < m_encounterDatas.GetLength(1); y++)
-    //        {
-    //            EncounterData data = m_encounterDatas[x, y];
-    //            if (data != null && data.Button != null)
-    //            {
-    //                Destroy(data.Button.gameObject);
-    //                data.Button = null;
-    //            }
-    //        }
-    //    }
-    //}
+    void ClearEncounterButtons()
+    {
+        if(m_encounterButtons == null)
+        {
+            return;
+        }
+        
+        foreach(EncounterButton button in m_encounterButtons.Values)
+        {
+            if(button == null)
+            {
+                continue;
+            }
+            
+            Destroy(button.gameObject);
+        }
+    }
 
     void SetupConnections()
     {
@@ -314,14 +268,7 @@ public class DungeonMap : MonoBehaviour
             foreach(Encounter connection in encounter.Connections)
             {
                 m_availableEncounters.Add(connection);
-                //if (!connection.Complete)
-                //{
-
-                //}
             }
-
-
-            //m_availableEncounters.Remove(encounter);
         }
 
         RefreshPanel();
