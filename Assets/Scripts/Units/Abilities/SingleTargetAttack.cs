@@ -25,7 +25,7 @@ public class SingleTargetAttack : Ability
     [SerializeField] GameObject m_projectilePrefab = null;
     [SerializeField] Status m_status = default;
     [SerializeField] TargetPriorityMode m_targetPriorityMode = TargetPriorityMode.FewestHitsToKill;
-    [SerializeField] Faction m_targetFaction = Faction.Enemy;
+    [SerializeField] bool m_targetOtherFaction = true;
 
     public override IAbilityContext GetValue(Unit unit, Board board)
     {
@@ -114,8 +114,8 @@ public class SingleTargetAttack : Ability
             Debug.LogError("Invalid context");
             return;
         }
-        
-        //SingleTargetContext ctx = (SingleTargetContext)context;
+
+        ctx.Actor.FaceToward(ctx.Target.Square);
         ctx.Target.ChangeHealth(-m_damage);
         if(m_projectilePrefab != null)
         {
@@ -132,7 +132,7 @@ public class SingleTargetAttack : Ability
     public override bool CanTargetUnit(Unit unit, Unit other)
     {
         return other.IsTargetable() && 
-            other.Faction == m_targetFaction &&
+            ((other.Faction == unit.Faction.Opposite()) == m_targetOtherFaction) &&
            CanTargetSquare(unit, other.Square);
     }
 
@@ -149,7 +149,9 @@ public class SingleTargetAttack : Ability
 
         foreach(BoardSquare square in board.GetSquaresInRange(unitPos, m_range))
         {
-            if(square.Unit != null && square.Unit.Faction == m_targetFaction && square.Unit.IsTargetable())
+            if(square.Unit != null && 
+                ((square.Unit.Faction == unit.Faction.Opposite()) == m_targetOtherFaction) && 
+                square.Unit.IsTargetable())
             {
                 possibleTargets.Add(square.Unit);
             }

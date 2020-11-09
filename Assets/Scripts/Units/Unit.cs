@@ -5,6 +5,19 @@ using System;
 using Pathfinding;
 
 public enum Faction { Player, Enemy }
+public static class FactionExtensions 
+{ 
+    public static Faction Opposite(this Faction faction)
+    {
+        if(faction == Faction.Enemy)
+        {
+            return Faction.Player;
+        }
+
+        return Faction.Enemy;
+    }
+}
+
 [RequireComponent(typeof(Animator))]
 public class Unit : MonoBehaviour
 {
@@ -24,23 +37,19 @@ public class Unit : MonoBehaviour
 
     public int MaxMP { get { return Proto.MaxMP; } }
     public int CurrentMP { get; protected set; }
-    //protected int SpellMP { get { return Proto.SpellMP; } }
+
+    public bool IsSummoned { get; protected set; }
 
     protected List<StatusInstance> m_statuses;
-    //[SerializeField] protected List<Ability> m_abilities;
 
     public event Action<Unit> DeathEvent;
     public event Action<Unit> InitializedEvent;
 
     protected Animator m_animator;
-    //[SerializeField] GameObject m_stunnedParticles = default;
-
-    //protected Path_AStar<BoardSquare> path;
 
     protected virtual void Awake()
     {
         m_animator = GetComponent<Animator>();
-        //m_stunnedParticles.SetActive(false);
         m_statuses = new List<StatusInstance>();
     }
 
@@ -54,13 +63,10 @@ public class Unit : MonoBehaviour
     {
         ID = data.ID;
         Type = data.Type;
-        //Proto = Board.Current.UnitManager.GetUnitPrototypeOfType(data.Type);
 
         Square = square;
         Square.Unit = this;
 
-        //MaxHealth = data.Proto.MaxHealth;
-        //MaxHealth = Board.Current.UnitManager.GetUnitPrototypeOfType(data.Type).MaxHealth;
         if (data.CurrentHealth == -1)
         {
             CurrentHealth = MaxHealth;
@@ -81,6 +87,7 @@ public class Unit : MonoBehaviour
 
 
         Faction = data.Faction;
+        IsSummoned = data.IsSummoned;
 
         m_timeSinceLastAction = 0;
 
@@ -106,15 +113,6 @@ public class Unit : MonoBehaviour
         {
             return false;
         }
-        
-        //if(m_stunnedTimeLeft > 0)
-        //{
-        //    m_stunnedTimeLeft -= deltaTime;
-        //    return false;
-        //}
-
-        //m_animator.SetBool("Stunned", false);
-        //m_stunnedParticles.SetActive(false);
 
         m_timeSinceLastManaAdd += deltaTime;
         if(m_timeSinceLastManaAdd > 1)
@@ -166,79 +164,15 @@ public class Unit : MonoBehaviour
         }
     }
 
-    //protected virtual bool CanCastSpell(Unit target)
-    //{
-    //    return CurrentMP >= SpellMP;
-    //}
-
-    //protected virtual void CastSpell()
-    //{
-    //    //if(!CanCastSpell())
-    //    //{
-    //    //    return false;
-    //    //}
-
-    //    ChangeMP(-SpellMP);
-    //    //return true;
-    //}
-
     public void FaceToward(BoardSquare square)
     {
         transform.LookAt(square.transform);
     }
 
-    //protected virtual void Attack(Unit target)
-    //{
-    //    m_animator.SetTrigger("Attack");
-    //    target.ChangeHealth(-Proto.AttackDamage);
-    //}
-
-    //protected virtual bool TryMoveToward(BoardSquare dest)
-    //{
-    //    Vector2Int offset = dest.Position - Square.Position;
-    //    if (Mathf.Abs(offset.x) > Mathf.Abs(offset.y))
-    //    {
-    //        FaceToward(Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
-    //        return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x + (int)Mathf.Sign(offset.x), Square.Position.y));
-    //    }
-    //    else
-    //    {
-    //        FaceToward(Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
-    //        return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position.x, Square.Position.y + (int)Mathf.Sign(offset.y)));
-    //    }
-    //}
-
     public virtual bool TryForceMove(Vector2Int moveVector)
     {
         return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position + moveVector));
     }
-
-    //protected virtual bool TryGetPathTo(BoardSquare dest)
-    //{
-    //    path = Board.Current.GetPath(
-    //            Square,
-    //            Proto.Flying,
-    //            (square) => { return Vector2Int.Distance(square.Position, dest.Position) <= 1; },
-    //            (square) => { return Vector2Int.Distance(square.Position, dest.Position); }
-    //        );
-
-    //    if(path == null || path.Length() == 0)
-    //    {
-    //        return false;
-    //    }
-
-    //    path.Dequeue();
-    //    return true;
-    //}
-
-    //float m_stunnedTimeLeft = 0f;
-    //public void Stun(float time)
-    //{
-    //    ApplyStatus(new Stun(time));
-    //    //m_stunnedTimeLeft += time;
-    //    m_stunnedParticles.SetActive(true);
-    //    //m_animator.SetBool("Stunned", true);
-    //}
 
     public void ApplyStatus(StatusInstance status)
     {
@@ -341,9 +275,6 @@ public class Unit : MonoBehaviour
             status.StatusExpiredEvent -= OnStatusExpired;
         }
         DeathEvent?.Invoke(this);
-
-        //Square.Unit = null;
-        //Destroy(gameObject);
     }
 
     public void VictoryDance()

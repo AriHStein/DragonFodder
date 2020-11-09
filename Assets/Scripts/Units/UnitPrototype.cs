@@ -34,6 +34,7 @@ public struct UnitData
     public int CurrentHealth;
     public int CurrentMP;
     public int Difficulty;
+    public bool IsSummoned;
 
     private UnitData(
         string type, 
@@ -44,7 +45,8 @@ public struct UnitData
         Faction faction, 
         //int maxHealth, 
         int currentHealth, 
-        int currentMP)
+        int currentMP,
+        bool isSummon = false)
     {
         Type = type;
         //Proto = proto;
@@ -55,6 +57,7 @@ public struct UnitData
         //MaxHealth = maxHealth;
         CurrentHealth = currentHealth;
         CurrentMP = currentMP;
+        IsSummoned = isSummon;
     }
 
     public UnitData(Unit unit, Vector2Int origin)
@@ -68,9 +71,10 @@ public struct UnitData
         //MaxHealth = unit.MaxHealth;
         CurrentHealth = unit.CurrentHealth;
         CurrentMP = unit.CurrentMP;
+        IsSummoned = unit.IsSummoned;
     }
 
-    public UnitData(UnitPrototype proto, Vector2Int position, Faction faction)
+    public UnitData(UnitPrototype proto, Vector2Int position, Faction faction, bool isSummon = false)
     {
         Type = proto.Type;
         //Proto = proto;
@@ -81,6 +85,7 @@ public struct UnitData
         //MaxHealth = proto.MaxHealth;
         CurrentHealth = proto.MaxHealth;
         CurrentMP = 0;
+        IsSummoned = isSummon;
     }
 
     public UnitData Clone()
@@ -94,7 +99,8 @@ public struct UnitData
             Faction, 
             //MaxHealth, 
             CurrentHealth,
-            CurrentMP);
+            CurrentMP,
+            IsSummoned);
     }
 
     public UnitData UpdateUnitStatus(Unit unit)

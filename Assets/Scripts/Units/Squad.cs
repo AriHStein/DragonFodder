@@ -25,9 +25,14 @@ public class Squad
         List<UnitData> newSquad = new List<UnitData>();
         foreach(Unit unit in updatedUnits)
         {
+            if(unit.IsSummoned)
+            {
+                continue;
+            }
+            
             bool newUnit = true;
             foreach(UnitData existing in Data.Units)
-            {
+            {                
                 if(unit.ID == existing.ID)
                 {
                     newUnit = false;

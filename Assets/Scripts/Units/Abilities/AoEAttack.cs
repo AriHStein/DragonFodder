@@ -18,7 +18,7 @@ public class AoEAttack : Ability
     [SerializeField] Status m_primaryStatus = default;
     [SerializeField] Status m_aoeStatus = default;
     [SerializeField] TargetPriorityMode m_targetPriorityMode = TargetPriorityMode.MostHit;
-    [SerializeField] Faction m_targetFaction = Faction.Enemy;
+    [SerializeField] bool m_targetOtherFaction = true;
 
     public override IAbilityContext GetValue(Unit unit, Board board)
     {
@@ -35,9 +35,11 @@ public class AoEAttack : Ability
         }
 
         TargetData target = null;
+        Faction targetFaction = m_targetOtherFaction ? unit.Faction.Opposite() : unit.Faction;
+
         foreach(BoardSquare square in squaresInRange)
         {
-            target = CompareTargets(target, new TargetData(square, board, m_targetPriorityMode, m_aoeRange, m_primaryDamage, m_aoeDamage, m_targetFaction, m_friendlyFire));
+            target = CompareTargets(target, new TargetData(square, board, m_targetPriorityMode, m_aoeRange, m_primaryDamage, m_aoeDamage, targetFaction, m_friendlyFire));
         }
         
         if(target == null)
@@ -155,12 +157,13 @@ public class AoEAttack : Ability
             projectile.GetComponent<Projectile>().Initialize(ctx.Square.transform);
         }
 
+        ctx.Actor.FaceToward(ctx.Square);
         List<BoardSquare> hitSquares = ctx.Board.GetSquaresInRange(ctx.Square.Position, m_aoeRange);
         foreach(BoardSquare square in hitSquares)
         {
             if (square.Unit == null ||
                 !square.Unit.IsTargetable() ||
-                (square.Unit.Faction != m_targetFaction && !m_friendlyFire))
+                (((square.Unit.Faction != ctx.Actor.Faction.Opposite()) == m_targetOtherFaction) && !m_friendlyFire))
             {
                 continue;
             }
@@ -191,7 +194,7 @@ public class AoEAttack : Ability
     public override bool CanTargetUnit(Unit unit, Unit other)
     {
         return other.IsTargetable() && 
-            other.Faction == m_targetFaction && 
+            ((other.Faction == unit.Faction.Opposite()) == m_targetOtherFaction) && 
             CanTargetSquare(unit, other.Square);
     }
     

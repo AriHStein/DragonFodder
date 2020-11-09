@@ -73,7 +73,6 @@ public class Retreat : Ability
             return;
         }
         
-        //SingleBoardSquareContext ctx = (SingleBoardSquareContext)context;
         ctx.Actor.FaceToward(ctx.Square);
         ctx.Board.TryMoveUnitTo(ctx.Actor, ctx.Square);
     }

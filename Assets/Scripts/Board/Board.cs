@@ -373,7 +373,7 @@ public class Board : MonoBehaviour
 
     void BattleLateUpdate()
     {
-        UnitManager.CleanupDeadUnits();
+        UnitManager.LateUpdate();
     }
 
     void UnitPlacementLateUpdate()
@@ -410,11 +410,6 @@ public class Board : MonoBehaviour
                 m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 m_dungeonMap.Deactivate();
-                //ClearBoard();
-                //SetupSquares(m_defaultBoardSize.x, m_defaultBoardSize.y);
-
-                //m_enemySquadStartPosition = LoadAndPlaceEnemyFormation(m_battleModeEnemyFormationSize, true);
-                //m_playerSquadStartPosition = LoadPlayerSquad();
                 break;
 
             case PlayMode.UnitPlacement:
@@ -427,12 +422,6 @@ public class Board : MonoBehaviour
                 m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 m_dungeonMap.Deactivate();
-
-                //SetSquaresInteractable(Squares.GetLength(0), m_rowsAllowedForUnitPlacement);
-                //ClearBoard();
-
-                //SetupSquares(m_defaultBoardSize.x, m_rowsAllowedForUnitPlacement);
-                //LoadPlayerSquad();
                 break;
 
             case PlayMode.SquadEditor:
@@ -443,7 +432,6 @@ public class Board : MonoBehaviour
                 ClearBoard();
                 SetupSquares(m_defaultSquadSize.x, m_defaultSquadSize.y);
                 SetSquaresInteractable(Squares.GetLength(0), Squares.GetLength(1));
-                //LoadEnemySquad(true, false);
                 break;
 
             case PlayMode.Paused:

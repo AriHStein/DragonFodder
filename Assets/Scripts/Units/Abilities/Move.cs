@@ -13,7 +13,6 @@ public class Move : Ability
     
     public enum DestinationPriorityMode { Nearest, Farthest, Strongest, Weakest, MostHealth, LeastHealth, MostDamaged, LeastDamaged }
     [SerializeField] DestinationPriorityMode m_priorityMode = DestinationPriorityMode.Nearest;
-    [SerializeField] Faction m_targetFaction = Faction.Enemy;
     [SerializeField] float m_minDistance = 1f;
     [SerializeField] float m_maxDistance = 1f;
 
@@ -29,45 +28,45 @@ public class Move : Ability
         switch(m_priorityMode)
         {
             case DestinationPriorityMode.Nearest:
-                dest = board.UnitManager.GetNearestUnitOfFaction(m_targetFaction, unit.Square).Square;
+                dest = board.UnitManager.GetNearestUnitOfFaction(unit.Faction.Opposite(), unit.Square).Square;
                 break;
 
             case DestinationPriorityMode.Farthest:
-                dest = board.UnitManager.GetFarthestUnitOfFaction(m_targetFaction, unit.Square).Square;
+                dest = board.UnitManager.GetFarthestUnitOfFaction(unit.Faction.Opposite(), unit.Square).Square;
                 break;
 
             case DestinationPriorityMode.Strongest:
-                List<Unit> strongest = board.UnitManager.GetUnitsOfFaction(m_targetFaction);
+                List<Unit> strongest = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 strongest.OrderByDescending(u => u.Proto.Difficulty);
                 dest = strongest[0].Square;
                 break;
 
             case DestinationPriorityMode.Weakest:
-                List<Unit> weakest = board.UnitManager.GetUnitsOfFaction(m_targetFaction);
+                List<Unit> weakest = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 weakest.OrderBy(u => u.Proto.Difficulty);
                 dest = weakest[0].Square;
                 break;
 
             case DestinationPriorityMode.MostHealth:
-                List<Unit> mostHealth = board.UnitManager.GetUnitsOfFaction(m_targetFaction);
+                List<Unit> mostHealth = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 mostHealth.OrderByDescending(u => u.CurrentHealth);
                 dest = mostHealth[0].Square;
                 break;
 
             case DestinationPriorityMode.LeastHealth:
-                List<Unit> leastHealth = board.UnitManager.GetUnitsOfFaction(m_targetFaction);
+                List<Unit> leastHealth = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 leastHealth.OrderBy(u => u.CurrentHealth);
                 dest = leastHealth[0].Square;
                 break;
 
             case DestinationPriorityMode.MostDamaged:
-                List<Unit> mostDamaged = board.UnitManager.GetUnitsOfFaction(m_targetFaction);
+                List<Unit> mostDamaged = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 mostDamaged.OrderByDescending(u => u.MaxHealth - u.CurrentHealth);
                 dest = mostDamaged[0].Square;
                 break;
 
             case DestinationPriorityMode.LeastDamaged:
-                List<Unit> leastDamaged = board.UnitManager.GetUnitsOfFaction(m_targetFaction);
+                List<Unit> leastDamaged = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 leastDamaged.OrderBy(u => u.MaxHealth - u.CurrentHealth);
                 dest = leastDamaged[0].Square;
                 break;
@@ -131,7 +130,6 @@ public class Move : Ability
             return;
         }
 
-        //SingleBoardSquareContext ctx = (SingleBoardSquareContext)context;
         ctx.Actor.FaceToward(ctx.Square);
         ctx.Board.TryMoveUnitTo(ctx.Actor, ctx.Square);
     }

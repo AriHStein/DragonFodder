@@ -19,6 +19,7 @@ public class UnitManager
         Units = new List<Unit>();
         //m_turnOrder = new List<Unit>();
         m_diedThisTurn = new HashSet<Unit>();
+        m_newUnitsThisTurn = new HashSet<Unit>();
         m_factionCount = new Dictionary<Faction, int>();
 
         m_unitPrefabMap = new Dictionary<string, GameObject>();
@@ -65,15 +66,22 @@ public class UnitManager
         return m_unitPrefabMap[type];
     }
 
+    HashSet<Unit> m_newUnitsThisTurn;
     public void RegisterUnit(Unit unit)
+    {
+        m_newUnitsThisTurn.Add(unit);
+    }
+
+    void AddUnit(Unit unit) 
     {
         Units.Add(unit);
         unit.DeathEvent += OnUnitDeath;
 
-        if(!m_factionCount.ContainsKey(unit.Faction))
+        if (!m_factionCount.ContainsKey(unit.Faction))
         {
             m_factionCount[unit.Faction] = 1;
-        } else
+        }
+        else
         {
             m_factionCount[unit.Faction]++;
         }
@@ -127,16 +135,21 @@ public class UnitManager
         //m_units.Remove(unit);
     }
 
-    public void CleanupDeadUnits()
+    public void LateUpdate()
     {
         foreach(Unit unit in m_diedThisTurn)
         {
             //Debug.Log($"{unit.name} died");
             RemoveUnit(unit);
-
         }
-
         m_diedThisTurn.Clear();
+
+        foreach (Unit unit in m_newUnitsThisTurn)
+        {
+            AddUnit(unit);
+        }
+        m_newUnitsThisTurn.Clear();
+
         foreach(Faction faction in m_factionCount.Keys)
         {
             if (m_factionCount[faction] == 0)
