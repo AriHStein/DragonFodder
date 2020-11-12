@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b41204b7a4087e94795fe0b762e8a116, type: 3}
-  m_Name: Shielded25hp
+  m_Script: {fileID: 11500000, guid: 8e81b0ed051a9964eb30e5c48ef2c7d3, type: 3}
+  m_Name: 50PercentHealth
   m_EditorClassIdentifier: 
-  m_duration: 100
-  m_effectPrefab: {fileID: 7421266038354303618, guid: afc2793c2c3ca844b918105915fa37a6,
-    type: 3}
-  m_maxShieldAmount: 25
+  Threshold: 0.5
