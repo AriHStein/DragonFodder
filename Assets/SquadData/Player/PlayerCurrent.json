@@ -10,23 +10,8 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 84,
-            "CurrentMP": 18,
-            "Difficulty": 0,
-            "IsSummoned": false
-        },
-        {
-            "Type": "Wizard",
-            "ID": {
-                "Value": "f27373cc-02e9-4afe-9c5e-c1f704b6b9d3"
-            },
-            "Position": {
-                "x": 1,
-                "y": 0
-            },
-            "Faction": 0,
-            "CurrentHealth": 25,
-            "CurrentMP": 7,
+            "CurrentHealth": 70,
+            "CurrentMP": 2,
             "Difficulty": 0,
             "IsSummoned": false
         }

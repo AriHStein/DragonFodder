@@ -11,30 +11,13 @@ public abstract class Status : ScriptableObject
     [SerializeField] GameObject m_effectPrefab = default;
     public GameObject EffectPrefab { get { return m_effectPrefab; } }
 
-    public StatusInstance GetInstance()
+    public virtual StatusInstance GetInstance()
     {
         return new StatusInstance(this);
     }
-    //public event Action<Status> StatusExpiredEvent;
-
-    //public virtual void CombineWith(Status other)
-    //{
-    //    if(other == null || other.Type != Type)
-    //    {
-    //        throw new ArgumentException("Attempting to combine two different types of status.");
-    //    }
-
-    //    m_duration += other.m_duration;
-    //}
-
 
     public virtual bool ReadyForTurn(float timeLeft)
     {
-        //m_duration -= timeLeft;
-        //if(m_duration <= 0)
-        //{
-        //    StatusExpiredEvent?.Invoke(this);
-        //}
         return true;
     }
 
@@ -78,7 +61,7 @@ public class StatusInstance
         m_timeLeft += other.m_timeLeft;
     }
 
-    public bool ReadyForTurn(float deltaTime)
+    public virtual bool ReadyForTurn(float deltaTime)
     {
         m_timeLeft -= deltaTime;
         if (m_timeLeft <= 0)
@@ -88,7 +71,7 @@ public class StatusInstance
         return Proto.ReadyForTurn(m_timeLeft);
     }
 
-    void Expire()
+    protected void Expire()
     {
         if(Effect != null)
         {
@@ -97,17 +80,17 @@ public class StatusInstance
         StatusExpiredEvent?.Invoke(this);
     }
 
-    public bool IsTargetable()
+    public virtual bool IsTargetable()
     {
         return Proto.IsTargetable();
     }
 
-    public int ModifyDamageRecieved(int damage)
+    public virtual int ModifyDamageRecieved(int damage)
     {
         return Proto.ModifyDamageRecieved(damage);
     }
 
-    public int ModifyDamageDealt(int damage)
+    public virtual int ModifyDamageDealt(int damage)
     {
         return Proto.ModifyDamageDealt(damage);
     }

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyFactionMaterial
   m_EditorClassIdentifier: Assembly-CSharp::FactionMaterial
   Faction: 1
-  Material: {fileID: 2100000, guid: d0426eabae95a1c4ea1ae807dbb41274, type: 2}
+  Material: {fileID: 2100000, guid: c3bf5e7715373b94f8ff97eb3f292fb0, type: 2}
