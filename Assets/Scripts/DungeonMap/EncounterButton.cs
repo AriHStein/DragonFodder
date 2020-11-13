@@ -8,6 +8,7 @@ public class EncounterButton : MonoBehaviour
 {
     Encounter m_encounter;
     Button m_button;
+    Board m_board;
     //GameObject m_dungeonMapPanel;
 
     private void Awake()
@@ -15,15 +16,17 @@ public class EncounterButton : MonoBehaviour
         m_button = GetComponent<Button>();
     }
 
-    public void Initialize(Encounter encounter)
+    public void Initialize(Encounter encounter, Board board)
     {
         m_encounter = encounter;
+        m_board = board;
         //m_dungeonMapPanel = dungeonMapPanel;
     }
 
     public void LoadEncounter()
     {
-        Board.Current.SetupEncounter(m_encounter);
+        m_board.SetupEncounter(m_encounter);
+        //Board.Current.SetupEncounter(m_encounter);
         //m_dungeonMapPanel.SetActive(false);
     }
 

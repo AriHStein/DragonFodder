@@ -9,42 +9,11 @@ public class BoardSquare : MonoBehaviour
 
     public bool Interactable = true;
 
-    //private void Start()
+    //public void Clear()
     //{
     //    if(Unit != null)
     //    {
-    //        Unit.Square = this;
+    //        Board.Current.UnitManager.RemoveUnit(Unit);
     //    }
     //}
-
-    //public void Activate()
-    //{
-    //    if(Unit != null)
-    //    {
-    //        Unit.gameObject.SetActive(true);
-    //    }
-
-    //    gameObject.SetActive(true);
-    //    Interactable = true;
-    //}
-
-    //public void Deactivate()
-    //{
-    //    if (Unit != null)
-    //    {
-    //        Unit.gameObject.SetActive(false);
-    //    }
-
-    //    gameObject.SetActive(false);
-    //}
-
-    public void Clear()
-    {
-        if(Unit != null)
-        {
-            Board.Current.UnitManager.RemoveUnit(Unit);
-            //Destroy(Unit.gameObject);
-            //Unit = null;
-        }
-    }
 }

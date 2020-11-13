@@ -12,10 +12,12 @@ public class RecruitUnitPanel : MonoBehaviour
     [SerializeField] UnitPrototype m_unit = default;
 
     UnitPlacementMenu m_placementMenu;
+    Board m_board;
 
     private void Start()
     {
         m_placementMenu = FindObjectOfType<UnitPlacementMenu>();
+        m_board = FindObjectOfType<Board>();
 
         m_costText.text = m_cost.ToString();
         m_buttonText.text = "Recruit " + m_unit.Type;
@@ -23,7 +25,7 @@ public class RecruitUnitPanel : MonoBehaviour
 
     public void RecruitUnit()
     {
-        if (Board.Current.ChangeGold(-m_cost))
+        if (m_board.ChangeGold(-m_cost))
         {
             m_placementMenu.AddUnit(m_unit);
         }

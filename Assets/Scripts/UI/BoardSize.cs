@@ -12,10 +12,12 @@ public class BoardSize : MonoBehaviour
     [SerializeField] Slider m_sliderY = default;
 
     Vector2Int m_boardSize;
+    Board m_board;
 
     private void Start()
     {
-        Board.Current.PlayModeChangedEvent += (mode) => {
+        m_board = FindObjectOfType<Board>();
+        m_board.PlayModeChangedEvent += (mode) => {
             if (mode == PlayMode.SquadEditor)
                 OnSquadModeEntered();
                 };
@@ -25,7 +27,7 @@ public class BoardSize : MonoBehaviour
     void OnSquadModeEntered()
     {
         m_ignoreSliderValueChanges = true;
-        m_boardSize = new Vector2Int(Board.Current.Squares.GetLength(0), Board.Current.Squares.GetLength(1));
+        m_boardSize = new Vector2Int(m_board.Squares.GetLength(0), m_board.Squares.GetLength(1));
         m_sliderX.value = m_boardSize.x;
         m_sliderY.value = m_boardSize.y;
         m_xSizeText.text = m_boardSize.x.ToString();
@@ -48,7 +50,7 @@ public class BoardSize : MonoBehaviour
         m_ySizeText.text = m_boardSize.y.ToString();
         if(changeBoard)
         {
-            Board.Current.SetupSquares(m_boardSize.x, m_boardSize.y, true);
+            m_board.SetupSquares(m_boardSize.x, m_boardSize.y, true);
         }
     }
 }

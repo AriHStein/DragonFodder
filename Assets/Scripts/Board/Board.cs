@@ -6,7 +6,7 @@ using Pathfinding;
 public enum PlayMode { UnitPlacement, SquadEditor, Battle, Paused, Dungeon }
 public class Board : MonoBehaviour
 {
-    public static Board Current;
+    //public static Board Current;
     public PlayMode PlayMode { get; protected set; }
     public UnitManager UnitManager { get; protected set; }
     PathManager_AStar<BoardSquare> pathManager;
@@ -87,8 +87,9 @@ public class Board : MonoBehaviour
     public void Awake()
     {
         UnitManager = new UnitManager(m_unitPrototypes);
+        UnitManager.BattleWonEvent += ExitBattleMode;
         pathManager = new PathManager_AStar<BoardSquare>();
-        Current = this;
+        //Current = this;
 
         SetupSquares(m_defaultBoardSize.x, m_defaultBoardSize.y);
         PositionCamera();
@@ -208,11 +209,23 @@ public class Board : MonoBehaviour
                     continue;
                 }
 
-                Squares[x, y].Clear();
+                ClearSquare(Squares[x, y]);
+                //Squares[x, y].Clear();
                 Destroy(Squares[x, y].gameObject);
                 Squares[x, y] = null;
             }
         }
+    }
+
+    void ClearSquare(BoardSquare square)
+    {
+        if(square.Unit != null)
+        {
+            UnitManager.RemoveUnit(square.Unit);
+        }
+        
+        //Destroy(square.gameObject);
+        //Squares[square.Position.x, square.Position.y] = null;
     }
 
     public void ClearUnits()
@@ -231,7 +244,7 @@ public class Board : MonoBehaviour
                     continue;
                 }
 
-                Squares[x, y].Clear();
+                ClearSquare(Squares[x, y]);
             }
         }
     }
@@ -263,7 +276,7 @@ public class Board : MonoBehaviour
         m_currentPlayerSquad = new Squad(GetDefaultPlayerSquad());
         ChangeGold(-m_currentGold);
 
-        m_dungeonMap.SetupMap();
+        m_dungeonMap.SetupMap(this);
         EnterPlayMode(PlayMode.Dungeon);
     }
 
@@ -452,9 +465,27 @@ public class Board : MonoBehaviour
         PlayModeChangedEvent?.Invoke(PlayMode);
     }
 
-    public void ExitBattleMode(bool playerWon)
+    //public void ExitBattleMode(bool playerWon)
+    //{
+    //    if(PlayMode != PlayMode.Battle)
+    //    {
+    //        Debug.Log("Exit Battle Mode called while not in BattleMode. Most likely, the battle ended with all units dead.");
+    //        return;
+    //    }
+
+    //    UnitManager.TriggerVictoryAnimations();
+    //    EnterPlayMode(PlayMode.Paused);
+    //    if(playerWon)
+    //    {
+    //        Invoke(nameof(BattleWon), m_endOfBattleDelayLength);
+    //    } else
+    //    {
+    //        Invoke(nameof(BattleLost), m_endOfBattleDelayLength);
+    //    }
+    //}
+    public void ExitBattleMode(Faction winner)
     {
-        if(PlayMode != PlayMode.Battle)
+        if (PlayMode != PlayMode.Battle)
         {
             Debug.Log("Exit Battle Mode called while not in BattleMode. Most likely, the battle ended with all units dead.");
             return;
@@ -462,10 +493,11 @@ public class Board : MonoBehaviour
 
         UnitManager.TriggerVictoryAnimations();
         EnterPlayMode(PlayMode.Paused);
-        if(playerWon)
+        if (winner == Faction.Player)
         {
             Invoke(nameof(BattleWon), m_endOfBattleDelayLength);
-        } else
+        }
+        else
         {
             Invoke(nameof(BattleLost), m_endOfBattleDelayLength);
         }

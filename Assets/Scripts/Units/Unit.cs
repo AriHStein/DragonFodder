@@ -182,10 +182,10 @@ public class Unit : MonoBehaviour
         transform.LookAt(square.transform);
     }
 
-    public virtual bool TryForceMove(Vector2Int moveVector)
-    {
-        return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position + moveVector));
-    }
+    //public virtual bool TryForceMove(Vector2Int moveVector)
+    //{
+    //    return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position + moveVector));
+    //}
 
     public void ApplyStatus(StatusInstance status)
     {

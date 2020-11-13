@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
+using System;
 
 public class UnitManager
 {
@@ -13,6 +13,8 @@ public class UnitManager
     Dictionary<string, UnitPrototype> m_unitPrototypeMap;
     //Dictionary<string, GameObject> m_unitPrefabMap;
     Dictionary<Faction, int> m_factionCount;
+
+    public event Action<Faction> BattleWonEvent;
 
     public UnitManager(List<UnitPrototype> prototypes)
     {
@@ -154,7 +156,8 @@ public class UnitManager
         {
             if (m_factionCount[faction] == 0)
             {
-                Board.Current.ExitBattleMode(faction == Faction.Enemy);
+                BattleWonEvent?.Invoke(faction.Opposite());
+                //Board.Current.ExitBattleMode(faction == Faction.Enemy);
                 return;
             }
         }

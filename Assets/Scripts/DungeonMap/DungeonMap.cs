@@ -30,7 +30,7 @@ public class DungeonMap : MonoBehaviour
         m_rectTranform = GetComponent<RectTransform>();
     }
 
-    public void SetupMap()
+    public void SetupMap(Board board)
     {
         if (m_rectTranform == null)
         {
@@ -38,7 +38,7 @@ public class DungeonMap : MonoBehaviour
         }
 
         GenerateEncounters();
-        SetupEncounterButtons();
+        SetupEncounterButtons(board);
         RefreshPanel();
     }
 
@@ -118,7 +118,7 @@ public class DungeonMap : MonoBehaviour
         m_availableEncounters.Add(m_encounters[0]);
     }
 
-    void SetupEncounterButtons()
+    void SetupEncounterButtons(Board board)
     {
         ClearEncounterButtons();
         m_encounterButtons = new Dictionary<Encounter, EncounterButton>();
@@ -147,15 +147,15 @@ public class DungeonMap : MonoBehaviour
 
             Vector3 buttonPos = new Vector3(encounter.MapPosition.x * gridSizeX, encounter.MapPosition.y * gridSizeY, 0);
             buttonPos += (Vector3)m_edgeBufferSize;
-            SetupEncounterButton(encounter, buttonPos);
+            SetupEncounterButton(encounter, buttonPos, board);
         }
     }
 
-    void SetupEncounterButton(Encounter encounter, Vector3 position)
+    void SetupEncounterButton(Encounter encounter, Vector3 position, Board board)
     {
         GameObject go = Instantiate(m_encounterButtonPrefab, transform);
         EncounterButton eb = go.GetComponent<EncounterButton>();
-        eb.Initialize(encounter);
+        eb.Initialize(encounter, board);
         RectTransform rect = eb.GetComponent<RectTransform>();
         rect.anchoredPosition = position;
         m_encounterButtons[encounter] = eb;

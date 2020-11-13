@@ -19,6 +19,13 @@ public class InputManager : MonoBehaviour
 
     GameObject m_unitPreview;
 
+    Board m_board;
+
+    private void Start()
+    {
+        m_board = FindObjectOfType<Board>();
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -29,7 +36,7 @@ public class InputManager : MonoBehaviour
             TimeManager.TogglePause();
         }
 
-        if (Board.Current.PlayMode == PlayMode.Battle)
+        if (m_board.PlayMode == PlayMode.Battle)
         {
             return;
         }
@@ -112,7 +119,7 @@ public class InputManager : MonoBehaviour
             return false;
         }
 
-        if (Board.Current.TryMoveUnitTo(m_grabbedUnit, square))
+        if (m_board.TryMoveUnitTo(m_grabbedUnit, square))
         {
             m_grabbedUnit.gameObject.SetActive(true);
             m_grabbedUnit = null;
@@ -133,7 +140,7 @@ public class InputManager : MonoBehaviour
         m_newUnitToPlace.Position = square.Position;
         m_newUnitToPlace.Faction = m_currentFaction;
         //Board.Current.TryPlaceUnit(new UnitData(m_newUnitToPlace, square.Position, m_currentFaction));
-        if (Board.Current.TryPlaceUnit(m_newUnitToPlace) != null)
+        if (m_board.TryPlaceUnit(m_newUnitToPlace) != null)
         {
             UnitPlacedEvent?.Invoke();
             m_newUnitToPlace = new UnitSerializationData();
@@ -204,6 +211,6 @@ public class InputManager : MonoBehaviour
         m_newUnitToPlace = data;
         m_currentFaction = faction;
         //m_unitPreview = Instantiate(Board.Current.UnitManager.GetPrefabOfType(data.Type), transform);
-        m_unitPreview = Instantiate(Board.Current.UnitManager.GetUnitPrototypeOfType(data.Type).Prefab, transform);
+        m_unitPreview = Instantiate(m_board.UnitManager.GetUnitPrototypeOfType(data.Type).Prefab, transform);
     }
 }

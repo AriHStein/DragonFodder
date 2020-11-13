@@ -5,9 +5,16 @@ using UnityEngine;
 public class LoadFormationButton : MonoBehaviour
 {
     [SerializeField] FormationSizeSlider m_formationSizeSlider = default;
+    Board m_board;
+
+    private void Start()
+    {
+        m_board = FindObjectOfType<Board>();
+    }
+
 
     public void LoadFormation()
     {
-        Board.Current.LoadAndPlaceEnemyFormation(m_formationSizeSlider.FormationSize);
+        m_board.LoadAndPlaceEnemyFormation(m_formationSizeSlider.FormationSize);
     }
 }

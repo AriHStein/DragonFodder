@@ -11,7 +11,6 @@ public class LoadSquadButton : MonoBehaviour
 
     //[SerializeField] TextMeshProUGUI m_squadNameInputText = default;
     [SerializeField] TMP_InputField m_inputField = default;
-
     public void LoadSquad()
     {
 
@@ -32,8 +31,9 @@ public class LoadSquadButton : MonoBehaviour
         }
 
         Vector2Int boardSize = squad.Size + squad.SquadOrigin + Vector2Int.one;
-        Board.Current.SetupSquares(boardSize.x, boardSize.y);
-        Board.Current.ClearUnits();
-        Board.Current.TryPlaceSquad(squad, Vector2Int.zero, false);
+        Board board = FindObjectOfType<Board>();
+        board.SetupSquares(boardSize.x, boardSize.y);
+        board.ClearUnits();
+        board.TryPlaceSquad(squad, Vector2Int.zero, false);
     }
 }
