@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6cd5e3f77064814294bd9346c60b520, type: 3}
+  m_Name: WizardAbilityTree
+  m_EditorClassIdentifier: 
+  m_baseAbilities:
+  - {fileID: 11400000, guid: 6f611a48a79c5e7499591e12e253d2ac, type: 2}
+  - {fileID: 11400000, guid: 35632c0059843fe4596f60cdcf2fcf3b, type: 2}
+  - {fileID: 11400000, guid: 87e610c0bb7d93e48887e06aa57f9359, type: 2}

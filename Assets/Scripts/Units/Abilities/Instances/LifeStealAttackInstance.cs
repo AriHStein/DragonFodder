@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="LifeStealAttack", menuName ="Units/Abilities/LifeStealAttack", order =116)]
-public class LifeStealAttack : SingleTargetAttack
+public class LifeStealAttackInstance : SingleTargetAttackInstance
 {
-    [SerializeField][Range(0,1)] float m_lifeStealPercent = 0.5f;
+    float m_lifeStealPercent = 0.5f;
+
+    public LifeStealAttackInstance(LifeStealAttack proto) : base(proto)
+    {
+        m_lifeStealPercent = proto.LifeStealPercent;
+    }
 
     public override void Execute(IAbilityContext context)
     {

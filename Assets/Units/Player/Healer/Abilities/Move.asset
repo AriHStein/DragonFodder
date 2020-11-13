@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ef534a07c241e49afc0789d8923435, type: 3}
   m_Name: Move
   m_EditorClassIdentifier: 
-  m_abilityPriority: 1
-  m_conditions: []
-  m_priorityMode: 6
-  m_targetFaction: 0
-  m_minDistance: 1
-  m_maxDistance: 1
+  UnlockedAbilities: []
+  Conditions: []
+  MPCost: 0
+  AbilityPriority: 1
+  PriorityMode: 6
+  MinStoppingDistance: 1
+  MaxStoppingDistance: 3

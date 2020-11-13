@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Summon", menuName = "Units/Abilities/Summon", order = 116)]
-public class Summon : Ability
+public class SummonInstance : AbilityInstance
 {
-    public override string AnimationTrigger { get { return null; } }
-
-    [SerializeField] UnitPrototype m_summonPrototype = default;
+    UnitPrototype m_summonPrototype;
     
+    public SummonInstance(Summon proto) : base(proto)
+    {
+        m_summonPrototype = proto.SummonPrototype;
+    }
+
     public override IAbilityContext GetValue(Unit unit, Board board)
     {
         IAbilityContext result = base.GetValue(unit, board);
@@ -18,24 +20,24 @@ public class Summon : Ability
         }
 
         BoardSquare target = null;
-        foreach(BoardSquare square in board.GetSquaresInRange(unit.Square.Position, 1f))
+        foreach (BoardSquare square in board.GetSquaresInRange(unit.Square.Position, 1f))
         {
-            if(square.Unit == null)
+            if (square.Unit == null)
             {
                 target = square;
                 break;
             }
         }
 
-        if(target == null)
+        if (target == null)
         {
             Debug.LogError("No available square found. This should have been caught by the open square condition.");
             return new EmptyContext();
         }
 
-        return new SingleBoardSquareContext(AbilityPriority, unit, target, board);
+        return new SingleBoardSquareContext(m_abilityPriority, unit, target, board);
     }
-    
+
     public override void Execute(IAbilityContext context)
     {
         if (!(context is SingleBoardSquareContext ctx))
@@ -45,16 +47,16 @@ public class Summon : Ability
         }
 
         ctx.Actor.FaceToward(ctx.Square);
-        ctx.Board.TryPlaceUnit(new UnitData(m_summonPrototype, ctx.Square.Position, ctx.Actor.Faction, true));
+        ctx.Board.TryPlaceUnit(new UnitSerializationData(m_summonPrototype, ctx.Square.Position, ctx.Actor.Faction, true));
 
         base.Execute(context);
     }
-    
+
     public override bool CanTargetUnit(Unit unit, Unit other)
     {
         return false;
     }
-    
+
     public override bool CanTargetSquare(Unit unit, BoardSquare target)
     {
         return target.Unit == null && (unit.Square.Position - target.Position).sqrMagnitude == 1;

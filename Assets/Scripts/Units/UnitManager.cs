@@ -11,10 +11,10 @@ public class UnitManager
     //List<Unit> m_turnOrder;
 
     Dictionary<string, UnitPrototype> m_unitPrototypeMap;
-    Dictionary<string, GameObject> m_unitPrefabMap;
+    //Dictionary<string, GameObject> m_unitPrefabMap;
     Dictionary<Faction, int> m_factionCount;
 
-    public UnitManager(List<GameObject> unitPrefabs)
+    public UnitManager(List<UnitPrototype> prototypes)
     {
         Units = new List<Unit>();
         //m_turnOrder = new List<Unit>();
@@ -22,25 +22,25 @@ public class UnitManager
         m_newUnitsThisTurn = new HashSet<Unit>();
         m_factionCount = new Dictionary<Faction, int>();
 
-        m_unitPrefabMap = new Dictionary<string, GameObject>();
+        //m_unitPrefabMap = new Dictionary<string, GameObject>();
         m_unitPrototypeMap = new Dictionary<string, UnitPrototype>();
-        foreach(GameObject go in unitPrefabs)
+        foreach(UnitPrototype proto in prototypes)
         {
-            Unit unit = go.GetComponent<Unit>();
-            if(unit == null)
-            {
-                Debug.LogWarning($"UnitPrefab {go.name} did not have a Unit component attached.");
-                continue;
-            }
+            //Unit unit = go.GetComponent<Unit>();
+            //if(unit == null)
+            //{
+            //    Debug.LogWarning($"UnitPrefab {go.name} did not have a Unit component attached.");
+            //    continue;
+            //}
 
-            if (unit.Proto == null)
-            {
-                Debug.LogError($"Unit {go.name}'s Prototype is null.");
-                //continue;
-            }
+            //if (unit.Proto == null)
+            //{
+            //    Debug.LogError($"Unit {go.name}'s Prototype is null.");
+            //    //continue;
+            //}
 
-            m_unitPrefabMap[unit.Proto.Type] = go;
-            m_unitPrototypeMap[unit.Proto.Type] = unit.Proto;
+            //m_unitPrefabMap[unit.Type] = go;
+            m_unitPrototypeMap[proto.Type] = proto;
         }
     }
 
@@ -55,16 +55,16 @@ public class UnitManager
         return m_unitPrototypeMap[type];
     }
 
-    public GameObject GetPrefabOfType(string type)
-    {
-        if(type == null || !m_unitPrefabMap.ContainsKey(type))
-        {
-            Debug.LogWarning($"Prefab for unit of type {type} not found.");
-            return null;
-        }
+    //public GameObject GetPrefabOfType(string type)
+    //{
+    //    if(type == null || !m_unitPrefabMap.ContainsKey(type))
+    //    {
+    //        Debug.LogWarning($"Prefab for unit of type {type} not found.");
+    //        return null;
+    //    }
 
-        return m_unitPrefabMap[type];
-    }
+    //    return m_unitPrefabMap[type];
+    //}
 
     HashSet<Unit> m_newUnitsThisTurn;
     public void RegisterUnit(Unit unit)

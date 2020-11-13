@@ -85,7 +85,7 @@ public class StatusInstance
         return Proto.IsTargetable();
     }
 
-    public virtual int ModifyDamageRecieved(int damage)
+    public virtual int ModifyHealthChange(int damage)
     {
         return Proto.ModifyDamageRecieved(damage);
     }

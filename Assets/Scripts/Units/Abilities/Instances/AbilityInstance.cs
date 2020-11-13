@@ -3,26 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public abstract class Ability : ScriptableObject
+public abstract class AbilityInstance
 {
-    public abstract string AnimationTrigger { get; }
-    
-    [SerializeField] int m_abilityPriority = 1;
-    [SerializeField] List<Condition> m_conditions = default;
-    [SerializeField] int m_mpCost = 0;
-    protected int AbilityPriority { get { return m_abilityPriority; } }
+    public string AnimationTrigger { get; protected set; }
 
-    //public abstract void Reset();
+    public bool Unlocked { get; protected set; }
+
+    protected int m_abilityPriority;
+    protected int m_mpCost;
+    protected List<Condition> m_conditions;
+    
+    public AbilityInstance(AbilityPrototype proto)
+    {
+        AnimationTrigger = proto.AnimationTrigger;
+        m_abilityPriority = proto.AbilityPriority;
+
+        m_mpCost = proto.MPCost;
+        m_conditions = proto.Conditions;
+    }
+
     public virtual IAbilityContext GetValue(Unit unit, Board board)
     {
-        if(unit.CurrentMP < m_mpCost)
+        if (unit.CurrentMP < m_mpCost)
         {
             return new EmptyContext();
         }
-        
-        foreach(Condition condition in m_conditions)
+
+        foreach (Condition condition in m_conditions)
         {
-            if(!condition.IsMet(unit, board))
+            if (!condition.IsMet(unit, board))
             {
                 return new EmptyContext();
             }
@@ -31,7 +40,7 @@ public abstract class Ability : ScriptableObject
         return null;
     }
 
-    public event Action<Ability> AbilityExecutedEvent;
+    public event Action<AbilityInstance> AbilityExecutedEvent;
     public virtual void Execute(IAbilityContext context)
     {
         context.Actor.ChangeMP(-m_mpCost);

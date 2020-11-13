@@ -14,7 +14,7 @@ public class UnitPlacementMenu : MonoBehaviour
         m_unitPanels = new Dictionary<string, PlaceUnitPanel>();
     }
 
-    public void Activate(List<UnitData> availableUnits)
+    public void Activate(List<UnitSerializationData> availableUnits)
     {
         gameObject.SetActive(true);
         foreach (PlaceUnitPanel panel in m_unitPanels.Values)
@@ -32,12 +32,12 @@ public class UnitPlacementMenu : MonoBehaviour
             return;
         }
         
-        Dictionary<string, List<UnitData>> sortedUnits = new Dictionary<string, List<UnitData>>();
-        foreach(UnitData unit in availableUnits)
+        Dictionary<string, List<UnitSerializationData>> sortedUnits = new Dictionary<string, List<UnitSerializationData>>();
+        foreach(UnitSerializationData unit in availableUnits)
         {
             if(!sortedUnits.ContainsKey(unit.Type))
             {
-                sortedUnits[unit.Type] = new List<UnitData>();
+                sortedUnits[unit.Type] = new List<UnitSerializationData>();
             }
 
             sortedUnits[unit.Type].Add(unit);
@@ -61,7 +61,7 @@ public class UnitPlacementMenu : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void SetupPanels(Dictionary<string, List<UnitData>> sortedUnits)
+    void SetupPanels(Dictionary<string, List<UnitSerializationData>> sortedUnits)
     {
         foreach(string type in sortedUnits.Keys)
         {
@@ -79,7 +79,7 @@ public class UnitPlacementMenu : MonoBehaviour
 
     }
 
-    void SetupPanel(string type, List<UnitData> units)
+    void SetupPanel(string type, List<UnitSerializationData> units)
     {
         if (!m_unitPanels.ContainsKey(type))
         {
@@ -93,10 +93,10 @@ public class UnitPlacementMenu : MonoBehaviour
 
     public void AddUnit(UnitPrototype proto)
     {
-        UnitData unit = new UnitData(proto, Vector2Int.zero, Faction.Player);
+        UnitSerializationData unit = new UnitSerializationData(proto, Vector2Int.zero, Faction.Player);
         if (!m_unitPanels.ContainsKey(proto.Type))
         {
-            List<UnitData> units = new List<UnitData> { unit };
+            List<UnitSerializationData> units = new List<UnitSerializationData> { unit };
             SetupPanel(proto.Type, units);
         } else
         {

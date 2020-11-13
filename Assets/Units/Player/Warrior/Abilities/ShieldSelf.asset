@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6837571b2c2ff14192b778a73eb9ad0, type: 3}
   m_Name: ShieldSelf
   m_EditorClassIdentifier: 
-  m_abilityPriority: 10
-  m_conditions:
-  - {fileID: 11400000, guid: 79129629b7cfc2f41a7a4a19a9418eac, type: 2}
-  m_mpCost: 10
+  UnlockedAbilities: []
+  Conditions: []
+  MPCost: 20
+  AbilityPriority: 4
   m_animationTriggerOverride: 
-  m_damage: 0
-  m_range: 0
-  m_projectilePrefab: {fileID: 0}
-  m_status: {fileID: 11400000, guid: 9e868836e78316c46b604a41f88a59fc, type: 2}
-  m_targetPriorityMode: 4
-  m_targetOtherFaction: 0
+  Damage: 0
+  Range: 0
+  ProjectilePrefab: {fileID: 0}
+  Status: {fileID: 11400000, guid: 9e868836e78316c46b604a41f88a59fc, type: 2}
+  TargetMode: 4
+  TargetOtherFaction: 0

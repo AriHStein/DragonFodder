@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6837571b2c2ff14192b778a73eb9ad0, type: 3}
   m_Name: Attack
   m_EditorClassIdentifier: 
-  m_abilityPriority: 2
-  m_conditions: []
-  m_mpCost: 0
+  UnlockedAbilities: []
+  Conditions: []
+  MPCost: 0
+  AbilityPriority: 2
   m_animationTriggerOverride: 
-  m_damage: 15
-  m_range: 1
-  m_projectilePrefab: {fileID: 0}
-  m_status: {fileID: 11400000, guid: 6074855ff95991e47acf7bdc68c4237a, type: 2}
-  m_targetPriorityMode: 3
-  m_targetFaction: 0
+  Damage: 15
+  Range: 1
+  ProjectilePrefab: {fileID: 0}
+  Status: {fileID: 11400000, guid: 6074855ff95991e47acf7bdc68c4237a, type: 2}
+  TargetMode: 4
+  TargetOtherFaction: 1

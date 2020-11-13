@@ -19,8 +19,9 @@ MonoBehaviour:
   Difficulty: 1
   Flying: 0
   MoveSpeed: 1
-  Abilities:
+  BaseAbilities:
   - {fileID: 11400000, guid: 96f0f7a6b667d9644ba58eb646900ff8, type: 2}
   - {fileID: 11400000, guid: 8996446fb8b83cc44ab2c54f860615a4, type: 2}
   - {fileID: 11400000, guid: 8777e1bb09f5111418dca31ca48233bc, type: 2}
   - {fileID: 11400000, guid: 345d9d629d74205439d27dc4fd38baac, type: 2}
+  Prefab: {fileID: 2165945957647821356, guid: 9b4f5f6662f51444f9dae16bc5a1a438, type: 3}

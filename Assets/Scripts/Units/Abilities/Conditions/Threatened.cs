@@ -17,7 +17,7 @@ public class Threatened : Condition
         {
             if(enemy.CanTargetUnit(unit))
             {
-                threatLevel += enemy.Proto.Difficulty;
+                threatLevel += enemy.Difficulty;
             }
         }
 
@@ -33,7 +33,7 @@ public class Threatened : Condition
         {
             if (enemy.CanTargetSquare(square))
             {
-                threatLevel += enemy.Proto.Difficulty;
+                threatLevel += enemy.Difficulty;
             }
         }
 

@@ -12,14 +12,14 @@ public class PlaceUnitPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_buttonText = default;
     //[SerializeField] PlaceUnitButton m_button = default;
 
-    List<UnitData> m_availableUnits;
+    List<UnitSerializationData> m_availableUnits;
 
     private void Start()
     {
         m_inputManager = FindObjectOfType<InputManager>();
     }
 
-    public void UpdatePanel(List<UnitData> units)
+    public void UpdatePanel(List<UnitSerializationData> units)
     {
         if(units == null || units.Count == 0)
         {
@@ -48,11 +48,11 @@ public class PlaceUnitPanel : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    public void AddUnit(UnitData unit)
+    public void AddUnit(UnitSerializationData unit)
     {
         if(m_availableUnits == null || m_availableUnits.Count == 0)
         {
-            m_availableUnits = new List<UnitData>();
+            m_availableUnits = new List<UnitSerializationData>();
         } 
         else 
         if(unit.Type != m_availableUnits[0].Type)

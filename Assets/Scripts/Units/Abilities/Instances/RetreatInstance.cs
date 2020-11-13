@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-[CreateAssetMenu(fileName = "new Retreat", menuName = "Units/Abilities/Retreat", order = 116)]
-public class Retreat : Ability
+public class RetreatInstance : AbilityInstance
 {
-    public override string AnimationTrigger { get { return null; } }
-    [SerializeField] Threatened m_threatTest = default;
+
+    Threatened m_threatTest = default;
+
+    public RetreatInstance(Retreat proto) : base(proto)
+    {
+        m_threatTest = proto.ThreatTest;
+    }
 
     public override IAbilityContext GetValue(Unit unit, Board board)
     {
@@ -20,7 +24,7 @@ public class Retreat : Ability
         Path_AStar<BoardSquare> path =
             board.GetPath(
                 unit.Square,
-                unit.Proto.Flying,
+                unit.Flying,
                 (s) => { return m_threatTest.IsMetAt(s, board); }
             );
 
@@ -38,7 +42,7 @@ public class Retreat : Ability
         BoardSquare square = null;
         BoardSquare last = null;
         float dist = 0f;
-        while (dist <= unit.Proto.MoveSpeed)
+        while (dist <= unit.MoveSpeed)
         {
             last = square;
             square = path.Dequeue();
@@ -46,7 +50,7 @@ public class Retreat : Ability
 
             if (path.Length() == 0)
             {
-                return new SingleBoardSquareContext(AbilityPriority, unit, square, board);
+                return new SingleBoardSquareContext(m_abilityPriority, unit, square, board);
             }
         }
 
@@ -62,17 +66,17 @@ public class Retreat : Ability
             square = last;
         }
 
-        return new SingleBoardSquareContext(AbilityPriority, unit, square, board);
+        return new SingleBoardSquareContext(m_abilityPriority, unit, square, board);
     }
 
     public override void Execute(IAbilityContext context)
     {
-        if(!(context is SingleBoardSquareContext ctx))
+        if (!(context is SingleBoardSquareContext ctx))
         {
             Debug.LogError("Invalid context");
             return;
         }
-        
+
         ctx.Actor.FaceToward(ctx.Square);
         ctx.Board.TryMoveUnitTo(ctx.Actor, ctx.Square);
     }

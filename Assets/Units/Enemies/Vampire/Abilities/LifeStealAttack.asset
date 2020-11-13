@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2932c54b16e8e324d89dd5b723783b37, type: 3}
   m_Name: LifeStealAttack
   m_EditorClassIdentifier: 
-  m_abilityPriority: 2
-  m_conditions: []
-  m_mpCost: 0
+  UnlockedAbilities: []
+  Conditions: []
+  MPCost: 0
+  AbilityPriority: 2
   m_animationTriggerOverride: 
-  m_damage: 15
-  m_range: 1
-  m_projectilePrefab: {fileID: 0}
-  m_status: {fileID: 0}
-  m_targetPriorityMode: 3
-  m_targetFaction: 0
-  m_lifeStealPercent: 0.5
+  Damage: 20
+  Range: 1
+  ProjectilePrefab: {fileID: 0}
+  Status: {fileID: 0}
+  TargetMode: 3
+  TargetOtherFaction: 1
+  LifeStealPercent: 0.5

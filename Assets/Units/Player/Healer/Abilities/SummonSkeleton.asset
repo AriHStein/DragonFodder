@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a6106f2ffd14ba4498d2e8e2202fdee, type: 3}
   m_Name: SummonSkeleton
   m_EditorClassIdentifier: 
-  m_abilityPriority: 10
-  m_conditions:
+  UnlockedAbilities: []
+  Conditions:
   - {fileID: 11400000, guid: 73381d783e54a1645bd1c73a0979d95d, type: 2}
-  m_mpCost: 25
-  m_summonPrototype: {fileID: 11400000, guid: 50450e16b00ebc24e847f0a1130e2953, type: 2}
+  MPCost: 20
+  AbilityPriority: 3
+  SummonPrototype: {fileID: 11400000, guid: 50450e16b00ebc24e847f0a1130e2953, type: 2}

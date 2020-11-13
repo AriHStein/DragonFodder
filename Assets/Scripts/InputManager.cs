@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] GameObject m_mouseIndicator = default;
 
     Unit m_grabbedUnit;
-    UnitData m_newUnitToPlace;
+    UnitSerializationData m_newUnitToPlace;
 
     public event Action UnitPlacedEvent;
     public event Action CancelPlacementEvent;
@@ -55,7 +55,7 @@ public class InputManager : MonoBehaviour
             ReturnGrabbedUnitToOriginalPosition();
             CancelPlacementEvent?.Invoke();
             //m_grabbedUnit = null;
-            m_newUnitToPlace = new UnitData();
+            m_newUnitToPlace = new UnitSerializationData();
         }
 
         BoardSquare squareUnderMouse = GetSquareUnderMouse();
@@ -136,7 +136,7 @@ public class InputManager : MonoBehaviour
         if (Board.Current.TryPlaceUnit(m_newUnitToPlace) != null)
         {
             UnitPlacedEvent?.Invoke();
-            m_newUnitToPlace = new UnitData();
+            m_newUnitToPlace = new UnitSerializationData();
             ClearPreviewUnit();
             return true;
         }
@@ -196,14 +196,14 @@ public class InputManager : MonoBehaviour
     }
 
 
-    public void SelectUnitToPlace(UnitData data, Faction faction)
+    public void SelectUnitToPlace(UnitSerializationData data, Faction faction)
     {
         ReturnGrabbedUnitToOriginalPosition();
         CancelPlacementEvent?.Invoke();
 
         m_newUnitToPlace = data;
         m_currentFaction = faction;
-        m_unitPreview = Instantiate(Board.Current.UnitManager.GetPrefabOfType(data.Type), transform);
-
+        //m_unitPreview = Instantiate(Board.Current.UnitManager.GetPrefabOfType(data.Type), transform);
+        m_unitPreview = Instantiate(Board.Current.UnitManager.GetUnitPrototypeOfType(data.Type).Prefab, transform);
     }
 }

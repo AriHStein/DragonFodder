@@ -14,7 +14,7 @@ public class Board : MonoBehaviour
 
     public Action<PlayMode> PlayModeChangedEvent; 
 
-    [SerializeField] List<GameObject> m_unitPrefabs = default;
+    [SerializeField] List<UnitPrototype> m_unitPrototypes = default;
 
     [SerializeField] UnitPlacementMenu m_unitPlacementModePanel = default;
     [SerializeField] GameObject m_squadEditorModePanel = default;
@@ -86,7 +86,7 @@ public class Board : MonoBehaviour
 
     public void Awake()
     {
-        UnitManager = new UnitManager(m_unitPrefabs);
+        UnitManager = new UnitManager(m_unitPrototypes);
         pathManager = new PathManager_AStar<BoardSquare>();
         Current = this;
 
@@ -540,10 +540,10 @@ public class Board : MonoBehaviour
     public SquadData GetBoardAsSquad(bool mirrorBoard = false)
     {
         Vector2Int origin = mirrorBoard ? MirrorPosition(Vector2Int.zero) : Vector2Int.zero;
-        List<UnitData> units = new List<UnitData>();
+        List<UnitSerializationData> units = new List<UnitSerializationData>();
         foreach (Unit unit in UnitManager.Units)
         {
-            UnitData newUnit = new UnitData(unit, origin);
+            UnitSerializationData newUnit = new UnitSerializationData(unit, origin);
             //if (mirrorBoard)
             //{
             //    newUnit.Position = new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) - newUnit.Position;
@@ -574,7 +574,7 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    public Unit TryPlaceUnit(UnitData data)
+    public Unit TryPlaceUnit(UnitSerializationData data)
     {
         if(data.Position.x < 0 || data.Position.x >= Squares.GetLength(0) ||
             data.Position.y < 0 || data.Position.y >= Squares.GetLength(1) ||
@@ -585,7 +585,9 @@ public class Board : MonoBehaviour
             return null;
         }
 
-        GameObject prefab = UnitManager.GetPrefabOfType(data.Type);
+        UnitPrototype proto = UnitManager.GetUnitPrototypeOfType(data.Type);
+        //GameObject prefab = UnitManager.GetPrefabOfType(data.Type);
+        GameObject prefab = proto.Prefab;
         if(prefab == null)
         {
             Debug.LogWarning("Failed to place unit");
@@ -593,7 +595,7 @@ public class Board : MonoBehaviour
         }
         
         Unit unit = Instantiate(prefab, new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
-        unit.Initialize(this, Squares[data.Position.x, data.Position.y], data);
+        unit.Initialize(this, Squares[data.Position.x, data.Position.y], data, proto);
         return unit;
     }
 
@@ -620,9 +622,9 @@ public class Board : MonoBehaviour
         }
 
         int failedUnitCount = 0;
-        foreach(UnitData unit in data.Units)
+        foreach(UnitSerializationData unit in data.Units)
         {
-            UnitData clone = unit.Clone();
+            UnitSerializationData clone = unit.Clone();
             clone.Position += data.SquadOrigin + offset;
             if (mirror)
             {

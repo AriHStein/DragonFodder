@@ -35,10 +35,15 @@ public class ShieldInstance : StatusInstance
         m_shieldLeft += si.m_shieldLeft;
     }
 
-    public override int ModifyDamageRecieved(int damage)
+    public override int ModifyHealthChange(int amount)
     {
-        int reduction = Mathf.Min(damage, m_shieldLeft);
-        damage -= reduction;
+        if(amount >= 0)
+        {
+            return amount;
+        }
+        
+        int reduction = Mathf.Min(-amount, m_shieldLeft);
+        amount += reduction;
         m_shieldLeft -= reduction;
 
         if(m_shieldLeft <= 0)
@@ -46,6 +51,6 @@ public class ShieldInstance : StatusInstance
             Expire();
         }
 
-        return damage;
+        return amount;
     }
 }

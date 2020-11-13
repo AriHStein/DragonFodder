@@ -22,24 +22,32 @@ public static class FactionExtensions
 public class Unit : MonoBehaviour
 {
 
-    [SerializeField] UnitPrototype m_prototype = default;
-    public UnitPrototype Proto { 
-        get { return m_prototype; } 
-    }
+    //[SerializeField] UnitPrototype m_prototype = default;
+    //public UnitPrototype Proto { 
+    //    get { return m_prototype; } 
+    //}
     [HideInInspector]
     public BoardSquare Square;
 
     public string Type { get; protected set; }
     public Faction Faction { get; protected set; }
     public Guid ID { get; protected set; }
-    public int MaxHealth { get { return m_prototype.MaxHealth; } }
+    public int Difficulty { get; protected set; }
+    public int MaxHealth { get; protected set; }
     public int CurrentHealth { get; protected set; }
 
-    public int MaxMP { get { return Proto.MaxMP; } }
+    public int MaxMP { get; protected set; }
     public int CurrentMP { get; protected set; }
 
+    public float MoveSpeed { get; protected set; }
+    public bool Flying { get; protected set; }
     public bool IsSummoned { get; protected set; }
 
+    float m_timeBetweenActions;
+    float m_timeSinceLastAction;
+    float m_timeSinceLastManaAdd;
+
+    protected List<AbilityInstance> m_abilities;
     protected List<StatusInstance> m_statuses;
 
     public event Action<Unit> DeathEvent;
@@ -51,18 +59,19 @@ public class Unit : MonoBehaviour
     {
         m_animator = GetComponent<Animator>();
         m_statuses = new List<StatusInstance>();
+        m_abilities = new List<AbilityInstance>();
     }
 
-    protected virtual void Start()
-    {
-
-        //CurrentHealth = MaxHealth;
-    }
-
-    public virtual void Initialize(Board board, BoardSquare square, UnitData data)
+    public virtual void Initialize(Board board, BoardSquare square, UnitSerializationData data, UnitPrototype proto)
     {
         ID = data.ID;
-        Type = data.Type;
+        Type = proto.Type;
+        Difficulty = proto.Difficulty;
+        MaxHealth = proto.MaxHealth;
+        MaxMP = proto.MaxMP;
+        MoveSpeed = proto.MoveSpeed;
+        Flying = proto.Flying;
+        m_timeBetweenActions = proto.TimeBetweenActions;
 
         Square = square;
         Square.Unit = this;
@@ -85,6 +94,11 @@ public class Unit : MonoBehaviour
             CurrentMP = data.CurrentMP;
         }
 
+        foreach(AbilityPrototype aProto in proto.BaseAbilities)
+        {
+            m_abilities.Add(aProto.GetInstance());
+        }
+
 
         Faction = data.Faction;
         IsSummoned = data.IsSummoned;
@@ -96,8 +110,7 @@ public class Unit : MonoBehaviour
         InitializedEvent?.Invoke(this);
     }
 
-    float m_timeSinceLastAction;
-    float m_timeSinceLastManaAdd;
+
     public virtual bool ReadyForTurn(float deltaTime)
     {
         bool ready = true;
@@ -123,7 +136,7 @@ public class Unit : MonoBehaviour
 
 
         m_timeSinceLastAction += deltaTime;
-        if(m_timeSinceLastAction >= Proto.TimeBetweenActions)
+        if(m_timeSinceLastAction >= m_timeBetweenActions)
         {
             m_timeSinceLastAction = 0;
             return true;
@@ -134,9 +147,9 @@ public class Unit : MonoBehaviour
 
     public virtual void DoTurn(Board board)
     {
-        Ability bestAbility = null;
+        AbilityInstance bestAbility = null;
         IAbilityContext bestContext = null;
-        foreach(Ability ability in Proto.Abilities)
+        foreach(AbilityInstance ability in m_abilities)
         {
             IAbilityContext context = ability.GetValue(this, board);
             if(context.Value <= 0)
@@ -222,7 +235,7 @@ public class Unit : MonoBehaviour
 
     public bool CanTargetUnit(Unit other)
     {
-        foreach(Ability ability in Proto.Abilities)
+        foreach(AbilityInstance ability in m_abilities)
         {
             if(ability.CanTargetUnit(this, other))
             {
@@ -235,7 +248,7 @@ public class Unit : MonoBehaviour
 
     public bool CanTargetSquare(BoardSquare square)
     {
-        foreach(Ability ability in Proto.Abilities)
+        foreach(AbilityInstance ability in m_abilities)
         {
             if(ability.CanTargetSquare(this, square))
             {
@@ -248,6 +261,11 @@ public class Unit : MonoBehaviour
 
     public virtual void ChangeHealth(int amount)
     {
+        foreach(StatusInstance status in new List<StatusInstance>(m_statuses))
+        {
+            amount = status.ModifyHealthChange(amount);
+        }
+        
         CurrentHealth += amount;
         CurrentHealth = Mathf.Clamp(CurrentHealth, 0, MaxHealth);
         if(CurrentHealth <= 0)

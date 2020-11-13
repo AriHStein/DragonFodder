@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6837571b2c2ff14192b778a73eb9ad0, type: 3}
   m_Name: StunBolt
   m_EditorClassIdentifier: 
-  m_abilityPriority: 10
-  m_conditions: []
-  m_mpCost: 10
+  UnlockedAbilities: []
+  Conditions: []
+  MPCost: 25
+  AbilityPriority: 4
   m_animationTriggerOverride: 
-  m_damage: 0
-  m_range: 5
-  m_projectilePrefab: {fileID: 834144708263732546, guid: 690576897126c0e4b9607a709125a9d7,
+  Damage: 30
+  Range: 10
+  ProjectilePrefab: {fileID: 834144708263732546, guid: 690576897126c0e4b9607a709125a9d7,
     type: 3}
-  m_status: {fileID: 11400000, guid: 4e0f165815e93284ab3e73d5e7ddef1c, type: 2}
-  m_targetPriorityMode: 4
-  m_targetFaction: 1
+  Status: {fileID: 11400000, guid: 4e0f165815e93284ab3e73d5e7ddef1c, type: 2}
+  TargetMode: 0
+  TargetOtherFaction: 1

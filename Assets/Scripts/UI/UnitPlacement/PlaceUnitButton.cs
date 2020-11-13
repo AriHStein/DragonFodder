@@ -16,7 +16,7 @@ public class PlaceUnitButton : MonoBehaviour
     [SerializeField] Faction m_faction = default;
     public void SetUnit()
     {
-        m_inputManager.SelectUnitToPlace(new UnitData(m_unit, Vector2Int.zero, m_faction), m_faction);
+        m_inputManager.SelectUnitToPlace(new UnitSerializationData(m_unit, Vector2Int.zero, m_faction), m_faction);
     }
 
     //public void SetupButton(UnitData unit, Faction faction)

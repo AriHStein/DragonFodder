@@ -1,84 +1,86 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using Pathfinding;
 
-
-[CreateAssetMenu(fileName = "Move", menuName = "Units/Abilities/Move", order = 116)]
-public class Move : Ability
+public class MoveInstance : AbilityInstance
 {
-    public override string AnimationTrigger { get { return null; } }
-    
-    public enum DestinationPriorityMode { Nearest, Farthest, Strongest, Weakest, MostHealth, LeastHealth, MostDamaged, LeastDamaged }
-    [SerializeField] DestinationPriorityMode m_priorityMode = DestinationPriorityMode.Nearest;
-    [SerializeField] float m_minDistance = 1f;
-    [SerializeField] float m_maxDistance = 1f;
+    Move.DestinationPriorityMode m_priorityMode;
+    float m_minStoppingDistance = 1f;
+    float m_maxStoppingDistance = 1f;
+
+    public MoveInstance(Move proto) : base(proto)
+    {
+        m_priorityMode = proto.PriorityMode;
+        m_minStoppingDistance = proto.MinStoppingDistance;
+        m_maxStoppingDistance = proto.MaxStoppingDistance;
+    }
 
     public override IAbilityContext GetValue(Unit unit, Board board)
     {
         IAbilityContext result = base.GetValue(unit, board);
-        if(result != null)
+        if (result != null)
         {
             return result;
         }
-        
+
         BoardSquare dest = null;
-        switch(m_priorityMode)
+        switch (m_priorityMode)
         {
-            case DestinationPriorityMode.Nearest:
+            case Move.DestinationPriorityMode.Nearest:
                 dest = board.UnitManager.GetNearestUnitOfFaction(unit.Faction.Opposite(), unit.Square).Square;
                 break;
 
-            case DestinationPriorityMode.Farthest:
+            case Move.DestinationPriorityMode.Farthest:
                 dest = board.UnitManager.GetFarthestUnitOfFaction(unit.Faction.Opposite(), unit.Square).Square;
                 break;
 
-            case DestinationPriorityMode.Strongest:
+            case Move.DestinationPriorityMode.Strongest:
                 List<Unit> strongest = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
-                strongest.OrderByDescending(u => u.Proto.Difficulty);
+                strongest.OrderByDescending(u => u.Difficulty);
                 dest = strongest[0].Square;
                 break;
 
-            case DestinationPriorityMode.Weakest:
+            case Move.DestinationPriorityMode.Weakest:
                 List<Unit> weakest = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
-                weakest.OrderBy(u => u.Proto.Difficulty);
+                weakest.OrderBy(u => u.Difficulty);
                 dest = weakest[0].Square;
                 break;
 
-            case DestinationPriorityMode.MostHealth:
+            case Move.DestinationPriorityMode.MostHealth:
                 List<Unit> mostHealth = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 mostHealth.OrderByDescending(u => u.CurrentHealth);
                 dest = mostHealth[0].Square;
                 break;
 
-            case DestinationPriorityMode.LeastHealth:
+            case Move.DestinationPriorityMode.LeastHealth:
                 List<Unit> leastHealth = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 leastHealth.OrderBy(u => u.CurrentHealth);
                 dest = leastHealth[0].Square;
                 break;
 
-            case DestinationPriorityMode.MostDamaged:
+            case Move.DestinationPriorityMode.MostDamaged:
                 List<Unit> mostDamaged = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 mostDamaged.OrderByDescending(u => u.MaxHealth - u.CurrentHealth);
                 dest = mostDamaged[0].Square;
                 break;
 
-            case DestinationPriorityMode.LeastDamaged:
+            case Move.DestinationPriorityMode.LeastDamaged:
                 List<Unit> leastDamaged = board.UnitManager.GetUnitsOfFaction(unit.Faction.Opposite());
                 leastDamaged.OrderBy(u => u.MaxHealth - u.CurrentHealth);
                 dest = leastDamaged[0].Square;
                 break;
         }
 
-        Path_AStar<BoardSquare> path = 
+        Path_AStar<BoardSquare> path =
             board.GetPath(
                 unit.Square,
-                unit.Proto.Flying,
+                unit.Flying,
                 (s) => {
                     float distance = Vector2Int.Distance(s.Position, dest.Position);
-                    return distance >= m_minDistance && distance <= m_maxDistance; },
+                    return distance >= m_minStoppingDistance && distance <= m_maxStoppingDistance;
+                },
                 (s) => { return Vector2Int.Distance(s.Position, dest.Position); }
             );
 
@@ -95,7 +97,7 @@ public class Move : Ability
         BoardSquare square = null;
         BoardSquare last = null;
         float dist = 0f;
-        while (dist <= unit.Proto.MoveSpeed)
+        while (dist <= unit.MoveSpeed)
         {
             last = square;
             square = path.Dequeue();
@@ -103,7 +105,7 @@ public class Move : Ability
 
             if (path.Length() == 0)
             {
-                return new SingleBoardSquareContext(AbilityPriority, unit, square, board);
+                return new SingleBoardSquareContext(m_abilityPriority, unit, square, board);
             }
         }
 
@@ -119,7 +121,7 @@ public class Move : Ability
             square = last;
         }
 
-        return new SingleBoardSquareContext(AbilityPriority, unit, square, board);
+        return new SingleBoardSquareContext(m_abilityPriority, unit, square, board);
     }
 
     public override void Execute(IAbilityContext context)

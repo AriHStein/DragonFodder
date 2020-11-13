@@ -22,7 +22,7 @@ public class Squad
             return;
         }
 
-        List<UnitData> newSquad = new List<UnitData>();
+        List<UnitSerializationData> newSquad = new List<UnitSerializationData>();
         foreach(Unit unit in updatedUnits)
         {
             if(unit.IsSummoned)
@@ -31,7 +31,7 @@ public class Squad
             }
             
             bool newUnit = true;
-            foreach(UnitData existing in Data.Units)
+            foreach(UnitSerializationData existing in Data.Units)
             {                
                 if(unit.ID == existing.ID)
                 {
@@ -43,7 +43,7 @@ public class Squad
 
             if (newUnit)
             {
-                newSquad.Add(new UnitData(unit, unit.Square.Position));
+                newSquad.Add(new UnitSerializationData(unit, unit.Square.Position));
             }
         }
 
@@ -54,7 +54,7 @@ public class Squad
 [System.Serializable]
 public struct SquadData
 {
-    public List<UnitData> Units;
+    public List<UnitSerializationData> Units;
     public Vector2Int SquadOrigin;
     public Faction Faction;
 
@@ -65,7 +65,7 @@ public struct SquadData
 
     private SquadData(SquadData original)
     {
-        Units = new List<UnitData>(original.Units);
+        Units = new List<UnitSerializationData>(original.Units);
         SquadOrigin = original.SquadOrigin;
         Faction = original.Faction;
 
@@ -74,7 +74,7 @@ public struct SquadData
         RecalculateParameters();
     }
 
-    public SquadData(List<UnitData> units, Vector2Int origin, Faction faction = Faction.Player)
+    public SquadData(List<UnitSerializationData> units, Vector2Int origin, Faction faction = Faction.Player)
     {
         if (units != null)
         {
@@ -82,7 +82,7 @@ public struct SquadData
         }
         else
         {
-            Units = new List<UnitData>();
+            Units = new List<UnitSerializationData>();
         }
 
         SquadOrigin = origin;
@@ -132,13 +132,13 @@ public struct SquadData
         }
         combinedSquad.SquadOrigin = origin;
 
-        combinedSquad.Units = new List<UnitData>();
+        combinedSquad.Units = new List<UnitSerializationData>();
         foreach(SquadData squad in squads)
         {
             Vector2Int offset = squad.SquadOrigin - combinedSquad.SquadOrigin;
-            foreach(UnitData unit in squad.Units)
+            foreach(UnitSerializationData unit in squad.Units)
             {
-                UnitData clone = unit.Clone();
+                UnitSerializationData clone = unit.Clone();
                 clone.Position += offset;
                 combinedSquad.Units.Add(clone);
             }
@@ -163,7 +163,7 @@ public struct SquadData
         }
 
         Vector2Int max = Vector2Int.zero;
-        foreach (UnitData unit in Units)
+        foreach (UnitSerializationData unit in Units)
         {
             if (unit.Position.x - SquadOrigin.x > max.x)
             {
@@ -182,7 +182,7 @@ public struct SquadData
     private void UpdateDifficulty()
     {
         Difficulty = 0;
-        foreach(UnitData unit in Units)
+        foreach(UnitSerializationData unit in Units)
         {
             Difficulty += unit.Difficulty;
         }

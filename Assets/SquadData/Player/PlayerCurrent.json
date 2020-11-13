@@ -10,23 +10,8 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 54,
-            "CurrentMP": 5,
-            "Difficulty": 0,
-            "IsSummoned": false
-        },
-        {
-            "Type": "Warrior",
-            "ID": {
-                "Value": "f53b72e4-dbbc-4fa3-a502-84aefd52edb2"
-            },
-            "Position": {
-                "x": 2,
-                "y": 2
-            },
-            "Faction": 0,
-            "CurrentHealth": 100,
-            "CurrentMP": 19,
+            "CurrentHealth": 35,
+            "CurrentMP": 4,
             "Difficulty": 0,
             "IsSummoned": false
         }
