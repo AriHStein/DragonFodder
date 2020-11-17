@@ -1,0 +1,22 @@
+{
+    "Units": [
+        {
+            "Type": "Dragon",
+            "ID": {
+                "Value": ""
+            },
+            "Position": {
+                "x": 1,
+                "y": 1
+            },
+            "Faction": 1,
+            "CurrentHealth": -1,
+            "Difficulty": 10
+        }
+    ],
+    "SquadOrigin": {
+        "x": 0,
+        "y": 0
+    },
+    "Faction": 0
+}

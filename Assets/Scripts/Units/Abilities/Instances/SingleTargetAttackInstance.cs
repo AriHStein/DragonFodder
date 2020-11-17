@@ -21,14 +21,8 @@ public class SingleTargetAttackInstance : AbilityInstance
         m_targetOtherFaction = proto.TargetOtherFaction;
     }
 
-    public override IAbilityContext GetValue(Unit unit, Board board)
+    protected override IAbilityContext GetValueOverride(Unit unit, Board board)
     {
-        IAbilityContext result = base.GetValue(unit, board);
-        if (result != null)
-        {
-            return result;
-        }
-
         List<Unit> enemiesInRange = GetPossibleTargets(unit, board);
         if (enemiesInRange.Count == 0)
         {

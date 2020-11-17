@@ -15,7 +15,7 @@ MonoBehaviour:
   Type: Wizard
   MaxHealth: 40
   MaxMP: 100
-  TimeBetweenActions: 2
+  TimeBetweenActions: 1
   Difficulty: 1
   Flying: 0
   MoveSpeed: 1

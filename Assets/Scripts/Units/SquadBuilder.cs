@@ -5,6 +5,7 @@ using UnityEngine;
 public static class SquadBuilder
 {
     static List<SquadData> m_enemySquadProtos;
+    static List<SquadData> m_bossSquadProtos;
     
     public static SquadData GenerateFormationFromEnemySquads(int difficulty)
     {
@@ -21,6 +22,7 @@ public static class SquadBuilder
         m_enemySquadProtos = UnitSaveLoadUtility.LoadAllSquadsInDir("Enemy");
         m_enemySquadProtos.Sort((x, y) => x.Difficulty.CompareTo(y.Difficulty));
     }
+
 
     public static SquadData GenerateFormation(List<SquadData> squadProtos, int difficulty)
     {
@@ -58,5 +60,35 @@ public static class SquadBuilder
         //}
 
         return SquadData.CombineSquads(squadsToCombine);
+    }
+
+
+    static void LoadBossSquads()
+    {
+        m_bossSquadProtos = UnitSaveLoadUtility.LoadAllSquadsInDir("Boss");
+    }
+
+    public static SquadData GenerateBossFormation(Vector2Int boardSize)
+    {
+        if (m_bossSquadProtos == null || m_bossSquadProtos.Count == 0)
+        {
+            LoadBossSquads();
+        }
+
+        if (m_bossSquadProtos == null || m_bossSquadProtos.Count == 0)
+        {
+            Debug.Log($"No boss protos found.");
+            return new SquadData();
+        }
+
+        SquadData newSquad = m_bossSquadProtos[Random.Range(0, m_bossSquadProtos.Count)].Clone();
+        newSquad.RecalculateParameters();
+
+        Vector2Int offset = Vector2Int.zero;
+        offset.x += boardSize.x / 2;
+        offset.x -= newSquad.Size.x / 2;
+        newSquad.SquadOrigin = newSquad.SquadOrigin + offset;
+
+        return newSquad;
     }
 }

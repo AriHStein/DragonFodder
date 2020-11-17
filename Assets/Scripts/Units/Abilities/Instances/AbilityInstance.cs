@@ -22,7 +22,7 @@ public abstract class AbilityInstance
         m_conditions = proto.Conditions;
     }
 
-    public virtual IAbilityContext GetValue(Unit unit, Board board)
+    public IAbilityContext GetValue(Unit unit, Board board)
     {
         if (unit.CurrentMP < m_mpCost)
         {
@@ -32,13 +32,15 @@ public abstract class AbilityInstance
         foreach (Condition condition in m_conditions)
         {
             if (!condition.IsMet(unit, board))
-            {
+            { 
                 return new EmptyContext();
             }
         }
 
-        return null;
+        return GetValueOverride(unit, board);
     }
+
+    protected abstract IAbilityContext GetValueOverride(Unit unit, Board board);
 
     public event Action<AbilityInstance> AbilityExecutedEvent;
     public virtual void Execute(IAbilityContext context)

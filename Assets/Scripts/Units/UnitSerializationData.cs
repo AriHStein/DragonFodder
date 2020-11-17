@@ -26,7 +26,13 @@ public struct UnitSerializationData
         bool isSummon = false)
     {
         Type = type;
-        ID = id;
+        if(id == Guid.Empty)
+        {
+            ID = Guid.NewGuid();
+        } else
+        {
+            ID = id;
+        }
         Difficulty = difficulty;
         Position = position;
         Faction = faction;

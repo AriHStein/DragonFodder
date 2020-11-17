@@ -13,7 +13,9 @@ public class Move : AbilityPrototype
     
     public enum DestinationPriorityMode { Nearest, Farthest, Strongest, Weakest, MostHealth, LeastHealth, MostDamaged, LeastDamaged }
     public DestinationPriorityMode PriorityMode = DestinationPriorityMode.Nearest;
+    [Range(1, int.MaxValue)]
     public float MinStoppingDistance;
+    [Range(1, int.MaxValue)]
     public float MaxStoppingDistance;
 
     public override AbilityInstance GetInstance()

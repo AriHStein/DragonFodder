@@ -10,8 +10,8 @@
                 "y": 2
             },
             "Faction": 0,
-            "CurrentHealth": 35,
-            "CurrentMP": 4,
+            "CurrentHealth": 20,
+            "CurrentMP": 10,
             "Difficulty": 0,
             "IsSummoned": false
         }

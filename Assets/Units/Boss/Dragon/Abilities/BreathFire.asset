@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1059c581e7650434b9555a9d6b8f0572, type: 3}
+  m_Name: BreathFire
+  m_EditorClassIdentifier: 
+  UnlockedAbilities: []
+  Conditions: []
+  MPCost: 30
+  AbilityPriority: 3
+  PrimaryDamage: 50
+  AoEDamage: 30
+  Range: 10
+  AoESize: 3
+  FriendlyFire: 0
+  ProjectilePrefab: {fileID: 7927880289350634152, guid: 570cbf7fecaeddb4da16c4156ca0f2a3,
+    type: 3}
+  PrimaryStatus: {fileID: 0}
+  AoEStatus: {fileID: 0}
+  TargetMode: 0
+  TargetOtherFaction: 1

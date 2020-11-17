@@ -7,7 +7,7 @@ using UnityEngine.UI.Extensions;
 [RequireComponent(typeof(RectTransform))]
 public class DungeonMap : MonoBehaviour
 {
-    [SerializeField] List<int> m_encounterDifficulties = default;
+    //[SerializeField] List<int> m_encounterDifficulties = default;
     [SerializeField] GameObject m_dugeonModePanel = default;
     [SerializeField] GameObject m_encounterButtonPrefab = default;
     [SerializeField] UILineRendererList m_connectionList = default;
@@ -101,12 +101,20 @@ public class DungeonMap : MonoBehaviour
         m_availableEncounters = new List<Encounter>();
 
         int encounterDifficulty = 2;
-        foreach(Vector2Int position in encounterPositions)
-        {
-            Encounter e = EncounterBuilder.GenerateEncounter(position, encounterDifficulty);
+        for (int i = 0; i < encounterPositions.Count; i++) {
+
+            Encounter e;
+            if(i == 0)
+            {
+                e = EncounterBuilder.GenerateBossEncounter(encounterPositions[i]);
+            }
+            else
+            {
+                e = EncounterBuilder.GenerateEncounter(encounterPositions[i], encounterDifficulty);
+            }
             encounterDifficulty++;
 
-            encounterMap[position.x, position.y] = e;
+            encounterMap[encounterPositions[i].x, encounterPositions[i].y] = e;
             m_encounters.Add(e);
         }
 

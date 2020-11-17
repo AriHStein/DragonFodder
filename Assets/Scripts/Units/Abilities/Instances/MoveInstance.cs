@@ -7,8 +7,8 @@ using Pathfinding;
 public class MoveInstance : AbilityInstance
 {
     Move.DestinationPriorityMode m_priorityMode;
-    float m_minStoppingDistance = 1f;
-    float m_maxStoppingDistance = 1f;
+    float m_minStoppingDistance;
+    float m_maxStoppingDistance;
 
     public MoveInstance(Move proto) : base(proto)
     {
@@ -17,14 +17,8 @@ public class MoveInstance : AbilityInstance
         m_maxStoppingDistance = proto.MaxStoppingDistance;
     }
 
-    public override IAbilityContext GetValue(Unit unit, Board board)
+    protected override IAbilityContext GetValueOverride(Unit unit, Board board)
     {
-        IAbilityContext result = base.GetValue(unit, board);
-        if (result != null)
-        {
-            return result;
-        }
-
         BoardSquare dest = null;
         switch (m_priorityMode)
         {
@@ -91,6 +85,7 @@ public class MoveInstance : AbilityInstance
     {
         if (path == null || path.Length() == 0)
         {
+            Debug.Log("No path");
             return new EmptyContext();
         }
 

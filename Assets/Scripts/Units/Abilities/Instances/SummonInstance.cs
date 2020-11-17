@@ -11,14 +11,8 @@ public class SummonInstance : AbilityInstance
         m_summonPrototype = proto.SummonPrototype;
     }
 
-    public override IAbilityContext GetValue(Unit unit, Board board)
+    protected override IAbilityContext GetValueOverride(Unit unit, Board board)
     {
-        IAbilityContext result = base.GetValue(unit, board);
-        if (result != null)
-        {
-            return result;
-        }
-
         BoardSquare target = null;
         foreach (BoardSquare square in board.GetSquaresInRange(unit.Square.Position, 1f))
         {

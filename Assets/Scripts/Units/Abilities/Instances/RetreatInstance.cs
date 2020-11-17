@@ -13,14 +13,8 @@ public class RetreatInstance : AbilityInstance
         m_threatTest = proto.ThreatTest;
     }
 
-    public override IAbilityContext GetValue(Unit unit, Board board)
+    protected override IAbilityContext GetValueOverride(Unit unit, Board board)
     {
-        IAbilityContext result = base.GetValue(unit, board);
-        if (result != null)
-        {
-            return result;
-        }
-
         Path_AStar<BoardSquare> path =
             board.GetPath(
                 unit.Square,

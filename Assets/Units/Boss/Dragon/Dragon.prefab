@@ -1,0 +1,3222 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &16501868642883941
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6167331081031798998}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail9
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6167331081031798998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16501868642883941}
+  m_LocalRotation: {x: 0.00000005463016, y: 0.0000002104657, z: 0.006575141, w: 0.9999784}
+  m_LocalPosition: {x: -0.65946716, y: -0.0005795288, z: -0.0000000016728882}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 825927067302043410}
+  m_Father: {fileID: 6032160672677952215}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.054922566, y: 0.5668485, z: 4.80458}
+--- !u!1 &51170418088018722
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5392330827256479373}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_FingerB_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5392330827256479373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 51170418088018722}
+  m_LocalRotation: {x: 0.0011065052, y: 0.033249013, z: 0.106674224, w: 0.99373734}
+  m_LocalPosition: {x: -1.6177237, y: -0.00000022888183, z: 0}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 1.0000002}
+  m_Children:
+  - {fileID: 5243045221275414682}
+  m_Father: {fileID: 5547560542173355146}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.5549031, y: -1.0850146, z: 24.278025}
+--- !u!1 &79814139005603510
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1370784648681315261}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Toe3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1370784648681315261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 79814139005603510}
+  m_LocalRotation: {x: -0.35648996, y: -0.39798105, z: -0.6084716, w: 0.58676094}
+  m_LocalPosition: {x: -0.26612234, y: 0.22943527, z: -0.2582805}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 7611326277834939094}
+  m_Father: {fileID: 5991229245114746478}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -64.51111, y: -4.426232, z: -73.95113}
+--- !u!1 &95175844746596845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2547262919922910686}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Finger0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2547262919922910686
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95175844746596845}
+  m_LocalRotation: {x: 0.22918554, y: -0.520716, z: 0.06376988, w: 0.819916}
+  m_LocalPosition: {x: -0.15797256, y: 0.09717178, z: -0.2656873}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 8110935828121323411}
+  m_Father: {fileID: 3865486892600767849}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 26.246738, y: -66.84641, z: -3.0894804}
+--- !u!1 &125282438113883963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4241149244203903010}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Finger31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4241149244203903010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 125282438113883963}
+  m_LocalRotation: {x: -0.000000007528504, y: -0.0000000073718334, z: -0.010514022,
+    w: 0.99994475}
+  m_LocalPosition: {x: -0.18875374, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 4298322494545067017}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000007915865, y: 0.0000051326197, z: -0.6948744}
+--- !u!1 &282380094036357880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2382017869433524958}
+  m_Layer: 0
+  m_Name: MountainDragon_
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2382017869433524958
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282380094036357880}
+  m_LocalRotation: {x: 0.4330782, y: -0.43307772, z: 0.55896604, w: 0.5589669}
+  m_LocalPosition: {x: 0.000000012932784, y: 1.3410001, z: 2.472}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 5997632987239827191}
+  m_Father: {fileID: 2999562079799910940}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 81.20837, y: 34.074535, z: 123.76264}
+--- !u!1 &286296251242332895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1552372270652484377}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Toe2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1552372270652484377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 286296251242332895}
+  m_LocalRotation: {x: 0.12535462, y: 0.12535462, z: -0.69590676, w: 0.69590676}
+  m_LocalPosition: {x: -0.2132074, y: 0.451564, z: 0.15053238}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1740010895114850830}
+  m_Father: {fileID: 8340151369043231696}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 20.422575, y: -0.0000464629, z: -90.00002}
+--- !u!1 &359852452355049659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4090258940021760456}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Clavicle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4090258940021760456
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359852452355049659}
+  m_LocalRotation: {x: -0.5068301, y: 0.29704225, z: 0.78617597, w: -0.19187635}
+  m_LocalPosition: {x: -1.117701, y: -0.092888795, z: 0.10782996}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 1626268234427878380}
+  m_Father: {fileID: 4491078286700960487}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.26662764, y: -90.30528, z: -144.09793}
+--- !u!1 &362070110116247279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8408508645719539818}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_FingerA_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8408508645719539818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362070110116247279}
+  m_LocalRotation: {x: 0.07036483, y: -0.08408837, z: -0.10693087, w: 0.9882023}
+  m_LocalPosition: {x: -0.68966305, y: 0.1511386, z: -0.07978927}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4297093514413341062}
+  m_Father: {fileID: 6646238214590196205}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 6.954802, y: -10.520329, z: 67.007324}
+--- !u!1 &589054265825507925
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6187271474575772200}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Finger1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6187271474575772200
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589054265825507925}
+  m_LocalRotation: {x: 0.03957382, y: -0.14633004, z: 0.075690895, w: 0.98554164}
+  m_LocalPosition: {x: -0.43330017, y: -0.04674591, z: -0.18910961}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
+  m_Children:
+  - {fileID: 4915224731202002493}
+  m_Father: {fileID: 3865486892600767849}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 5.7480955, y: -16.491034, z: 13.459844}
+--- !u!1 &624078732709608963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3658026666060465191}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Toe01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3658026666060465191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624078732709608963}
+  m_LocalRotation: {x: 0.000000014901161, y: 0.000000018626453, z: 0.000000014901161,
+    w: 1}
+  m_LocalPosition: {x: -0.22502899, y: 0.00000015258789, z: -0.00000015258789}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 82924162345175329}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000000106721714, y: 0.0000010638828, z: -0.00000042688686}
+--- !u!1 &700268281012503189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2764772988824690926}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Toe1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2764772988824690926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700268281012503189}
+  m_LocalRotation: {x: 0.007923989, y: 0.007923968, z: -0.7070624, w: 0.7070624}
+  m_LocalPosition: {x: -0.26436713, y: 0.45217544, z: 0.033686217}
+  m_LocalScale: {x: 1.0000001, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 4235983246813659446}
+  m_Father: {fileID: 5991229245114746478}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 1.2842036, y: -0.0000006938652, z: -89.999985}
+--- !u!1 &704371440327276144
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5112998732172335034}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5112998732172335034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704371440327276144}
+  m_LocalRotation: {x: -0.00870364, y: 0.08847489, z: 0.12849532, w: 0.9877173}
+  m_LocalPosition: {x: -1.5812548, y: 0.020561485, z: -0.050009765}
+  m_LocalScale: {x: 1.0000004, y: 1.0000005, z: 0.99999875}
+  m_Children:
+  - {fileID: 5747015949621875851}
+  - {fileID: 8817385320480343669}
+  - {fileID: 8728740474883481055}
+  m_Father: {fileID: 6926144311372482299}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 5.407864, y: 8.662305, z: -42.31347}
+--- !u!1 &798859312845688042
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2999562079799910940}
+  m_Layer: 0
+  m_Name: root
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2999562079799910940
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798859312845688042}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -2.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2382017869433524958}
+  m_Father: {fileID: 8936467501014538170}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!1 &962601507971071036
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 100576123569826507}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Clavicle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &100576123569826507
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962601507971071036}
+  m_LocalRotation: {x: 0.50682956, y: -0.29704446, z: 0.78617513, w: -0.19187771}
+  m_LocalPosition: {x: -1.1177009, y: -0.092888184, z: -0.10783047}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 4012552605110883033}
+  m_Father: {fileID: 4491078286700960487}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -0.26663616, y: 90.30528, z: -144.09761}
+--- !u!1 &1104422776800155268
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4915224731202002493}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Finger11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4915224731202002493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1104422776800155268}
+  m_LocalRotation: {x: 0, y: -0, z: -0.017932294, w: 0.99983925}
+  m_LocalPosition: {x: -0.21157257, y: 0.00000015258789, z: 0}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6187271474575772200}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00000020617216, y: 0.00000027246224, z: -1.5450318}
+--- !u!1 &1212763230832630454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2863709957779800277}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Toe21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2863709957779800277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212763230832630454}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.264657, y: -0.00000015258789, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 743640241092234390}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000000026680434, y: 0.0000006770162, z: 0.0000002134435}
+--- !u!1 &1224304082334025726
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1929621500355580974}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1929621500355580974
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224304082334025726}
+  m_LocalRotation: {x: 3.543629e-10, y: 0.000000083356994, z: 0.00057962537, w: 0.9999998}
+  m_LocalPosition: {x: -0.60764647, y: -0.00046508788, z: -0.0000000012910459}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 1350729729348612117}
+  m_Father: {fileID: 7421675265579599622}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.14190945, y: -1.9517273, z: -2.8850985}
+--- !u!1 &1296246123553314981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4297093514413341062}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_FingerA_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4297093514413341062
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296246123553314981}
+  m_LocalRotation: {x: 0.0059870137, y: -0.032170385, z: 0.14444926, w: 0.988971}
+  m_LocalPosition: {x: -2.276656, y: 0.00000061035155, z: -0.00000061035155}
+  m_LocalScale: {x: 0.9999999, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2390571978760005862}
+  m_Father: {fileID: 8408508645719539818}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 3.8384936, y: -6.994371, z: 42.580803}
+--- !u!1 &1338226503193184798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2883803279749591780}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_Arm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2883803279749591780
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338226503193184798}
+  m_LocalRotation: {x: 0.46715504, y: 0.74795896, z: -0.42334694, w: 0.20760773}
+  m_LocalPosition: {x: -1.0510648, y: -0.64210296, z: 0.44440898}
+  m_LocalScale: {x: 1.0000007, y: 1.0000004, z: 0.9999994}
+  m_Children:
+  - {fileID: 6926144311372482299}
+  m_Father: {fileID: 4491078286700960487}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 25.291544, y: 169.85432, z: 34.254456}
+--- !u!1 &1402773200629954604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1350729729348612117}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1350729729348612117
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1402773200629954604}
+  m_LocalRotation: {x: 0.0000000072779844, y: 0.00000030546312, z: -0.0159589, w: 0.9998727}
+  m_LocalPosition: {x: -0.58380187, y: -0.0004420471, z: -0.0000000012293457}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6032160672677952215}
+  m_Father: {fileID: 1929621500355580974}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.033493932, y: -1.5108902, z: 0.30550668}
+--- !u!1 &1591023059156735604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4491078286700960487}
+  m_Layer: 0
+  m_Name: MountainDragon_ Spine1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4491078286700960487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591023059156735604}
+  m_LocalRotation: {x: -0.00000008548291, y: -0.0000003003626, z: 0.047485333, w: 0.998872}
+  m_LocalPosition: {x: -1.0334115, y: -0.0012477111, z: -0.0000000032261596}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 0.99999994}
+  m_Children:
+  - {fileID: 4090258940021760456}
+  - {fileID: 2088438390840317347}
+  - {fileID: 100576123569826507}
+  - {fileID: 2883803279749591780}
+  - {fileID: 4957231656408532847}
+  m_Father: {fileID: 8274314447937815936}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.883936, y: -1.3358939, z: -1.5721805}
+--- !u!1 &1601709526973516004
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4574294579789204152}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Toe11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4574294579789204152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601709526973516004}
+  m_LocalRotation: {x: 2.2204455e-16, y: 0.000000014901159, z: -0.000000014901159,
+    w: 1}
+  m_LocalPosition: {x: -0.29197365, y: 0.00000015258789, z: 0.00000015258789}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 284877134861351835}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000000026680425, y: -0.00000044689696, z: 5.458599e-20}
+--- !u!1 &1639896955639719445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8547908852130661532}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_FingerA_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8547908852130661532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639896955639719445}
+  m_LocalRotation: {x: -0.004655774, y: -0.03191189, z: -0.1440722, w: 0.98904157}
+  m_LocalPosition: {x: -2.276655, y: -0.0000010898125, z: 0.00000016189564}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 1993090949577427173}
+  m_Father: {fileID: 5747015949621875851}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 2.7149813, y: 4.4948554, z: -37.944775}
+--- !u!1 &1801099658783739682
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1916346996791023584}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Forearm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1916346996791023584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1801099658783739682}
+  m_LocalRotation: {x: 0.0000000010376089, y: -0.000000016627663, z: 0.50205153, w: 0.8648377}
+  m_LocalPosition: {x: -1.204786, y: -0.000000076293944, z: -0.00000015258789}
+  m_LocalScale: {x: 0.9999998, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6269437358416178072}
+  m_Father: {fileID: 4012552605110883033}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000020973573, y: 0.0000022532565, z: 99.257706}
+--- !u!1 &1931500787084124175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 743640241092234390}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Toe2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &743640241092234390
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1931500787084124175}
+  m_LocalRotation: {x: -0.12535459, y: -0.1253546, z: -0.69590676, w: 0.69590676}
+  m_LocalPosition: {x: -0.21320747, y: 0.451564, z: -0.15053253}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 2863709957779800277}
+  m_Father: {fileID: 5991229245114746478}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -20.422497, y: -0.000007288293, z: -89.99998}
+--- !u!1 &1950192627613769658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5797993175010216998}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_FingerC_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5797993175010216998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950192627613769658}
+  m_LocalRotation: {x: -0.0000003255867, y: 0.000093520626, z: -0.15972288, w: 0.98716193}
+  m_LocalPosition: {x: -1.176663, y: -0.00000007569818, z: 0.000000048300244}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2189855811951898388}
+  m_Father: {fileID: 8728740474883481055}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.4899875, y: 3.934751, z: -31.127367}
+--- !u!1 &2031206167426133675
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 71697197635955412}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Finger0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &71697197635955412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2031206167426133675}
+  m_LocalRotation: {x: -0.22918558, y: 0.52071595, z: 0.06376992, w: 0.819916}
+  m_LocalPosition: {x: -0.15797256, y: 0.09717178, z: 0.26568726}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 4598080710007671532}
+  m_Father: {fileID: 6269437358416178072}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -26.246738, y: 66.84641, z: -3.0894804}
+--- !u!1 &2043002359068867579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 41830716549511211}
+  m_Layer: 0
+  m_Name: MountainDragon_ R HorseLink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &41830716549511211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043002359068867579}
+  m_LocalRotation: {x: 0.000000015556674, y: 0.000000025419844, z: -0.5219953, w: 0.85294837}
+  m_LocalPosition: {x: -0.9433308, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5991229245114746478}
+  m_Father: {fileID: 6524772785326961219}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000029791881, y: 0.0000018751676, z: -71.84904}
+--- !u!1 &2261084315265820415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4070414392110214043}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Finger1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4070414392110214043
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2261084315265820415}
+  m_LocalRotation: {x: -0.03957383, y: 0.14633004, z: 0.075690955, w: 0.98554164}
+  m_LocalPosition: {x: -0.43330017, y: -0.04674591, z: 0.18910964}
+  m_LocalScale: {x: 1.0000004, y: 1.0000001, z: 1.0000002}
+  m_Children:
+  - {fileID: 7756852371435675646}
+  m_Father: {fileID: 6269437358416178072}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -5.7480946, y: 16.491032, z: 13.459852}
+--- !u!1 &2377971026177600985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8274314447937815936}
+  m_Layer: 0
+  m_Name: MountainDragon_ Spine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8274314447937815936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2377971026177600985}
+  m_LocalRotation: {x: -0.000002080441, y: 0.0000007606333, z: -0.010316036, w: 0.99994683}
+  m_LocalPosition: {x: -0.66860366, y: 0.054299925, z: 0.00000058817676}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 4491078286700960487}
+  m_Father: {fileID: 5997632987239827191}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -1.0094084, y: -1.2433947, z: -7.52653}
+--- !u!1 &2452444780598188844
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6646238214590196205}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6646238214590196205
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2452444780598188844}
+  m_LocalRotation: {x: 0.008703458, y: 0.088474214, z: -0.1284953, w: 0.98771733}
+  m_LocalPosition: {x: -1.5812564, y: -0.020561332, z: -0.05001053}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+  m_Children:
+  - {fileID: 8408508645719539818}
+  - {fileID: 5547560542173355146}
+  - {fileID: 2575911584680863741}
+  m_Father: {fileID: 7389877649920723728}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -5.4164524, y: 8.118455, z: 42.38849}
+--- !u!1 &2467540692571934661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6524772785326961219}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Calf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6524772785326961219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2467540692571934661}
+  m_LocalRotation: {x: -0.0000000018804494, y: 0.0000000032158511, z: 0.5047793, w: 0.86324847}
+  m_LocalPosition: {x: -1.301142, y: 0.00000015258789, z: 0}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 41830716549511211}
+  m_Father: {fileID: 5306465466507718861}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000004758682, y: -0.0000016708636, z: 95.27746}
+--- !u!1 &2492875147130748252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7264106299034554464}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Finger21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7264106299034554464
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2492875147130748252}
+  m_LocalRotation: {x: -0.000000007086149, y: 0.000000015077875, z: -0.024308864,
+    w: 0.99970454}
+  m_LocalPosition: {x: -0.21700226, y: 0, z: 0.000000038146972}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1377858883734823144}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 9.899393e-14, y: 5.6893113e-13, z: -2.2758965}
+--- !u!1 &2579039808490419303
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8110935828121323411}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Finger01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8110935828121323411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2579039808490419303}
+  m_LocalRotation: {x: 0.00000001498054, y: -0.0000000134160665, z: 0.005897176, w: 0.99998266}
+  m_LocalPosition: {x: -0.1771006, y: 0, z: 0.000000076293944}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2547262919922910686}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00000012982994, y: -0.0000025580273, z: -2.905479}
+--- !u!1 &2701605122349715584
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4156376285797464751}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_FingerC_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4156376285797464751
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2701605122349715584}
+  m_LocalRotation: {x: -0.0004026286, y: -0.11545826, z: 0.26059535, w: 0.95851934}
+  m_LocalPosition: {x: -1.202027, y: 0, z: 0.0000018310546}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8379099007069885404}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.7614763, y: -1.2258062, z: 31.271511}
+--- !u!1 &2752020789290602794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4974535493166558189}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4974535493166558189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2752020789290602794}
+  m_LocalRotation: {x: 4.6640027e-15, y: 0.000000021588388, z: -0.0077835266, w: 0.9999697}
+  m_LocalPosition: {x: -1.1059062, y: -0.0008840942, z: -0.0000000024517066}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 1904774907677115020}
+  m_Father: {fileID: 5460266280791907669}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.055135097, y: -1.8922515, z: -1.7183498}
+--- !u!1 &2876518941148597569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2475121923514197892}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Toe31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2475121923514197892
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2876518941148597569}
+  m_LocalRotation: {x: -0.000000014901161, y: -0.000000007450581, z: -1.110223e-16,
+    w: 1}
+  m_LocalPosition: {x: -0.13359039, y: 0, z: -0.00000015258789}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 1173149261744884781}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000011151499, y: 0.000006576228, z: -9.62426}
+--- !u!1 &3642468542722728987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4598080710007671532}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Finger01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4598080710007671532
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3642468542722728987}
+  m_LocalRotation: {x: 6.453302e-11, y: -0.000000010942851, z: 0.0058971746, w: 0.99998266}
+  m_LocalPosition: {x: -0.17710048, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 71697197635955412}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000006795712, y: 0.0000034539828, z: -2.905472}
+--- !u!1 &3774909719699482858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4957231656408532847}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_Arm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4957231656408532847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3774909719699482858}
+  m_LocalRotation: {x: 0.2076088, y: -0.42334765, z: 0.7479585, w: 0.46715468}
+  m_LocalPosition: {x: -1.0510646, y: -0.6421014, z: -0.44400164}
+  m_LocalScale: {x: 1.0000001, y: 1.0000002, z: 1.0000001}
+  m_Children:
+  - {fileID: 7389877649920723728}
+  m_Father: {fileID: 4491078286700960487}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 19.375383, y: 17.496191, z: 143.0169}
+--- !u!1 &3836910966761066048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2390571978760005862}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_FingerA_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2390571978760005862
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836910966761066048}
+  m_LocalRotation: {x: -0.0008647511, y: -0.0047383984, z: 0.28621846, w: 0.9581523}
+  m_LocalPosition: {x: -2.4020166, y: 0.000084838866, z: 0.00000061035155}
+  m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4297093514413341062}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.8852845, y: -1.4525319, z: 37.434494}
+--- !u!1 &3880137733593652122
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2088438390840317347}
+  m_Layer: 0
+  m_Name: MountainDragon_ Neck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2088438390840317347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880137733593652122}
+  m_LocalRotation: {x: 8.7944824e-10, y: -0.00000020437348, z: 0.04713699, w: 0.99888843}
+  m_LocalPosition: {x: -1.560973, y: -0.12825134, z: -0.00000020111445}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children:
+  - {fileID: 54214798251995108}
+  m_Father: {fileID: 4491078286700960487}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0.8693425, y: 5.309432, z: 1.046226}
+--- !u!1 &3911300416535785113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5460266280791907669}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5460266280791907669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3911300416535785113}
+  m_LocalRotation: {x: 0.0000005956944, y: -0.0000006603291, z: 0.9989133, w: 0.04660707}
+  m_LocalPosition: {x: 0.7767428, y: -0.030638732, z: 0.00000009193143}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 4974535493166558189}
+  m_Father: {fileID: 5997632987239827191}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -0.46422365, y: 1.6493158, z: -164.37476}
+--- !u!1 &4094366969011514651
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 54214798251995108}
+  m_Layer: 0
+  m_Name: MountainDragon_ Neck1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &54214798251995108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4094366969011514651}
+  m_LocalRotation: {x: 0.000000013191672, y: -0.0000002049391, z: 0.047137026, w: 0.99888843}
+  m_LocalPosition: {x: -0.5676292, y: -0.0004499817, z: -0.0000000012567034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 200456667119234036}
+  m_Father: {fileID: 2088438390840317347}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.8055776, y: 5.378489, z: 1.9084255}
+--- !u!1 &4095162256357166566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 82924162345175329}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Toe0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &82924162345175329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4095162256357166566}
+  m_LocalRotation: {x: -0.12115099, y: -0.12115099, z: -0.6966509, w: 0.6966509}
+  m_LocalPosition: {x: -0.25273284, y: 0.44524154, z: -0.27664474}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 3658026666060465191}
+  m_Father: {fileID: 8340151369043231696}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -19.730658, y: -0.000037188023, z: -90}
+--- !u!1 &4336788603462061755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4235983246813659446}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Toe11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4235983246813659446
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4336788603462061755}
+  m_LocalRotation: {x: -2.220446e-16, y: -0.000000007450581, z: -0.000000029802322,
+    w: 1}
+  m_LocalPosition: {x: -0.2919737, y: -0.00000015258789, z: 0.00000015258789}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2764772988824690926}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.9080518e-14, y: -0.00000019510023, z: -3.3257089e-19}
+--- !u!1 &4457315107055041911
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1377858883734823144}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Finger2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1377858883734823144
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4457315107055041911}
+  m_LocalRotation: {x: 0.021381479, y: -0.0030624631, z: 0.052876692, w: 0.9983674}
+  m_LocalPosition: {x: -0.45314276, y: -0.040162656, z: 0.00882245}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7264106299034554464}
+  m_Father: {fileID: 6269437358416178072}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 2.465452, y: -0.22100644, z: 11.568676}
+--- !u!1 &4457661311432565638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1740010895114850830}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Toe21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1740010895114850830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4457661311432565638}
+  m_LocalRotation: {x: 5.551115e-17, y: -0.0000000037252903, z: 0.000000014901161,
+    w: 1}
+  m_LocalPosition: {x: -0.2646568, y: 0, z: -0.000000076293944}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_Children: []
+  m_Father: {fileID: 1552372270652484377}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 7.421933e-15, y: -0.00000056862643, z: -0.0000002134434}
+--- !u!1 &4541024026125571089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1937409284848048217}
+  m_Layer: 0
+  m_Name: MountainDragon_ Neck3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1937409284848048217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541024026125571089}
+  m_LocalRotation: {x: -8.4703275e-22, y: 5.6843412e-14, z: 0.000000014901159, w: 1}
+  m_LocalPosition: {x: -0.56767213, y: -0.00045196532, z: -0.000000001253502}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6400189296304499346}
+  m_Father: {fileID: 200456667119234036}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000000053360807, y: 0.00000018843052, z: -0.000000106721686}
+--- !u!1 &4668778736077792756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1626268234427878380}
+  m_Layer: 0
+  m_Name: MountainDragon_ L UpperArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1626268234427878380
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4668778736077792756}
+  m_LocalRotation: {x: -0.30776745, y: 0.012958837, z: 0.1863016, w: 0.9329539}
+  m_LocalPosition: {x: -0.793011, y: 0.00000015258789, z: -0.00000015258789}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 8824008523578197385}
+  m_Father: {fileID: 4090258940021760456}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -57.8217, y: -13.06869, z: -35.98299}
+--- !u!1 &4811020573375872129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7756852371435675646}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Finger11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7756852371435675646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4811020573375872129}
+  m_LocalRotation: {x: 0.000000014631555, y: -0.000000015165979, z: -0.017932288,
+    w: 0.99983925}
+  m_LocalPosition: {x: -0.21157257, y: 0, z: 0.000000019073486}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4070414392110214043}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.000000011510028, y: 0.00000042673207, z: -1.5450354}
+--- !u!1 &4828134903897236408
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8242226597406740232}
+  - component: {fileID: 1488543103605233502}
+  m_Layer: 0
+  m_Name: MOUNTAIN_DRAGON
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8242226597406740232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828134903897236408}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -2.75}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8936467501014538170}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &1488543103605233502
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4828134903897236408}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: b5b2544d400684544961e6a01ab19801, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 4
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300000, guid: e0080c37f479acb49b6389201658bbf1, type: 3}
+  m_Bones:
+  - {fileID: 6400189296304499346}
+  - {fileID: 3259821145557504854}
+  - {fileID: 4090258940021760456}
+  - {fileID: 2547262919922910686}
+  - {fileID: 8110935828121323411}
+  - {fileID: 6187271474575772200}
+  - {fileID: 8538454155084670292}
+  - {fileID: 4298322494545067017}
+  - {fileID: 4915224731202002493}
+  - {fileID: 1075047904487915475}
+  - {fileID: 4241149244203903010}
+  - {fileID: 8340151369043231696}
+  - {fileID: 8824008523578197385}
+  - {fileID: 3865486892600767849}
+  - {fileID: 7379656500591769668}
+  - {fileID: 7464701412059623321}
+  - {fileID: 82924162345175329}
+  - {fileID: 3658026666060465191}
+  - {fileID: 284877134861351835}
+  - {fileID: 1552372270652484377}
+  - {fileID: 1937409284848048217}
+  - {fileID: 200456667119234036}
+  - {fileID: 54214798251995108}
+  - {fileID: 2373938754028169742}
+  - {fileID: 4491078286700960487}
+  - {fileID: 2088438390840317347}
+  - {fileID: 1626268234427878380}
+  - {fileID: 2883803279749591780}
+  - {fileID: 8274314447937815936}
+  - {fileID: 4957231656408532847}
+  - {fileID: 100576123569826507}
+  - {fileID: 5997632987239827191}
+  - {fileID: 6926144311372482299}
+  - {fileID: 4012552605110883033}
+  - {fileID: 5460266280791907669}
+  - {fileID: 5306465466507718861}
+  - {fileID: 4974535493166558189}
+  - {fileID: 5747015949621875851}
+  - {fileID: 8817385320480343669}
+  - {fileID: 6524772785326961219}
+  - {fileID: 1916346996791023584}
+  - {fileID: 7389877649920723728}
+  - {fileID: 1173149261744884781}
+  - {fileID: 5112998732172335034}
+  - {fileID: 8728740474883481055}
+  - {fileID: 8547908852130661532}
+  - {fileID: 9186906111787833819}
+  - {fileID: 2189855811951898388}
+  - {fileID: 5797993175010216998}
+  - {fileID: 8812528447388457277}
+  - {fileID: 1993090949577427173}
+  - {fileID: 1904774907677115020}
+  - {fileID: 1177139864018829980}
+  - {fileID: 8362516933135684455}
+  - {fileID: 7421675265579599622}
+  - {fileID: 1929621500355580974}
+  - {fileID: 1350729729348612117}
+  - {fileID: 6032160672677952215}
+  - {fileID: 6167331081031798998}
+  - {fileID: 825927067302043410}
+  - {fileID: 1740010895114850830}
+  - {fileID: 2475121923514197892}
+  - {fileID: 4574294579789204152}
+  - {fileID: 4598080710007671532}
+  - {fileID: 71697197635955412}
+  - {fileID: 6269437358416178072}
+  - {fileID: 8408508645719539818}
+  - {fileID: 5547560542173355146}
+  - {fileID: 41830716549511211}
+  - {fileID: 5991229245114746478}
+  - {fileID: 1370784648681315261}
+  - {fileID: 2764772988824690926}
+  - {fileID: 743640241092234390}
+  - {fileID: 4070414392110214043}
+  - {fileID: 1377858883734823144}
+  - {fileID: 6367195231319505896}
+  - {fileID: 6646238214590196205}
+  - {fileID: 2575911584680863741}
+  - {fileID: 4156376285797464751}
+  - {fileID: 8379099007069885404}
+  - {fileID: 5392330827256479373}
+  - {fileID: 4297093514413341062}
+  - {fileID: 5243045221275414682}
+  - {fileID: 2390571978760005862}
+  - {fileID: 4789985621356040412}
+  - {fileID: 2863709957779800277}
+  - {fileID: 1604728061596184719}
+  - {fileID: 4235983246813659446}
+  - {fileID: 7611326277834939094}
+  - {fileID: 4872769864135569087}
+  - {fileID: 7264106299034554464}
+  - {fileID: 7756852371435675646}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 5997632987239827191}
+  m_AABB:
+    m_Center: {x: 0.92069435, y: -2.4301362, z: -0.02364397}
+    m_Extent: {x: 7.9143972, y: 5.9364305, z: 10.011097}
+  m_DirtyAABB: 0
+--- !u!1 &4982494371646562573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1075047904487915475}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Finger21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1075047904487915475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4982494371646562573}
+  m_LocalRotation: {x: 0.0000000067239205, y: -0.00000002997464, z: -0.024308823,
+    w: 0.99970454}
+  m_LocalPosition: {x: -0.21700233, y: -0.00000015258789, z: -0.000000019073486}
+  m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8538454155084670292}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00000020267997, y: 0.0000002750696, z: -2.2758977}
+--- !u!1 &5011517802388539250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4012552605110883033}
+  m_Layer: 0
+  m_Name: MountainDragon_ R UpperArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4012552605110883033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5011517802388539250}
+  m_LocalRotation: {x: 0.30776724, y: -0.012958902, z: 0.18630175, w: 0.93295395}
+  m_LocalPosition: {x: -0.793011, y: 0.00000015258789, z: 0}
+  m_LocalScale: {x: 0.9999999, y: 0.99999994, z: 0.99999994}
+  m_Children:
+  - {fileID: 1916346996791023584}
+  m_Father: {fileID: 100576123569826507}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 55.133472, y: 4.565138, z: -27.167862}
+--- !u!1 &5405105675571420723
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3259821145557504854}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Calf
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3259821145557504854
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5405105675571420723}
+  m_LocalRotation: {x: -0.00000003512906, y: 0.0000000010356738, z: 0.50477904, w: 0.86324865}
+  m_LocalPosition: {x: -1.3011416, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 7379656500591769668}
+  m_Father: {fileID: 7464701412059623321}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00000031534552, y: -0.0000036336667, z: 105.59609}
+--- !u!1 &5452050973462050600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6926144311372482299}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_ForeArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6926144311372482299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5452050973462050600}
+  m_LocalRotation: {x: -0.00000018624553, y: 0.00000037426673, z: 0.3888004, w: 0.921322}
+  m_LocalPosition: {x: -1.808314, y: 0.00000015258789, z: 0.00000015258789}
+  m_LocalScale: {x: 1, y: 0.9999999, z: 0.9999999}
+  m_Children:
+  - {fileID: 5112998732172335034}
+  m_Father: {fileID: 2883803279749591780}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 2.9877634, y: -2.5270698, z: 145.3157}
+--- !u!1 &5460405078867437566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1604728061596184719}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Toe01
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1604728061596184719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5460405078867437566}
+  m_LocalRotation: {x: -2.7755584e-16, y: 0.00000003725291, z: 0.0000000074505815,
+    w: 1}
+  m_LocalPosition: {x: -0.22502883, y: 0.00000015258789, z: 0.00000015258789}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 4789985621356040412}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 3.2259805e-14, y: 0.0000015841496, z: 0.0000002134434}
+--- !u!1 &5500788220594037894
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8538454155084670292}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Finger2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8538454155084670292
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500788220594037894}
+  m_LocalRotation: {x: -0.021381494, y: 0.0030624624, z: 0.05287668, w: 0.9983674}
+  m_LocalPosition: {x: -0.45314285, y: -0.040162656, z: -0.008822355}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1075047904487915475}
+  m_Father: {fileID: 3865486892600767849}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -2.4654505, y: 0.22100542, z: 11.568671}
+--- !u!1 &5550669999918467548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7611326277834939094}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Toe31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7611326277834939094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5550669999918467548}
+  m_LocalRotation: {x: -0.000000007450582, y: -0.000000033527616, z: -0.000000014901163,
+    w: 1}
+  m_LocalPosition: {x: -0.13359055, y: 0.00000015258789, z: 0.00000015258789}
+  m_LocalScale: {x: 0.99999994, y: 0.9999999, z: 0.99999994}
+  m_Children: []
+  m_Father: {fileID: 1370784648681315261}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.00000050563, y: 0.00000042842248, z: -9.62426}
+--- !u!1 &5557006847191058852
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5547560542173355146}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_FingerB_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5547560542173355146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5557006847191058852}
+  m_LocalRotation: {x: 0.038807362, y: -0.021827092, z: 0.24407862, w: 0.9687328}
+  m_LocalPosition: {x: -0.64188963, y: -0.1451361, z: 0.025681151}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5392330827256479373}
+  m_Father: {fileID: 6646238214590196205}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 4.9245014, y: -1.3426682, z: 93.22565}
+--- !u!1 &5592653633731462763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6367195231319505896}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Finger3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6367195231319505896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5592653633731462763}
+  m_LocalRotation: {x: 0.14490628, y: -0.1866523, z: 0.06672925, w: 0.9693866}
+  m_LocalPosition: {x: -0.40837073, y: 0.016358642, z: -0.15916583}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 4872769864135569087}
+  m_Father: {fileID: 6269437358416178072}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 17.80936, y: -21.086576, z: 5.044941}
+--- !u!1 &5637568208696252066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8379099007069885404}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_FingerC_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8379099007069885404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5637568208696252066}
+  m_LocalRotation: {x: 0.0027285097, y: 0.09081426, z: 0.22753584, w: 0.96952194}
+  m_LocalPosition: {x: -1.1766626, y: 0.00000030517577, z: -0.00000015258789}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4156376285797464751}
+  m_Father: {fileID: 2575911584680863741}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.5698678, y: -6.1652284, z: 19.656914}
+--- !u!1 &5645774163786431246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2189855811951898388}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_FingerC_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2189855811951898388
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5645774163786431246}
+  m_LocalRotation: {x: -0.00003217806, y: -0.00013575898, z: -0.23443739, w: 0.97213125}
+  m_LocalPosition: {x: -1.2020249, y: 0.00000010296695, z: -0.00000008434069}
+  m_LocalScale: {x: 0.9999998, y: 0.9999998, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5797993175010216998}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -1.6636852, y: 0.94531083, z: -24.047249}
+--- !u!1 &5656025357096747258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7464701412059623321}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Thigh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7464701412059623321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5656025357096747258}
+  m_LocalRotation: {x: -0.61630034, y: 0.76466256, z: 0.16160846, w: 0.09668392}
+  m_LocalPosition: {x: 0.0000005340576, y: 0.0000009155273, z: 0.6033566}
+  m_LocalScale: {x: 0.99999994, y: 1.0000001, z: 0.99999994}
+  m_Children:
+  - {fileID: 3259821145557504854}
+  m_Father: {fileID: 5997632987239827191}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -22.992762, y: -177.29439, z: -80.87807}
+--- !u!1 &5775455029652547812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1177139864018829980}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1177139864018829980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5775455029652547812}
+  m_LocalRotation: {x: -5.6771216e-10, y: 0.000000050037, z: -0.013179704, w: 0.99991316}
+  m_LocalPosition: {x: -0.6053894, y: -0.00051712035, z: -0.0000000014342367}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 8362516933135684455}
+  m_Father: {fileID: 1904774907677115020}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.29965752, y: -2.307444, z: -7.2788153}
+--- !u!1 &5828731442236878960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8824008523578197385}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Forearm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8824008523578197385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5828731442236878960}
+  m_LocalRotation: {x: -0.000000038033505, y: 0.000000020995993, z: 0.50205153, w: 0.8648377}
+  m_LocalPosition: {x: -1.204786, y: -0.000000076293944, z: 0}
+  m_LocalScale: {x: 0.99999994, y: 1.0000001, z: 0.99999994}
+  m_Children:
+  - {fileID: 3865486892600767849}
+  m_Father: {fileID: 1626268234427878380}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.0000033870115, y: 0.000006844157, z: 89.764656}
+--- !u!1 &5855909780310746607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8362516933135684455}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8362516933135684455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5855909780310746607}
+  m_LocalRotation: {x: -4.3212742e-10, y: 0.00000003967733, z: 0.002323812, w: 0.9999973}
+  m_LocalPosition: {x: -0.6496231, y: -0.00046035767, z: -0.0000000012747478}
+  m_LocalScale: {x: 1.0000001, y: 1.0000002, z: 1}
+  m_Children:
+  - {fileID: 7421675265579599622}
+  m_Father: {fileID: 1177139864018829980}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.3149029, y: -2.2133393, z: -7.3279877}
+--- !u!1 &6077924569289157959
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6269437358416178072}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6269437358416178072
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077924569289157959}
+  m_LocalRotation: {x: 0.6491273, y: -0.07440951, z: 0.035280272, w: 0.75620914}
+  m_LocalPosition: {x: -0.9996353, y: 0, z: 0}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 0.9999999}
+  m_Children:
+  - {fileID: 71697197635955412}
+  - {fileID: 4070414392110214043}
+  - {fileID: 1377858883734823144}
+  - {fileID: 6367195231319505896}
+  m_Father: {fileID: 1916346996791023584}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 57.577206, y: -12.301047, z: 8.126478}
+--- !u!1 &6141159766537125366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4789985621356040412}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Toe0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4789985621356040412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6141159766537125366}
+  m_LocalRotation: {x: 0.12115102, y: 0.121150956, z: -0.696651, w: 0.6966508}
+  m_LocalPosition: {x: -0.2527326, y: 0.4452414, z: 0.27664474}
+  m_LocalScale: {x: 1.0000002, y: 1.0000002, z: 1.0000001}
+  m_Children:
+  - {fileID: 1604728061596184719}
+  m_Father: {fileID: 5991229245114746478}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 19.730831, y: -0.000008163233, z: -89.999985}
+--- !u!1 &6295832493732419245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6400189296304499346}
+  m_Layer: 0
+  m_Name: MountainDragon_ Head
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6400189296304499346
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6295832493732419245}
+  m_LocalRotation: {x: 0.0000001168928, y: -0.00000024973028, z: 0.1044247, w: 0.9945328}
+  m_LocalPosition: {x: -0.56767213, y: 0.00000015258789, z: 2.910383e-13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2373938754028169742}
+  m_Father: {fileID: 1937409284848048217}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.4543755, y: 1.5410954, z: 50.616093}
+--- !u!1 &6470357808119286121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7379656500591769668}
+  m_Layer: 0
+  m_Name: MountainDragon_ L HorseLink
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7379656500591769668
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6470357808119286121}
+  m_LocalRotation: {x: 0.000000043823263, y: 0.000000043061352, z: -0.52199525, w: 0.85294837}
+  m_LocalPosition: {x: -0.9433308, y: 0, z: -0.00000015258789}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 8340151369043231696}
+  m_Father: {fileID: 3259821145557504854}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.0000017759683, y: 0.0000007004126, z: -95.04158}
+--- !u!1 &6590541311787709926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8817385320480343669}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_FingerB_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8817385320480343669
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6590541311787709926}
+  m_LocalRotation: {x: -0.038807124, y: -0.021827666, z: -0.24407889, w: 0.9687327}
+  m_LocalPosition: {x: -0.64188904, y: 0.14513595, z: 0.025679931}
+  m_LocalScale: {x: 1.0000019, y: 0.9999994, z: 0.9999989}
+  m_Children:
+  - {fileID: 9186906111787833819}
+  m_Father: {fileID: 5112998732172335034}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -4.904275, y: 1.4148569, z: -89.61271}
+--- !u!1 &6891263528761497067
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4872769864135569087}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Finger31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4872769864135569087
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6891263528761497067}
+  m_LocalRotation: {x: 0.000000022193834, y: -0.000000015135345, z: -0.010514036,
+    w: 0.99994475}
+  m_LocalPosition: {x: -0.18875366, y: 0, z: 0.000000076293944}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6367195231319505896}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00000067005135, y: -0.000002446654, z: -0.6948744}
+--- !u!1 &6962699754860106319
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7389877649920723728}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_ForeArm
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7389877649920723728
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962699754860106319}
+  m_LocalRotation: {x: 0.000000090115996, y: 0.00000015605488, z: -0.3887999, w: 0.9213222}
+  m_LocalPosition: {x: -1.8083154, y: 0.00000030517577, z: 0}
+  m_LocalScale: {x: 1.0000001, y: 0.99999994, z: 0.9999999}
+  m_Children:
+  - {fileID: 6646238214590196205}
+  m_Father: {fileID: 4957231656408532847}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -3.0836978, y: -2.5090253, z: -147.49829}
+--- !u!1 &6971669491993639774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5243045221275414682}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_FingerB_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5243045221275414682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6971669491993639774}
+  m_LocalRotation: {x: -0.00020615496, y: 0.018777201, z: 0.23283228, w: 0.9723356}
+  m_LocalPosition: {x: -1.778407, y: 0.000000038146972, z: -0.0000012207031}
+  m_LocalScale: {x: 1.0000001, y: 1.0000002, z: 1.0000004}
+  m_Children: []
+  m_Father: {fileID: 5392330827256479373}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 1.2071502, y: 1.5378549, z: 31.939127}
+--- !u!1 &7011315861682872205
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4298322494545067017}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Finger3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4298322494545067017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011315861682872205}
+  m_LocalRotation: {x: -0.14490633, y: 0.18665229, z: 0.066729255, w: 0.9693866}
+  m_LocalPosition: {x: -0.40837073, y: 0.016358642, z: 0.15916581}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 4241149244203903010}
+  m_Father: {fileID: 3865486892600767849}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: -17.809357, y: 21.086575, z: 5.044942}
+--- !u!1 &7326030921867685731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5991229245114746478}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Foot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5991229245114746478
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7326030921867685731}
+  m_LocalRotation: {x: 0.074374154, y: -0.0025355674, z: 0.182845, w: 0.9803213}
+  m_LocalPosition: {x: -0.54914063, y: -0.00000015258789, z: 0.00000015258789}
+  m_LocalScale: {x: 1.0000001, y: 0.9999999, z: 1}
+  m_Children:
+  - {fileID: 4789985621356040412}
+  - {fileID: 2764772988824690926}
+  - {fileID: 743640241092234390}
+  - {fileID: 1370784648681315261}
+  m_Father: {fileID: 41830716549511211}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -1.5603538, y: -36.70374, z: -11.3400955}
+--- !u!1 &7403698727017544857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5997632987239827191}
+  m_Layer: 0
+  m_Name: MountainDragon_ Pelvis
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5997632987239827191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7403698727017544857}
+  m_LocalRotation: {x: -0.5486558, y: 0.44606724, z: 0.4460674, w: 0.5486572}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7464701412059623321}
+  - {fileID: 5306465466507718861}
+  - {fileID: 8274314447937815936}
+  - {fileID: 5460266280791907669}
+  m_Father: {fileID: 2382017869433524958}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -90, y: 89.99992, z: 0}
+--- !u!1 &7461767544649596873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6032160672677952215}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6032160672677952215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7461767544649596873}
+  m_LocalRotation: {x: 0.00000002732295, y: 0.00000019288495, z: 0.0021450308, w: 0.99999774}
+  m_LocalPosition: {x: -0.5556726, y: -0.0005255127, z: -0.0000000014860415}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 6167331081031798998}
+  m_Father: {fileID: 1350729729348612117}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.03505596, y: -0.58158875, z: 3.55188}
+--- !u!1 &7514986264012708665
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3865486892600767849}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Hand
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3865486892600767849
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7514986264012708665}
+  m_LocalRotation: {x: -0.64912724, y: 0.074409485, z: 0.035280295, w: 0.7562092}
+  m_LocalPosition: {x: -0.99963546, y: 0.000000038146972, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2547262919922910686}
+  - {fileID: 6187271474575772200}
+  - {fileID: 8538454155084670292}
+  - {fileID: 4298322494545067017}
+  m_Father: {fileID: 8824008523578197385}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -62.66699, y: -8.810645, z: 37.93943}
+--- !u!1 &7564444286805384506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 284877134861351835}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Toe1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &284877134861351835
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7564444286805384506}
+  m_LocalRotation: {x: -0.00792397, y: -0.00792397, z: -0.7070624, w: 0.7070624}
+  m_LocalPosition: {x: -0.26436722, y: 0.45217574, z: -0.033686064}
+  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4574294579789204152}
+  m_Father: {fileID: 8340151369043231696}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: -1.2841259, y: -0.000028128228, z: -90.00002}
+--- !u!1 &7565315090647179792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7421675265579599622}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7421675265579599622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7565315090647179792}
+  m_LocalRotation: {x: -0.0000000051186144, y: 0.000000098511954, z: -0.003130239,
+    w: 0.9999951}
+  m_LocalPosition: {x: -0.5782635, y: -0.0004838562, z: -0.000000001337612}
+  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 1929621500355580974}
+  m_Father: {fileID: 8362516933135684455}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.13194254, y: -1.9481163, z: -3.056969}
+--- !u!1 &7584794407741837216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1993090949577427173}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_FingerA_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1993090949577427173
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7584794407741837216}
+  m_LocalRotation: {x: -0.000052318905, y: -0.005640162, z: -0.2866165, w: 0.9580288}
+  m_LocalPosition: {x: -2.402017, y: -0.00008452339, z: 0.00000035219497}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8547908852130661532}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.109618194, y: 3.0598543, z: -43.132565}
+--- !u!1 &7650469524452427516
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5747015949621875851}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_FingerA_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5747015949621875851
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7650469524452427516}
+  m_LocalRotation: {x: -0.07036543, y: -0.08408913, z: 0.10693036, w: 0.9882022}
+  m_LocalPosition: {x: -0.68966305, y: -0.15113892, z: -0.079791255}
+  m_LocalScale: {x: 0.9999986, y: 1.0000035, z: 0.99999815}
+  m_Children:
+  - {fileID: 8547908852130661532}
+  m_Father: {fileID: 5112998732172335034}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -6.026482, y: -14.451321, z: -63.170326}
+--- !u!1 &7752354376900769322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9186906111787833819}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_FingerB_2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9186906111787833819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752354376900769322}
+  m_LocalRotation: {x: -0.0021433204, y: 0.033305146, z: -0.106385686, w: 0.9937647}
+  m_LocalPosition: {x: -1.6177227, y: -0.00000009639193, z: 0.0000001734869}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 8812528447388457277}
+  m_Father: {fileID: 8817385320480343669}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 2.1470952, y: 5.325462, z: -29.05725}
+--- !u!1 &7803946430297837299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 825927067302043410}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail10
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &825927067302043410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7803946430297837299}
+  m_LocalRotation: {x: 0.00000006140513, y: 0.00000024186355, z: -0.01562214, w: 0.999878}
+  m_LocalPosition: {x: -0.72735596, y: -0.0006562805, z: -0.0000000018964055}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6167331081031798998}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0.1622677, y: 1.6769483, z: 5.3686857}
+--- !u!1 &7951837352989975358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5306465466507718861}
+  m_Layer: 0
+  m_Name: MountainDragon_ R Thigh
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5306465466507718861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7951837352989975358}
+  m_LocalRotation: {x: -0.61630046, y: 0.76466227, z: -0.16160864, w: -0.096685946}
+  m_LocalPosition: {x: -0.0000009155273, y: -0.0000007629394, z: -0.60335654}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 6524772785326961219}
+  m_Father: {fileID: 5997632987239827191}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 35.983913, y: -170.46898, z: -87.6295}
+--- !u!1 &8070270324406919566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904774907677115020}
+  m_Layer: 0
+  m_Name: MountainDragon_ Tail2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1904774907677115020
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8070270324406919566}
+  m_LocalRotation: {x: -4.1161e-10, y: -0.00000001864925, z: 0.009117204, w: 0.99995846}
+  m_LocalPosition: {x: -1.110599, y: -0.0004821777, z: -0.0000000013364478}
+  m_LocalScale: {x: 0.99999994, y: 0.99999994, z: 1}
+  m_Children:
+  - {fileID: 1177139864018829980}
+  m_Father: {fileID: 4974535493166558189}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.19172196, y: -2.2596996, z: -4.947018}
+--- !u!1 &8096555570707395580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2373938754028169742}
+  m_Layer: 0
+  m_Name: MountainDragon_ Ponytail1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2373938754028169742
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096555570707395580}
+  m_LocalRotation: {x: -0.0000038874527, y: 0.0000008412931, z: -0.4461595, w: 0.8949535}
+  m_LocalPosition: {x: -0.055965576, y: 0.23927642, z: -0.0000006168752}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6400189296304499346}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.00023914957, y: 0.0003583794, z: -86.68598}
+--- !u!1 &8146942870941744020
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2575911584680863741}
+  m_Layer: 0
+  m_Name: MountainDragon_WingR_FingerC_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2575911584680863741
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146942870941744020}
+  m_LocalRotation: {x: -0.06302144, y: -0.025402084, z: 0.61626154, w: 0.78460485}
+  m_LocalPosition: {x: -0.38701904, y: -0.35872954, z: 0.13913573}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8379099007069885404}
+  m_Father: {fileID: 6646238214590196205}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: -3.8753133, y: -6.7654824, z: 106.52428}
+--- !u!1 &8431335412532615758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8812528447388457277}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_FingerB_3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8812528447388457277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8431335412532615758}
+  m_LocalRotation: {x: -0.0048826123, y: 0.020763773, z: -0.23316704, w: 0.9722027}
+  m_LocalPosition: {x: -1.7784042, y: -0.00000008394002, z: 0.00000044672404}
+  m_LocalScale: {x: 0.9999999, y: 0.9999999, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9186906111787833819}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.91636574, y: 2.7608092, z: -36.93028}
+--- !u!1 &8607367922352658053
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 200456667119234036}
+  m_Layer: 0
+  m_Name: MountainDragon_ Neck2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &200456667119234036
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8607367922352658053}
+  m_LocalRotation: {x: -8.4703275e-22, y: 5.6843412e-14, z: 0.000000014901159, w: 1}
+  m_LocalPosition: {x: -0.5676715, y: -0.00045196532, z: -0.000000001253793}
+  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_Children:
+  - {fileID: 1937409284848048217}
+  m_Father: {fileID: 54214798251995108}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -0.000000053360807, y: 0.00000018843052, z: -0.000000106721686}
+--- !u!1 &8609979552904620851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1173149261744884781}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Toe3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1173149261744884781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609979552904620851}
+  m_LocalRotation: {x: 0.35649, y: 0.39798102, z: -0.6084715, w: 0.58676094}
+  m_LocalPosition: {x: -0.26612243, y: 0.22943558, z: 0.2582805}
+  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
+  m_Children:
+  - {fileID: 2475121923514197892}
+  m_Father: {fileID: 8340151369043231696}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 64.511185, y: 4.4262123, z: -73.95114}
+--- !u!1 &8738585647180940376
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8340151369043231696}
+  m_Layer: 0
+  m_Name: MountainDragon_ L Foot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8340151369043231696
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8738585647180940376}
+  m_LocalRotation: {x: -0.074374035, y: 0.0025354163, z: 0.1828451, w: 0.9803213}
+  m_LocalPosition: {x: -0.5491406, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0.99999994}
+  m_Children:
+  - {fileID: 82924162345175329}
+  - {fileID: 284877134861351835}
+  - {fileID: 1552372270652484377}
+  - {fileID: 1173149261744884781}
+  m_Father: {fileID: 7379656500591769668}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -3.56521, y: 23.84631, z: -8.663231}
+--- !u!1 &8794950777273121735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8728740474883481055}
+  m_Layer: 0
+  m_Name: MountainDragon_WingL_FingerC_1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8728740474883481055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8794950777273121735}
+  m_LocalRotation: {x: 0.06302222, y: -0.025403023, z: -0.6162617, w: 0.7846046}
+  m_LocalPosition: {x: -0.38701874, y: 0.3587289, z: 0.13913512}
+  m_LocalScale: {x: 0.9999989, y: 0.9999992, z: 1.0000021}
+  m_Children:
+  - {fileID: 5797993175010216998}
+  m_Father: {fileID: 5112998732172335034}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 3.8753288, y: -6.765676, z: -101.52431}
+--- !u!1001 &8340133847315863809
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1133409930228057423, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 89070010f9a80ba4999a880697bb9407, type: 2}
+    - target: {fileID: 1133409930228057423, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: e0080c37f479acb49b6389201658bbf1, type: 3}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1133409930237653267, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_Name
+      value: Dragon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334249982720309380, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 4.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334249982720309380, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334249982720309380, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334249982720309380, guid: d9ecaf4c738738f4facd15747d36aaf0,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d9ecaf4c738738f4facd15747d36aaf0, type: 3}
+--- !u!4 &8936467501014538170 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1133409930237316795, guid: d9ecaf4c738738f4facd15747d36aaf0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8340133847315863809}
+  m_PrefabAsset: {fileID: 0}
