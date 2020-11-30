@@ -16,7 +16,7 @@ MonoBehaviour:
   Conditions:
   - {fileID: 11400000, guid: 2738ccd61e95842439c615d8c5ed6bcd, type: 2}
   MPCost: 0
-  AbilityPriority: 4
+  AbilityPriority: 2
   PriorityMode: 0
   MinStoppingDistance: 1
   MaxStoppingDistance: 10

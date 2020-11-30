@@ -15,11 +15,11 @@ MonoBehaviour:
   UnlockedAbilities: []
   Conditions: []
   MPCost: 0
-  AbilityPriority: 2
-  m_animationTriggerOverride: Attack
+  AbilityPriority: 3
+  m_animationTriggerOverride: 
   Damage: 40
   Range: 2
   ProjectilePrefab: {fileID: 0}
   Status: {fileID: 0}
-  TargetMode: 3
+  TargetMode: 4
   TargetOtherFaction: 1

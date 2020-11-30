@@ -15,13 +15,14 @@ MonoBehaviour:
   UnlockedAbilities: []
   Conditions: []
   MPCost: 30
-  AbilityPriority: 3
+  AbilityPriority: 4
+  m_animationTriggerOverride: BreathFire
   PrimaryDamage: 50
   AoEDamage: 30
   Range: 10
   AoESize: 3
   FriendlyFire: 0
-  ProjectilePrefab: {fileID: 7927880289350634152, guid: 570cbf7fecaeddb4da16c4156ca0f2a3,
+  ProjectilePrefab: {fileID: 7927880289350634152, guid: f14fd26bf4b508b45a41a103e3250441,
     type: 3}
   PrimaryStatus: {fileID: 0}
   AoEStatus: {fileID: 0}

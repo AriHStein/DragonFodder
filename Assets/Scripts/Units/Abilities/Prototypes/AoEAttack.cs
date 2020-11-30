@@ -5,7 +5,19 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "AoEAttack", menuName = "Units/Abilities/AoEAttack", order = 116)]
 public class AoEAttack : AbilityPrototype
 {
-    public override string AnimationTrigger { get { return null; } }
+
+    [SerializeField] string m_animationTriggerOverride = null;
+    public override string AnimationTrigger
+    {
+        get {
+            if (m_animationTriggerOverride != null && m_animationTriggerOverride != "")
+            {
+                return m_animationTriggerOverride;
+            }
+
+            return "Attack";
+        }
+    }
 
     public enum TargetPriorityMode { MostHit, MostDamage, MostKills, HighestCurrentHealth, HighestDifficulty }
 

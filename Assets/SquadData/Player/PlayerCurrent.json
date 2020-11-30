@@ -1,17 +1,47 @@
 {
     "Units": [
         {
-            "Type": "Warrior",
+            "Type": "Wizard",
             "ID": {
-                "Value": "67cab6a3-0138-4203-afb1-18cf64c6cc5e"
+                "Value": "f27373cc-02e9-4afe-9c5e-c1f704b6b9d3"
             },
             "Position": {
                 "x": 1,
-                "y": 2
+                "y": 0
             },
             "Faction": 0,
-            "CurrentHealth": 20,
-            "CurrentMP": 10,
+            "CurrentHealth": 40,
+            "CurrentMP": 1,
+            "Difficulty": 0,
+            "IsSummoned": false
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "4b8cfe3f-e121-42d0-be8d-c44186d3c88c"
+            },
+            "Position": {
+                "x": 2,
+                "y": 0
+            },
+            "Faction": 0,
+            "CurrentHealth": 40,
+            "CurrentMP": 1,
+            "Difficulty": 0,
+            "IsSummoned": false
+        },
+        {
+            "Type": "Wizard",
+            "ID": {
+                "Value": "b811336a-5ebd-4570-a3d3-e13d67802c08"
+            },
+            "Position": {
+                "x": 3,
+                "y": 0
+            },
+            "Faction": 0,
+            "CurrentHealth": 40,
+            "CurrentMP": 1,
             "Difficulty": 0,
             "IsSummoned": false
         }

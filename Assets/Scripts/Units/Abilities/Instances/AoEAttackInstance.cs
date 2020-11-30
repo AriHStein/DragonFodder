@@ -166,7 +166,7 @@ public class AoEAttackInstance : AbilityInstance
         {
             if (square.Unit == null ||
                 !square.Unit.IsTargetable() ||
-                (((square.Unit.Faction != ctx.Actor.Faction.Opposite()) == m_targetOtherFaction) && !m_friendlyFire))
+                (!m_friendlyFire && (m_targetOtherFaction != (square.Unit.Faction == ctx.Actor.Faction.Opposite()))))
             {
                 continue;
             }
@@ -197,7 +197,7 @@ public class AoEAttackInstance : AbilityInstance
     public override bool CanTargetUnit(Unit unit, Unit other)
     {
         return other.IsTargetable() &&
-            ((other.Faction == unit.Faction.Opposite()) == m_targetOtherFaction) &&
+            (m_targetOtherFaction == (other.Faction == unit.Faction.Opposite())) &&
             CanTargetSquare(unit, other.Square);
     }
 

@@ -152,6 +152,7 @@ public class Unit : MonoBehaviour
         // No valid actions found. skip turn
         if(bestAbility == null)
         {
+            Debug.Log("No valid abilities.");
             return;
         }
 

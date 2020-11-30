@@ -119,7 +119,7 @@ public class SingleTargetAttackInstance : AbilityInstance
     public override bool CanTargetUnit(Unit unit, Unit other)
     {
         return other.IsTargetable() &&
-            ((other.Faction == unit.Faction.Opposite()) == m_targetOtherFaction) &&
+            (m_targetOtherFaction == (other.Faction == unit.Faction.Opposite())) &&
            CanTargetSquare(unit, other.Square);
     }
 
@@ -137,7 +137,7 @@ public class SingleTargetAttackInstance : AbilityInstance
         foreach (BoardSquare square in board.GetSquaresInRange(unitPos, m_range))
         {
             if (square.Unit != null &&
-                ((square.Unit.Faction == unit.Faction.Opposite()) == m_targetOtherFaction) &&
+                (m_targetOtherFaction == (square.Unit.Faction == unit.Faction.Opposite())) &&
                 square.Unit.IsTargetable())
             {
                 possibleTargets.Add(square.Unit);

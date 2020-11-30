@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnlockedAbilities: []
   Conditions: []
-  MPCost: 5
-  AbilityPriority: 2
+  MPCost: 1
+  AbilityPriority: 3
   m_animationTriggerOverride: 
   Damage: 10
-  Range: 5
+  Range: 10
   ProjectilePrefab: {fileID: 7927880289350634152, guid: f16395947e4b18448ab6073e764ec274,
     type: 3}
   Status: {fileID: 0}
-  TargetMode: 3
+  TargetMode: 4
   TargetOtherFaction: 1
