@@ -41,7 +41,7 @@ public class SummonInstance : AbilityInstance
         }
 
         ctx.Actor.FaceToward(ctx.Square);
-        ctx.Board.TryPlaceUnit(new UnitSerializationData(m_summonPrototype, ctx.Square.Position, ctx.Actor.Faction, true));
+        ctx.Board.TryPlaceUnit(new UnitData(m_summonPrototype, ctx.Square.Position, ctx.Actor.Faction, true));
 
         base.Execute(context);
     }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Healer
   m_EditorClassIdentifier: 
   Type: Healer
+  RecruitCost: 3
   MaxHealth: 80
   MaxMP: 100
   TimeBetweenActions: 2

@@ -1,11 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
+[System.Serializable]
 public class Encounter
 {
+    public SerializableGuid ID;
+    
     public Vector2Int MapPosition;
+    [NonSerialized]
     public List<Encounter> Connections;
+    public List<SerializableGuid> ConnectionIDs; // For serialization
     
     public Vector2Int BoardSize;
     public SquadData Enemies;
@@ -15,14 +21,52 @@ public class Encounter
 
     public bool Complete;
 
+    // Constructor for new Encounters
     public Encounter(Vector2Int mapPosition, SquadData enemies, Vector2Int boardSize, int playerRows, int reward)
     {
+        ID = Guid.NewGuid();        
         MapPosition = mapPosition;
+
         Enemies = enemies;
         BoardSize = boardSize;
         RowsAllowedForPlayerUnits = playerRows;
         Reward = reward;
         Complete = false;
+
+        Connections = new List<Encounter>();
+        ConnectionIDs = new List<SerializableGuid>();
+    }
+
+    // Constructor for deserializing encounters
+    public Encounter(Guid id, Vector2Int mapPosition, List<SerializableGuid> connections, SquadData enemies, Vector2Int boardSize, int playerRows, int reward, bool complete)
+    {
+        if(id == Guid.Empty)
+        {
+            Debug.LogError("id == Guid.Empty. Assigning a new Guid.");
+            ID = Guid.NewGuid();
+        }
+        else
+        {
+            ID = id;
+        }
+
+        MapPosition = mapPosition;
+
+        if(connections == null || connections.Count == 0)
+        {
+            Debug.LogError("Encounter has no connections.");
+            ConnectionIDs = new List<SerializableGuid>();
+        } 
+        else
+        {
+            ConnectionIDs = connections;
+        }
+        
+        Enemies = enemies;
+        BoardSize = boardSize;
+        RowsAllowedForPlayerUnits = playerRows;
+        Reward = reward;
+        Complete = complete;
 
         Connections = new List<Encounter>();
     }
@@ -42,5 +86,34 @@ public class Encounter
         }
 
         Connections.Add(other);
+
+        if(!ConnectionIDs.Contains(other.ID))
+            ConnectionIDs.Add(other.ID);
+    }
+
+    public void FormAllConnections(Dictionary<Guid, Encounter> encounters) 
+    {
+        if(encounters == null)
+        {
+            Debug.LogError("encounters is null!");
+            return;
+        }
+        
+        foreach(Guid id in ConnectionIDs)
+        {
+            if(!encounters.ContainsKey(id))
+            {
+                Debug.LogWarning($"Encounter {id} not found!");
+                continue;
+            }
+
+            if(encounters[id] == null)
+            {
+                Debug.LogError($"Encounter {id} is null!");
+                continue;
+            }
+
+            ConnectTo(encounters[id]);
+        }
     }
 }

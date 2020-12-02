@@ -7,6 +7,8 @@ using UnityEngine.UI.Extensions;
 [RequireComponent(typeof(RectTransform))]
 public class DungeonMap : MonoBehaviour
 {
+    [SerializeField] GameState m_gameState = default;
+    
     //[SerializeField] List<int> m_encounterDifficulties = default;
     [SerializeField] GameObject m_dugeonModePanel = default;
     [SerializeField] GameObject m_encounterButtonPrefab = default;
@@ -17,12 +19,9 @@ public class DungeonMap : MonoBehaviour
 
     [SerializeField] Vector2 m_edgeBufferSize = 50 * Vector2.one;
 
-
-
-
     RectTransform m_rectTranform;
     Dictionary<Encounter, EncounterButton> m_encounterButtons;
-    List<Encounter> m_encounters;
+    Dictionary<System.Guid, Encounter> m_encounters;
     List<Encounter> m_availableEncounters;
 
     private void Start()
@@ -37,7 +36,18 @@ public class DungeonMap : MonoBehaviour
             m_rectTranform = GetComponent<RectTransform>();
         }
 
-        GenerateEncounters();
+        if(m_encounters == null || m_encounters.Keys.Count == 0)
+        {
+            if (m_gameState.Data.Encounters == null || m_gameState.Data.Encounters.Count == 0)
+            {
+                GenerateEncounters();
+            }
+            else
+            {
+                LoadEncounters();
+            }
+        }
+
         SetupEncounterButtons(board);
         RefreshPanel();
     }
@@ -97,14 +107,15 @@ public class DungeonMap : MonoBehaviour
         }
 
         Encounter[,] encounterMap = new Encounter[m_encounterGridSize.x, m_encounterGridSize.y];
-        m_encounters = new List<Encounter>();
+        m_encounters = new Dictionary<System.Guid, Encounter>();
         m_availableEncounters = new List<Encounter>();
 
         int encounterDifficulty = 2;
+        Encounter firstEncounter = null;
         for (int i = 0; i < encounterPositions.Count; i++) {
 
             Encounter e;
-            if(i == 0)
+            if(i == encounterPositions.Count - 1)
             {
                 e = EncounterBuilder.GenerateBossEncounter(encounterPositions[i]);
             }
@@ -115,7 +126,13 @@ public class DungeonMap : MonoBehaviour
             encounterDifficulty++;
 
             encounterMap[encounterPositions[i].x, encounterPositions[i].y] = e;
-            m_encounters.Add(e);
+            //m_encounters.Add(e);
+            m_encounters[e.ID] = e;
+
+            if(firstEncounter == null)
+            {
+                firstEncounter = e;
+            }
         }
 
         foreach(Path path in encouterPaths)
@@ -123,7 +140,26 @@ public class DungeonMap : MonoBehaviour
             encounterMap[path.Start.x, path.Start.y].ConnectTo(encounterMap[path.End.x, path.End.y]);
         }
 
-        m_availableEncounters.Add(m_encounters[0]);
+        //m_availableEncounters.Add(m_encounters[0]);
+        m_availableEncounters.Add(firstEncounter);
+
+        m_gameState.Data.Encounters = new List<Encounter>(m_encounters.Values);
+    }
+
+    void LoadEncounters()
+    {
+        m_encounters = new Dictionary<System.Guid, Encounter>();
+        m_availableEncounters = new List<Encounter>();
+
+        foreach(Encounter e in m_gameState.Data.Encounters)
+        {
+            m_encounters[e.ID] = e;
+        }
+
+        foreach(Encounter e in m_encounters.Values)
+        {
+            e.FormAllConnections(m_encounters);
+        }
     }
 
     void SetupEncounterButtons(Board board)
@@ -135,7 +171,7 @@ public class DungeonMap : MonoBehaviour
 
         Vector2Int lowerLeft = new Vector2Int(int.MaxValue, int.MaxValue);
         Vector2Int upperRight = Vector2Int.zero;
-        foreach(Encounter encounter in m_encounters)
+        foreach(Encounter encounter in m_encounters.Values)
         {
             lowerLeft.x = Mathf.Min(lowerLeft.x, encounter.MapPosition.x);
             lowerLeft.y = Mathf.Min(lowerLeft.y, encounter.MapPosition.y);
@@ -149,7 +185,7 @@ public class DungeonMap : MonoBehaviour
         float gridSizeX = totalWidth / gridWidth;
         float gridSizeY = totalHeight / gridHight;
 
-        foreach (Encounter encounter in m_encounters)
+        foreach (Encounter encounter in m_encounters.Values)
         {
             encounter.MapPosition -= lowerLeft;
 
@@ -192,16 +228,19 @@ public class DungeonMap : MonoBehaviour
         List<Vector2> points = new List<Vector2>();
         foreach(Encounter encounter in m_availableEncounters)
         {
+            // only draw connecting lines going from complete encounters to available or complete encounters.
             if(encounter.Complete)
             {
                 for (int i = 0; i < encounter.Connections.Count; i++)
                 {
+                    // Add start + end point for each connection. Line renderer will render it as line segmenets.
                     points.Add(m_encounterButtons[encounter].GetComponent<RectTransform>().anchoredPosition);
                     points.Add(m_encounterButtons[encounter.Connections[i]].GetComponent<RectTransform>().anchoredPosition);
                 }
             }
         }
 
+        // Set points in the line renderer to draw lines for all connections between available or complete encounters
         if(points.Count == 0)
         {
             m_connectionList.gameObject.SetActive(false);
@@ -223,7 +262,7 @@ public class DungeonMap : MonoBehaviour
 
     void ActivateButtons()
     {
-        foreach (Encounter encounter in m_encounters)
+        foreach (Encounter encounter in m_encounters.Values)
         {
             if (m_availableEncounters.Contains(encounter))
             {

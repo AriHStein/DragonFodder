@@ -1,48 +1,63 @@
 {
     "Units": [
         {
-            "Type": "Wizard",
+            "Type": "Warrior",
             "ID": {
-                "Value": "f27373cc-02e9-4afe-9c5e-c1f704b6b9d3"
+                "Value": "0b8c19e4-0d81-4c08-ad01-a84abe7cc2cd"
             },
             "Position": {
-                "x": 1,
+                "x": 0,
+                "y": 0
+            },
+            "Faction": 0,
+            "CurrentHealth": 30,
+            "CurrentMP": 2,
+            "Difficulty": 1,
+            "IsSummoned": false
+        },
+        {
+            "Type": "Warrior",
+            "ID": {
+                "Value": "4a7d8aa7-d91c-4f0d-9915-4257eaf23029"
+            },
+            "Position": {
+                "x": 0,
                 "y": 0
             },
             "Faction": 0,
             "CurrentHealth": 40,
-            "CurrentMP": 1,
-            "Difficulty": 0,
+            "CurrentMP": 16,
+            "Difficulty": 1,
             "IsSummoned": false
         },
         {
             "Type": "Wizard",
             "ID": {
-                "Value": "4b8cfe3f-e121-42d0-be8d-c44186d3c88c"
+                "Value": "68d9fdcc-31be-4535-822a-6ea9b5df5fa8"
             },
             "Position": {
-                "x": 2,
+                "x": 0,
                 "y": 0
             },
             "Faction": 0,
-            "CurrentHealth": 40,
-            "CurrentMP": 1,
-            "Difficulty": 0,
+            "CurrentHealth": 10,
+            "CurrentMP": 7,
+            "Difficulty": 1,
             "IsSummoned": false
         },
         {
-            "Type": "Wizard",
+            "Type": "Healer",
             "ID": {
-                "Value": "b811336a-5ebd-4570-a3d3-e13d67802c08"
+                "Value": "6a6302fc-cefa-4e02-90ff-1dbfe80d67a7"
             },
             "Position": {
-                "x": 3,
+                "x": 0,
                 "y": 0
             },
             "Faction": 0,
-            "CurrentHealth": 40,
-            "CurrentMP": 1,
-            "Difficulty": 0,
+            "CurrentHealth": 50,
+            "CurrentMP": 12,
+            "Difficulty": 1,
             "IsSummoned": false
         }
     ],

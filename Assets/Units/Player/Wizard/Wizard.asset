@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Wizard
   m_EditorClassIdentifier: 
   Type: Wizard
+  RecruitCost: 2
   MaxHealth: 40
   MaxMP: 100
   TimeBetweenActions: 1

@@ -10,7 +10,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] GameObject m_mouseIndicator = default;
 
     Unit m_grabbedUnit;
-    UnitSerializationData m_newUnitToPlace;
+    UnitData m_newUnitToPlace;
 
     public event Action UnitPlacedEvent;
     public event Action CancelPlacementEvent;
@@ -62,7 +62,8 @@ public class InputManager : MonoBehaviour
             ReturnGrabbedUnitToOriginalPosition();
             CancelPlacementEvent?.Invoke();
             //m_grabbedUnit = null;
-            m_newUnitToPlace = new UnitSerializationData();
+            //m_newUnitToPlace = new UnitData();
+            m_newUnitToPlace = null;
         }
 
         BoardSquare squareUnderMouse = GetSquareUnderMouse();
@@ -80,7 +81,8 @@ public class InputManager : MonoBehaviour
                     return;
                 }
             }
-            else if(m_newUnitToPlace.ID != Guid.Empty)
+            //else if(m_newUnitToPlace.ID != Guid.Empty)
+            else if(m_newUnitToPlace != null)
             {
                 if(TryPlaceNewUnit(squareUnderMouse))
                 {
@@ -132,7 +134,10 @@ public class InputManager : MonoBehaviour
 
     bool TryPlaceNewUnit(BoardSquare square)
     {
-        if (square == null || m_newUnitToPlace.ID == Guid.Empty || square.Unit != null)
+        if (square == null || 
+            //m_newUnitToPlace.ID == Guid.Empty || 
+            m_newUnitToPlace == null ||
+            square.Unit != null)
         {
             return false;
         }
@@ -143,7 +148,8 @@ public class InputManager : MonoBehaviour
         if (m_board.TryPlaceUnit(m_newUnitToPlace) != null)
         {
             UnitPlacedEvent?.Invoke();
-            m_newUnitToPlace = new UnitSerializationData();
+            //m_newUnitToPlace = new UnitData();
+            m_newUnitToPlace = null;
             ClearPreviewUnit();
             return true;
         }
@@ -203,7 +209,7 @@ public class InputManager : MonoBehaviour
     }
 
 
-    public void SelectUnitToPlace(UnitSerializationData data, Faction faction)
+    public void SelectUnitToPlace(UnitData data, Faction faction)
     {
         ReturnGrabbedUnitToOriginalPosition();
         CancelPlacementEvent?.Invoke();

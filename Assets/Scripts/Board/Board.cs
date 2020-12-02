@@ -15,6 +15,7 @@ public class Board : MonoBehaviour
     public Action<PlayMode> PlayModeChangedEvent; 
 
     [SerializeField] List<UnitPrototype> m_unitPrototypes = default;
+    [SerializeField] GameState m_gameState = default;
 
     [SerializeField] UnitPlacementMenu m_unitPlacementModePanel = default;
     [SerializeField] GameObject m_squadEditorModePanel = default;
@@ -98,6 +99,11 @@ public class Board : MonoBehaviour
     private void Start()
     {
         StartGame();
+    }
+
+    private void OnDisable()
+    {
+        m_gameState.Clear();
     }
 
     //private void OnDrawGizmos()
@@ -268,6 +274,11 @@ public class Board : MonoBehaviour
 
     public void StartGame()
     {
+        if(m_gameState.Data == null || m_gameState.Data.fileName == null || m_gameState.Data.fileName == "")
+        {
+            m_gameState.LoadDefaultState();
+        }
+        
         m_unitPlacementModePanel.Deactivate();
         m_squadEditorModePanel.SetActive(false);
         m_gameOverPanel.SetActive(false);
@@ -275,6 +286,7 @@ public class Board : MonoBehaviour
 
         m_currentPlayerSquad = new Squad(GetDefaultPlayerSquad());
         ChangeGold(-m_currentGold);
+        ChangeGold(m_gameState.Data.Gold);
 
         m_dungeonMap.SetupMap(this);
         EnterPlayMode(PlayMode.Dungeon);
@@ -431,7 +443,9 @@ public class Board : MonoBehaviour
                     m_currentPlayerSquad = new Squad(GetCurrentPlayerSquad());
                 }
 
-                m_unitPlacementModePanel.Activate(m_currentPlayerSquad.Data.Units);
+                //m_unitPlacementModePanel.Activate(m_currentPlayerSquad.Data.Units);
+                m_unitPlacementModePanel.Activate(m_gameState.Data.CurrentUnits, m_gameState.Data.RecruitableUnits, this);
+
                 m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 m_dungeonMap.Deactivate();
@@ -572,10 +586,10 @@ public class Board : MonoBehaviour
     public SquadData GetBoardAsSquad(bool mirrorBoard = false)
     {
         Vector2Int origin = mirrorBoard ? MirrorPosition(Vector2Int.zero) : Vector2Int.zero;
-        List<UnitSerializationData> units = new List<UnitSerializationData>();
+        List<UnitData> units = new List<UnitData>();
         foreach (Unit unit in UnitManager.Units)
         {
-            UnitSerializationData newUnit = new UnitSerializationData(unit, origin);
+            UnitData newUnit = new UnitData(unit, origin);
             //if (mirrorBoard)
             //{
             //    newUnit.Position = new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) - newUnit.Position;
@@ -606,7 +620,7 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    public Unit TryPlaceUnit(UnitSerializationData data)
+    public Unit TryPlaceUnit(UnitData data)
     {
         if(data.Position.x < 0 || data.Position.x >= Squares.GetLength(0) ||
             data.Position.y < 0 || data.Position.y >= Squares.GetLength(1) ||
@@ -654,9 +668,9 @@ public class Board : MonoBehaviour
         }
 
         int failedUnitCount = 0;
-        foreach(UnitSerializationData unit in data.Units)
+        foreach(UnitData unit in data.Units)
         {
-            UnitSerializationData clone = unit.Clone();
+            UnitData clone = unit.Clone();
             clone.Position += data.SquadOrigin + offset;
             if (mirror)
             {

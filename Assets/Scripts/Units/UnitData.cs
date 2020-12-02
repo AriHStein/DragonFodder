@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public struct UnitSerializationData
+public class UnitData
 {
     public string Type;
     public SerializableGuid ID;
@@ -15,7 +15,7 @@ public struct UnitSerializationData
     public int Difficulty;
     public bool IsSummoned;
 
-    private UnitSerializationData(
+    private UnitData(
         string type,
         Guid id,
         int difficulty,
@@ -41,7 +41,7 @@ public struct UnitSerializationData
         IsSummoned = isSummon;
     }
 
-    public UnitSerializationData(Unit unit, Vector2Int origin)
+    public UnitData(Unit unit, Vector2Int origin)
     {
         Type = unit.Type;
         ID = unit.ID;
@@ -53,7 +53,7 @@ public struct UnitSerializationData
         IsSummoned = unit.IsSummoned;
     }
 
-    public UnitSerializationData(UnitPrototype proto, Vector2Int position, Faction faction, bool isSummon = false)
+    public UnitData(UnitPrototype proto, Vector2Int position, Faction faction, bool isSummon = false)
     {
         Type = proto.Type;
         ID = Guid.NewGuid();
@@ -65,9 +65,9 @@ public struct UnitSerializationData
         IsSummoned = isSummon;
     }
 
-    public UnitSerializationData Clone()
+    public UnitData Clone()
     {
-        return new UnitSerializationData(
+        return new UnitData(
             Type,
             ID,
             Difficulty,
@@ -78,14 +78,14 @@ public struct UnitSerializationData
             IsSummoned);
     }
 
-    public UnitSerializationData UpdateUnitStatus(Unit unit)
+    public UnitData UpdateUnitStatus(Unit unit)
     {
         if (unit.ID != ID)
         {
             Debug.LogWarning($"UpdateUnitStatus :: Unit IDs do not match. Old ID: {ID}, new ID: {unit.ID}.");
         }
 
-        UnitSerializationData newUnit = Clone();
+        UnitData newUnit = Clone();
         newUnit.CurrentHealth = unit.CurrentHealth;
         newUnit.CurrentMP = unit.CurrentMP;
         return newUnit;

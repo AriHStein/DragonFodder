@@ -4,10 +4,10 @@ using UnityEngine;
 using System;
 
 [CreateAssetMenu(fileName = "new Unit Prototype", menuName = "Units/UnitPrototype", order = 111)]
-[System.Serializable]
 public class UnitPrototype : ScriptableObject
 {
     public string Type;
+    public int RecruitCost;
     public int MaxHealth;
     public int MaxMP;
     //public int SpellMP;

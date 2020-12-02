@@ -47,7 +47,7 @@ public class Unit : MonoBehaviour
         m_abilities = new List<AbilityInstance>();
     }
 
-    public virtual void Initialize(Board board, BoardSquare square, UnitSerializationData data, UnitPrototype proto)
+    public virtual void Initialize(Board board, BoardSquare square, UnitData data, UnitPrototype proto)
     {
         ID = data.ID;
         Type = proto.Type;

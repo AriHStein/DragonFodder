@@ -43,14 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da9c0494d799f4844b9c3338f313d726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unitPrefabs:
-  - {fileID: 4797737259296947676, guid: 02c20aa1799d4fa45b6c9f99eba8e901, type: 3}
-  - {fileID: 346092736135298289, guid: 1360c0ba5869cc449b5fa02e4d4852f2, type: 3}
-  - {fileID: 7489344393727188616, guid: 8d5d9bcec73b2ee4ca1f127ec2fb6a8c, type: 3}
-  - {fileID: 561739373294329650, guid: cc117742812f8c048b54f0e8a1061a99, type: 3}
-  - {fileID: 2982510631717913, guid: 0b6a97eb0450e28489045ed980440697, type: 3}
-  - {fileID: 8465787162254137158, guid: f886fdce6e139514d81e04844568197b, type: 3}
-  - {fileID: 5978867885794928821, guid: 5d2009f5d10a9334caad3d006e2874ad, type: 3}
+  m_unitPrototypes:
+  - {fileID: 11400000, guid: 62add86fe80bcdd40b2a9aeb04369fb7, type: 2}
+  - {fileID: 11400000, guid: 01a61e311ac32c343b3d4fb1a821cf11, type: 2}
+  - {fileID: 11400000, guid: 50450e16b00ebc24e847f0a1130e2953, type: 2}
+  - {fileID: 11400000, guid: a3e1d432acfd54d45838b1712338545d, type: 2}
+  - {fileID: 11400000, guid: 98e40a871e0b0294988913f510627d67, type: 2}
+  - {fileID: 11400000, guid: dffeecea208ad3344baf156064350952, type: 2}
+  - {fileID: 11400000, guid: ab58ed11f0f0c7a479ca33576b859bf5, type: 2}
+  - {fileID: 11400000, guid: bc61eea5575c34d4ebe3684d14337c5e, type: 2}
+  - {fileID: 11400000, guid: dc4fda076d53ae94d850b115c5460d7f, type: 2}
+  m_gameState: {fileID: 11400000, guid: e12574611f55f57438638766973ba95f, type: 2}
   m_unitPlacementModePanel: {fileID: 0}
   m_squadEditorModePanel: {fileID: 0}
   m_gameOverPanel: {fileID: 0}
@@ -62,6 +65,4 @@ MonoBehaviour:
     type: 3}
   m_defaultBoardSize: {x: 12, y: 12}
   m_defaultSquadSize: {x: 3, y: 3}
-  m_rowsAllowedForUnitPlacement: 5
-  m_battleModeEnemyFormationSize: 4
-  m_timeBetweenTurns: 1
+  m_endOfBattleDelayLength: 3

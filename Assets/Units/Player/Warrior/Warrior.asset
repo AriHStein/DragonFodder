@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   Type: Warrior
+  RecruitCost: 1
   MaxHealth: 100
   MaxMP: 50
   TimeBetweenActions: 1
