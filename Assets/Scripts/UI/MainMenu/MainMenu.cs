@@ -26,17 +26,33 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(BATTLE_SCENE_BUILD_INDEX);
     }
 
-    public void NewGame()
-    {
-        Debug.Log("New Game");
-        m_currentGameState.LoadDefaultState();
-        SceneManager.LoadScene(BATTLE_SCENE_BUILD_INDEX);
-    }
+    //public void NewGame()
+    //{
+    //    Debug.Log("New Game");
+    //    m_currentGameState.LoadDefaultState();
+    //    SceneManager.LoadScene(BATTLE_SCENE_BUILD_INDEX);
+    //}
 
-    public void LoadGame()
+    //public void LoadGame()
+    //{
+    //    Debug.Log("Load Game");
+    //    m_currentGameState.Data = SaveLoadUtility.LoadGame(FileName);
+    //    SceneManager.LoadScene(BATTLE_SCENE_BUILD_INDEX);
+    //}
+
+    public void StartGame(string saveFileName)
     {
-        Debug.Log("Load Game");
-        m_currentGameState.Data = SaveLoadUtility.LoadGame(FileName);
+        if(SaveLoadUtility.SaveFileExists(saveFileName))
+        {
+            m_currentGameState.Data = SaveLoadUtility.LoadGame(saveFileName);
+        }
+        else
+        {
+            m_currentGameState.LoadDefaultState();
+            m_currentGameState.Data.fileName = saveFileName;
+            m_currentGameState.SaveGame();
+        }
+
         SceneManager.LoadScene(BATTLE_SCENE_BUILD_INDEX);
     }
 }

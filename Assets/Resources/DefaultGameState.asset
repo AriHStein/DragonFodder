@@ -17,9 +17,13 @@ MonoBehaviour:
     Gold: 10
     CurrentUnits: []
     RecruitableUnits:
-    - {fileID: 11400000, guid: ab58ed11f0f0c7a479ca33576b859bf5, type: 2}
-    - {fileID: 11400000, guid: ab58ed11f0f0c7a479ca33576b859bf5, type: 2}
-    - {fileID: 11400000, guid: ab58ed11f0f0c7a479ca33576b859bf5, type: 2}
-    - {fileID: 11400000, guid: bc61eea5575c34d4ebe3684d14337c5e, type: 2}
-    - {fileID: 11400000, guid: dffeecea208ad3344baf156064350952, type: 2}
+    - Proto: {fileID: 11400000, guid: ab58ed11f0f0c7a479ca33576b859bf5, type: 2}
+      m_type: 
+      Count: 3
+    - Proto: {fileID: 11400000, guid: bc61eea5575c34d4ebe3684d14337c5e, type: 2}
+      m_type: 
+      Count: 1
+    - Proto: {fileID: 11400000, guid: dffeecea208ad3344baf156064350952, type: 2}
+      m_type: 
+      Count: 1
     Encounters: []

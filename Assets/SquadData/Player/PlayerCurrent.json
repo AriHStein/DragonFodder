@@ -3,60 +3,15 @@
         {
             "Type": "Warrior",
             "ID": {
-                "Value": "0b8c19e4-0d81-4c08-ad01-a84abe7cc2cd"
+                "Value": "b54c17c4-f927-44a2-95b0-49f6ffa05a14"
             },
             "Position": {
                 "x": 0,
                 "y": 0
             },
             "Faction": 0,
-            "CurrentHealth": 30,
-            "CurrentMP": 2,
-            "Difficulty": 1,
-            "IsSummoned": false
-        },
-        {
-            "Type": "Warrior",
-            "ID": {
-                "Value": "4a7d8aa7-d91c-4f0d-9915-4257eaf23029"
-            },
-            "Position": {
-                "x": 0,
-                "y": 0
-            },
-            "Faction": 0,
-            "CurrentHealth": 40,
-            "CurrentMP": 16,
-            "Difficulty": 1,
-            "IsSummoned": false
-        },
-        {
-            "Type": "Wizard",
-            "ID": {
-                "Value": "68d9fdcc-31be-4535-822a-6ea9b5df5fa8"
-            },
-            "Position": {
-                "x": 0,
-                "y": 0
-            },
-            "Faction": 0,
-            "CurrentHealth": 10,
+            "CurrentHealth": 80,
             "CurrentMP": 7,
-            "Difficulty": 1,
-            "IsSummoned": false
-        },
-        {
-            "Type": "Healer",
-            "ID": {
-                "Value": "6a6302fc-cefa-4e02-90ff-1dbfe80d67a7"
-            },
-            "Position": {
-                "x": 0,
-                "y": 0
-            },
-            "Faction": 0,
-            "CurrentHealth": 50,
-            "CurrentMP": 12,
             "Difficulty": 1,
             "IsSummoned": false
         }

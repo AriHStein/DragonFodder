@@ -21,7 +21,7 @@ public class UnitPlacementMenu : MonoBehaviour
 
     }
 
-    public void Activate(List<UnitData> currentUnits, List<UnitPrototype> recruitableUnits, Board board)
+    public void Activate(List<UnitData> currentUnits, List<RecruitableUnit> recruitableUnits, Board board)
     {
         gameObject.SetActive(true);
         ActivateCurrentUnitPanels(currentUnits, board);
@@ -54,7 +54,7 @@ public class UnitPlacementMenu : MonoBehaviour
         SetupPlaceUnitPanels(sortedUnits, board);
     }
 
-    void ActiveateRecruitableUnitPanels(List<UnitPrototype> recruitableUnits, Board board)
+    void ActiveateRecruitableUnitPanels(List<RecruitableUnit> recruitableUnits, Board board)
     {
         foreach (RecruitUnitPanel panel in m_recruitUnitPanels.Values)
         {
@@ -66,18 +66,18 @@ public class UnitPlacementMenu : MonoBehaviour
             return;
         }
 
-        Dictionary<UnitPrototype, int> sortedUnits = new Dictionary<UnitPrototype, int>();
-        foreach (UnitPrototype unit in recruitableUnits)
-        {
-            if (!sortedUnits.ContainsKey(unit))
-            {
-                sortedUnits[unit] = 0;
-            }
+        //Dictionary<UnitPrototype, int> sortedUnits = new Dictionary<UnitPrototype, int>();
+        //foreach (UnitPrototype unit in recruitableUnits)
+        //{
+        //    if (!sortedUnits.ContainsKey(unit))
+        //    {
+        //        sortedUnits[unit] = 0;
+        //    }
 
-            sortedUnits[unit]++;
-        }
+        //    sortedUnits[unit]++;
+        //}
 
-        SetupRecruitUnitPanels(sortedUnits, board);
+        SetupRecruitUnitPanels(recruitableUnits, board);
     }
 
     public void Deactivate()
@@ -145,11 +145,11 @@ public class UnitPlacementMenu : MonoBehaviour
         }
     }
 
-    void SetupRecruitUnitPanels(Dictionary<UnitPrototype, int> sortedProtos, Board board)
+    void SetupRecruitUnitPanels(List<RecruitableUnit> sortedProtos, Board board)
     {
-        foreach(UnitPrototype proto in sortedProtos.Keys)
+        foreach(RecruitableUnit unit in sortedProtos)
         {
-            SetupRecruitUnitPanel(proto.Type, proto, sortedProtos[proto], board);
+            SetupRecruitUnitPanel(unit.Proto.Type, unit.Proto, unit.Count, board);
         }
     }
 

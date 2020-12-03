@@ -10,13 +10,14 @@ public class UnitManager
 
     //List<Unit> m_turnOrder;
 
-    Dictionary<string, UnitPrototype> m_unitPrototypeMap;
+    UnitPrototypeLookup m_prototypeLookup;
+    //Dictionary<string, UnitPrototype> m_unitPrototypeMap;
     //Dictionary<string, GameObject> m_unitPrefabMap;
     Dictionary<Faction, int> m_factionCount;
 
     public event Action<Faction> BattleWonEvent;
 
-    public UnitManager(List<UnitPrototype> prototypes)
+    public UnitManager()
     {
         Units = new List<Unit>();
         //m_turnOrder = new List<Unit>();
@@ -25,36 +26,39 @@ public class UnitManager
         m_factionCount = new Dictionary<Faction, int>();
 
         //m_unitPrefabMap = new Dictionary<string, GameObject>();
-        m_unitPrototypeMap = new Dictionary<string, UnitPrototype>();
-        foreach(UnitPrototype proto in prototypes)
-        {
-            //Unit unit = go.GetComponent<Unit>();
-            //if(unit == null)
-            //{
-            //    Debug.LogWarning($"UnitPrefab {go.name} did not have a Unit component attached.");
-            //    continue;
-            //}
+        m_prototypeLookup = Resources.Load<UnitPrototypeLookup>("UnitPrototypeLookup");
+        //m_unitPrototypeMap = new Dictionary<string, UnitPrototype>();
+        //foreach(UnitPrototype proto in prototypes)
+        //{
+        //    //Unit unit = go.GetComponent<Unit>();
+        //    //if(unit == null)
+        //    //{
+        //    //    Debug.LogWarning($"UnitPrefab {go.name} did not have a Unit component attached.");
+        //    //    continue;
+        //    //}
 
-            //if (unit.Proto == null)
-            //{
-            //    Debug.LogError($"Unit {go.name}'s Prototype is null.");
-            //    //continue;
-            //}
+        //    //if (unit.Proto == null)
+        //    //{
+        //    //    Debug.LogError($"Unit {go.name}'s Prototype is null.");
+        //    //    //continue;
+        //    //}
 
-            //m_unitPrefabMap[unit.Type] = go;
-            m_unitPrototypeMap[proto.Type] = proto;
-        }
+        //    //m_unitPrefabMap[unit.Type] = go;
+        //    m_unitPrototypeMap[proto.Type] = proto;
+        //}
     }
 
     public UnitPrototype GetUnitPrototypeOfType(string type)
     {
-        if (type == null || !m_unitPrototypeMap.ContainsKey(type))
-        {
-            Debug.LogWarning($"Prototype for unit of type {type} not found.");
-            return null;
-        }
+        //if (type == null || !m_unitPrototypeMap.ContainsKey(type))
+        //{
+        //    Debug.LogWarning($"Prototype for unit of type {type} not found.");
+        //    return null;
+        //}
 
-        return m_unitPrototypeMap[type];
+        //return m_unitPrototypeMap[type];
+
+        return m_prototypeLookup.GetProto(type);
     }
 
     //public GameObject GetPrefabOfType(string type)

@@ -14,7 +14,7 @@ public class Board : MonoBehaviour
 
     public Action<PlayMode> PlayModeChangedEvent; 
 
-    [SerializeField] List<UnitPrototype> m_unitPrototypes = default;
+    //[SerializeField] List<UnitPrototype> m_unitPrototypes = default;
     [SerializeField] GameState m_gameState = default;
 
     [SerializeField] UnitPlacementMenu m_unitPlacementModePanel = default;
@@ -87,7 +87,7 @@ public class Board : MonoBehaviour
 
     public void Awake()
     {
-        UnitManager = new UnitManager(m_unitPrototypes);
+        UnitManager = new UnitManager();
         UnitManager.BattleWonEvent += ExitBattleMode;
         pathManager = new PathManager_AStar<BoardSquare>();
         //Current = this;
@@ -444,6 +444,18 @@ public class Board : MonoBehaviour
                 }
 
                 //m_unitPlacementModePanel.Activate(m_currentPlayerSquad.Data.Units);
+                //Dictionary<UnitPrototype, int> recruitableUnits = new Dictionary<UnitPrototype, int>();
+                //foreach(RecruitableUnit unit in m_gameState.Data.RecruitableUnits)
+                //{
+                //    UnitPrototype proto = UnitManager.GetUnitPrototypeOfType(unit.Type);
+                //    recruitableUnits[proto] = unit.Count;
+                //}
+                
+                //foreach(string type in m_gameState.Data.RecruitableUnits.Keys)
+                //{
+                //    UnitPrototype proto = UnitManager.GetUnitPrototypeOfType(type);
+                //    recruitableUnits[proto] = m_gameState.Data.RecruitableUnits[type];
+                //}
                 m_unitPlacementModePanel.Activate(m_gameState.Data.CurrentUnits, m_gameState.Data.RecruitableUnits, this);
 
                 m_squadEditorModePanel.SetActive(false);

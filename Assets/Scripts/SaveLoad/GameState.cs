@@ -28,4 +28,9 @@ public class GameState : ScriptableObject
 
         CopyState(defaultState);
     }
+
+    public void SaveGame()
+    {
+        SaveLoadUtility.SaveGame(Data);
+    }
 }

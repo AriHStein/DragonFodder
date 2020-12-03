@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294fe6fcee924ba41bf006e7299835cf, type: 3}
   m_Name: Dragon
   m_EditorClassIdentifier: 
+  ID:
+    Value: 9b92ff00-359e-48cc-872a-e5ed176598da
   Type: Dragon
+  RecruitCost: 0
   MaxHealth: 500
   MaxMP: 200
   TimeBetweenActions: 0.7

@@ -17,14 +17,14 @@ public class SaveLoadUtility
             Directory.CreateDirectory(dirPath);
         }
 
-        string filePath = Path.Combine(dirPath, data.fileName, SAVE_EXTENSION);
+        string filePath = Path.Combine(dirPath, data.fileName + SAVE_EXTENSION);
         File.WriteAllText(filePath, json);
     }
 
     public static GameSaveData LoadGame(string fileName)
     {
         string dirPath = Path.Combine(Application.persistentDataPath, SAVE_DIR);
-        string filePath = Path.Combine(dirPath, fileName, SAVE_EXTENSION);
+        string filePath = Path.Combine(dirPath, fileName + SAVE_EXTENSION);
 
         if(!File.Exists(filePath))
         {
@@ -40,7 +40,25 @@ public class SaveLoadUtility
 
     public static bool SaveFileExists(string fileName)
     {
-        string path = Path.Combine(Application.persistentDataPath, SAVE_DIR, fileName, SAVE_EXTENSION);
+        string path = Path.Combine(Application.persistentDataPath, SAVE_DIR, fileName + SAVE_EXTENSION);
         return File.Exists(path);
+    }
+
+    public static List<string> GetSaveFileNames()
+    {
+        List<string> saves = new List<string>();
+        string dirPath = Path.Combine(Application.persistentDataPath, SAVE_DIR);
+        if(!Directory.Exists(dirPath))
+        {
+            return saves;
+        }
+
+        string[] files = Directory.GetFiles(dirPath, "*" + SAVE_EXTENSION);
+        foreach(string file in files)
+        {
+            saves.Add(Path.GetFileNameWithoutExtension(file));
+        }
+
+        return saves;
     }
 }
