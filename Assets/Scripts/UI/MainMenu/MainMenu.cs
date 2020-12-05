@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    const int BATTLE_SCENE_BUILD_INDEX = 1;
+    const int RECRUIT_UNITS_SCENE_INDEX = 1;
     [SerializeField] GameState m_currentGameState = default;
 
     [SerializeField] Button m_continueButton = default;
@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("Continue");
         m_currentGameState.Data = SaveLoadUtility.LoadGame(CONTINUE_SAVEFILE_NAME);
-        SceneManager.LoadScene(BATTLE_SCENE_BUILD_INDEX);
+        SceneManager.LoadScene(RECRUIT_UNITS_SCENE_INDEX);
     }
 
     //public void NewGame()
@@ -53,6 +53,6 @@ public class MainMenu : MonoBehaviour
             m_currentGameState.SaveGame();
         }
 
-        SceneManager.LoadScene(BATTLE_SCENE_BUILD_INDEX);
+        SceneManager.LoadScene(RECRUIT_UNITS_SCENE_INDEX);
     }
 }

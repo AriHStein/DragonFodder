@@ -1,19 +1,89 @@
 {
     "Units": [
         {
-            "Type": "Warrior",
-            "ID": {
-                "Value": "b54c17c4-f927-44a2-95b0-49f6ffa05a14"
+            "Unit": {
+                "Type": "Warrior",
+                "ID": {
+                    "Value": "472634e7-353f-4758-a93f-3f0531798811"
+                },
+                "Faction": 0,
+                "CurrentHealth": 90,
+                "CurrentMP": 14,
+                "Difficulty": 1,
+                "IsSummoned": false
             },
             "Position": {
-                "x": 0,
-                "y": 0
+                "x": 4,
+                "y": 1
+            }
+        },
+        {
+            "Unit": {
+                "Type": "Warrior",
+                "ID": {
+                    "Value": "289c2fba-9f6b-42a0-b173-48866f38758c"
+                },
+                "Faction": 0,
+                "CurrentHealth": 95,
+                "CurrentMP": 9,
+                "Difficulty": 1,
+                "IsSummoned": false
             },
-            "Faction": 0,
-            "CurrentHealth": 80,
-            "CurrentMP": 7,
-            "Difficulty": 1,
-            "IsSummoned": false
+            "Position": {
+                "x": 3,
+                "y": 2
+            }
+        },
+        {
+            "Unit": {
+                "Type": "Warrior",
+                "ID": {
+                    "Value": "f58689ae-1ba0-4215-a790-2beb6cb7496b"
+                },
+                "Faction": 0,
+                "CurrentHealth": 100,
+                "CurrentMP": 4,
+                "Difficulty": 1,
+                "IsSummoned": false
+            },
+            "Position": {
+                "x": 2,
+                "y": 3
+            }
+        },
+        {
+            "Unit": {
+                "Type": "Wizard",
+                "ID": {
+                    "Value": "d707125b-46d9-4d68-b60e-e8f071001356"
+                },
+                "Faction": 0,
+                "CurrentHealth": 40,
+                "CurrentMP": 0,
+                "Difficulty": 1,
+                "IsSummoned": false
+            },
+            "Position": {
+                "x": 3,
+                "y": 0
+            }
+        },
+        {
+            "Unit": {
+                "Type": "Healer",
+                "ID": {
+                    "Value": "97ead0dc-f1dd-413d-b1af-c8d80fe8e1b6"
+                },
+                "Faction": 0,
+                "CurrentHealth": 80,
+                "CurrentMP": 4,
+                "Difficulty": 1,
+                "IsSummoned": false
+            },
+            "Position": {
+                "x": 2,
+                "y": 1
+            }
         }
     ],
     "SquadOrigin": {

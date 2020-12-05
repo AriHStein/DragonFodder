@@ -1,17 +1,19 @@
 {
     "Units": [
         {
-            "Type": "Ghoul",
-            "ID": {
-                "Value": "25e58e04-fe4e-4a48-8f81-a329f3a5b492"
+            "Unit": {
+                "Type": "Ghoul",
+                "ID": {
+                    "Value": "25e58e04-fe4e-4a48-8f81-a329f3a5b492"
+                },
+                "Faction": 1,
+                "CurrentHealth": -1,
+                "Difficulty": 2
             },
             "Position": {
                 "x": 1,
                 "y": 1
-            },
-            "Faction": 1,
-            "CurrentHealth": -1,
-            "Difficulty": 2
+            }
         }
     ],
     "SquadOrigin": {

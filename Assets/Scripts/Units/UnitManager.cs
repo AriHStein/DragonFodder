@@ -10,7 +10,7 @@ public class UnitManager
 
     //List<Unit> m_turnOrder;
 
-    UnitPrototypeLookup m_prototypeLookup;
+    //UnitPrototypeLookup m_prototypeLookup;
     //Dictionary<string, UnitPrototype> m_unitPrototypeMap;
     //Dictionary<string, GameObject> m_unitPrefabMap;
     Dictionary<Faction, int> m_factionCount;
@@ -26,7 +26,7 @@ public class UnitManager
         m_factionCount = new Dictionary<Faction, int>();
 
         //m_unitPrefabMap = new Dictionary<string, GameObject>();
-        m_prototypeLookup = Resources.Load<UnitPrototypeLookup>("UnitPrototypeLookup");
+        //m_prototypeLookup = Resources.Load<UnitPrototypeLookup>("UnitPrototypeLookup");
         //m_unitPrototypeMap = new Dictionary<string, UnitPrototype>();
         //foreach(UnitPrototype proto in prototypes)
         //{
@@ -48,18 +48,18 @@ public class UnitManager
         //}
     }
 
-    public UnitPrototype GetUnitPrototypeOfType(string type)
-    {
-        //if (type == null || !m_unitPrototypeMap.ContainsKey(type))
-        //{
-        //    Debug.LogWarning($"Prototype for unit of type {type} not found.");
-        //    return null;
-        //}
+    //public UnitPrototype GetUnitPrototypeOfType(string type)
+    //{
+    //    //if (type == null || !m_unitPrototypeMap.ContainsKey(type))
+    //    //{
+    //    //    Debug.LogWarning($"Prototype for unit of type {type} not found.");
+    //    //    return null;
+    //    //}
 
-        //return m_unitPrototypeMap[type];
+    //    //return m_unitPrototypeMap[type];
 
-        return m_prototypeLookup.GetProto(type);
-    }
+    //    return m_prototypeLookup.GetProto(type);
+    //}
 
     //public GameObject GetPrefabOfType(string type)
     //{

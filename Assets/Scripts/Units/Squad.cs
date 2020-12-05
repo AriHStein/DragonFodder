@@ -22,7 +22,7 @@ public class Squad
             return;
         }
 
-        List<UnitData> newSquad = new List<UnitData>();
+        List<UnitPositionPair> newSquad = new List<UnitPositionPair>();
         foreach(Unit unit in updatedUnits)
         {
             if(unit.IsSummoned)
@@ -31,19 +31,19 @@ public class Squad
             }
             
             bool newUnit = true;
-            foreach(UnitData existing in Data.Units)
+            foreach(UnitPositionPair pair in Data.Units)
             {                
-                if(unit.ID == existing.ID)
+                if(unit.ID == pair.Unit.ID)
                 {
                     newUnit = false;
-                    newSquad.Add(existing.UpdateUnitStatus(unit));
+                    newSquad.Add(new UnitPositionPair(pair.Unit.UpdateUnitStatus(unit), pair.Position));
                     break;
                 }
             }
 
             if (newUnit)
             {
-                newSquad.Add(new UnitData(unit, unit.Square.Position));
+                newSquad.Add(new UnitPositionPair(new UnitData(unit), unit.Square.Position));
             }
         }
 
@@ -51,10 +51,28 @@ public class Squad
     }
 }
 
-[System.Serializable]
+[Serializable]
+public struct UnitPositionPair
+{
+    public UnitData Unit;
+    public Vector2Int Position;
+
+    public UnitPositionPair(UnitData unit, Vector2Int pos)
+    {
+        Unit = unit;
+        Position = pos;
+    }
+}
+
+[Serializable]
 public struct SquadData
 {
-    public List<UnitData> Units;
+    //public List<UnitData> Units;
+    //public Dictionary<UnitData, Vector2Int> Units;
+    public List<UnitPositionPair> Units;
+
+
+
     public Vector2Int SquadOrigin;
     public Faction Faction;
 
@@ -65,7 +83,8 @@ public struct SquadData
 
     private SquadData(SquadData original)
     {
-        Units = new List<UnitData>(original.Units);
+        //Units = new List<UnitData>(original.Units);
+        Units = new List<UnitPositionPair>(original.Units);
         SquadOrigin = original.SquadOrigin;
         Faction = original.Faction;
 
@@ -74,7 +93,11 @@ public struct SquadData
         RecalculateParameters();
     }
 
-    public SquadData(List<UnitData> units, Vector2Int origin, Faction faction = Faction.Player)
+    public SquadData(
+        //Dictionary<UnitData, Vector2Int> units, 
+        List<UnitPositionPair> units,
+        Vector2Int origin, 
+        Faction faction = Faction.Player)
     {
         if (units != null)
         {
@@ -82,7 +105,8 @@ public struct SquadData
         }
         else
         {
-            Units = new List<UnitData>();
+            //Units = new Dictionary<UnitData, Vector2Int>();
+            Units = new List<UnitPositionPair>();
         }
 
         SquadOrigin = origin;
@@ -132,15 +156,26 @@ public struct SquadData
         }
         combinedSquad.SquadOrigin = origin;
 
-        combinedSquad.Units = new List<UnitData>();
-        foreach(SquadData squad in squads)
+        //combinedSquad.Units = new Dictionary<UnitData, Vector2Int>();
+        combinedSquad.Units = new List<UnitPositionPair>();
+
+        foreach (SquadData squad in squads)
         {
             Vector2Int offset = squad.SquadOrigin - combinedSquad.SquadOrigin;
-            foreach(UnitData unit in squad.Units)
+            //foreach(UnitData unit in squad.Units.Keys)
+            //{
+            //    UnitData clone = unit.Clone();
+            //    //clone.Position += offset;
+            //    Vector2Int position = squad.Units[unit] + offset;
+            //    combinedSquad.Units.Add(clone, position);
+            //}
+
+            foreach (UnitPositionPair pair in squad.Units)
             {
-                UnitData clone = unit.Clone();
-                clone.Position += offset;
-                combinedSquad.Units.Add(clone);
+                UnitData clone = pair.Unit.Clone();
+                //clone.Position += offset;
+                Vector2Int position = pair.Position + offset;
+                combinedSquad.Units.Add(new UnitPositionPair(clone, position));
             }
         }
 
@@ -163,16 +198,16 @@ public struct SquadData
         }
 
         Vector2Int max = Vector2Int.zero;
-        foreach (UnitData unit in Units)
+        foreach (UnitPositionPair pair in Units)
         {
-            if (unit.Position.x - SquadOrigin.x > max.x)
+            if (pair.Position.x - SquadOrigin.x > max.x)
             {
-                max.x = unit.Position.x - SquadOrigin.x;
+                max.x = pair.Position.x - SquadOrigin.x;
             }
 
-            if (unit.Position.y - SquadOrigin.y > max.y)
+            if (pair.Position.y - SquadOrigin.y > max.y)
             {
-                max.y = unit.Position.y - SquadOrigin.y;
+                max.y = pair.Position.y - SquadOrigin.y;
             }
         }
 
@@ -182,9 +217,9 @@ public struct SquadData
     private void UpdateDifficulty()
     {
         Difficulty = 0;
-        foreach(UnitData unit in Units)
+        foreach(UnitPositionPair pair in Units)
         {
-            Difficulty += unit.Difficulty;
+            Difficulty += pair.Unit.Difficulty;
         }
     }
 }

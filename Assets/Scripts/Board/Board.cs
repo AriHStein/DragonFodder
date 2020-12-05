@@ -598,15 +598,18 @@ public class Board : MonoBehaviour
     public SquadData GetBoardAsSquad(bool mirrorBoard = false)
     {
         Vector2Int origin = mirrorBoard ? MirrorPosition(Vector2Int.zero) : Vector2Int.zero;
-        List<UnitData> units = new List<UnitData>();
+        //List<UnitData> units = new List<UnitData>();
+        List<UnitPositionPair> units = new List<UnitPositionPair>();
         foreach (Unit unit in UnitManager.Units)
         {
-            UnitData newUnit = new UnitData(unit, origin);
+            //UnitData newUnit = new UnitData(unit, origin);
+            UnitData newUnit = new UnitData(unit);
+
             //if (mirrorBoard)
             //{
             //    newUnit.Position = new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) - newUnit.Position;
             //}
-            units.Add(newUnit);
+            units.Add(new UnitPositionPair(newUnit, unit.Square.Position));
         }
 
         return new SquadData(units, origin);
@@ -632,28 +635,34 @@ public class Board : MonoBehaviour
         return true;
     }
 
-    public Unit TryPlaceUnit(UnitData data)
+    public Unit TryPlaceUnit(UnitData data, Vector2Int position)
     {
-        if(data.Position.x < 0 || data.Position.x >= Squares.GetLength(0) ||
-            data.Position.y < 0 || data.Position.y >= Squares.GetLength(1) ||
-            Squares[data.Position.x, data.Position.y].gameObject.activeInHierarchy == false || 
-            Squares[data.Position.x, data.Position.y].Unit != null)
+        if(position.x < 0 || position.x >= Squares.GetLength(0) ||
+            position.y < 0 || position.y >= Squares.GetLength(1) ||
+            Squares[position.x, position.y].gameObject.activeInHierarchy == false || 
+            Squares[position.x, position.y].Unit != null)
         {
-            Debug.LogWarning("Failed to place unit");
+            Debug.LogWarning("Failed to place unit. Invalid data.");
             return null;
         }
 
-        UnitPrototype proto = UnitManager.GetUnitPrototypeOfType(data.Type);
+        UnitPrototype proto = UnitPrototypeLookup.GetProto(data.Type);
+        if(proto == null)
+        {
+            Debug.LogWarning("Failed to place unit. Prototype not found.");
+            return null;
+        }
+        //UnitPrototype proto = UnitManager.GetUnitPrototypeOfType(data.Type);
         //GameObject prefab = UnitManager.GetPrefabOfType(data.Type);
         GameObject prefab = proto.Prefab;
         if(prefab == null)
         {
-            Debug.LogWarning("Failed to place unit");
+            Debug.LogWarning("Failed to place unit. Prefab not found.");
             return null;
         }
         
-        Unit unit = Instantiate(prefab, new Vector3(data.Position.x, 0, data.Position.y), Quaternion.identity).GetComponent<Unit>();
-        unit.Initialize(this, Squares[data.Position.x, data.Position.y], data, proto);
+        Unit unit = Instantiate(prefab, new Vector3(position.x, 0, position.y), Quaternion.identity).GetComponent<Unit>();
+        unit.Initialize(this, Squares[position.x, position.y], data, proto);
         return unit;
     }
 
@@ -680,15 +689,17 @@ public class Board : MonoBehaviour
         }
 
         int failedUnitCount = 0;
-        foreach(UnitData unit in data.Units)
+        foreach(UnitPositionPair pair in data.Units)
         {
-            UnitData clone = unit.Clone();
-            clone.Position += data.SquadOrigin + offset;
+            UnitData clone = pair.Unit.Clone();
+            Vector2Int position = pair.Position + offset;
+            //clone.Position += data.SquadOrigin + offset;
             if (mirror)
             {
-                clone.Position = MirrorPosition(clone.Position);
+                //clone.Position = MirrorPosition(clone.Position);
+                position = MirrorPosition(position);
             }
-            Unit placedUnit = TryPlaceUnit(clone);
+            Unit placedUnit = TryPlaceUnit(clone, position);
             if(placedUnit == null)
             {
                 Debug.LogWarning($"Failed to place unit {clone.Type}");

@@ -1,17 +1,19 @@
 {
     "Units": [
         {
-            "Type": "Skeleton",
-            "ID": {
-                "Value": "58b79622-94da-4c00-84c4-ccb0b540912f"
+            "Unit": {
+                "Type": "Skeleton",
+                "ID": {
+                    "Value": "58b79622-94da-4c00-84c4-ccb0b540912f"
+                },
+                "Faction": 1,
+                "CurrentHealth": -1,
+                "Difficulty": 1
             },
             "Position": {
                 "x": 0,
                 "y": 2
-            },
-            "Faction": 1,
-            "CurrentHealth": -1,
-            "Difficulty": 1
+            }
         }
     ],
     "SquadOrigin": {

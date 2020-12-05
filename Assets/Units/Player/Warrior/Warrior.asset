@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Warrior
   m_EditorClassIdentifier: 
   Type: Warrior
+  Portrait: {fileID: 21300000, guid: 2163a345e82d8664998808b6d80a0a91, type: 3}
   RecruitCost: 1
   MaxHealth: 100
   MaxMP: 50

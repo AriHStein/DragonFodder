@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "GameState", menuName = "GameState")]
+[CreateAssetMenu(fileName = "GameState", menuName = "ScriptableObject/GameState", order = 82)]
 public class GameState : ScriptableObject
 {
     public GameSaveData Data;

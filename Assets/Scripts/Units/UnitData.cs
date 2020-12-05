@@ -8,7 +8,7 @@ public class UnitData
 {
     public string Type;
     public SerializableGuid ID;
-    public Vector2Int Position;
+    //public Vector2Int Position;
     public Faction Faction;
     public int CurrentHealth;
     public int CurrentMP;
@@ -19,7 +19,7 @@ public class UnitData
         string type,
         Guid id,
         int difficulty,
-        Vector2Int position,
+        //Vector2Int position,
         Faction faction,
         int currentHealth,
         int currentMP,
@@ -34,31 +34,38 @@ public class UnitData
             ID = id;
         }
         Difficulty = difficulty;
-        Position = position;
+        //Position = position;
         Faction = faction;
         CurrentHealth = currentHealth;
         CurrentMP = currentMP;
         IsSummoned = isSummon;
     }
 
-    public UnitData(Unit unit, Vector2Int origin)
+    public UnitData(
+        Unit unit//, 
+        //Vector2Int origin
+        )
     {
         Type = unit.Type;
         ID = unit.ID;
         Difficulty = unit.Difficulty;
-        Position = unit.Square.Position - origin;
+        //Position = unit.Square.Position - origin;
         Faction = unit.Faction;
         CurrentHealth = unit.CurrentHealth;
         CurrentMP = unit.CurrentMP;
         IsSummoned = unit.IsSummoned;
     }
 
-    public UnitData(UnitPrototype proto, Vector2Int position, Faction faction, bool isSummon = false)
+    public UnitData(
+        UnitPrototype proto, 
+        //Vector2Int position, 
+        Faction faction, 
+        bool isSummon = false)
     {
         Type = proto.Type;
         ID = Guid.NewGuid();
         Difficulty = proto.Difficulty;
-        Position = position;
+        //Position = position;
         Faction = faction;
         CurrentHealth = proto.MaxHealth;
         CurrentMP = 0;
@@ -71,7 +78,7 @@ public class UnitData
             Type,
             ID,
             Difficulty,
-            Position,
+            //Position,
             Faction,
             CurrentHealth,
             CurrentMP,

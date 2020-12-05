@@ -21,7 +21,7 @@ public class UnitPlacementMenu : MonoBehaviour
 
     }
 
-    public void Activate(List<UnitData> currentUnits, List<RecruitableUnit> recruitableUnits, Board board)
+    public void Activate(List<UnitData> currentUnits, List<RecruitableUnitCollection> recruitableUnits, Board board)
     {
         gameObject.SetActive(true);
         ActivateCurrentUnitPanels(currentUnits, board);
@@ -54,7 +54,7 @@ public class UnitPlacementMenu : MonoBehaviour
         SetupPlaceUnitPanels(sortedUnits, board);
     }
 
-    void ActiveateRecruitableUnitPanels(List<RecruitableUnit> recruitableUnits, Board board)
+    void ActiveateRecruitableUnitPanels(List<RecruitableUnitCollection> recruitableUnits, Board board)
     {
         foreach (RecruitUnitPanel panel in m_recruitUnitPanels.Values)
         {
@@ -133,7 +133,10 @@ public class UnitPlacementMenu : MonoBehaviour
 
     public void AddUnitToPlace(UnitPrototype proto)
     {
-        UnitData unit = new UnitData(proto, Vector2Int.zero, Faction.Player);
+        UnitData unit = new UnitData(
+            proto, 
+            //Vector2Int.zero, 
+            Faction.Player);
         if (!m_placeUnitPanels.ContainsKey(proto.Type))
         {
             List<UnitData> units = new List<UnitData> { unit };
@@ -145,9 +148,9 @@ public class UnitPlacementMenu : MonoBehaviour
         }
     }
 
-    void SetupRecruitUnitPanels(List<RecruitableUnit> sortedProtos, Board board)
+    void SetupRecruitUnitPanels(List<RecruitableUnitCollection> sortedProtos, Board board)
     {
-        foreach(RecruitableUnit unit in sortedProtos)
+        foreach(RecruitableUnitCollection unit in sortedProtos)
         {
             SetupRecruitUnitPanel(unit.Proto.Type, unit.Proto, unit.Count, board);
         }

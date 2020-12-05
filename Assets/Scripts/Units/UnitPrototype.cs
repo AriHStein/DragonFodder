@@ -7,6 +7,7 @@ using System;
 public class UnitPrototype : ScriptableObject
 {
     public string Type;
+    public Sprite Portrait;
     public int RecruitCost;
     public int MaxHealth;
     public int MaxMP;

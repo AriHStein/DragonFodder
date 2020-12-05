@@ -142,10 +142,10 @@ public class InputManager : MonoBehaviour
             return false;
         }
 
-        m_newUnitToPlace.Position = square.Position;
+        //m_newUnitToPlace.Position = square.Position;
         m_newUnitToPlace.Faction = m_currentFaction;
         //Board.Current.TryPlaceUnit(new UnitData(m_newUnitToPlace, square.Position, m_currentFaction));
-        if (m_board.TryPlaceUnit(m_newUnitToPlace) != null)
+        if (m_board.TryPlaceUnit(m_newUnitToPlace, square.Position) != null)
         {
             UnitPlacedEvent?.Invoke();
             //m_newUnitToPlace = new UnitData();
@@ -217,6 +217,8 @@ public class InputManager : MonoBehaviour
         m_newUnitToPlace = data;
         m_currentFaction = faction;
         //m_unitPreview = Instantiate(Board.Current.UnitManager.GetPrefabOfType(data.Type), transform);
-        m_unitPreview = Instantiate(m_board.UnitManager.GetUnitPrototypeOfType(data.Type).Prefab, transform);
+        //m_unitPreview = Instantiate(m_board.UnitManager.GetUnitPrototypeOfType(data.Type).Prefab, transform);
+        m_unitPreview = Instantiate(UnitPrototypeLookup.GetProto(data.Type).Prefab, transform);
+
     }
 }

@@ -2,44 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnitPrototypeLookup", menuName = "UnitPrototypeLookup")]
+[CreateAssetMenu(fileName = "UnitPrototypeLookup", menuName = "ScriptableObject/UnitPrototypeLookup", order = 82)]
 public class UnitPrototypeLookup : ScriptableObject
 {
     [SerializeField] List<UnitPrototype> Protos;
 
     Dictionary<string, UnitPrototype> m_IDProtoMap;
+    static UnitPrototypeLookup m_instance;
 
     private void OnValidate()
     {
-        if(Protos == null)
+        SetupProtoMap();
+    }
+
+    void SetupProtoMap()
+    {
+        if (Protos == null)
         {
             Protos = new List<UnitPrototype>();
         }
 
-        if(m_IDProtoMap == null)
+        if (m_IDProtoMap == null)
         {
             m_IDProtoMap = new Dictionary<string, UnitPrototype>();
         }
 
-        foreach(UnitPrototype proto in Protos)
+        foreach (UnitPrototype proto in Protos)
         {
             m_IDProtoMap[proto.Type] = proto;
         }
     }
 
-    public UnitPrototype GetProto(string type)
+    public static UnitPrototype GetProto(string type)
     {
-        if(m_IDProtoMap == null)
+        if(m_instance == null)
         {
-            return null;
+            m_instance = Resources.Load<UnitPrototypeLookup>("UnitPrototypeLookup");
+            m_instance.SetupProtoMap();
         }
 
-        if(!m_IDProtoMap.ContainsKey(type))
+        if(!m_instance.m_IDProtoMap.ContainsKey(type))
         {
             Debug.LogWarning($"Unit prototype with ID {type} not found.");
             return null;
         }
 
-        return m_IDProtoMap[type];
+        return m_instance.m_IDProtoMap[type];
     }
 }
