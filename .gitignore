@@ -62,3 +62,6 @@ crashlytics-build.properties
 /[Aa]rchive/
 /[Aa]ssets/z_Archive
 /[Aa]ssets/z_Archive.meta
+/[Gg]itIgnore
+/[Aa]ssets/[Gg]itIgnore
+/[Aa]ssets/[Gg]itIgnore.meta

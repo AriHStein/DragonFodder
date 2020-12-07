@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Healer
   m_EditorClassIdentifier: 
   Type: Healer
+  Portrait: {fileID: 21300000, guid: c542ac209dfbf314d9636560276ceec0, type: 3}
   RecruitCost: 3
   MaxHealth: 80
   MaxMP: 100
