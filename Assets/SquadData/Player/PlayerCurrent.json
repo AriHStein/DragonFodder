@@ -4,33 +4,16 @@
             "Unit": {
                 "Type": "Warrior",
                 "ID": {
-                    "Value": "472634e7-353f-4758-a93f-3f0531798811"
+                    "Value": "26eb97d2-0907-40c9-a9f7-7a598287ebb7"
                 },
                 "Faction": 0,
-                "CurrentHealth": 90,
-                "CurrentMP": 14,
+                "CurrentHealth": 95,
+                "CurrentMP": 12,
                 "Difficulty": 1,
                 "IsSummoned": false
             },
             "Position": {
                 "x": 4,
-                "y": 1
-            }
-        },
-        {
-            "Unit": {
-                "Type": "Warrior",
-                "ID": {
-                    "Value": "289c2fba-9f6b-42a0-b173-48866f38758c"
-                },
-                "Faction": 0,
-                "CurrentHealth": 95,
-                "CurrentMP": 9,
-                "Difficulty": 1,
-                "IsSummoned": false
-            },
-            "Position": {
-                "x": 3,
                 "y": 2
             }
         },
@@ -38,16 +21,33 @@
             "Unit": {
                 "Type": "Warrior",
                 "ID": {
-                    "Value": "f58689ae-1ba0-4215-a790-2beb6cb7496b"
+                    "Value": "9433e9c2-5652-4ed8-93a6-b1bfd0c40cf7"
                 },
                 "Faction": 0,
-                "CurrentHealth": 100,
-                "CurrentMP": 4,
+                "CurrentHealth": 85,
+                "CurrentMP": 2,
                 "Difficulty": 1,
                 "IsSummoned": false
             },
             "Position": {
-                "x": 2,
+                "x": 3,
+                "y": 3
+            }
+        },
+        {
+            "Unit": {
+                "Type": "Warrior",
+                "ID": {
+                    "Value": "783f9f81-6883-4929-94b3-bf40a0bacaa5"
+                },
+                "Faction": 0,
+                "CurrentHealth": 90,
+                "CurrentMP": 17,
+                "Difficulty": 1,
+                "IsSummoned": false
+            },
+            "Position": {
+                "x": 5,
                 "y": 3
             }
         },
@@ -55,7 +55,7 @@
             "Unit": {
                 "Type": "Wizard",
                 "ID": {
-                    "Value": "d707125b-46d9-4d68-b60e-e8f071001356"
+                    "Value": "1d558734-4475-48f3-a74a-fc6e01a8ef18"
                 },
                 "Faction": 0,
                 "CurrentHealth": 40,
@@ -64,7 +64,7 @@
                 "IsSummoned": false
             },
             "Position": {
-                "x": 3,
+                "x": 4,
                 "y": 0
             }
         },
@@ -72,11 +72,11 @@
             "Unit": {
                 "Type": "Healer",
                 "ID": {
-                    "Value": "97ead0dc-f1dd-413d-b1af-c8d80fe8e1b6"
+                    "Value": "cb3b27d5-f00b-4a91-b60b-388a1f175a9a"
                 },
                 "Faction": 0,
                 "CurrentHealth": 80,
-                "CurrentMP": 4,
+                "CurrentMP": 2,
                 "Difficulty": 1,
                 "IsSummoned": false
             },

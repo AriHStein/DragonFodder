@@ -536,12 +536,14 @@ public class Board : MonoBehaviour
 
         ChangeGold(m_currentEncounter.Reward);
 
+        UpdateSaveFile();
         m_dungeonMap.ExitEncounter(m_currentEncounter, true);
         EnterPlayMode(PlayMode.Dungeon);
     }
 
     void BattleLost()
     {
+        UpdateSaveFile();
         m_dungeonMap.ExitEncounter(m_currentEncounter, false);
         
         EnterPlayMode(PlayMode.Paused);
@@ -591,6 +593,26 @@ public class Board : MonoBehaviour
     {
         SquadData squad = GetBoardAsSquad(mirrorBoard);
         UnitSaveLoadUtility.SaveSquad(squad, name, dir);
+    }
+
+    void UpdateSaveFile()
+    {
+        if(m_gameState == null)
+        {
+            Debug.LogError($"No game state!");
+            return;
+        }
+
+        List<Unit> units = UnitManager.Units;
+        List<UnitData> unitDatas = new List<UnitData>();
+        foreach(Unit unit in units)
+        {
+            unitDatas.Add(new UnitData(unit));
+        }
+
+        m_gameState.Data.CurrentUnits = unitDatas;
+        m_gameState.Data.Gold = m_currentGold;
+        //m_gameState.Data.CurrentUnits = 
     }
     #endregion
 

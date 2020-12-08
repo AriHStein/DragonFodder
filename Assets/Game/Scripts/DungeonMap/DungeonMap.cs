@@ -142,18 +142,24 @@ public class DungeonMap : MonoBehaviour
 
         //m_availableEncounters.Add(m_encounters[0]);
         m_availableEncounters.Add(firstEncounter);
+        firstEncounter.Available = true;
 
         m_gameState.Data.Encounters = new List<Encounter>(m_encounters.Values);
     }
 
     void LoadEncounters()
     {
+        Debug.Log($"Load Encounters. Encounter count: {m_gameState.Data.Encounters.Count}");
         m_encounters = new Dictionary<System.Guid, Encounter>();
         m_availableEncounters = new List<Encounter>();
 
         foreach(Encounter e in m_gameState.Data.Encounters)
         {
             m_encounters[e.ID] = e;
+            if(e.Available)
+            {
+                m_availableEncounters.Add(e);
+            }
         }
 
         foreach(Encounter e in m_encounters.Values)
@@ -315,8 +321,16 @@ public class DungeonMap : MonoBehaviour
             foreach(Encounter connection in encounter.Connections)
             {
                 m_availableEncounters.Add(connection);
+                connection.Available = true;
             }
+
+            m_gameState.SaveGame();
         }
+        else
+        {
+            m_gameState.GameOver();
+        }
+
 
         RefreshPanel();
     }

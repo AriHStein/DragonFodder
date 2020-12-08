@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameSaveData
 {
     public string fileName;
+    public bool GameOver;
     public int Gold;
     public List<UnitData> CurrentUnits;
     public List<RecruitableUnitCollection> RecruitableUnits;

@@ -12,17 +12,22 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Button m_continueButton = default;
 
     public string FileName;
-    const string CONTINUE_SAVEFILE_NAME = "AutoSave";
+    //const string CONTINUE_SAVEFILE_NAME = "AutoSave";
 
     private void Start()
     {
-        m_continueButton.interactable = SaveLoadUtility.SaveFileExists(CONTINUE_SAVEFILE_NAME);
+        m_continueButton.interactable = SaveLoadUtility.SaveFileExists(PrefKeys.ContinueFileName);
     }
 
     public void Continue()
     {
         Debug.Log("Continue");
-        m_currentGameState.Data = SaveLoadUtility.LoadGame(CONTINUE_SAVEFILE_NAME);
+        m_currentGameState.Data = SaveLoadUtility.LoadGame(PrefKeys.ContinueFileName);
+        if(m_currentGameState.Data.GameOver)
+        {
+            Debug.LogError("Loaded a game that is Game Over.");
+            return;
+        }
         SceneManager.LoadScene(RECRUIT_UNITS_SCENE_INDEX);
     }
 

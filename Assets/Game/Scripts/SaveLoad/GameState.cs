@@ -32,5 +32,13 @@ public class GameState : ScriptableObject
     public void SaveGame()
     {
         SaveLoadUtility.SaveGame(Data);
+        PrefKeys.SetContinueFileName(Data.fileName);
+    }
+
+    public void GameOver()
+    {
+        Data.GameOver = true;
+        PrefKeys.ClearContinueFile();
+        SaveLoadUtility.DeleteGame(Data.fileName);
     }
 }

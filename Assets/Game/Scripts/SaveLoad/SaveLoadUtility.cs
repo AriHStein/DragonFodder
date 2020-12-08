@@ -23,6 +23,12 @@ public class SaveLoadUtility
 
     public static GameSaveData LoadGame(string fileName)
     {
+        if(fileName == null)
+        {
+            Debug.LogError("File name is null.");
+            return null;
+        }
+        
         string dirPath = Path.Combine(Application.persistentDataPath, SAVE_DIR);
         string filePath = Path.Combine(dirPath, fileName + SAVE_EXTENSION);
 
@@ -38,8 +44,33 @@ public class SaveLoadUtility
         return data;
     }
 
+    public static void DeleteGame(string fileName)
+    {
+        if (fileName == null)
+        {
+            Debug.LogError("File name is null.");
+            return;
+        }
+
+        string dirPath = Path.Combine(Application.persistentDataPath, SAVE_DIR);
+        string filePath = Path.Combine(dirPath, fileName + SAVE_EXTENSION);
+
+        if (!File.Exists(filePath))
+        {
+            Debug.LogError($"No file exsits at {filePath}.");
+            return;
+        }
+
+        File.Delete(filePath);
+    }
+
     public static bool SaveFileExists(string fileName)
     {
+        if(fileName == null)
+        {
+            return false;
+        }
+        
         string path = Path.Combine(Application.persistentDataPath, SAVE_DIR, fileName + SAVE_EXTENSION);
         return File.Exists(path);
     }

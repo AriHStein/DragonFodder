@@ -24,7 +24,7 @@ public class LoadGamePanel : MonoBehaviour
     public void ShowPanel()
     {
         gameObject.SetActive(true);
-        ListFiles();
+        RefreshPanel();
     }
 
     public void HidePanel()
@@ -33,7 +33,7 @@ public class LoadGamePanel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    void ListFiles()
+    void RefreshPanel()
     {
         ClearFileList();
         List<string> files = SaveLoadUtility.GetSaveFileNames();
@@ -86,5 +86,17 @@ public class LoadGamePanel : MonoBehaviour
 
         m_mainMenu.StartGame(selectedFileName);
         //SaveLoadUtility.LoadGame(selectedFileName);
+    }
+
+    public void DeleteSelectedFile()
+    {
+        if (selectedFileName == null)
+        {
+            Debug.LogWarning("No file selected");
+            return;
+        }
+
+        SaveLoadUtility.DeleteGame(selectedFileName);
+        RefreshPanel();
     }
 }

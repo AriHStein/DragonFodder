@@ -71,6 +71,12 @@ public class RecruitUnitsPanel : MonoBehaviour
 
     void AddCurrentUnit(UnitData unit)
     {
+        if(unit == null)
+        {
+            Debug.LogError("Unit is null.");
+            return;
+        }
+        
         GameObject go = Instantiate(m_currentPrefab, m_currentPanel);
         CurrentUnitItem item = go.GetComponent<CurrentUnitItem>();
         item.Initialize(unit, this);
@@ -79,6 +85,12 @@ public class RecruitUnitsPanel : MonoBehaviour
 
     void AddRecruitableUnit(UnitPrototype proto)
     {
+        if(proto == null)
+        {
+            Debug.LogError("Proto is null.");
+            return;
+        }
+        
         GameObject go = Instantiate(m_recruitablePrefab, m_availablePanel);
         RecruitableUnitItem item = go.GetComponent<RecruitableUnitItem>();
         item.Initialize(proto, this);
