@@ -47,7 +47,7 @@ public class Unit : MonoBehaviour
         m_abilities = new List<AbilityInstance>();
     }
 
-    public virtual void Initialize(Board board, BoardSquare square, UnitData data, UnitPrototype proto)
+    public virtual void Initialize(Board_Base board, BoardSquare square, UnitData data, UnitPrototype proto)
     {
         ID = data.ID;
         Type = proto.Type;
@@ -130,7 +130,7 @@ public class Unit : MonoBehaviour
         return false;
     }
 
-    public virtual void DoTurn(Board board)
+    public virtual void DoTurn(Board_Base board)
     {
         AbilityInstance bestAbility = null;
         IAbilityContext bestContext = null;

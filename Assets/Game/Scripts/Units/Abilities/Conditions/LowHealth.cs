@@ -8,7 +8,7 @@ public class LowHealth : Condition
     [Range(0, 1)]
     public float Threshold;
 
-    public override bool IsMet(Unit unit, Board board)
+    public override bool IsMet(Unit unit, Board_Base board)
     {
         return unit.CurrentHealth < unit.MaxHealth * Threshold;
     }

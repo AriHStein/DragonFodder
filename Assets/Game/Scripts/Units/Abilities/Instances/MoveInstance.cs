@@ -17,7 +17,7 @@ public class MoveInstance : AbilityInstance
         m_maxStoppingDistance = proto.MaxStoppingDistance;
     }
 
-    protected override IAbilityContext GetValueOverride(Unit unit, Board board)
+    protected override IAbilityContext GetValueOverride(Unit unit, Board_Base board)
     {
         BoardSquare dest = null;
         switch (m_priorityMode)
@@ -81,7 +81,7 @@ public class MoveInstance : AbilityInstance
         return MoveAlongPath(path, unit, board);
     }
 
-    IAbilityContext MoveAlongPath(Path_AStar<BoardSquare> path, Unit unit, Board board)
+    IAbilityContext MoveAlongPath(Path_AStar<BoardSquare> path, Unit unit, Board_Base board)
     {
         if (path == null || path.Length() == 0)
         {

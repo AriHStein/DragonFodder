@@ -15,7 +15,7 @@ public class UnitManager
     //Dictionary<string, GameObject> m_unitPrefabMap;
     Dictionary<Faction, int> m_factionCount;
 
-    public event Action<Faction> BattleWonEvent;
+    public event Action<Faction> BattleCompleteEvent;
 
     public UnitManager()
     {
@@ -117,7 +117,7 @@ public class UnitManager
     //    m_turnOrder = Units.OrderByDescending(u => u.Proto.TimeBetweenActions).ToList();
     //}
 
-    public void DoUnitTurns(float deltaTime, Board board)
+    public void DoUnitTurns(float deltaTime, Board_Base board)
     {
         m_diedThisTurn.Clear();
         //if(m_turnOrder.Count == 0)
@@ -160,7 +160,7 @@ public class UnitManager
         {
             if (m_factionCount[faction] == 0)
             {
-                BattleWonEvent?.Invoke(faction.Opposite());
+                BattleCompleteEvent?.Invoke(faction.Opposite());
                 //Board.Current.ExitBattleMode(faction == Faction.Enemy);
                 return;
             }

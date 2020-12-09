@@ -41,9 +41,13 @@ public class Encounter : ISerializationCallbackReceiver
 
     public void OnBeforeSerialize()
     {
-        if(ConnectionIDs == null)
+        if (Connections == null)
         {
-            Debug.Log($"OnBeforeSerialize. Connection count: {Connections.Count}");
+            Connections = new List<Encounter>();
+        }
+
+        if (ConnectionIDs == null)
+        {
             ConnectionIDs = new List<SerializableGuid>();
             foreach (Encounter encoutner in Connections)
             {
@@ -57,43 +61,8 @@ public class Encounter : ISerializationCallbackReceiver
         if(Connections == null)
         {
             Connections = new List<Encounter>();
-            Debug.Log($"OnAfterDeserialize. Connection count: {ConnectionIDs.Count}");
         }
     }
-
-    //// Constructor for deserializing encounters
-    //public Encounter(Guid id, Vector2Int mapPosition, List<SerializableGuid> connections, SquadData enemies, Vector2Int boardSize, int playerRows, int reward, bool complete)
-    //{
-    //    if(id == Guid.Empty)
-    //    {
-    //        Debug.LogError("id == Guid.Empty. Assigning a new Guid.");
-    //        ID = Guid.NewGuid();
-    //    }
-    //    else
-    //    {
-    //        ID = id;
-    //    }
-
-    //    MapPosition = mapPosition;
-
-    //    if(connections == null || connections.Count == 0)
-    //    {
-    //        Debug.LogError("Encounter has no connections.");
-    //        ConnectionIDs = new List<SerializableGuid>();
-    //    } 
-    //    else
-    //    {
-    //        ConnectionIDs = connections;
-    //    }
-        
-    //    Enemies = enemies;
-    //    BoardSize = boardSize;
-    //    RowsAllowedForPlayerUnits = playerRows;
-    //    Reward = reward;
-    //    Complete = complete;
-
-    //    Connections = new List<Encounter>();
-    //}
 
     public void ConnectTo(Encounter other)
     {

@@ -29,7 +29,7 @@ public class AoEAttackInstance : AbilityInstance
         m_targetOtherFaction = proto.TargetOtherFaction;
     }
 
-    protected override IAbilityContext GetValueOverride(Unit unit, Board board)
+    protected override IAbilityContext GetValueOverride(Unit unit, Board_Base board)
     {
         List<BoardSquare> squaresInRange = GetPossibleTargets(unit, board);
         if (squaresInRange.Count == 0)
@@ -53,7 +53,7 @@ public class AoEAttackInstance : AbilityInstance
         return new SingleBoardSquareContext(m_abilityPriority, unit, target.Target, board);
     }
 
-    List<BoardSquare> GetPossibleTargets(Unit unit, Board board)
+    List<BoardSquare> GetPossibleTargets(Unit unit, Board_Base board)
     {
         List<BoardSquare> squares = board.GetSquaresInRange(unit.Square.Position, m_aoeRange);
         for (int i = squares.Count; i > 0; i--)
@@ -72,7 +72,7 @@ public class AoEAttackInstance : AbilityInstance
         public BoardSquare Target;
         public int Comparer;
 
-        public TargetData(BoardSquare target, Board board, AoEAttack.TargetPriorityMode mode, float aoeRange, int primaryDamage, int aoeDamage, Faction targetFaction, bool friendlyFire = false)
+        public TargetData(BoardSquare target, Board_Base board, AoEAttack.TargetPriorityMode mode, float aoeRange, int primaryDamage, int aoeDamage, Faction targetFaction, bool friendlyFire = false)
         {
             Target = target;
 

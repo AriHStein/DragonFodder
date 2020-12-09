@@ -9,6 +9,8 @@ public class InputManager : MonoBehaviour
     [SerializeField] LayerMask m_boardLayer;
     [SerializeField] GameObject m_mouseIndicator = default;
 
+    Board_Base m_board;
+
     Unit m_grabbedUnit;
     UnitData m_newUnitToPlace;
 
@@ -19,11 +21,10 @@ public class InputManager : MonoBehaviour
 
     GameObject m_unitPreview;
 
-    Board m_board;
 
     private void Start()
     {
-        m_board = FindObjectOfType<Board>();
+        m_board = FindObjectOfType<Board_Base>();
     }
 
     // Update is called once per frame

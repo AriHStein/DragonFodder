@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class Condition : ScriptableObject
 {
-    public abstract bool IsMet(Unit unit, Board board);
+    public abstract bool IsMet(Unit unit, Board_Base board);
 }

@@ -22,7 +22,7 @@ public abstract class AbilityInstance
         m_conditions = proto.Conditions;
     }
 
-    public IAbilityContext GetValue(Unit unit, Board board)
+    public IAbilityContext GetValue(Unit unit, Board_Base board)
     {
         if (unit.CurrentMP < m_mpCost)
         {
@@ -40,7 +40,7 @@ public abstract class AbilityInstance
         return GetValueOverride(unit, board);
     }
 
-    protected abstract IAbilityContext GetValueOverride(Unit unit, Board board);
+    protected abstract IAbilityContext GetValueOverride(Unit unit, Board_Base board);
 
     public event Action<AbilityInstance> AbilityExecutedEvent;
     public virtual void Execute(IAbilityContext context)

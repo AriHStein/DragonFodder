@@ -7,7 +7,7 @@ public class ManaCondition : Condition
 {
     [SerializeField] int m_minMana = 1;
     
-    public override bool IsMet(Unit unit, Board board) 
+    public override bool IsMet(Unit unit, Board_Base board) 
     {
         return unit.CurrentMP >= m_minMana;
     }

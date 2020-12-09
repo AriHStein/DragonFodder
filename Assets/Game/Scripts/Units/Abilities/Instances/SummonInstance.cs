@@ -11,7 +11,7 @@ public class SummonInstance : AbilityInstance
         m_summonPrototype = proto.SummonPrototype;
     }
 
-    protected override IAbilityContext GetValueOverride(Unit unit, Board board)
+    protected override IAbilityContext GetValueOverride(Unit unit, Board_Base board)
     {
         BoardSquare target = null;
         foreach (BoardSquare square in board.GetSquaresInRange(unit.Square.Position, 1f))

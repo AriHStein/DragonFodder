@@ -8,7 +8,7 @@ public class Threatened : Condition
     public Faction Enemies;
     public int MaxEnemyDifficultyInRange;
     
-    public override bool IsMet(Unit unit, Board board)
+    public override bool IsMet(Unit unit, Board_Base board)
     {
         int threatLevel = 0;
         
@@ -24,7 +24,7 @@ public class Threatened : Condition
         return threatLevel >= MaxEnemyDifficultyInRange;
     }
 
-    public bool IsMetAt(BoardSquare square, Board board)
+    public bool IsMetAt(BoardSquare square, Board_Base board)
     {
         int threatLevel = 0;
 

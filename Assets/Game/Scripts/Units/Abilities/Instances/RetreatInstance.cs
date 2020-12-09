@@ -13,7 +13,7 @@ public class RetreatInstance : AbilityInstance
         m_threatTest = proto.ThreatTest;
     }
 
-    protected override IAbilityContext GetValueOverride(Unit unit, Board board)
+    protected override IAbilityContext GetValueOverride(Unit unit, Board_Base board)
     {
         Path_AStar<BoardSquare> path =
             board.GetPath(
@@ -26,7 +26,7 @@ public class RetreatInstance : AbilityInstance
 
     }
 
-    IAbilityContext MoveAlongPath(Path_AStar<BoardSquare> path, Unit unit, Board board)
+    IAbilityContext MoveAlongPath(Path_AStar<BoardSquare> path, Unit unit, Board_Base board)
     {
         if (path == null || path.Length() == 0)
         {
