@@ -15,9 +15,9 @@ MonoBehaviour:
   Type: Archer
   Portrait: {fileID: 21300000, guid: b74ea6c5d7fffaa4eacf4f5cb99a9f85, type: 3}
   RecruitCost: 1
-  MaxHealth: 60
+  MaxHealth: 75
   MaxMP: 0
-  TimeBetweenActions: 0.9
+  TimeBetweenActions: 0.6
   Difficulty: 1
   Flying: 0
   MoveSpeed: 1

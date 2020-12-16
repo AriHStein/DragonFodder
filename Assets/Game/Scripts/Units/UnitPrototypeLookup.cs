@@ -49,4 +49,22 @@ public class UnitPrototypeLookup : ScriptableObject
 
         return m_instance.m_IDProtoMap[type];
     }
+
+    public static void AddPrototype(UnitPrototype proto)
+    {
+        if (m_instance == null)
+        {
+            m_instance = Resources.Load<UnitPrototypeLookup>("UnitPrototypeLookup");
+            m_instance.SetupProtoMap();
+        }
+
+        if (m_instance.Protos.Contains(proto))
+        {
+            Debug.LogError($"Duplicate unit type: {proto.Type}");
+            return;
+        }
+
+        m_instance.Protos.Add(proto);
+        m_instance.SetupProtoMap();
+    }
 }

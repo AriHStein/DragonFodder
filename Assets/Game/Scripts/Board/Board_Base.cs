@@ -4,7 +4,13 @@ using UnityEngine;
 using Pathfinding;
 using System;
 
-public enum PlayMode { UnitPlacement, SquadEditor, Battle, Paused, Dungeon }
+public enum PlayMode { 
+    UnitPlacement, 
+    //SquadEditor, 
+    Battle, 
+    Paused, 
+    Dungeon 
+}
 public abstract class Board_Base : MonoBehaviour
 {
     public PlayMode PlayMode { get; protected set; }
@@ -47,9 +53,9 @@ public abstract class Board_Base : MonoBehaviour
                 UnitPlacementUpdate();
                 break;
 
-            case PlayMode.SquadEditor:
-                SquadEditorUpdate();
-                break;
+            //case PlayMode.SquadEditor:
+            //    SquadEditorUpdate();
+            //    break;
 
             case PlayMode.Paused:
                 PausedUpdate();
@@ -75,10 +81,10 @@ public abstract class Board_Base : MonoBehaviour
 
     }
 
-    protected virtual void SquadEditorUpdate()
-    {
+    //protected virtual void SquadEditorUpdate()
+    //{
 
-    }
+    //}
 
     protected virtual void PausedUpdate()
     {
@@ -97,9 +103,9 @@ public abstract class Board_Base : MonoBehaviour
                 UnitPlacementLateUpdate();
                 break;
 
-            case PlayMode.SquadEditor:
-                SquadEditorLateUpdate();
-                break;
+            //case PlayMode.SquadEditor:
+            //    SquadEditorLateUpdate();
+            //    break;
 
             case PlayMode.Paused:
                 PausedLateUpdate();
@@ -120,10 +126,10 @@ public abstract class Board_Base : MonoBehaviour
 
     }
 
-    protected virtual void SquadEditorLateUpdate()
-    {
+    //protected virtual void SquadEditorLateUpdate()
+    //{
 
-    }
+    //}
 
     protected virtual void PausedLateUpdate()
     {
@@ -220,7 +226,7 @@ public abstract class Board_Base : MonoBehaviour
             return false;
         }
 
-        SquadData units = new SquadData();
+        Squad units = new Squad();
         if (keepUnits && Squares != null)
         {
             units = GetBoardAsSquad();
@@ -324,24 +330,25 @@ public abstract class Board_Base : MonoBehaviour
     #endregion
 
     #region Placing and moving units
-    public SquadData GetBoardAsSquad(bool mirrorBoard = false)
+    public Squad GetBoardAsSquad(bool mirrorBoard = false)
     {
         Vector2Int origin = mirrorBoard ? MirrorPosition(Vector2Int.zero) : Vector2Int.zero;
-        //List<UnitData> units = new List<UnitData>();
-        List<UnitPositionPair> units = new List<UnitPositionPair>();
-        foreach (Unit unit in UnitManager.Units)
-        {
-            //UnitData newUnit = new UnitData(unit, origin);
-            UnitData newUnit = new UnitData(unit);
+        ////List<UnitData> units = new List<UnitData>();
+        //List<UnitPositionPair> units = new List<UnitPositionPair>();
+        //foreach (Unit unit in UnitManager.Units)
+        //{
+        //    //UnitData newUnit = new UnitData(unit, origin);
+        //    UnitData newUnit = new UnitData(unit);
 
-            //if (mirrorBoard)
-            //{
-            //    newUnit.Position = new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) - newUnit.Position;
-            //}
-            units.Add(new UnitPositionPair(newUnit, unit.Square.Position));
-        }
+        //    //if (mirrorBoard)
+        //    //{
+        //    //    newUnit.Position = new Vector2Int(Squares.GetLength(0), Squares.GetLength(1)) - newUnit.Position;
+        //    //}
+        //    units.Add(new UnitPositionPair(newUnit, unit.Square.Position));
+        //}
 
-        return new SquadData(units, origin);
+        //return new Squad(units, origin);
+        return new Squad(UnitManager.Units, origin);
     }
     public bool TryMoveUnitTo(Unit unit, BoardSquare target)
     {
@@ -394,7 +401,7 @@ public abstract class Board_Base : MonoBehaviour
         return unit;
     }
 
-    public bool TryPlaceSquad(SquadData data, Vector2Int offset, bool mirror = false)
+    public bool TryPlaceSquad(Squad data, Vector2Int offset, bool mirror = false)
     {
         if (data.Units == null ||
             data.Units.Count == 0)
@@ -403,7 +410,7 @@ public abstract class Board_Base : MonoBehaviour
             return false;
         }
 
-        data.RecalculateParameters();
+        //data.RecalculateParameters();
         Vector2Int origin = mirror ? MirrorPosition(data.SquadOrigin + offset) : data.SquadOrigin + offset;
         Vector2Int size = mirror ? MirrorPosition(data.SquadOrigin + offset + data.Size) : data.SquadOrigin + offset + data.Size;
 
@@ -417,7 +424,7 @@ public abstract class Board_Base : MonoBehaviour
         }
 
         int failedUnitCount = 0;
-        foreach (UnitPositionPair pair in data.Units)
+        foreach (Squad.UnitPositionPair pair in data.Units)
         {
             UnitData clone = pair.Unit.Clone();
             Vector2Int position = pair.Position + offset;

@@ -17,7 +17,7 @@ public class Board : Board_Base
     [SerializeField] GameState m_gameState = default;
 
     [SerializeField] UnitPlacementMenu m_unitPlacementModePanel = default;
-    [SerializeField] GameObject m_squadEditorModePanel = default;
+    //[SerializeField] GameObject m_squadEditorModePanel = default;
     [SerializeField] GameObject m_gameOverPanel = default;
     [SerializeField] DungeonMap m_dungeonMap = default;
     [SerializeField] TMPro.TextMeshProUGUI m_currentGoldText = default;
@@ -35,7 +35,7 @@ public class Board : Board_Base
     const string m_defaultPlayerSquadFileName = "PlayerDefault";
     const string m_currentPlayerSquadFileName = "PlayerCurrent";
 
-    Squad m_currentPlayerSquad;
+    //Squad m_currentPlayerSquad;
     //SquadData m_enemySquadStartPosition;
 
     //public BoardSquare[,] Squares { get; protected set; }
@@ -279,11 +279,13 @@ public class Board : Board_Base
         }
         
         m_unitPlacementModePanel.Deactivate();
-        m_squadEditorModePanel.SetActive(false);
+        //m_squadEditorModePanel.SetActive(false);
         m_gameOverPanel.SetActive(false);
         ClearBoard();
 
-        m_currentPlayerSquad = new Squad(GetDefaultPlayerSquad());
+        //m_currentPlayerSquad = new Squad(GetDefaultPlayerSquad());
+        //m_currentPlayerSquad = GetDefaultPlayerSquad();
+
         ChangeGold(-m_currentGold);
         ChangeGold(m_gameState.Data.Gold);
 
@@ -432,16 +434,18 @@ public class Board : Board_Base
         {
             case PlayMode.Battle:
                 m_unitPlacementModePanel.Deactivate();
-                m_squadEditorModePanel.SetActive(false);
+                //m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 m_dungeonMap.Deactivate();
                 break;
 
             case PlayMode.UnitPlacement:
-                if(m_currentPlayerSquad == null)
-                {
-                    m_currentPlayerSquad = new Squad(GetCurrentPlayerSquad());
-                }
+                //if(m_currentPlayerSquad == null)
+                //{
+                //    //m_currentPlayerSquad = new Squad(GetCurrentPlayerSquad());
+                //    m_currentPlayerSquad = GetCurrentPlayerSquad();
+                
+                //}
 
                 //m_unitPlacementModePanel.Activate(m_currentPlayerSquad.Data.Units);
                 //Dictionary<UnitPrototype, int> recruitableUnits = new Dictionary<UnitPrototype, int>();
@@ -462,27 +466,27 @@ public class Board : Board_Base
                     //this
                     );
 
-                m_squadEditorModePanel.SetActive(false);
+                //m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 m_dungeonMap.Deactivate();
                 break;
 
-            case PlayMode.SquadEditor:
-                m_unitPlacementModePanel.Deactivate();
-                m_squadEditorModePanel.SetActive(true);
-                m_gameOverPanel.SetActive(false);
-                m_dungeonMap.Deactivate();
-                ClearBoard();
-                SetupSquares(m_defaultSquadSize.x, m_defaultSquadSize.y);
-                SetSquaresInteractable(Squares.GetLength(0), Squares.GetLength(1));
-                break;
+            //case PlayMode.SquadEditor:
+            //    m_unitPlacementModePanel.Deactivate();
+            //    m_squadEditorModePanel.SetActive(true);
+            //    m_gameOverPanel.SetActive(false);
+            //    m_dungeonMap.Deactivate();
+            //    ClearBoard();
+            //    SetupSquares(m_defaultSquadSize.x, m_defaultSquadSize.y);
+            //    SetSquaresInteractable(Squares.GetLength(0), Squares.GetLength(1));
+            //    break;
 
             case PlayMode.Paused:
                 break;
 
             case PlayMode.Dungeon:
                 m_unitPlacementModePanel.Deactivate();
-                m_squadEditorModePanel.SetActive(false);
+                //m_squadEditorModePanel.SetActive(false);
                 m_gameOverPanel.SetActive(false);
                 m_dungeonMap.Activate();
                 break;
@@ -536,8 +540,12 @@ public class Board : Board_Base
 
     void BattleWon()
     {
-        m_currentPlayerSquad.UpdateUnits(UnitManager.Units);
-        UnitSaveLoadUtility.SaveSquad(m_currentPlayerSquad.Data, m_currentPlayerSquadFileName, m_playerSquadsDirectoryName);
+        //m_currentPlayerSquad.UpdateUnits(UnitManager.Units);
+        //UnitSaveLoadUtility.SaveSquad(m_currentPlayerSquad.Data, m_currentPlayerSquadFileName, m_playerSquadsDirectoryName);
+
+        //m_currentPlayerSquad.UpdateUnits(UnitManager.Units);
+        //UnitSaveLoadUtility.SaveSquad(m_currentPlayerSquad, m_currentPlayerSquadFileName, m_playerSquadsDirectoryName);
+
 
         ChangeGold(m_currentEncounter.Reward);
 
@@ -557,48 +565,48 @@ public class Board : Board_Base
     #endregion
 
     #region Save/Load
-    SquadData GetCurrentPlayerSquad()
-    {
-        return UnitSaveLoadUtility.LoadSquad(m_currentPlayerSquadFileName, m_playerSquadsDirectoryName);
-    }
+    //Squad GetCurrentPlayerSquad()
+    //{
+    //    return UnitSaveLoadUtility.LoadSquad(m_currentPlayerSquadFileName, m_playerSquadsDirectoryName);
+    //}
 
-    SquadData GetDefaultPlayerSquad()
-    {
-        return UnitSaveLoadUtility.LoadSquad(m_defaultPlayerSquadFileName, m_playerSquadsDirectoryName);
-    }
+    //Squad GetDefaultPlayerSquad()
+    //{
+    //    return UnitSaveLoadUtility.LoadSquad(m_defaultPlayerSquadFileName, m_playerSquadsDirectoryName);
+    //}
 
-    public SquadData LoadAndPlaceEnemyFormation(int size, bool mirror = false)
-    {
-        SquadData formation = SquadBuilder.GenerateFormationFromEnemySquads(size);
+    //public Squad LoadAndPlaceEnemyFormation(int size, bool mirror = false)
+    //{
+    //    Squad formation = SquadBuilder.GenerateFormationFromEnemySquads(size);
 
-        Vector2Int boardSize = new Vector2Int(
-            Mathf.Max(formation.Size.x + 1, m_defaultBoardSize.x),
-            Mathf.Max(formation.Size.y + 1, m_defaultBoardSize.y));
+    //    Vector2Int boardSize = new Vector2Int(
+    //        Mathf.Max(formation.Size.x + 1, m_defaultBoardSize.x),
+    //        Mathf.Max(formation.Size.y + 1, m_defaultBoardSize.y));
 
-        SetupSquares(boardSize.x, boardSize.y);
-        TryPlaceSquad(formation, Vector2Int.zero, mirror);
+    //    SetupSquares(boardSize.x, boardSize.y);
+    //    TryPlaceSquad(formation, Vector2Int.zero, mirror);
 
-        return formation;
-    }
+    //    return formation;
+    //}
 
-    public SquadData LoadSquadToBoard(string name, string directory, Vector2Int offset, bool resizeBoard = false, bool mirror = false)
-    {
-        SquadData squad = UnitSaveLoadUtility.LoadSquad(name, directory);
-        if(resizeBoard)
-        {
-            SetupSquares(squad.Size.x + 1, squad.Size.y + 1);
-        }
+    //public Squad LoadSquadToBoard(string name, string directory, Vector2Int offset, bool resizeBoard = false, bool mirror = false)
+    //{
+    //    Squad squad = UnitSaveLoadUtility.LoadSquad(name, directory);
+    //    if(resizeBoard)
+    //    {
+    //        SetupSquares(squad.Size.x + 1, squad.Size.y + 1);
+    //    }
         
-        TryPlaceSquad(squad, offset, mirror);
+    //    TryPlaceSquad(squad, offset, mirror);
 
-        return squad;
-    }
+    //    return squad;
+    //}
 
-    public void SaveBoardAsSquad(string name, string dir, bool mirrorBoard = true)
-    {
-        SquadData squad = GetBoardAsSquad(mirrorBoard);
-        UnitSaveLoadUtility.SaveSquad(squad, name, dir);
-    }
+    //public void SaveBoardAsSquad(string name, string dir, bool mirrorBoard = true)
+    //{
+    //    Squad squad = GetBoardAsSquad(mirrorBoard);
+    //    UnitSaveLoadUtility.SaveSquad(squad, name, dir);
+    //}
 
     void UpdateSaveFile()
     {

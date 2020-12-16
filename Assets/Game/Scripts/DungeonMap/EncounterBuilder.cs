@@ -14,7 +14,7 @@ public static class EncounterBuilder
     public static Encounter GenerateEncounter(Vector2Int mapPosition, int difficulty)
     {
         //Encounter e = new Encounter();
-        SquadData enemies = SquadBuilder.GenerateFormationFromEnemySquads(difficulty);
+        Squad enemies = SquadBuilder.GenerateFormationFromEnemySquads(difficulty);
         //e.Enemies = SquadBuilder.GenerateFormationFromEnemySquads(difficulty);
 
         // Board should be at least 6x6. It should be wide enough to place the whole enemy squad.
@@ -39,7 +39,7 @@ public static class EncounterBuilder
         Vector2Int boardSize = BOSS_BOARD_SIZE;
         int playerRows = Mathf.Clamp(boardSize.y / 3, MIN_PLAYER_ROWS, MAX_PLAYER_ROWS);
 
-        SquadData enemies = SquadBuilder.GenerateBossFormation(BOSS_BOARD_SIZE);
+        Squad enemies = SquadBuilder.GenerateBossFormation(BOSS_BOARD_SIZE);
 
         return new Encounter(mapPosition, enemies, boardSize, playerRows, enemies.Difficulty);
     }

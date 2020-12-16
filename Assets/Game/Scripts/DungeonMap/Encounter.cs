@@ -14,7 +14,7 @@ public class Encounter : ISerializationCallbackReceiver
     public List<SerializableGuid> ConnectionIDs; // For serialization
     
     public Vector2Int BoardSize;
-    public SquadData Enemies;
+    public Squad Enemies;
     public int RowsAllowedForPlayerUnits;
 
     public int Reward;
@@ -23,7 +23,7 @@ public class Encounter : ISerializationCallbackReceiver
     public bool Available;
 
     // Constructor for new Encounters
-    public Encounter(Vector2Int mapPosition, SquadData enemies, Vector2Int boardSize, int playerRows, int reward)
+    public Encounter(Vector2Int mapPosition, Squad enemies, Vector2Int boardSize, int playerRows, int reward)
     {
         ID = Guid.NewGuid();        
         MapPosition = mapPosition;

@@ -21,7 +21,6 @@ public class MainMenu : MonoBehaviour
 
     public void Continue()
     {
-        Debug.Log("Continue");
         m_currentGameState.Data = SaveLoadUtility.LoadGame(PrefKeys.ContinueFileName);
         if(m_currentGameState.Data.GameOver)
         {

@@ -168,8 +168,13 @@ MonoBehaviour:
     type: 3}
   m_blackSquare: {fileID: 5275084990626925644, guid: a6d8ca73ec4efec46b17eaba8653e745,
     type: 3}
-  m_defaultBoardSize: {x: 2, y: 2}
-  m_boardState: {fileID: 11400000, guid: bc1c893b53237c345a76f15f8d794ff4, type: 2}
+  m_defaultBoardSize: {x: 10, y: 10}
+  m_playerUnits:
+  - Unit: {fileID: 11400000, guid: 315cf047a01920e479a977fa9af62fba, type: 2}
+    Position: {x: 5, y: 0}
+  m_enemyUnits:
+  - Unit: {fileID: 11400000, guid: 50450e16b00ebc24e847f0a1130e2953, type: 2}
+    Position: {x: 5, y: 9}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0

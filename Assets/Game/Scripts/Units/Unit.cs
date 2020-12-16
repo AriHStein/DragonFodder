@@ -6,11 +6,6 @@ using System;
 [RequireComponent(typeof(Animator))]
 public class Unit : MonoBehaviour
 {
-
-    //[SerializeField] UnitPrototype m_prototype = default;
-    //public UnitPrototype Proto { 
-    //    get { return m_prototype; } 
-    //}
     [HideInInspector]
     public BoardSquare Square;
 

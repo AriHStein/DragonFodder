@@ -28,6 +28,17 @@ public class SingleTargetAttack : AbilityPrototype
     public TargetPriorityMode TargetMode = TargetPriorityMode.FewestHitsToKill;
     public bool TargetOtherFaction = true;
 
+    public override List<GameObject> VFX { 
+        get 
+            { 
+            if(ProjectilePrefab == null)
+            {
+                return null;
+            }
+            return new List<GameObject> { ProjectilePrefab }; 
+        } 
+    }
+
     public override AbilityInstance GetInstance()
     {
         return new SingleTargetAttackInstance(this);

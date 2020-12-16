@@ -9,8 +9,10 @@ public abstract class AbilityPrototype : ScriptableObject
     //public string Name;
 
     //[SerializeField] List<AbilityPrototype> m_unlockedAbilities = default;
-    public List<AbilityPrototype> UnlockedAbilities; //{ get { return m_unlockedAbilities; } }
+    //public List<AbilityPrototype> UnlockedAbilities; //{ get { return m_unlockedAbilities; } }
 
+    [SerializeField] string m_abilityName = default;
+    public string Name { get { return m_abilityName; } }
     public abstract string AnimationTrigger { get; }
     
     //public int m_abilityPriority = 1;
@@ -19,6 +21,8 @@ public abstract class AbilityPrototype : ScriptableObject
     public int AbilityPriority; //{ get { return m_abilityPriority; } }
 
     public abstract AbilityInstance GetInstance();
+
+    public virtual List<GameObject> VFX { get { return null; } }
 
     //public abstract void Reset();
     //public virtual IAbilityContext GetValue(Unit unit, Board board)
