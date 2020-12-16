@@ -5,38 +5,25 @@ using UnityEngine;
 public class UnitPlacementMenu : MonoBehaviour
 {
     [SerializeField] GameObject m_placeUnitPanelPrefab = default;
-    //[SerializeField] GameObject m_recruitUnitPanelPrefab = default;
     [SerializeField] Transform m_buttonsParentTransform = default;
     [SerializeField] Transform m_placeUnitButtonsRoot = default;
-    //[SerializeField] Transform m_recruitUnitButtonsRoot = default;
 
     Dictionary<string, PlaceUnitPanel> m_placeUnitPanels;
-    //Dictionary<string, RecruitUnitPanel> m_recruitUnitPanels;
     
     // Start is called before the first frame update
     void Awake()
     {
         m_placeUnitPanels = new Dictionary<string, PlaceUnitPanel>();
-        //m_recruitUnitPanels = new Dictionary<string, RecruitUnitPanel>();
-
     }
 
     public void Activate(
-        List<UnitData> currentUnits//, 
-        //List<RecruitableUnitCollection> recruitableUnits, 
-        //Board_Base board
-        )
+        List<UnitData> currentUnits)
     {
         gameObject.SetActive(true);
         ActivateCurrentUnitPanels(currentUnits);
-
-        //ActivateCurrentUnitPanels(currentUnits, board);
-        //ActiveateRecruitableUnitPanels(recruitableUnits, board);
     }
 
-    void ActivateCurrentUnitPanels(List<UnitData> currentUnits//, 
-        //Board_Base board
-        )
+    void ActivateCurrentUnitPanels(List<UnitData> currentUnits)
     {
         foreach (PlaceUnitPanel panel in m_placeUnitPanels.Values)
         {
@@ -59,36 +46,9 @@ public class UnitPlacementMenu : MonoBehaviour
             sortedUnits[unit.Type].Add(unit);
         }
 
-        //SetupPlaceUnitPanels(sortedUnits, board);
         SetupPlaceUnitPanels(sortedUnits);
 
     }
-
-    //void ActiveateRecruitableUnitPanels(List<RecruitableUnitCollection> recruitableUnits, Board board)
-    //{
-    //    foreach (RecruitUnitPanel panel in m_recruitUnitPanels.Values)
-    //    {
-    //        panel.Deactivate();
-    //    }
-
-    //    if (recruitableUnits == null || recruitableUnits.Count == 0)
-    //    {
-    //        return;
-    //    }
-
-    //    //Dictionary<UnitPrototype, int> sortedUnits = new Dictionary<UnitPrototype, int>();
-    //    //foreach (UnitPrototype unit in recruitableUnits)
-    //    //{
-    //    //    if (!sortedUnits.ContainsKey(unit))
-    //    //    {
-    //    //        sortedUnits[unit] = 0;
-    //    //    }
-
-    //    //    sortedUnits[unit]++;
-    //    //}
-
-    //    SetupRecruitUnitPanels(recruitableUnits, board);
-    //}
 
     public void Deactivate()
     {
@@ -102,31 +62,15 @@ public class UnitPlacementMenu : MonoBehaviour
             panel.Deactivate();
         }
 
-        //foreach (RecruitUnitPanel panel in m_recruitUnitPanels.Values)
-        //{
-        //    panel.Deactivate();
-        //}
-
         gameObject.SetActive(false);
     }
 
     void SetupPlaceUnitPanels(
-        Dictionary<string, List<UnitData>> sortedUnits//, 
-        //Board board
-        )
+        Dictionary<string, List<UnitData>> sortedUnits)
     {
         foreach(string type in sortedUnits.Keys)
         {
             SetupPlaceUnitPanel(type, sortedUnits[type]);
-            
-            //if (!m_unitPanels.ContainsKey(type))
-            //{
-            //    GameObject go = Instantiate(m_unitPanelPrefab, m_buttonsPanelTransform);
-            //    go.transform.SetAsFirstSibling();
-            //    m_unitPanels[type] = go.GetComponent<PlaceUnitPanel>();
-            //}
-
-            //m_unitPanels[type].UpdatePanel(sortedUnits[type]);
         }
 
     }
@@ -136,7 +80,6 @@ public class UnitPlacementMenu : MonoBehaviour
         if (!m_placeUnitPanels.ContainsKey(type))
         {
             GameObject go = Instantiate(m_placeUnitPanelPrefab, m_buttonsParentTransform);
-            //go.transform.SetAsFirstSibling();
             go.transform.SetSiblingIndex(m_placeUnitButtonsRoot.transform.GetSiblingIndex() + 1);
             m_placeUnitPanels[type] = go.GetComponent<PlaceUnitPanel>();
         }
@@ -144,11 +87,24 @@ public class UnitPlacementMenu : MonoBehaviour
         m_placeUnitPanels[type].UpdatePanel(units);
     }
 
+    public List<UnitData> GetUnplacedUnits()
+    {
+        List<UnitData> units = new List<UnitData>();
+        foreach(PlaceUnitPanel panel in m_placeUnitPanels.Values)
+        {
+            if(panel.AvailableUnits != null && panel.AvailableUnits.Count > 0)
+            {
+                units.AddRange(panel.AvailableUnits);
+            }
+        }
+
+        return units;
+    }
+
     public void AddUnitToPlace(UnitPrototype proto)
     {
         UnitData unit = new UnitData(
             proto, 
-            //Vector2Int.zero, 
             Faction.Player);
         if (!m_placeUnitPanels.ContainsKey(proto.Type))
         {
@@ -160,26 +116,4 @@ public class UnitPlacementMenu : MonoBehaviour
             m_placeUnitPanels[proto.Type].AddUnit(unit);
         }
     }
-
-    //void SetupRecruitUnitPanels(List<RecruitableUnitCollection> sortedProtos, Board board)
-    //{
-    //    foreach(RecruitableUnitCollection unit in sortedProtos)
-    //    {
-    //        SetupRecruitUnitPanel(unit.Proto.Type, unit.Proto, unit.Count, board);
-    //    }
-    //}
-
-    //void SetupRecruitUnitPanel(string type, UnitPrototype proto, int count, Board board)
-    //{
-    //    if (!m_recruitUnitPanels.ContainsKey(type))
-    //    {
-    //        GameObject go = Instantiate(m_recruitUnitPanelPrefab, m_buttonsParentTransform);
-    //        //go.transform.SetAsFirstSibling();
-    //        go.transform.SetSiblingIndex(m_recruitUnitButtonsRoot.transform.GetSiblingIndex() + 1);
-    //        m_recruitUnitPanels[type] = go.GetComponent<RecruitUnitPanel>();
-    //    }
-
-    //    m_recruitUnitPanels[type].Activate(proto, count, this, board);
-    //}
-
 }

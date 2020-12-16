@@ -6,6 +6,7 @@ using System;
 public class UnitManager
 {
     public List<Unit> Units { get; protected set; }
+    public List<UnitData> UnplacedUnits;
     HashSet<Unit> m_diedThisTurn;
 
     //List<Unit> m_turnOrder;
@@ -20,6 +21,7 @@ public class UnitManager
     public UnitManager()
     {
         Units = new List<Unit>();
+        UnplacedUnits = new List<UnitData>();
         //m_turnOrder = new List<Unit>();
         m_diedThisTurn = new HashSet<Unit>();
         m_newUnitsThisTurn = new HashSet<Unit>();

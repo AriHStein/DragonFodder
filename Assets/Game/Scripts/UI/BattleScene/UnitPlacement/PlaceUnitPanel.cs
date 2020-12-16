@@ -12,11 +12,12 @@ public class PlaceUnitPanel : MonoBehaviour
     [SerializeField] TextMeshProUGUI m_buttonText = default;
     //[SerializeField] PlaceUnitButton m_button = default;
 
-    List<UnitData> m_availableUnits;
+    public List<UnitData> AvailableUnits { get; protected set; }
 
     private void Start()
     {
         m_inputManager = FindObjectOfType<InputManager>();
+        //AvailableUnits = new List<UnitData>();
     }
 
     public void UpdatePanel(List<UnitData> units)
@@ -41,8 +42,8 @@ public class PlaceUnitPanel : MonoBehaviour
             }
         }
         
-        m_availableUnits = units;
-        m_availableUnitsText.text = m_availableUnits.Count.ToString();
+        AvailableUnits = units;
+        m_availableUnitsText.text = AvailableUnits.Count.ToString();
         m_buttonText.text = type;
         //m_button.SetupButton(Board.Current.UnitManager.GetUnitPrototypeOfType(type), Faction.Player);
         gameObject.SetActive(true);
@@ -50,45 +51,45 @@ public class PlaceUnitPanel : MonoBehaviour
 
     public void AddUnit(UnitData unit)
     {
-        if(m_availableUnits == null || m_availableUnits.Count == 0)
+        if(AvailableUnits == null || AvailableUnits.Count == 0)
         {
-            m_availableUnits = new List<UnitData>();
+            AvailableUnits = new List<UnitData>();
         } 
         else 
-        if(unit.Type != m_availableUnits[0].Type)
+        if(unit.Type != AvailableUnits[0].Type)
         {
-            Debug.LogError($"Inconsistent unit types. Base type: {unit.Type}, type at index {0}: {m_availableUnits[0].Type}");
+            Debug.LogError($"Inconsistent unit types. Base type: {unit.Type}, type at index {0}: {AvailableUnits[0].Type}");
             return;
         }
 
-        m_availableUnits.Add(unit);
-        UpdatePanel(m_availableUnits);
+        AvailableUnits.Add(unit);
+        UpdatePanel(AvailableUnits);
     }
 
     public void Deactivate()
     {
         gameObject.SetActive(false);
-        m_availableUnits = null;
+        AvailableUnits = null;
     }
 
     public void SetUnitToBePlaced()
     {
-        m_inputManager.SelectUnitToPlace(m_availableUnits[0], Faction.Player);
+        m_inputManager.SelectUnitToPlace(AvailableUnits[0], Faction.Player);
         m_inputManager.UnitPlacedEvent += OnUnitPlaced;
         m_inputManager.CancelPlacementEvent += UnsubscribeFromPlacement;
     }
 
     void OnUnitPlaced()
     {
-        m_availableUnits.RemoveAt(0);
+        AvailableUnits.RemoveAt(0);
         UnsubscribeFromPlacement();
-        if(m_availableUnits.Count == 0)
+        if(AvailableUnits.Count == 0)
         {
             Deactivate();
             return;
         }
 
-        UpdatePanel(m_availableUnits);
+        UpdatePanel(AvailableUnits);
     }
 
     void UnsubscribeFromPlacement()

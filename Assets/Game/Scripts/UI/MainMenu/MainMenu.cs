@@ -52,7 +52,7 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            m_currentGameState.LoadDefaultState();
+            m_currentGameState.LoadNewGameState();
             m_currentGameState.Data.fileName = saveFileName;
             m_currentGameState.SaveGame();
         }
