@@ -13,9 +13,7 @@ public static class EncounterBuilder
     
     public static Encounter GenerateEncounter(Vector2Int mapPosition, int difficulty)
     {
-        //Encounter e = new Encounter();
         Squad enemies = SquadBuilder.GenerateFormationFromEnemySquads(difficulty);
-        //e.Enemies = SquadBuilder.GenerateFormationFromEnemySquads(difficulty);
 
         // Board should be at least 6x6. It should be wide enough to place the whole enemy squad.
         // It should be square, unless the enemy squad is larger than 12 wide, in which case it should only have 12 rows.
@@ -30,10 +28,6 @@ public static class EncounterBuilder
 
     public static Encounter GenerateBossEncounter(Vector2Int mapPosition)
     {
-        //Encounter e = new Encounter();
-
-        //e.Enemies = SquadBuilder.GenerateFormationFromEnemySquads(difficulty);
-
         // Board should be at least 6x6. It should be wide enough to place the whole enemy squad.
         // It should be square, unless the enemy squad is larger than 12 wide, in which case it should only have 12 rows.
         Vector2Int boardSize = BOSS_BOARD_SIZE;

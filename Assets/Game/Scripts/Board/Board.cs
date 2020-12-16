@@ -165,49 +165,6 @@ public class Board : Board_Base
     #endregion
 
     #region Save/Load
-    //Squad GetCurrentPlayerSquad()
-    //{
-    //    return UnitSaveLoadUtility.LoadSquad(m_currentPlayerSquadFileName, m_playerSquadsDirectoryName);
-    //}
-
-    //Squad GetDefaultPlayerSquad()
-    //{
-    //    return UnitSaveLoadUtility.LoadSquad(m_defaultPlayerSquadFileName, m_playerSquadsDirectoryName);
-    //}
-
-    //public Squad LoadAndPlaceEnemyFormation(int size, bool mirror = false)
-    //{
-    //    Squad formation = SquadBuilder.GenerateFormationFromEnemySquads(size);
-
-    //    Vector2Int boardSize = new Vector2Int(
-    //        Mathf.Max(formation.Size.x + 1, m_defaultBoardSize.x),
-    //        Mathf.Max(formation.Size.y + 1, m_defaultBoardSize.y));
-
-    //    SetupSquares(boardSize.x, boardSize.y);
-    //    TryPlaceSquad(formation, Vector2Int.zero, mirror);
-
-    //    return formation;
-    //}
-
-    //public Squad LoadSquadToBoard(string name, string directory, Vector2Int offset, bool resizeBoard = false, bool mirror = false)
-    //{
-    //    Squad squad = UnitSaveLoadUtility.LoadSquad(name, directory);
-    //    if(resizeBoard)
-    //    {
-    //        SetupSquares(squad.Size.x + 1, squad.Size.y + 1);
-    //    }
-        
-    //    TryPlaceSquad(squad, offset, mirror);
-
-    //    return squad;
-    //}
-
-    //public void SaveBoardAsSquad(string name, string dir, bool mirrorBoard = true)
-    //{
-    //    Squad squad = GetBoardAsSquad(mirrorBoard);
-    //    UnitSaveLoadUtility.SaveSquad(squad, name, dir);
-    //}
-
     void UpdateSaveFile()
     {
         if(m_gameState == null)

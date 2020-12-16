@@ -9,7 +9,6 @@ public class EncounterButton : MonoBehaviour
     Encounter m_encounter;
     Button m_button;
     Board m_board;
-    //GameObject m_dungeonMapPanel;
 
     private void Awake()
     {
@@ -20,14 +19,11 @@ public class EncounterButton : MonoBehaviour
     {
         m_encounter = encounter;
         m_board = board;
-        //m_dungeonMapPanel = dungeonMapPanel;
     }
 
     public void LoadEncounter()
     {
         m_board.SetupEncounter(m_encounter);
-        //Board.Current.SetupEncounter(m_encounter);
-        //m_dungeonMapPanel.SetActive(false);
     }
 
     public void EnableButton()

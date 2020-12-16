@@ -31,6 +31,7 @@ public class LoadGamePanel : MonoBehaviour
     {
         ClearFileList();
         gameObject.SetActive(false);
+        m_mainMenu.RefreshPanel();
     }
 
     void RefreshPanel()

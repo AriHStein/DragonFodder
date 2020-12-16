@@ -9,7 +9,6 @@ public class DungeonMap : MonoBehaviour
 {
     [SerializeField] GameState m_gameState = default;
     
-    //[SerializeField] List<int> m_encounterDifficulties = default;
     [SerializeField] GameObject m_dugeonModePanel = default;
     [SerializeField] GameObject m_encounterButtonPrefab = default;
     [SerializeField] UILineRendererList m_connectionList = default;
@@ -40,7 +39,8 @@ public class DungeonMap : MonoBehaviour
         {
             if (m_gameState.Data.Encounters == null || m_gameState.Data.Encounters.Count == 0)
             {
-                GenerateEncounters();
+                DungeonBuilder.GenerateEncounters(m_encounterCount, m_encounterGridSize, out m_encounters, out m_availableEncounters);
+                m_gameState.Data.Encounters = new List<Encounter>(m_encounters.Values);
             }
             else
             {
@@ -51,6 +51,58 @@ public class DungeonMap : MonoBehaviour
         SetupEncounterButtons(board);
         RefreshPanel();
     }
+    
+    public void Activate()
+    {
+        m_dugeonModePanel.SetActive(true);
+        RefreshPanel();
+    }
+    
+    public void Deactivate()
+    {
+        m_dugeonModePanel.SetActive(false);
+    }
+    
+    public void ExitEncounter(Encounter encounter, bool encounterWon)
+    {
+        if (encounter == null)
+        {
+            Debug.LogError("Encounter is null.");
+            return;
+        }
+
+        if (m_encounterButtons == null)
+        {
+            Debug.LogError($"EncounterMap is null. ?????");
+            return;
+        }
+
+        if (!m_encounterButtons.ContainsKey(encounter))
+        {
+            Debug.LogError($"Encounter not found. ?????");
+            return;
+        }
+
+        encounter.Complete = encounterWon;
+        if (encounterWon)
+        {
+            m_encounterButtons[encounter].DisableButton();
+            foreach (Encounter connection in encounter.Connections)
+            {
+                m_availableEncounters.Add(connection);
+                connection.Available = true;
+            }
+
+            m_gameState.SaveGame();
+        }
+        else
+        {
+            m_gameState.GameOver();
+        }
+
+
+        RefreshPanel();
+    }
 
     void RefreshPanel()
     {
@@ -58,98 +110,8 @@ public class DungeonMap : MonoBehaviour
         ActivateButtons();
     }
 
-    struct Path
-    {
-        public Vector2Int Start;
-        public Vector2Int End;
-        public Path(Vector2Int start, Vector2Int end)
-        {
-            Start = start;
-            End = end;
-        }
-    }
-
-    void GenerateEncounters()
-    {
-        List<Vector2Int> weightedDirections = new List<Vector2Int>
-        {
-            Vector2Int.up,
-            Vector2Int.up,
-            Vector2Int.up,
-            Vector2Int.right,
-            Vector2Int.right,
-            Vector2Int.left,
-            Vector2Int.left,
-            Vector2Int.down
-        };
-
-
-        List<Vector2Int> encounterPositions = new List<Vector2Int> { new Vector2Int(m_encounterGridSize.x / 2, 0) };
-        HashSet<Path> encouterPaths = new HashSet<Path>();
-
-        int failedCount = 0;
-        while (encounterPositions.Count < m_encounterCount && failedCount < 100)
-        {
-            Vector2Int start = encounterPositions[Random.Range(0, encounterPositions.Count)];
-            Vector2Int end = start + weightedDirections[Random.Range(0, weightedDirections.Count)];
-            if (end.x < 0 || end.y < 0 ||
-                end.x >= m_encounterGridSize.x || end.y >= m_encounterGridSize.y)
-            {
-                failedCount++;
-                continue;
-            }
-
-            encouterPaths.Add(new Path(start, end));
-            if(!encounterPositions.Contains(end))
-            {
-                encounterPositions.Add(end);
-            }
-        }
-
-        Encounter[,] encounterMap = new Encounter[m_encounterGridSize.x, m_encounterGridSize.y];
-        m_encounters = new Dictionary<System.Guid, Encounter>();
-        m_availableEncounters = new List<Encounter>();
-
-        int encounterDifficulty = 2;
-        Encounter firstEncounter = null;
-        for (int i = 0; i < encounterPositions.Count; i++) {
-
-            Encounter e;
-            if(i == encounterPositions.Count - 1)
-            {
-                e = EncounterBuilder.GenerateBossEncounter(encounterPositions[i]);
-            }
-            else
-            {
-                e = EncounterBuilder.GenerateEncounter(encounterPositions[i], encounterDifficulty);
-            }
-            encounterDifficulty++;
-
-            encounterMap[encounterPositions[i].x, encounterPositions[i].y] = e;
-            //m_encounters.Add(e);
-            m_encounters[e.ID] = e;
-
-            if(firstEncounter == null)
-            {
-                firstEncounter = e;
-            }
-        }
-
-        foreach(Path path in encouterPaths)
-        {
-            encounterMap[path.Start.x, path.Start.y].ConnectTo(encounterMap[path.End.x, path.End.y]);
-        }
-
-        //m_availableEncounters.Add(m_encounters[0]);
-        m_availableEncounters.Add(firstEncounter);
-        firstEncounter.Available = true;
-
-        m_gameState.Data.Encounters = new List<Encounter>(m_encounters.Values);
-    }
-
     void LoadEncounters()
     {
-        Debug.Log($"Load Encounters. Encounter count: {m_gameState.Data.Encounters.Count}");
         m_encounters = new Dictionary<System.Guid, Encounter>();
         m_availableEncounters = new List<Encounter>();
 
@@ -167,7 +129,7 @@ public class DungeonMap : MonoBehaviour
             e.FormAllConnections(m_encounters);
         }
     }
-
+    
     void SetupEncounterButtons(Board board)
     {
         ClearEncounterButtons();
@@ -200,7 +162,7 @@ public class DungeonMap : MonoBehaviour
             SetupEncounterButton(encounter, buttonPos, board);
         }
     }
-
+    
     void SetupEncounterButton(Encounter encounter, Vector3 position, Board board)
     {
         GameObject go = Instantiate(m_encounterButtonPrefab, transform);
@@ -210,7 +172,7 @@ public class DungeonMap : MonoBehaviour
         rect.anchoredPosition = position;
         m_encounterButtons[encounter] = eb;
     }
-
+    
     void ClearEncounterButtons()
     {
         if(m_encounterButtons == null)
@@ -228,7 +190,7 @@ public class DungeonMap : MonoBehaviour
             Destroy(button.gameObject);
         }
     }
-
+    
     void SetupConnections()
     {
         List<Vector2> points = new List<Vector2>();
@@ -258,14 +220,7 @@ public class DungeonMap : MonoBehaviour
         }
 
     }
-
-
-    public void Activate()
-    {
-        m_dugeonModePanel.SetActive(true);
-        RefreshPanel();
-    }
-
+    
     void ActivateButtons()
     {
         foreach (Encounter encounter in m_encounters.Values)
@@ -287,51 +242,5 @@ public class DungeonMap : MonoBehaviour
                 m_encounterButtons[encounter].gameObject.SetActive(false);
             }
         }
-    }
-
-    public void Deactivate()
-    {
-        m_dugeonModePanel.SetActive(false);
-    }
-
-    public void ExitEncounter(Encounter encounter, bool encounterWon)
-    {
-        if(encounter == null)
-        {
-            Debug.LogError("Encounter is null.");
-            return;
-        }
-
-        if (m_encounterButtons == null)
-        {
-            Debug.LogError($"EncounterMap is null. ?????");
-            return;
-        }
-        
-        if (!m_encounterButtons.ContainsKey(encounter))
-        {
-            Debug.LogError($"Encounter not found. ?????");
-            return;
-        }
-
-        encounter.Complete = encounterWon;
-        if (encounterWon)
-        {
-            m_encounterButtons[encounter].DisableButton();
-            foreach(Encounter connection in encounter.Connections)
-            {
-                m_availableEncounters.Add(connection);
-                connection.Available = true;
-            }
-
-            m_gameState.SaveGame();
-        }
-        else
-        {
-            m_gameState.GameOver();
-        }
-
-
-        RefreshPanel();
     }
 }

@@ -44,11 +44,6 @@ public class SquadPrototypeLookup : ScriptableObject
 
     public static SquadPrototype GetProto(string type)
     {
-        //if (m_instance == null)
-        //{
-        //    m_instance = Resources.Load<SquadPrototypeLookup>("SquadPrototypeLookup");
-        //    m_instance.SetupProtoMap();
-        //}
         Initialize();
 
         if (!m_instance.m_map.ContainsKey(type))
@@ -88,50 +83,12 @@ public class SquadPrototypeLookup : ScriptableObject
         return new List<SquadPrototype>(m_instance.m_map.Values);
     }
 
-    //public static List<SquadPrototype> GetProtoypesOfFaction(Faction faction)
-    //{
-    //    Initialize();
-
-    //    List<SquadPrototype> protos = new List<SquadPrototype>();
-    //    foreach (SquadPrototype proto in m_instance.m_map.Values)
-    //    {
-    //        if (proto.Faction == faction)
-    //        {
-    //            protos.Add(proto);
-    //        }
-    //    }
-
-    //    return protos;
-    //}
-
-    //public static List<SquadPrototype> GetBossPrototypes()
-    //{
-    //    Initialize();
-        
-    //    List<SquadPrototype> protos = new List<SquadPrototype>();
-    //    foreach(SquadPrototype proto in m_instance.m_map.Values)
-    //    {
-    //        if(proto.IsBoss)
-    //        {
-    //            protos.Add(proto);
-    //        }
-    //    }
-
-    //    return protos;
-    //}
-
     public static void AddPrototype(SquadPrototype proto)
     {
-        //if (m_instance == null)
-        //{
-        //    m_instance = Resources.Load<SquadPrototypeLookup>("SquadPrototypeLookup");
-        //    m_instance.SetupProtoMap();
-        //}
         Initialize();
 
         if (m_instance.Protos.Contains(proto))
         {
-            //Debug.LogError($"Duplicate unit type: {proto.Type}");
             return;
         }
 

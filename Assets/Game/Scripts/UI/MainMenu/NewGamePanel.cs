@@ -20,12 +20,11 @@ public class NewGamePanel : MonoBehaviour
     {
         m_inputField.text = "";
         gameObject.SetActive(false);
+        m_mainMenu.RefreshPanel();
     }
 
     public void StartGame()
     {
-
-        
         if(m_inputField.text == null || m_inputField.text == "")
         {
             m_mainMenu.StartGame(m_defaultFileName);

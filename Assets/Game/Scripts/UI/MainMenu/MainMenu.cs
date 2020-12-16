@@ -12,9 +12,13 @@ public class MainMenu : MonoBehaviour
     [SerializeField] Button m_continueButton = default;
 
     public string FileName;
-    //const string CONTINUE_SAVEFILE_NAME = "AutoSave";
 
     private void Start()
+    {
+        RefreshPanel();
+    }
+
+    public void RefreshPanel()
     {
         m_continueButton.interactable = SaveLoadUtility.SaveFileExists(PrefKeys.ContinueFileName);
     }
@@ -29,20 +33,6 @@ public class MainMenu : MonoBehaviour
         }
         SceneManager.LoadScene(RECRUIT_UNITS_SCENE_INDEX);
     }
-
-    //public void NewGame()
-    //{
-    //    Debug.Log("New Game");
-    //    m_currentGameState.LoadDefaultState();
-    //    SceneManager.LoadScene(BATTLE_SCENE_BUILD_INDEX);
-    //}
-
-    //public void LoadGame()
-    //{
-    //    Debug.Log("Load Game");
-    //    m_currentGameState.Data = SaveLoadUtility.LoadGame(FileName);
-    //    SceneManager.LoadScene(BATTLE_SCENE_BUILD_INDEX);
-    //}
 
     public void StartGame(string saveFileName)
     {

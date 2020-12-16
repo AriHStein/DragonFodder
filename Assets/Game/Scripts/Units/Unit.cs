@@ -163,11 +163,6 @@ public class Unit : MonoBehaviour
         transform.LookAt(square.transform);
     }
 
-    //public virtual bool TryForceMove(Vector2Int moveVector)
-    //{
-    //    return Board.Current.TryMoveUnitTo(this, Board.Current.GetSquareAt(Square.Position + moveVector));
-    //}
-
     public void ApplyStatus(StatusInstance status)
     {
         foreach(StatusInstance s in m_statuses)
@@ -262,7 +257,6 @@ public class Unit : MonoBehaviour
 
     public virtual void ChangeMP(int amount)
     {
-        //Debug.Log("ChangeMP");
         CurrentMP += amount;
         CurrentMP = Mathf.Clamp(CurrentMP, 0, MaxMP);
     }

@@ -22,7 +22,6 @@ public class Encounter : ISerializationCallbackReceiver
     public bool Complete;
     public bool Available;
 
-    // Constructor for new Encounters
     public Encounter(Vector2Int mapPosition, Squad enemies, Vector2Int boardSize, int playerRows, int reward)
     {
         ID = Guid.NewGuid();        
@@ -36,7 +35,6 @@ public class Encounter : ISerializationCallbackReceiver
         Available = false;
 
         Connections = new List<Encounter>();
-        //ConnectionIDs = new List<SerializableGuid>();
     }
 
     public void OnBeforeSerialize()
@@ -79,9 +77,6 @@ public class Encounter : ISerializationCallbackReceiver
         }
 
         Connections.Add(other);
-
-        //if(!ConnectionIDs.Contains(other.ID))
-        //    ConnectionIDs.Add(other.ID);
     }
 
     public void FormAllConnections(Dictionary<Guid, Encounter> encounters) 
