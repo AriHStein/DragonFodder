@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class #SCRIPTNAME#
+public class #SCRIPTNAME# : MonoBehaviour
 {
+    #region Inspector Set Values
+    #NOTRIM#
+    #endregion
+    
     #region Public Fields
     #NOTRIM#
     #endregion
@@ -12,8 +16,15 @@ public class #SCRIPTNAME#
     #NOTRIM#
     #endregion
 
-    #region Constructors
-    public #SCRIPTNAME#() 
+    #region Unity Events
+    // Start is called before the first frame update
+    void Start()
+    {
+        #NOTRIM#
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         #NOTRIM#
     }

@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "#SCRIPTNAME#", menuName = "ScriptableObject/#SCRIPTNAME#", order = 82)]
 public class #SCRIPTNAME# : ScriptableObject
 {
-        #NOTRIM#
+    #NOTRIM#
 }
