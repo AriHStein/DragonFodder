@@ -17,7 +17,7 @@ public class InputManager : MonoBehaviour
     public event Action UnitPlacedEvent;
     public event Action CancelPlacementEvent;
 
-    Faction m_currentFaction;
+    //Faction m_currentFaction;
 
     GameObject m_unitPreview;
 
@@ -139,7 +139,7 @@ public class InputManager : MonoBehaviour
             return false;
         }
 
-        m_newUnitToPlace.Faction = m_currentFaction;
+        //m_newUnitToPlace.Faction = m_currentFaction;
         if (m_board.TryPlaceUnit(m_newUnitToPlace, square.Position) != null)
         {
             UnitPlacedEvent?.Invoke();
@@ -203,13 +203,14 @@ public class InputManager : MonoBehaviour
     }
 
 
-    public void SelectUnitToPlace(UnitData data, Faction faction)
+    public void SelectUnitToPlace(UnitData data)
     {
         ReturnGrabbedUnitToOriginalPosition();
         CancelPlacementEvent?.Invoke();
 
         m_newUnitToPlace = data;
-        m_currentFaction = faction;
+        //m_currentFaction = data.Faction;
+        //m_currentFaction = faction;
         m_unitPreview = Instantiate(UnitPrototypeDB.GetProto(data.Type).Prefab, transform);
 
     }

@@ -13,6 +13,7 @@ public class UnitData
     public int CurrentHealth;
     public int CurrentMP;
     public int Difficulty;
+    public int Level = 1;
     public bool IsSummoned;
 
     private UnitData(

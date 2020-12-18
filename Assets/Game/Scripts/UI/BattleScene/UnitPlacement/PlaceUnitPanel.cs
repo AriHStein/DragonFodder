@@ -69,7 +69,7 @@ public class PlaceUnitPanel : MonoBehaviour
 
     public void SetUnitToBePlaced()
     {
-        m_inputManager.SelectUnitToPlace(AvailableUnits[0], Faction.Player);
+        m_inputManager.SelectUnitToPlace(AvailableUnits[0]);
         m_inputManager.UnitPlacedEvent += OnUnitPlaced;
         m_inputManager.CancelPlacementEvent += UnsubscribeFromPlacement;
     }

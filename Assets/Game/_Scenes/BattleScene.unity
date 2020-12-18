@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b0b2c434bd6104da9472d2ba72950d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_placeUnitPanelPrefab: {fileID: 28640298570285903, guid: 9993cf2a60ce4f747a16e4b6da6a72ab,
+  m_placeUnitButtonPrefab: {fileID: 3625617045924665256, guid: d1a4e11800a709e40b67ff8017a14558,
     type: 3}
   m_buttonsParentTransform: {fileID: 1773047890}
   m_placeUnitButtonsRoot: {fileID: 776466209}
