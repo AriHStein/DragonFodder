@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "SquadPrototypeLookup", menuName = "ScriptableObject/SquadPrototypeLookup", order = 82)]
-public class SquadPrototypeLookup : ScriptableObject
+public class SquadPrototypeDB : ScriptableObject
 {
     [SerializeField] List<SquadPrototype> Protos;
 
     Dictionary<string, SquadPrototype> m_map;
-    static SquadPrototypeLookup m_instance;
+    static SquadPrototypeDB m_instance;
 
     private void OnValidate()
     {
-        Initialize();
+        Init();
     }
 
-    static void Initialize()
+    [RuntimeInitializeOnLoadMethod]
+    static void Init()
     {
-        if (m_instance == null)
-        {
-            m_instance = Resources.Load<SquadPrototypeLookup>("SquadPrototypeLookup");
-            m_instance.SetupProtoMap();
-        }
+        m_instance = Resources.LoadAll<SquadPrototypeDB>("UnitDBs")[0];
+        m_instance.SetupProtoMap();
+
+        //if (m_instance == null)
+        //{
+        //    m_instance = Resources.Load<SquadPrototypeLookup>("SquadPrototypeLookup");
+        //    m_instance.SetupProtoMap();
+        //}
     }
 
     void SetupProtoMap()
@@ -44,7 +48,11 @@ public class SquadPrototypeLookup : ScriptableObject
 
     public static SquadPrototype GetProto(string type)
     {
-        Initialize();
+        if (m_instance == null)
+        {
+            Init();
+        }
+        //Initialize();
 
         if (!m_instance.m_map.ContainsKey(type))
         {
@@ -62,7 +70,11 @@ public class SquadPrototypeLookup : ScriptableObject
             return GetAllPrototypes();
         }
 
-        Initialize();
+        if (m_instance == null)
+        {
+            Init();
+        }
+        //Initialize();
 
         List<SquadPrototype> protos = new List<SquadPrototype>();
         foreach (SquadPrototype proto in m_instance.m_map.Values)
@@ -78,14 +90,18 @@ public class SquadPrototypeLookup : ScriptableObject
 
     public static List<SquadPrototype> GetAllPrototypes()
     {
-        Initialize();
+        //Initialize();
 
         return new List<SquadPrototype>(m_instance.m_map.Values);
     }
 
     public static void AddPrototype(SquadPrototype proto)
     {
-        Initialize();
+        if(m_instance == null)
+        {
+            Init();
+        }
+        //Initialize();
 
         if (m_instance.Protos.Contains(proto))
         {

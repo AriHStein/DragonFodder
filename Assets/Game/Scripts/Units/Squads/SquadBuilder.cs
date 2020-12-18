@@ -6,14 +6,14 @@ public static class SquadBuilder
 {
     public static Squad GenerateFormationFromEnemySquads(int difficulty)
     {
-        return GenerateFormation(SquadPrototypeLookup.GetPrototypes((proto) => { return proto.Faction == Faction.Enemy && !proto.IsBoss; }), difficulty);
+        return GenerateFormation(SquadPrototypeDB.GetPrototypes((proto) => { return proto.Faction == Faction.Enemy && !proto.IsBoss; }), difficulty);
     }
 
     public static Squad GenerateFormation(List<SquadPrototype> squadProtos, int difficulty)
-    {
-        if(squadProtos == null || squadProtos.Count == 0 || difficulty < squadProtos[0].Difficulty)
+    {        
+        if(squadProtos == null || squadProtos.Count == 0)
         {
-            Debug.Log($"No squad protos. Min difficulty: {squadProtos[0].Difficulty}. Attempted difficulty: {difficulty}");
+            Debug.Log("No squad protos.");
             return new Squad();
         }
 
@@ -43,7 +43,7 @@ public static class SquadBuilder
 
     public static Squad GenerateBossFormation(Vector2Int boardSize)
     {
-        List<SquadPrototype> bossSquads = SquadPrototypeLookup.GetPrototypes((proto) => { return proto.IsBoss; });
+        List<SquadPrototype> bossSquads = SquadPrototypeDB.GetPrototypes((proto) => { return proto.IsBoss; });
         if (bossSquads == null || bossSquads.Count == 0)
         {
             Debug.Log($"No boss protos found.");

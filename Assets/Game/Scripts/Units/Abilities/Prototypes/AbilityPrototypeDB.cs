@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "AbilityPrototypeLookup", menuName = "ScriptableObject/AbilityPrototypeLookup", order = 82)]
-public class AbilityPrototypeLookup : ScriptableObject
+public class AbilityPrototypeDB : ScriptableObject
 {
     [SerializeField] List<AbilityPrototype> AbilityTypes;
 
     Dictionary<string, AbilityPrototype> m_map;
-    static AbilityPrototypeLookup m_instance;
+    static AbilityPrototypeDB m_instance;
+
+    [RuntimeInitializeOnLoadMethod]
+    static void Init()
+    {
+        m_instance = Resources.LoadAll<AbilityPrototypeDB>("UnitDBs")[0];
+        m_instance.SetupMap();
+    }
 
     private void OnValidate()
     {
@@ -37,8 +44,9 @@ public class AbilityPrototypeLookup : ScriptableObject
     {
         if (m_instance == null)
         {
-            m_instance = Resources.Load<AbilityPrototypeLookup>("AbilityLookup");
-            m_instance.SetupMap();
+            Init();
+            //m_instance = Resources.Load<AbilityPrototypeDB>("AbilityLookup");
+            //m_instance.SetupMap();
         }
 
         if (!m_instance.m_map.ContainsKey(type))
@@ -54,8 +62,9 @@ public class AbilityPrototypeLookup : ScriptableObject
     {
         if (m_instance == null)
         {
-            m_instance = Resources.Load<AbilityPrototypeLookup>("AbilityPrototypeLookup");
-            m_instance.SetupMap();
+            Init();
+            //m_instance = Resources.Load<AbilityPrototypeDB>("AbilityPrototypeLookup");
+            //m_instance.SetupMap();
         }
 
         return new List<string>(m_instance.m_map.Keys);

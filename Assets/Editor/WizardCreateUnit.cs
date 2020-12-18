@@ -53,7 +53,7 @@ public class WizardCreateUnit : ScriptableWizard
         UnitPrototype unit = ScriptableObject.CreateInstance<UnitPrototype>();
         string prototypePath = Path.Combine("Assets", "Game", "Units", "_Prototypes", GetTypeString());
         AssetDatabase.CreateAsset(unit, Path.Combine(prototypePath, Type + ".asset"));
-        UnitPrototypeLookup.AddPrototype(unit);
+        UnitPrototypeDB.AddPrototype(unit);
 
         unit.Type = Type;
         string unitDirectory = Path.Combine("Assets", "Game", "Units", "Data", GetTypeString(), Type);

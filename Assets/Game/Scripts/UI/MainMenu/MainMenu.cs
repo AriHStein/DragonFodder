@@ -6,7 +6,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    const int RECRUIT_UNITS_SCENE_INDEX = 1;
+    [SerializeField] SceneReference m_recruitUnitsScene = default;
+    //const int RECRUIT_UNITS_SCENE_INDEX = 1;
     [SerializeField] GameState m_currentGameState = default;
 
     [SerializeField] Button m_continueButton = default;
@@ -31,7 +32,7 @@ public class MainMenu : MonoBehaviour
             Debug.LogError("Loaded a game that is Game Over.");
             return;
         }
-        SceneManager.LoadScene(RECRUIT_UNITS_SCENE_INDEX);
+        SceneManager.LoadScene(m_recruitUnitsScene);
     }
 
     public void StartGame(string saveFileName)
@@ -47,6 +48,11 @@ public class MainMenu : MonoBehaviour
             m_currentGameState.SaveGame();
         }
 
-        SceneManager.LoadScene(RECRUIT_UNITS_SCENE_INDEX);
+        SceneManager.LoadScene(m_recruitUnitsScene);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

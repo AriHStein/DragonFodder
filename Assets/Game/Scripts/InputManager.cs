@@ -210,7 +210,7 @@ public class InputManager : MonoBehaviour
 
         m_newUnitToPlace = data;
         m_currentFaction = faction;
-        m_unitPreview = Instantiate(UnitPrototypeLookup.GetProto(data.Type).Prefab, transform);
+        m_unitPreview = Instantiate(UnitPrototypeDB.GetProto(data.Type).Prefab, transform);
 
     }
 }

@@ -20,7 +20,7 @@ public class CurrentUnitItem : MonoBehaviour
 
         m_unitName.text = Unit.Type;
 
-        UnitPrototype proto = UnitPrototypeLookup.GetProto(unit.Type);
+        UnitPrototype proto = UnitPrototypeDB.GetProto(unit.Type);
         if (proto.Portrait != null)
         {
             m_portrait.sprite = proto.Portrait;

@@ -3,12 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "UnitPrototypeLookup", menuName = "ScriptableObject/UnitPrototypeLookup", order = 82)]
-public class UnitPrototypeLookup : ScriptableObject
+public class UnitPrototypeDB : ScriptableObject
 {
     [SerializeField] List<UnitPrototype> Protos;
 
     Dictionary<string, UnitPrototype> m_IDProtoMap;
-    static UnitPrototypeLookup m_instance;
+    static UnitPrototypeDB m_instance;
+
+    [RuntimeInitializeOnLoadMethod]
+    static void Init()
+    {
+        m_instance = Resources.LoadAll<UnitPrototypeDB>("UnitDBs")[0];
+        m_instance.SetupProtoMap();
+    }
 
     private void OnValidate()
     {
@@ -37,8 +44,9 @@ public class UnitPrototypeLookup : ScriptableObject
     {
         if(m_instance == null)
         {
-            m_instance = Resources.Load<UnitPrototypeLookup>("UnitPrototypeLookup");
-            m_instance.SetupProtoMap();
+            Init();
+            //m_instance = Resources.Load<UnitPrototypeDB>("UnitPrototypeLookup");
+            //m_instance.SetupProtoMap();
         }
 
         if(!m_instance.m_IDProtoMap.ContainsKey(type))
@@ -54,8 +62,9 @@ public class UnitPrototypeLookup : ScriptableObject
     {
         if (m_instance == null)
         {
-            m_instance = Resources.Load<UnitPrototypeLookup>("UnitPrototypeLookup");
-            m_instance.SetupProtoMap();
+            Init();
+            //m_instance = Resources.Load<UnitPrototypeDB>("UnitPrototypeLookup");
+            //m_instance.SetupProtoMap();
         }
 
         if (m_instance.Protos.Contains(proto))

@@ -381,7 +381,7 @@ public abstract class Board_Base : MonoBehaviour
             return null;
         }
 
-        UnitPrototype proto = UnitPrototypeLookup.GetProto(data.Type);
+        UnitPrototype proto = UnitPrototypeDB.GetProto(data.Type);
         if (proto == null)
         {
             Debug.LogWarning("Failed to place unit. Prototype not found.");

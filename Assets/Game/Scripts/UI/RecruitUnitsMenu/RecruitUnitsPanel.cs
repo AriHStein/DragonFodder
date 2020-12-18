@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class RecruitUnitsPanel : MonoBehaviour
 {
-    const int BATTLE_SCENE_INDEX = 2;
+    [SerializeField] SceneReference m_battleModeScene = default;
+    //const int BATTLE_SCENE_INDEX = 2;
     [SerializeField] GameState m_currentGameState = default;
 
     [SerializeField] Transform m_availablePanel = default;
@@ -145,6 +146,6 @@ public class RecruitUnitsPanel : MonoBehaviour
 
         m_currentGameState.SaveGame();
 
-        SceneManager.LoadScene(BATTLE_SCENE_INDEX);
+        SceneManager.LoadScene(m_battleModeScene);
     }
 }

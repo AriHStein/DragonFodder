@@ -10,14 +10,12 @@ public class PlaceUnitPanel : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI m_availableUnitsText = default;
     [SerializeField] TextMeshProUGUI m_buttonText = default;
-    //[SerializeField] PlaceUnitButton m_button = default;
 
     public List<UnitData> AvailableUnits { get; protected set; }
 
     private void Start()
     {
         m_inputManager = FindObjectOfType<InputManager>();
-        //AvailableUnits = new List<UnitData>();
     }
 
     public void UpdatePanel(List<UnitData> units)
@@ -27,8 +25,6 @@ public class PlaceUnitPanel : MonoBehaviour
             Debug.LogError($"Invalid units list.");
             Deactivate();
             return;
-            //m_availableUnitsText.text = "";
-            //m_buttonText.text = "";
         }
 
         string type = units[0].Type;
@@ -45,7 +41,6 @@ public class PlaceUnitPanel : MonoBehaviour
         AvailableUnits = units;
         m_availableUnitsText.text = AvailableUnits.Count.ToString();
         m_buttonText.text = type;
-        //m_button.SetupButton(Board.Current.UnitManager.GetUnitPrototypeOfType(type), Faction.Player);
         gameObject.SetActive(true);
     }
 

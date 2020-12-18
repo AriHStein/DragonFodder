@@ -59,7 +59,7 @@ public class WizardCreateAbility : ScriptableWizard
 
     void DrawAbilityTypeButtons()
     {
-        List<string> types = AbilityPrototypeLookup.GetAbilityTypes();
+        List<string> types = AbilityPrototypeDB.GetAbilityTypes();
 
         if(types == null || types.Count == 0)
         {
@@ -71,7 +71,7 @@ public class WizardCreateAbility : ScriptableWizard
         {
             if(GUILayout.Button(type))
             {
-                ability = AbilityPrototypeLookup.GetAbilityOfType(type);
+                ability = AbilityPrototypeDB.GetAbilityOfType(type);
                 editor = Editor.CreateEditor(ability);
             }
         }

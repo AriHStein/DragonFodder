@@ -71,7 +71,7 @@ public class SquadPrototype : ScriptableObject
         UpdateDifficulty();
         if(Type != null)
         {
-            SquadPrototypeLookup.AddPrototype(this);
+            SquadPrototypeDB.AddPrototype(this);
         }
     }
 

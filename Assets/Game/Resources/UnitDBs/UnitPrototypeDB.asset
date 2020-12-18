@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 165fd274af2a728459d64ff44a40e54b, type: 3}
-  m_Name: UnitPrototypeLookup
+  m_Script: {fileID: 11500000, guid: 077234a640f0bf14997576d9fea9602c, type: 3}
+  m_Name: UnitPrototypeDB
   m_EditorClassIdentifier: 
   Protos:
   - {fileID: 11400000, guid: dc4fda076d53ae94d850b115c5460d7f, type: 2}

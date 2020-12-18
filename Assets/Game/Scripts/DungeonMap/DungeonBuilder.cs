@@ -89,5 +89,4 @@ public static class DungeonBuilder
         availableEncoutners.Add(firstEncounter);
         firstEncounter.Available = true;
     }
-
 }
